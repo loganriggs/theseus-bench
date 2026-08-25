@@ -3,7 +3,7 @@
 Ranked by **unexplained global CE** = Δ_opt × (1 − best fidelity).
 A low-importance head at 100% understood ranks below a big MLP at 50%.
 Anchors from the optimal-ablation sweep (198/198 components so far;
-attention layers land last). Generated 2026-08-25 23:18 UTC; regenerate with
+attention layers land last). Generated 2026-08-25 23:29 UTC; regenerate with
 `python bench/make_priorities.py` after any frontier move or sweep progress.
 
 ## Top targets
@@ -51,7 +51,6 @@ attention layers land last). Generated 2026-08-25 23:18 UTC; regenerate with
 | attn7 | 0.0594 | 0.60 | 0.0236 | distance kernel S1447 |
 | attn9 | 0.0640 | 0.69 | 0.0197 | distance kernel S1447 |
 | attn0 | 0.2395 | 0.95 | 0.0120 | token+position pattern + per-token value table, sink arc (~1.00 claimed; conservatively seeded) |
-| attn10 | 0.0263 | 0.60 | 0.0106 | kernel+10.2/5/6 live S1448 (roster incomplete) |
 | head6.3 | 0.0211 | 0.53 | 0.0099 | inherited from attn6 stand-in |
 | attn8 | 0.0479 | 0.79 | 0.0099 | kernel+digit tier live S1448 |
 | head2.5 | 0.0284 | 0.68 | 0.0091 | inherited from attn2 stand-in |
@@ -67,6 +66,7 @@ attention layers land last). Generated 2026-08-25 23:18 UTC; regenerate with
 | head5.5 | 0.0125 | 0.60 | 0.0050 | inherited from attn5 stand-in |
 | attn17 | 0.0118 | 0.58 | 0.0050 | kernel+expressive live S1448 |
 | head1.1 | 0.0259 | 0.82 | 0.0048 | inherited from attn1 stand-in |
+| attn10 | 0.0263 | 0.82 | 0.0047 | distance kernel + roster {2,3,4,5,6} live, fid_opt, S1453 |
 | attn13 | 0.0164 | 0.73 | 0.0044 | kernel+closer trio live S1448 |
 | head3.5 | 0.0109 | 0.62 | 0.0041 | inherited from attn3 stand-in |
 | head3.8 | 0.0106 | 0.62 | 0.0040 | inherited from attn3 stand-in |
@@ -86,7 +86,6 @@ attention layers land last). Generated 2026-08-25 23:18 UTC; regenerate with
 | head4.1 | 0.0114 | 0.81 | 0.0022 | inherited from attn4 stand-in |
 | head3.6 | 0.0057 | 0.62 | 0.0021 | inherited from attn3 stand-in |
 | head11.3 | 0.0036 | 0.42 | 0.0021 | inherited from attn11 stand-in |
-| head10.5 | 0.0052 | 0.60 | 0.0021 | inherited from attn10 stand-in |
 | head3.0 | 0.0055 | 0.62 | 0.0021 | inherited from attn3 stand-in |
 | head2.7 | 0.0062 | 0.68 | 0.0020 | inherited from attn2 stand-in |
 | head11.1 | 0.0034 | 0.42 | 0.0020 | inherited from attn11 stand-in |
@@ -106,12 +105,10 @@ attention layers land last). Generated 2026-08-25 23:18 UTC; regenerate with
 | head9.6 | 0.0042 | 0.69 | 0.0013 | inherited from attn9 stand-in |
 | head9.1 | 0.0041 | 0.69 | 0.0013 | inherited from attn9 stand-in |
 | head5.4 | 0.0031 | 0.60 | 0.0012 | inherited from attn5 stand-in |
-| head10.2 | 0.0030 | 0.60 | 0.0012 | inherited from attn10 stand-in |
 | head17.2 | 0.0028 | 0.58 | 0.0012 | inherited from attn17 stand-in |
 | head11.8 | 0.0020 | 0.42 | 0.0012 | inherited from attn11 stand-in |
 | head8.1 | 0.0055 | 0.79 | 0.0011 | inherited from attn8 stand-in |
 | head5.1 | 0.0027 | 0.60 | 0.0011 | inherited from attn5 stand-in |
-| head10.4 | 0.0027 | 0.60 | 0.0011 | inherited from attn10 stand-in |
 | head7.1 | 0.0027 | 0.60 | 0.0011 | inherited from attn7 stand-in |
 | head13.8 | 0.0039 | 0.73 | 0.0010 | inherited from attn13 stand-in |
 | head7.2 | 0.0026 | 0.60 | 0.0010 | inherited from attn7 stand-in |
@@ -119,6 +116,7 @@ attention layers land last). Generated 2026-08-25 23:18 UTC; regenerate with
 | head7.3 | 0.0024 | 0.60 | 0.0010 | inherited from attn7 stand-in |
 | head6.5 | 0.0020 | 0.53 | 0.0009 | inherited from attn6 stand-in |
 | head1.5 | 0.0051 | 0.82 | 0.0009 | inherited from attn1 stand-in |
+| head10.5 | 0.0052 | 0.82 | 0.0009 | inherited from attn10 stand-in |
 | head3.1 | 0.0024 | 0.62 | 0.0009 | inherited from attn3 stand-in |
 | head2.0 | 0.0027 | 0.68 | 0.0009 | inherited from attn2 stand-in |
 | head8.4 | 0.0041 | 0.79 | 0.0008 | inherited from attn8 stand-in |
@@ -132,8 +130,10 @@ attention layers land last). Generated 2026-08-25 23:18 UTC; regenerate with
 | head4.4 | 0.0032 | 0.81 | 0.0006 | inherited from attn4 stand-in |
 | head4.8 | 0.0030 | 0.81 | 0.0006 | inherited from attn4 stand-in |
 | head4.3 | 0.0029 | 0.81 | 0.0005 | inherited from attn4 stand-in |
+| head10.2 | 0.0030 | 0.82 | 0.0005 | inherited from attn10 stand-in |
 | head8.2 | 0.0026 | 0.79 | 0.0005 | inherited from attn8 stand-in |
 | head14.0 | 0.0022 | 0.77 | 0.0005 | inherited from attn14 stand-in |
+| head10.4 | 0.0027 | 0.82 | 0.0005 | inherited from attn10 stand-in |
 | head16.3 | 0.0034 | 0.90 | 0.0003 | inherited from attn16 stand-in |
 | head16.0 | 0.0023 | 0.90 | 0.0002 | inherited from attn16 stand-in |
 | head16.4 | 0.0021 | 0.90 | 0.0002 | inherited from attn16 stand-in |
