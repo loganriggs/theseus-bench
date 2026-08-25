@@ -3,7 +3,7 @@
 Ranked by **unexplained global CE** = Δ_opt × (1 − best fidelity).
 A low-importance head at 100% understood ranks below a big MLP at 50%.
 Anchors from the optimal-ablation sweep (198/198 components so far;
-attention layers land last). Generated 2026-08-25 23:29 UTC; regenerate with
+attention layers land last). Generated 2026-08-25 23:59 UTC; regenerate with
 `python bench/make_priorities.py` after any frontier move or sweep progress.
 
 ## Top targets
@@ -12,12 +12,12 @@ attention layers land last). Generated 2026-08-25 23:29 UTC; regenerate with
 2. **mlp0** — unexplained 0.062 nats (Δ_opt 0.908, fidelity 0.93) — tok map + residual ridge [attn0,embed] + quad, fid_opt, S1439
 3. **attn5** — unexplained 0.055 nats (Δ_opt 0.136, fidelity 0.60) — kernel+5.7 live S1448
 4. **attn2** — unexplained 0.051 nats (Δ_opt 0.159, fidelity 0.68) — distance kernel S1447
-5. **mlp9** — unexplained 0.050 nats (Δ_opt 0.050, fidelity 0.00) — baseline zoo only
-6. **mlp17** — unexplained 0.048 nats (Δ_opt 0.332, fidelity 0.86) — linread+quad, S1443
-7. **mlp8** — unexplained 0.047 nats (Δ_opt 0.047, fidelity 0.00) — baseline zoo only
-8. **mlp11** — unexplained 0.046 nats (Δ_opt 0.046, fidelity 0.00) — baseline zoo only
-9. **attn3** — unexplained 0.044 nats (Δ_opt 0.116, fidelity 0.62) — distance kernel S1447
-10. **attn4** — unexplained 0.042 nats (Δ_opt 0.223, fidelity 0.81) — distance kernel S1446
+5. **mlp17** — unexplained 0.048 nats (Δ_opt 0.332, fidelity 0.86) — linread+quad, S1443
+6. **mlp8** — unexplained 0.047 nats (Δ_opt 0.047, fidelity 0.00) — baseline zoo only
+7. **mlp11** — unexplained 0.046 nats (Δ_opt 0.046, fidelity 0.00) — baseline zoo only
+8. **attn3** — unexplained 0.044 nats (Δ_opt 0.116, fidelity 0.62) — distance kernel S1447
+9. **attn4** — unexplained 0.042 nats (Δ_opt 0.223, fidelity 0.81) — distance kernel S1446
+10. **mlp12** — unexplained 0.042 nats (Δ_opt 0.042, fidelity 0.00) — baseline zoo only
 
 ## Full table
 
@@ -27,7 +27,6 @@ attention layers land last). Generated 2026-08-25 23:29 UTC; regenerate with
 | mlp0 | 0.9080 | 0.93 | 0.0617 | tok map + residual ridge [attn0,embed] + quad, fid_opt, S1439 |
 | attn5 | 0.1362 | 0.60 | 0.0549 | kernel+5.7 live S1448 |
 | attn2 | 0.1585 | 0.68 | 0.0510 | distance kernel S1447 |
-| mlp9 | 0.0496 | 0.00 | 0.0496 | baseline zoo only |
 | mlp17 | 0.3323 | 0.86 | 0.0479 | linread+quad, S1443 |
 | mlp8 | 0.0474 | 0.00 | 0.0474 | baseline zoo only |
 | mlp11 | 0.0460 | 0.00 | 0.0460 | baseline zoo only |
@@ -48,6 +47,7 @@ attention layers land last). Generated 2026-08-25 23:29 UTC; regenerate with
 | mlp7 | 0.0563 | 0.52 | 0.0272 | linall ridge + r256/F8192 quad over [attn7,mlp6], fid_opt, S1451 |
 | attn11 | 0.0460 | 0.42 | 0.0268 | distance kernel S1447 |
 | mlp16 | 0.1399 | 0.81 | 0.0266 | fitted linear read, S1131-32 |
+| mlp9 | 0.0496 | 0.52 | 0.0238 | linall ridge + r256/F8192 quad over [attn9,mlp8], fid_opt, S1457 |
 | attn7 | 0.0594 | 0.60 | 0.0236 | distance kernel S1447 |
 | attn9 | 0.0640 | 0.69 | 0.0197 | distance kernel S1447 |
 | attn0 | 0.2395 | 0.95 | 0.0120 | token+position pattern + per-token value table, sink arc (~1.00 claimed; conservatively seeded) |
