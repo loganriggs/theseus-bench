@@ -388,6 +388,7 @@
   "date": "2026-08-26",
   "finding": "CERTIFIED MLP-unit circuit component: 16 hidden units of mlp11 (0.35% of layer) carry a .091 question-mark CE effect at 182.6x selectivity, NR=1920, replicated on a disjoint corpus slice to 0.2%. Pronouns@mlp17 is the diffuse contrast case (K16 only 30% of K64; 4.3x). Weight-side unit ranking fails (signed units); only data-driven class-conditional scoring works.",
   "implication": "circuits are predominantly attention-head objects (head rises .1-2.1 vs unit rises <=.09) but sub-MLP membership is real and sharply selective for some classes",
-  "source": "circuit_mlp_units{,2,3,4}_results.json, ledger S1563/S1565/S1566/S1568"
+  "source": "circuit_mlp_units{,2,3,4}_results.json, ledger S1563/S1565/S1566/S1568",
+  "eigen_slice_update": "2026-08-26: canonical split found \u2014 rank-2 eigen slice of the class-projected quadratic form (sym(Left^T diag(u_c@Down) Right)) at question@mlp11 removes .178 class CE (2x the 64-unit set, 1/64 the params) at zero-to-negative global cost (NR=960; NR=1920 verify in flight). Late-layer forms can be net-suppressive (pronouns@mlp17: form ablation IMPROVES class .15-.28). Cross-class top-64 unit sharing at mlp16/17 is a causally inert generic pool, not feature reuse. Ledger S1570-S1572."
  }
 }
