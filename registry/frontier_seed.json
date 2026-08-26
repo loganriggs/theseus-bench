@@ -331,6 +331,12 @@
    "modules": 36,
    "compounding": 1.04,
    "ref": "S1538 VERIFIED"
+  },
+  "v7_units3072": {
+   "ce": 3.8431,
+   "modules": 36,
+   "compounding": 0.8,
+   "ref": "S1540 VERIFIED; fidelity point, not price point"
   }
  }
 }

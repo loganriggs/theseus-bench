@@ -3,7 +3,7 @@
 Ranked by **unexplained global CE** = Δ_opt × (1 − best fidelity).
 A low-importance head at 100% understood ranks below a big MLP at 50%.
 Anchors from the optimal-ablation sweep (198/198 components so far;
-attention layers land last). Generated 2026-08-26 10:27 UTC; regenerate with
+attention layers land last). Generated 2026-08-26 10:42 UTC; regenerate with
 `python bench/make_priorities.py` after any frontier move or sweep progress.
 
 ## Top targets
@@ -12,12 +12,12 @@ attention layers land last). Generated 2026-08-26 10:27 UTC; regenerate with
 2. **mlp0** — unexplained 0.062 nats (Δ_opt 0.908, fidelity 0.93) — tok map + residual ridge [attn0,embed] + quad, fid_opt, S1439
 3. **mlp2** — unexplained 0.041 nats (Δ_opt 0.726, fidelity 0.94) — lin2+quad S1437; rank frontier S1440 (r128 .82@7Mbit)
 4. **mlp3** — unexplained 0.030 nats (Δ_opt 0.610, fidelity 0.95) — own-basis projection r256, S1130
-5. **mlp17** — unexplained 0.020 nats (Δ_opt 0.332, fidelity 0.94) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
-6. **mlp4** — unexplained 0.015 nats (Δ_opt 0.105, fidelity 0.86) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
-7. **mlp5** — unexplained 0.014 nats (Δ_opt 0.082, fidelity 0.83) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
-8. **mlp7** — unexplained 0.012 nats (Δ_opt 0.056, fidelity 0.78) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
-9. **mlp16** — unexplained 0.012 nats (Δ_opt 0.140, fidelity 0.91) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
-10. **mlp15** — unexplained 0.011 nats (Δ_opt 0.038, fidelity 0.70) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
+5. **attn0** — unexplained 0.011 nats (Δ_opt 0.239, fidelity 0.96) — whitened per-head r32 QK, 23.6 Mbit, S1474
+6. **attn5** — unexplained 0.011 nats (Δ_opt 0.136, fidelity 0.92) — roster-live 5.7 + whitened r32 QK others, 30.4 Mbit, S1472
+7. **attn3** — unexplained 0.010 nats (Δ_opt 0.116, fidelity 0.91) — whitened per-head r32 QK, 23.6 Mbit, S1474
+8. **attn2** — unexplained 0.010 nats (Δ_opt 0.159, fidelity 0.94) — whitened per-head r32 QK, 23.6 Mbit, S1474
+9. **mlp17** — unexplained 0.009 nats (Δ_opt 0.332, fidelity 0.97) — top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541
+10. **attn1** — unexplained 0.008 nats (Δ_opt 0.219, fidelity 0.96) — whitened per-head r32 QK, 23.6 Mbit, S1474
 
 ## Full table
 
@@ -27,27 +27,27 @@ attention layers land last). Generated 2026-08-26 10:27 UTC; regenerate with
 | mlp0 | 0.9080 | 0.93 | 0.0617 | tok map + residual ridge [attn0,embed] + quad, fid_opt, S1439 |
 | mlp2 | 0.7260 | 0.94 | 0.0407 | lin2+quad S1437; rank frontier S1440 (r128 .82@7Mbit) |
 | mlp3 | 0.6099 | 0.95 | 0.0305 | own-basis projection r256, S1130 |
-| mlp17 | 0.3323 | 0.94 | 0.0205 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
-| mlp4 | 0.1051 | 0.86 | 0.0149 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
-| mlp5 | 0.0821 | 0.83 | 0.0137 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
-| mlp7 | 0.0563 | 0.78 | 0.0124 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
-| mlp16 | 0.1399 | 0.91 | 0.0123 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
-| mlp15 | 0.0379 | 0.70 | 0.0113 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
-| mlp6 | 0.0760 | 0.86 | 0.0108 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
 | attn0 | 0.2395 | 0.96 | 0.0107 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
-| mlp11 | 0.0460 | 0.77 | 0.0107 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
-| mlp14 | 0.0301 | 0.65 | 0.0107 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537 |
-| mlp13 | 0.0393 | 0.73 | 0.0106 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537 |
-| mlp9 | 0.0496 | 0.79 | 0.0105 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
-| mlp12 | 0.0416 | 0.75 | 0.0105 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537 |
 | attn5 | 0.1362 | 0.92 | 0.0105 | roster-live 5.7 + whitened r32 QK others, 30.4 Mbit, S1472 |
 | attn3 | 0.1162 | 0.91 | 0.0105 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
-| mlp10 | 0.0409 | 0.75 | 0.0104 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537 |
 | attn2 | 0.1585 | 0.94 | 0.0102 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
-| mlp8 | 0.0474 | 0.80 | 0.0093 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
+| mlp17 | 0.3323 | 0.97 | 0.0093 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
 | attn1 | 0.2186 | 0.96 | 0.0079 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
 | attn11 | 0.0460 | 0.84 | 0.0072 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
 | attn4 | 0.2226 | 0.97 | 0.0065 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
+| mlp5 | 0.0821 | 0.93 | 0.0061 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp4 | 0.1051 | 0.94 | 0.0061 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp16 | 0.1399 | 0.96 | 0.0059 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp7 | 0.0563 | 0.90 | 0.0058 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp15 | 0.0379 | 0.85 | 0.0056 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp10 | 0.0409 | 0.87 | 0.0054 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp13 | 0.0393 | 0.86 | 0.0054 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp12 | 0.0416 | 0.87 | 0.0053 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp14 | 0.0301 | 0.83 | 0.0052 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp11 | 0.0460 | 0.89 | 0.0051 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp9 | 0.0496 | 0.90 | 0.0051 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp6 | 0.0760 | 0.94 | 0.0047 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
+| mlp8 | 0.0474 | 0.91 | 0.0044 | top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541 |
 | attn6 | 0.0642 | 0.94 | 0.0041 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
 | attn7 | 0.0594 | 0.95 | 0.0032 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
 | attn8 | 0.0479 | 0.93 | 0.0031 | roster-live 8.{1,2,3,7} + whitened r32 QK others, 50.7 Mbit, S1472 |

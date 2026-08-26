@@ -17,20 +17,20 @@
   "ref": "own-basis projection r256, S1130"
  },
  "mlp4": {
-  "fidelity": 0.8582,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.9418,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp5": {
-  "fidelity": 0.8326,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.9253,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp16": {
-  "fidelity": 0.912,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.9575,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp17": {
-  "fidelity": 0.9384,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.9721,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "head5.7": {
   "fidelity": 0.985,
@@ -41,8 +41,8 @@
   "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "mlp6": {
-  "fidelity": 0.8576,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.9381,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "attn1": {
   "fidelity": 0.9639,
@@ -113,39 +113,39 @@
   "ref": "per-head rank-32 QK, plain SVD, 23.6 Mbit, S1469"
  },
  "mlp7": {
-  "fidelity": 0.7797,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.8961,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp9": {
-  "fidelity": 0.7874,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.8977,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp8": {
-  "fidelity": 0.8031,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.9067,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp10": {
-  "fidelity": 0.7456,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
+  "fidelity": 0.8681,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp11": {
-  "fidelity": 0.768,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.8889,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp12": {
-  "fidelity": 0.7471,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
+  "fidelity": 0.873,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp13": {
-  "fidelity": 0.7305,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
+  "fidelity": 0.8635,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp14": {
-  "fidelity": 0.6455,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
+  "fidelity": 0.8263,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  },
  "mlp15": {
-  "fidelity": 0.7019,
-  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
+  "fidelity": 0.8524,
+  "ref": "top-3072-unit sub-MLP zero-shot, 171 Mbit (PRICE-HEAVY; K=2048 = economic knee), S1541"
  }
 }
