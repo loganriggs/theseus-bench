@@ -197,6 +197,29 @@
    "selectivity": 28.89,
    "class_rise": 0.1163,
    "ref": "S1520 pattern-method VERIFIED; contextual class"
+  },
+  "content_copy": {
+   "heads": [
+    "5.5",
+    "10.8",
+    "16.3",
+    "16.4",
+    "17.1"
+   ],
+   "selectivity": "138.6 (pending NR=1920 verification - near-noise denominator)",
+   "class_rise": 0.2152,
+   "ref": "S1522 pattern-method"
+  },
+  "induction_greedy4": {
+   "heads": [
+    "5.5",
+    "10.8",
+    "8.6",
+    "8.4"
+   ],
+   "selectivity": 15.67,
+   "class_rise": 0.1651,
+   "ref": "S1521; both lag regimes >= 2x; top-5 variant 28.9x remains the selective handle"
   }
  },
  "non_circuits": [
@@ -216,5 +239,6 @@
   "months": "14.7 @ 21.7x",
   "close_paren": "13.8 @ 363x"
  },
- "_method_note": "discovery methods are complementary: unembedding-composition for output-defined circuits, attention-pattern for attention-defined ones (S1520); attribution scores carry a sink-head (5.7) confound"
+ "_method_note": "discovery methods are complementary: unembedding-composition for output-defined circuits, attention-pattern for attention-defined ones (S1520); attribution scores carry a sink-head (5.7) confound",
+ "_movers_note": "heads {5.5, 10.8} are the shared context-matching movers of induction and content-copying (S1521-22)"
 }
