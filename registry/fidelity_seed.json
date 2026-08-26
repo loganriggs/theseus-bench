@@ -77,8 +77,8 @@
   "ref": "distance kernel S1447"
  },
  "attn10": {
-  "fidelity": 0.8208,
-  "ref": "distance kernel + roster {2,3,4,5,6} live, fid_opt, S1453"
+  "fidelity": 0.9201,
+  "ref": "per-head rank-32 QK, xin-whitened, 23.6 Mbit, S1469"
  },
  "attn11": {
   "fidelity": 0.417,
@@ -89,12 +89,12 @@
   "ref": "distance kernel S1447"
  },
  "attn13": {
-  "fidelity": 0.7335,
-  "ref": "kernel+closer trio live S1448"
+  "fidelity": 0.8934,
+  "ref": "per-head rank-32 QK, xin-whitened, 23.6 Mbit, S1469"
  },
  "attn14": {
-  "fidelity": 0.769,
-  "ref": "kernel+committee live S1448"
+  "fidelity": 0.8979,
+  "ref": "per-head rank-32 QK, xin-whitened, 23.6 Mbit, S1469"
  },
  "attn15": {
   "fidelity": 0.279,
@@ -109,8 +109,8 @@
   "ref": "kernel+5.7 live S1448"
  },
  "attn17": {
-  "fidelity": 0.5775,
-  "ref": "kernel+expressive live S1448"
+  "fidelity": 0.799,
+  "ref": "per-head rank-32 QK, plain SVD, 23.6 Mbit, S1469"
  },
  "mlp7": {
   "fidelity": 0.5169,
