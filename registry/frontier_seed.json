@@ -336,7 +336,8 @@
    "ce": 3.8431,
    "modules": 36,
    "compounding": 0.8,
-   "ref": "S1540 VERIFIED; fidelity point, not price point"
+   "ref": "S1540 VERIFIED; fidelity point, not price point",
+   "certified": "3.88 +/- .04 (3 row sets, NR=1920, S1542)"
   }
  }
 }
