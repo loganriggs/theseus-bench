@@ -325,6 +325,12 @@
    "compounding": 1.43,
    "fresh_band": 0.041,
    "ref": "S1536 VERIFIED"
+  },
+  "v6_units2048": {
+   "ce": 4.1214,
+   "modules": 36,
+   "compounding": 1.04,
+   "ref": "S1538 VERIFIED"
   }
  }
 }

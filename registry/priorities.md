@@ -3,7 +3,7 @@
 Ranked by **unexplained global CE** = Δ_opt × (1 − best fidelity).
 A low-importance head at 100% understood ranks below a big MLP at 50%.
 Anchors from the optimal-ablation sweep (198/198 components so far;
-attention layers land last). Generated 2026-08-26 09:42 UTC; regenerate with
+attention layers land last). Generated 2026-08-26 10:27 UTC; regenerate with
 `python bench/make_priorities.py` after any frontier move or sweep progress.
 
 ## Top targets
@@ -11,13 +11,13 @@ attention layers land last). Generated 2026-08-26 09:42 UTC; regenerate with
 1. **mlp1** — unexplained 0.181 nats (Δ_opt 7.253, fidelity 0.97) — tok table + residual ridge [attn1,mlp0] + quad, fid_opt, S1438
 2. **mlp0** — unexplained 0.062 nats (Δ_opt 0.908, fidelity 0.93) — tok map + residual ridge [attn0,embed] + quad, fid_opt, S1439
 3. **mlp2** — unexplained 0.041 nats (Δ_opt 0.726, fidelity 0.94) — lin2+quad S1437; rank frontier S1440 (r128 .82@7Mbit)
-4. **mlp17** — unexplained 0.037 nats (Δ_opt 0.332, fidelity 0.89) — top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534
-5. **mlp4** — unexplained 0.031 nats (Δ_opt 0.105, fidelity 0.70) — top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534
-6. **mlp3** — unexplained 0.030 nats (Δ_opt 0.610, fidelity 0.95) — own-basis projection r256, S1130
-7. **mlp5** — unexplained 0.028 nats (Δ_opt 0.082, fidelity 0.66) — top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534
-8. **mlp6** — unexplained 0.022 nats (Δ_opt 0.076, fidelity 0.71) — top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534
-9. **mlp7** — unexplained 0.022 nats (Δ_opt 0.056, fidelity 0.61) — top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534
-10. **mlp16** — unexplained 0.021 nats (Δ_opt 0.140, fidelity 0.85) — top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534
+4. **mlp3** — unexplained 0.030 nats (Δ_opt 0.610, fidelity 0.95) — own-basis projection r256, S1130
+5. **mlp17** — unexplained 0.020 nats (Δ_opt 0.332, fidelity 0.94) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
+6. **mlp4** — unexplained 0.015 nats (Δ_opt 0.105, fidelity 0.86) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
+7. **mlp5** — unexplained 0.014 nats (Δ_opt 0.082, fidelity 0.83) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
+8. **mlp7** — unexplained 0.012 nats (Δ_opt 0.056, fidelity 0.78) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
+9. **mlp16** — unexplained 0.012 nats (Δ_opt 0.140, fidelity 0.91) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
+10. **mlp15** — unexplained 0.011 nats (Δ_opt 0.038, fidelity 0.70) — top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539
 
 ## Full table
 
@@ -26,25 +26,25 @@ attention layers land last). Generated 2026-08-26 09:42 UTC; regenerate with
 | mlp1 | 7.2533 | 0.97 | 0.1813 | tok table + residual ridge [attn1,mlp0] + quad, fid_opt, S1438 |
 | mlp0 | 0.9080 | 0.93 | 0.0617 | tok map + residual ridge [attn0,embed] + quad, fid_opt, S1439 |
 | mlp2 | 0.7260 | 0.94 | 0.0407 | lin2+quad S1437; rank frontier S1440 (r128 .82@7Mbit) |
-| mlp17 | 0.3323 | 0.89 | 0.0374 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp4 | 0.1051 | 0.70 | 0.0312 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
 | mlp3 | 0.6099 | 0.95 | 0.0305 | own-basis projection r256, S1130 |
-| mlp5 | 0.0821 | 0.66 | 0.0281 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp6 | 0.0760 | 0.71 | 0.0221 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp7 | 0.0563 | 0.61 | 0.0219 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp16 | 0.1399 | 0.85 | 0.0210 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp14 | 0.0301 | 0.33 | 0.0202 | linall ridge (+quad flat), fid_opt, S1483 |
-| mlp15 | 0.0379 | 0.51 | 0.0184 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp11 | 0.0460 | 0.61 | 0.0181 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp9 | 0.0496 | 0.65 | 0.0175 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp12 | 0.0416 | 0.58 | 0.0174 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp13 | 0.0393 | 0.57 | 0.0171 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp8 | 0.0474 | 0.64 | 0.0168 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
-| mlp10 | 0.0409 | 0.59 | 0.0166 | top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534 |
+| mlp17 | 0.3323 | 0.94 | 0.0205 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
+| mlp4 | 0.1051 | 0.86 | 0.0149 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
+| mlp5 | 0.0821 | 0.83 | 0.0137 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
+| mlp7 | 0.0563 | 0.78 | 0.0124 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
+| mlp16 | 0.1399 | 0.91 | 0.0123 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
+| mlp15 | 0.0379 | 0.70 | 0.0113 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
+| mlp6 | 0.0760 | 0.86 | 0.0108 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
 | attn0 | 0.2395 | 0.96 | 0.0107 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
+| mlp11 | 0.0460 | 0.77 | 0.0107 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
+| mlp14 | 0.0301 | 0.65 | 0.0107 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537 |
+| mlp13 | 0.0393 | 0.73 | 0.0106 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537 |
+| mlp9 | 0.0496 | 0.79 | 0.0105 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
+| mlp12 | 0.0416 | 0.75 | 0.0105 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537 |
 | attn5 | 0.1362 | 0.92 | 0.0105 | roster-live 5.7 + whitened r32 QK others, 30.4 Mbit, S1472 |
 | attn3 | 0.1162 | 0.91 | 0.0105 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
+| mlp10 | 0.0409 | 0.75 | 0.0104 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537 |
 | attn2 | 0.1585 | 0.94 | 0.0102 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
+| mlp8 | 0.0474 | 0.80 | 0.0093 | top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539 |
 | attn1 | 0.2186 | 0.96 | 0.0079 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
 | attn11 | 0.0460 | 0.84 | 0.0072 | whitened per-head r32 QK, 23.6 Mbit, S1474 |
 | attn4 | 0.2226 | 0.97 | 0.0065 | whitened per-head r32 QK, 23.6 Mbit, S1474 |

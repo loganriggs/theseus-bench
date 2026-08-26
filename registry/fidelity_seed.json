@@ -17,20 +17,20 @@
   "ref": "own-basis projection r256, S1130"
  },
  "mlp4": {
-  "fidelity": 0.7585,
-  "ref": "unit-256 core + stream ridge (PRICE-FLAGGED: wide ridge), S1535"
+  "fidelity": 0.8582,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  },
  "mlp5": {
-  "fidelity": 0.6935,
-  "ref": "unit-256 core + stream ridge (PRICE-FLAGGED: wide ridge), S1535"
+  "fidelity": 0.8326,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  },
  "mlp16": {
-  "fidelity": 0.8497,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.912,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  },
  "mlp17": {
-  "fidelity": 0.8876,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.9384,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  },
  "head5.7": {
   "fidelity": 0.985,
@@ -41,8 +41,8 @@
   "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "mlp6": {
-  "fidelity": 0.7098,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.8576,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  },
  "attn1": {
   "fidelity": 0.9639,
@@ -113,24 +113,24 @@
   "ref": "per-head rank-32 QK, plain SVD, 23.6 Mbit, S1469"
  },
  "mlp7": {
-  "fidelity": 0.6119,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.7797,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  },
  "mlp9": {
-  "fidelity": 0.6474,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.7874,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  },
  "mlp8": {
-  "fidelity": 0.6446,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.8031,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  },
  "mlp10": {
   "fidelity": 0.7456,
   "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
  },
  "mlp11": {
-  "fidelity": 0.6072,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.768,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  },
  "mlp12": {
   "fidelity": 0.7471,
@@ -145,7 +145,7 @@
   "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
  },
  "mlp15": {
-  "fidelity": 0.5239,
-  "ref": "unit-256 core + stream ridge (PRICE-FLAGGED: wide ridge), S1535"
+  "fidelity": 0.7019,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1539"
  }
 }
