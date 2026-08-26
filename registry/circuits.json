@@ -185,6 +185,18 @@
    "selectivity": 5.09,
    "class_rise": 0.0451,
    "ref": "S1511 greedy-v2 VERIFIED"
+  },
+  "induction": {
+   "heads": [
+    "5.5",
+    "10.8",
+    "12.6",
+    "4.2",
+    "8.6"
+   ],
+   "selectivity": 28.89,
+   "class_rise": 0.1163,
+   "ref": "S1520 pattern-method VERIFIED; contextual class"
   }
  },
  "non_circuits": [
@@ -203,5 +215,6 @@
   "colon": "12.6 @ 58x",
   "months": "14.7 @ 21.7x",
   "close_paren": "13.8 @ 363x"
- }
+ },
+ "_method_note": "discovery methods are complementary: unembedding-composition for output-defined circuits, attention-pattern for attention-defined ones (S1520); attribution scores carry a sink-head (5.7) confound"
 }
