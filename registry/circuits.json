@@ -523,6 +523,39 @@
    "score": "1-for-3 (discovery)",
    "finding": "the span(v1,v2) variable is an OUTPUT CHANNEL: joint all-reader input cut HELPS class (-.205) while source cut costs +.812; biggest single reader is mlp17 and it reads SUPPRESSIVELY (-.392); mlp11 payload read only +.082",
    "in_flight": "slice_direct (logit-lens of channel directions, final-residual cut, completeness decomposition) + held-out replication"
+  },
+  "output_channel": {
+   "section": "S1600",
+   "score": "2-for-3, held-out replicated",
+   "logit_lens": {
+    "v1+_top10": [
+     "?",
+     ")?",
+     "\"?",
+     "'?",
+     "?).",
+     "?)",
+     "?!",
+     "?\"",
+     "??",
+     " ?"
+    ],
+    "first_question_rank": 1,
+    "v2+_rank": 2,
+    "negative_directions": "junk (>200)"
+   },
+   "final_residual_cut": {
+    "rise_class": 2.017,
+    "rise_global": 0.0012,
+    "vs_source_cut": 2.483
+   },
+   "held_out_skip15000": {
+    "source": 0.928,
+    "final": 2.05,
+    "final_plus_readers": 1.502,
+    "rank": 1
+   },
+   "finding": "span(v1,v2) of the mlp11 question form IS the '?' unembedding channel; the certified circuit reads and writes the class's own output direction. Completeness pred failed (final+readers=1.80x source) \u2014 the three cuts remove different channel content; full-depth signed budget (channel_budget) queued."
   }
  }
 }
