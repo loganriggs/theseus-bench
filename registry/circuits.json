@@ -20,9 +20,9 @@
     "12.6",
     "11.5"
    ],
-   "selectivity": 8.86,
+   "selectivity": 7.66,
    "class_rise": 0.0719,
-   "ref": "S1511 greedy-v2 VERIFIED"
+   "ref": "S1511 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547"
   },
   "open_quote": {
    "heads": [
@@ -71,26 +71,26 @@
     "10.8",
     "11.7"
    ],
-   "selectivity": 9.76,
+   "selectivity": 11.61,
    "class_rise": 0.039,
-   "ref": "S1511 greedy-v2 VERIFIED"
+   "ref": "S1511 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547"
   },
   "is": {
    "heads": [
     "11.3",
     "15.5"
    ],
-   "selectivity": 16.9,
+   "selectivity": 17.77,
    "class_rise": 0.0674,
-   "ref": "S1511 greedy-v2 VERIFIED"
+   "ref": "S1511 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547"
   },
   "months": {
    "heads": [
     "14.7"
    ],
-   "selectivity": 21.69,
+   "selectivity": 17.44,
    "class_rise": 0.0405,
-   "ref": "S1513 greedy-v2 VERIFIED"
+   "ref": "S1513 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547"
   },
   "close_quote": {
    "heads": [
@@ -100,9 +100,9 @@
     "10.7",
     "10.6"
    ],
-   "selectivity": 47.96,
+   "selectivity": 49.94,
    "class_rise": 0.4065,
-   "ref": "S1513 greedy-v2 VERIFIED"
+   "ref": "S1513 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547"
   },
   "colon": {
    "heads": [
@@ -143,9 +143,9 @@
     "11.5",
     "12.2"
    ],
-   "selectivity": 11.07,
+   "selectivity": 12.4,
    "class_rise": 0.1449,
-   "ref": "S1513 greedy-v2 VERIFIED"
+   "ref": "S1513 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547"
   },
   "dollar": {
    "heads": [
@@ -153,9 +153,9 @@
     "12.6",
     "17.2"
    ],
-   "selectivity": 24.89,
+   "selectivity": 23.65,
    "class_rise": 0.1377,
-   "ref": "S1513 greedy-v2 VERIFIED"
+   "ref": "S1513 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547"
   },
   "capitalized_13head": {
    "heads": "13-head ensemble L13-17",
@@ -182,9 +182,9 @@
     "7.3",
     "9.5"
    ],
-   "selectivity": 5.09,
+   "selectivity": 4.94,
    "class_rise": 0.0451,
-   "ref": "S1511 greedy-v2 VERIFIED"
+   "ref": "S1511 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547"
   },
   "induction": {
    "heads": [
@@ -263,5 +263,6 @@
  "_method_note": "complementary discovery: cosine-normalized target attribution (output-defined circuits) + attention-to-source patterns (attention-defined); sink confound closed S1524. Selectivity > 50x requires NR=1920 verification (S1523).",
  "_movers_note": "heads {5.5, 10.8} are the shared context-matching movers of induction and content-copying (S1521-22)",
  "_unification_note": "S1527 CONFIRMED: the 13-head L13-17 committee is the late-stack COPYING apparatus (damage 4.8x concentrated on copied targets; copies non-names too). S1528: head 5.5 is a SEPARATE generic copy/induction channel \u2014 two copying channels, not one pipeline. S1546: the committee is the general proper-name prediction apparatus \u2014 copying dominant, novel-name channel via 13.0/13.5.",
- "_classifier_ceiling": "membership prediction (capitalization): rho .74 / FN .62 (direct weights-only score); path-aware and rank sweeps did not improve it (S1506/45)"
+ "_classifier_ceiling": "membership prediction (capitalization): rho .74 / FN .62 (direct weights-only score); path-aware and rank sweeps did not improve it (S1506/45)",
+ "_verification_stamp": "ALL certified entries carry NR=1920 verification as of S1547 (2026-08-26)"
 }
