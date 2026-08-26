@@ -245,14 +245,11 @@
   "open_paren": {
    "heads": [
     "12.6",
-    "6.5",
-    "7.3",
-    "6.7",
-    "5.5"
+    "9.5"
    ],
-   "selectivity": 5.08,
-   "class_rise": 0.2401,
-   "ref": "S1555 screen4"
+   "selectivity": 55.48,
+   "class_rise": 0.096,
+   "ref": "S1556-57 greedy; NR=1920 VERIFIED"
   },
   "ordinals": {
    "heads": [
@@ -268,15 +265,11 @@
   },
   "pronouns": {
    "heads": [
-    "12.4",
-    "9.6",
-    "7.3",
-    "6.7",
-    "13.2"
+    "12.4"
    ],
-   "selectivity": 41.45,
-   "class_rise": 0.7717,
-   "ref": "S1555 screen4"
+   "selectivity": 347.19,
+   "class_rise": 0.2162,
+   "ref": "S1556-57 greedy; NR=1920 VERIFIED"
   },
   "days": {
    "heads": [
@@ -304,27 +297,21 @@
   },
   "however": {
    "heads": [
-    "6.7",
-    "12.6",
     "10.5",
-    "7.3",
-    "9.1"
+    "6.0",
+    "8.5"
    ],
-   "selectivity": 12.55,
-   "class_rise": 0.3114,
-   "ref": "S1555 screen4"
+   "selectivity": 46.27,
+   "class_rise": null,
+   "ref": "S1556 greedy"
   },
   "hyphen": {
    "heads": [
-    "12.6",
-    "6.5",
-    "13.5",
-    "14.5",
-    "7.3"
+    "12.6"
    ],
-   "selectivity": 7.19,
-   "class_rise": 0.0714,
-   "ref": "S1555 screen4"
+   "selectivity": 16.82,
+   "class_rise": null,
+   "ref": "S1556 greedy"
   },
   "about": {
    "heads": [
@@ -354,7 +341,9 @@
  "single_head_circuits": {
   "colon": "12.6 @ 58x",
   "months": "14.7 @ 21.7x",
-  "close_paren": "13.8 @ 363x"
+  "close_paren": "13.8 @ 363x",
+  "pronouns": "12.4 @ 347x (verified)",
+  "hyphen": "12.6 @ 16.8x"
  },
  "_method_note": "complementary discovery: cosine-normalized target attribution (output-defined circuits) + attention-to-source patterns (attention-defined); sink confound closed S1524. Selectivity > 50x requires NR=1920 verification (S1523).",
  "_movers_note": "heads {5.5, 10.8} are the shared context-matching movers of induction and content-copying (S1521-22)",
