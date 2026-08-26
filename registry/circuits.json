@@ -120,9 +120,9 @@
     "13.5",
     "15.2"
    ],
-   "selectivity": 64.23,
-   "class_rise": 0.5108,
-   "ref": "S1505/07; NR=1920 reverification pending (S1530 transcription bug)"
+   "selectivity": 68.03,
+   "class_rise": 0.4973,
+   "ref": "S1507 greedy; NR=1920 VERIFIED S1531"
   },
   "to": {
    "heads": [
