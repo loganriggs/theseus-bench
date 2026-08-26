@@ -206,9 +206,9 @@
     "16.4",
     "17.1"
    ],
-   "selectivity": "138.6 (pending NR=1920 verification - near-noise denominator)",
-   "class_rise": 0.2152,
-   "ref": "S1522 pattern-method"
+   "selectivity": 31.32,
+   "class_rise": 0.1955,
+   "ref": "S1523 VERIFIED NR=1920"
   },
   "induction_greedy4": {
    "heads": [
@@ -220,6 +220,18 @@
    "selectivity": 15.67,
    "class_rise": 0.1651,
    "ref": "S1521; both lag regimes >= 2x; top-5 variant 28.9x remains the selective handle"
+  },
+  "content_copy_T": {
+   "heads": [
+    "8.3",
+    "14.4",
+    "13.0",
+    "8.4",
+    "16.3"
+   ],
+   "selectivity": 26.19,
+   "class_rise": 0.495,
+   "ref": "S1523-24; attribution variant, bigger damage"
   }
  },
  "non_circuits": [
@@ -239,6 +251,6 @@
   "months": "14.7 @ 21.7x",
   "close_paren": "13.8 @ 363x"
  },
- "_method_note": "discovery methods are complementary: unembedding-composition for output-defined circuits, attention-pattern for attention-defined ones (S1520); attribution scores carry a sink-head (5.7) confound",
+ "_method_note": "complementary discovery: cosine-normalized target attribution (output-defined circuits) + attention-to-source patterns (attention-defined); sink confound closed S1524. Selectivity > 50x requires NR=1920 verification (S1523).",
  "_movers_note": "heads {5.5, 10.8} are the shared context-matching movers of induction and content-copying (S1521-22)"
 }
