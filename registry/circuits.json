@@ -39,9 +39,9 @@
    "heads": [
     "13.8"
    ],
-   "selectivity": 362.67,
-   "class_rise": 0.6045,
-   "ref": "S1515 greedy-v2 VERIFIED"
+   "selectivity": 416.32,
+   "class_rise": 0.6548,
+   "ref": "S1515 greedy-v2 VERIFIED; NR=1920 VERIFIED S1530"
   },
   "comma": {
    "heads": [
@@ -50,9 +50,9 @@
     "9.5",
     "11.7"
    ],
-   "selectivity": 160.59,
-   "class_rise": 0.1122,
-   "ref": "S1513 greedy-v2 VERIFIED"
+   "selectivity": 206.65,
+   "class_rise": 0.1073,
+   "ref": "S1513 greedy-v2 VERIFIED; NR=1920 VERIFIED S1530"
   },
   "question": {
    "heads": [
@@ -61,9 +61,9 @@
     "7.6",
     "9.3"
    ],
-   "selectivity": 158.86,
-   "class_rise": 1.6216,
-   "ref": "S1515 greedy-v2 VERIFIED"
+   "selectivity": 148.85,
+   "class_rise": 1.6353,
+   "ref": "S1515 greedy-v2 VERIFIED; NR=1920 VERIFIED S1530"
   },
   "the": {
    "heads": [
@@ -108,9 +108,9 @@
    "heads": [
     "12.6"
    ],
-   "selectivity": 58.11,
-   "class_rise": 0.0434,
-   "ref": "S1513 greedy-v2 VERIFIED"
+   "selectivity": 49.3,
+   "class_rise": 0.0412,
+   "ref": "S1513 greedy-v2 VERIFIED; NR=1920 VERIFIED S1530"
   },
   "semicolon": {
    "heads": [
@@ -122,7 +122,7 @@
    ],
    "selectivity": 64.23,
    "class_rise": 0.5108,
-   "ref": "S1505/07"
+   "ref": "S1505/07; NR=1920 reverification pending (S1530 transcription bug)"
   },
   "to": {
    "heads": [
