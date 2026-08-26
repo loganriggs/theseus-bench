@@ -1,0 +1,43 @@
+{
+ "_comment": "Three-property handle scores per site (protocol.md handle lane). selectivity = class-keep / global-keep under extraction; removal vs random-8; generalization = replication on disjoint rows. S1486-1494.",
+ "mlp0_block1_channel": {
+  "basis": "weight-composed top-8",
+  "class": "name-fragment",
+  "keep_class": 0.522,
+  "keep_global": 0.136,
+  "selectivity": 4.3,
+  "pca8_selectivity": 1.27,
+  "removal_ce": 0.02,
+  "random_removal_ce": 0.0001,
+  "generalizes": true,
+  "ref": "S1486/S1488 VERIFIED"
+ },
+ "mlp1_block2_channel": {
+  "basis": "weight-composed top-8",
+  "class": "own top tokens",
+  "keep_class": 0.199,
+  "selectivity": 1.47,
+  "pca8_selectivity": 1.08,
+  "generalizes": true,
+  "verdict": "UNSELECTIVE - diffuse site",
+  "ref": "S1490-91"
+ },
+ "mlp2_block3_channel": {
+  "basis": "weight-composed top-8",
+  "class": "name-fragment",
+  "keep_class": 0.376,
+  "selectivity": 1.73,
+  "pca8_selectivity": 1.86,
+  "removal_ce": 0.011,
+  "random_removal_ce": 0.0001,
+  "generalizes": true,
+  "verdict": "moderately selective, basis-agnostic",
+  "ref": "S1494"
+ },
+ "_laws": [
+  "selectivity is a SITE property (token-classed signal required)",
+  "weight-basis unique advantage only at mlp0",
+  "removal-specificity + generalization robust at every site",
+  "single axes fail as handles; 8-32-dim channels are the grain (S1484/86)"
+ ]
+}
