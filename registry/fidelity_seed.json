@@ -37,56 +37,56 @@
   "ref": "ONE fixed vector (the bias-head), S1089/S1091"
  },
  "attn0": {
-  "fidelity": 0.95,
-  "ref": "token+position pattern + per-token value table, sink arc (~1.00 claimed; conservatively seeded)"
+  "fidelity": 0.9553,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "mlp6": {
   "fidelity": 0.62,
   "ref": "ladder linall+quad, S1436"
  },
  "attn1": {
-  "fidelity": 0.8165,
-  "ref": "distance kernel S1446"
+  "fidelity": 0.9639,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn4": {
-  "fidelity": 0.8109,
-  "ref": "distance kernel S1446"
+  "fidelity": 0.9709,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn2": {
-  "fidelity": 0.678,
-  "ref": "distance kernel S1447"
+  "fidelity": 0.9358,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn3": {
-  "fidelity": 0.623,
-  "ref": "distance kernel S1447"
+  "fidelity": 0.9097,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn6": {
-  "fidelity": 0.531,
-  "ref": "distance kernel S1447"
+  "fidelity": 0.9367,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn7": {
-  "fidelity": 0.602,
-  "ref": "distance kernel S1447"
+  "fidelity": 0.9464,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn8": {
   "fidelity": 0.9346,
   "ref": "roster-live 8.{1,2,3,7} + whitened r32 QK others, 50.7 Mbit, S1472"
  },
  "attn9": {
-  "fidelity": 0.692,
-  "ref": "distance kernel S1447"
+  "fidelity": 0.9584,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn10": {
   "fidelity": 0.9201,
   "ref": "per-head rank-32 QK, xin-whitened, 23.6 Mbit, S1469"
  },
  "attn11": {
-  "fidelity": 0.417,
-  "ref": "distance kernel S1447"
+  "fidelity": 0.8443,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn12": {
-  "fidelity": 0.206,
-  "ref": "distance kernel S1447"
+  "fidelity": 0.8868,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn13": {
   "fidelity": 0.8934,
@@ -97,8 +97,8 @@
   "ref": "per-head rank-32 QK, xin-whitened, 23.6 Mbit, S1469"
  },
  "attn15": {
-  "fidelity": 0.279,
-  "ref": "distance kernel S1447"
+  "fidelity": 0.8638,
+  "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "attn16": {
   "fidelity": 0.8971,
