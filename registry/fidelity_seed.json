@@ -123,5 +123,29 @@
  "mlp8": {
   "fidelity": 0.4684,
   "ref": "linall ridge + r256/F8192 quad, fid_opt, S1481"
+ },
+ "mlp10": {
+  "fidelity": 0.4129,
+  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+ },
+ "mlp11": {
+  "fidelity": 0.4668,
+  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+ },
+ "mlp12": {
+  "fidelity": 0.4408,
+  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+ },
+ "mlp13": {
+  "fidelity": 0.4222,
+  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+ },
+ "mlp14": {
+  "fidelity": 0.3275,
+  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+ },
+ "mlp15": {
+  "fidelity": 0.4265,
+  "ref": "linall ridge (+quad flat), fid_opt, S1483"
  }
 }
