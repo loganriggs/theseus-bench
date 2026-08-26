@@ -307,6 +307,11 @@
   "ce": 3.8879,
   "clean": 2.9455,
   "compounding": 1.59,
-  "ref": "S1479 VERIFIED"
+  "ref": "S1479 VERIFIED",
+  "v3": {
+   "ce": 3.6852,
+   "modules": 23,
+   "ref": "S1496 VERIFIED; glue persisted"
+  }
  }
 }
