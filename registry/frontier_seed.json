@@ -318,6 +318,13 @@
    "modules": 36,
    "fresh_band": -0.003,
    "ref": "S1499 VERIFIED"
+  },
+  "v5_units": {
+   "ce": 4.554,
+   "modules": 36,
+   "compounding": 1.43,
+   "fresh_band": 0.041,
+   "ref": "S1536 VERIFIED"
   }
  }
 }

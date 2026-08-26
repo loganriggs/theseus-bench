@@ -125,24 +125,24 @@
   "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp10": {
-  "fidelity": 0.5939,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.7456,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
  },
  "mlp11": {
   "fidelity": 0.6072,
   "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp12": {
-  "fidelity": 0.5818,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.7471,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
  },
  "mlp13": {
-  "fidelity": 0.5661,
-  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
+  "fidelity": 0.7305,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
  },
  "mlp14": {
-  "fidelity": 0.3275,
-  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+  "fidelity": 0.6455,
+  "ref": "top-2048-unit sub-MLP zero-shot, 114 Mbit, S1537"
  },
  "mlp15": {
   "fidelity": 0.5239,
