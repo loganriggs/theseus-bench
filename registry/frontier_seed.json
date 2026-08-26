@@ -338,6 +338,24 @@
    "compounding": 0.8,
    "ref": "S1540 VERIFIED; fidelity point, not price point",
    "certified": "3.88 +/- .04 (3 row sets, NR=1920, S1542)"
-  }
+  },
+  "pareto": [
+   {
+    "ce": 4.3065,
+    "gbit": 2.123,
+    "ref": "S1543"
+   },
+   {
+    "ce": 4.1214,
+    "gbit": 2.6,
+    "ref": "S1538"
+   },
+   {
+    "ce": 3.88,
+    "gbit": 3.3,
+    "err": 0.04,
+    "ref": "S1540/42"
+   }
+  ]
  }
 }
