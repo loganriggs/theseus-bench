@@ -241,6 +241,102 @@
    "selectivity": 9.76,
    "class_rise": 0.0479,
    "ref": "S1546; INSIDE the name-prediction apparatus"
+  },
+  "open_paren": {
+   "heads": [
+    "12.6",
+    "6.5",
+    "7.3",
+    "6.7",
+    "5.5"
+   ],
+   "selectivity": 5.08,
+   "class_rise": 0.2401,
+   "ref": "S1555 screen4"
+  },
+  "ordinals": {
+   "heads": [
+    "7.3",
+    "6.7",
+    "10.8",
+    "10.3",
+    "8.3"
+   ],
+   "selectivity": 2.66,
+   "class_rise": 0.1027,
+   "ref": "S1555 screen4"
+  },
+  "pronouns": {
+   "heads": [
+    "12.4",
+    "9.6",
+    "7.3",
+    "6.7",
+    "13.2"
+   ],
+   "selectivity": 41.45,
+   "class_rise": 0.7717,
+   "ref": "S1555 screen4"
+  },
+  "days": {
+   "heads": [
+    "5.7",
+    "4.8",
+    "4.1",
+    "3.4",
+    "17.3"
+   ],
+   "selectivity": 4.72,
+   "class_rise": 0.2045,
+   "ref": "S1555 screen4"
+  },
+  "titles": {
+   "heads": [
+    "7.3",
+    "6.7",
+    "12.4",
+    "14.6",
+    "12.6"
+   ],
+   "selectivity": 7.45,
+   "class_rise": 0.1379,
+   "ref": "S1555 screen4"
+  },
+  "however": {
+   "heads": [
+    "6.7",
+    "12.6",
+    "10.5",
+    "7.3",
+    "9.1"
+   ],
+   "selectivity": 12.55,
+   "class_rise": 0.3114,
+   "ref": "S1555 screen4"
+  },
+  "hyphen": {
+   "heads": [
+    "12.6",
+    "6.5",
+    "13.5",
+    "14.5",
+    "7.3"
+   ],
+   "selectivity": 7.19,
+   "class_rise": 0.0714,
+   "ref": "S1555 screen4"
+  },
+  "about": {
+   "heads": [
+    "7.3",
+    "13.8",
+    "6.7",
+    "7.8",
+    "16.8"
+   ],
+   "selectivity": 4.34,
+   "class_rise": 0.1719,
+   "ref": "S1555 screen4"
   }
  },
  "non_circuits": [
