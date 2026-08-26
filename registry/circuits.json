@@ -441,6 +441,7 @@
   "date": "2026-08-26",
   "finding": "removal-certified 5-head circuits recover only .159 (question) / .230 (pronouns) of their class attention gap when all other heads are optimal-constant substituted (MLPs intact); selective (3-6x over global recovery) and 3-4x over random-5 controls. Removal certifies announcers; extraction requires the distributed context assembly. Gender readout depth-localized to mlp17 (20:1 vs mlp13-16).",
   "implication": "extraction difficulty is the correct price signal for compression-helps-circuits; extraction-vs-K curve and compressed-background extraction in flight",
-  "source": "extraction_{q,p}_results.json, reflect_depth_results.json, ledger S1591-S1592"
+  "source": "extraction_{q,p}_results.json, reflect_depth_results.json, ledger S1591-S1592",
+  "resolution": "2026-08-26: extraction against a DEAD (optimal-constant) background is structurally capped and non-monotone (.16/.32/.23/.40 at K=5/10/20/40 \u2014 S1334 inversion: mid-rank heads harmful without context). COMPRESSION IS EXTRACTION: the rank-32 whitened-QK background alone preserves 97% of question class function (rise .19 vs 6.0 under constants) and exact circuit heads add nothing (-.08 marginal). A compression class-CE preservation number IS its extraction score. S1593/S1594; rank sweep + pronouns confirmation in flight."
  }
 }
