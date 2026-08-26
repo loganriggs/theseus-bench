@@ -434,6 +434,7 @@
     "slice_global_cost": 0.0001
    }
   },
-  "gate_naming": "2026-08-26: the mlp17 gates are NAMED axes - the-gate IS the determiner-prediction axis (token [ the] rank #1 of 50257 by unembedding alignment; class effect 1.57 std; AUC .922): self-inhibition on the class own axis. pronouns-gate = the she<->he gender contrast axis. REVISION (S1585): the serial-routing claim for the is-circuit was refuted at z-level (payload elevation drops only 16% under head substitution) - model = parallel pathways + CE saturation. Gate function (S1586): blunt precision damper - removal damage 44x concentrated at almost-the positions; suppresses true (+22%) and false (+33%) positives alike. S1583-S1586."
+  "gate_naming": "2026-08-26: the mlp17 gates are NAMED axes - the-gate IS the determiner-prediction axis (token [ the] rank #1 of 50257 by unembedding alignment; class effect 1.57 std; AUC .922): self-inhibition on the class own axis. pronouns-gate = the she<->he gender contrast axis. REVISION (S1585): the serial-routing claim for the is-circuit was refuted at z-level (payload elevation drops only 16% under head substitution) - model = parallel pathways + CE saturation. Gate function (S1586): blunt precision damper - removal damage 44x concentrated at almost-the positions; suppresses true (+22%) and false (+33%) positives alike. S1583-S1586.",
+  "gender_committee": "2026-08-26: the signed gender readout at mlp17 is a 64-unit committee (1.4% of the layer) reproducing 101% of the .49-CE reflection effect; axis-specific (random-direction control .013). Reflected he-state hedges to NEUTRAL referents (the/they/it), not she - asymmetric gender coding. S1589/S1590. Extraction-property tests for the question and pronoun circuits in flight."
  }
 }
