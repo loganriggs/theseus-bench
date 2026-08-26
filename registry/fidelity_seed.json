@@ -17,20 +17,20 @@
   "ref": "own-basis projection r256, S1130"
  },
  "mlp4": {
-  "fidelity": 0.69,
-  "ref": "lin5 ridge on [attn4,mlp0-3], opt-anchored, S1428/S1433"
+  "fidelity": 0.7032,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp5": {
-  "fidelity": 0.65,
-  "ref": "linall+quad ladder, S1434"
+  "fidelity": 0.6577,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp16": {
-  "fidelity": 0.81,
-  "ref": "fitted linear read, S1131-32"
+  "fidelity": 0.8497,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp17": {
-  "fidelity": 0.8824,
-  "ref": "linall 18-block ridge + rand quad, fid_opt, S1478 (price-heavy)"
+  "fidelity": 0.8876,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "head5.7": {
   "fidelity": 0.985,
@@ -41,8 +41,8 @@
   "ref": "whitened per-head r32 QK, 23.6 Mbit, S1474"
  },
  "mlp6": {
-  "fidelity": 0.62,
-  "ref": "ladder linall+quad, S1436"
+  "fidelity": 0.7098,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "attn1": {
   "fidelity": 0.9639,
@@ -113,39 +113,39 @@
   "ref": "per-head rank-32 QK, plain SVD, 23.6 Mbit, S1469"
  },
  "mlp7": {
-  "fidelity": 0.5169,
-  "ref": "linall ridge + r256/F8192 quad over [attn7,mlp6], fid_opt, S1451"
+  "fidelity": 0.6119,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp9": {
-  "fidelity": 0.5202,
-  "ref": "linall ridge + r256/F8192 quad over [attn9,mlp8], fid_opt, S1457"
+  "fidelity": 0.6474,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp8": {
-  "fidelity": 0.4684,
-  "ref": "linall ridge + r256/F8192 quad, fid_opt, S1481"
+  "fidelity": 0.6446,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp10": {
-  "fidelity": 0.4129,
-  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+  "fidelity": 0.5939,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp11": {
-  "fidelity": 0.4668,
-  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+  "fidelity": 0.6072,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp12": {
-  "fidelity": 0.4408,
-  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+  "fidelity": 0.5818,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp13": {
-  "fidelity": 0.4222,
-  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+  "fidelity": 0.5661,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  },
  "mlp14": {
   "fidelity": 0.3275,
   "ref": "linall ridge (+quad flat), fid_opt, S1483"
  },
  "mlp15": {
-  "fidelity": 0.4265,
-  "ref": "linall ridge (+quad flat), fid_opt, S1483"
+  "fidelity": 0.5147,
+  "ref": "top-1024-unit sub-MLP zero-shot, 57 Mbit, S1534"
  }
 }
