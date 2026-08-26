@@ -119,5 +119,9 @@
  "mlp9": {
   "fidelity": 0.5202,
   "ref": "linall ridge + r256/F8192 quad over [attn9,mlp8], fid_opt, S1457"
+ },
+ "mlp8": {
+  "fidelity": 0.4684,
+  "ref": "linall ridge + r256/F8192 quad, fid_opt, S1481"
  }
 }
