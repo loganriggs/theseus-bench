@@ -312,6 +312,12 @@
    "ce": 3.6852,
    "modules": 23,
    "ref": "S1496 VERIFIED; glue persisted"
+  },
+  "v4_total": {
+   "ce": 5.5347,
+   "modules": 36,
+   "fresh_band": -0.003,
+   "ref": "S1499 VERIFIED"
   }
  }
 }
