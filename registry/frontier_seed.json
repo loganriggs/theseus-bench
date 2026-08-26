@@ -301,5 +301,12 @@
    ],
    "note": "S1447"
   }
- ]
+ ],
+ "_composite_ship": {
+  "entry": "attn 3-tier x18 + mlp0/mlp1 context-fit planks",
+  "ce": 3.8879,
+  "clean": 2.9455,
+  "compounding": 1.59,
+  "ref": "S1479 VERIFIED"
+ }
 }
