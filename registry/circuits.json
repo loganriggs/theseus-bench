@@ -390,6 +390,29 @@
   "implication": "circuits are predominantly attention-head objects (head rises .1-2.1 vs unit rises <=.09) but sub-MLP membership is real and sharply selective for some classes",
   "source": "circuit_mlp_units{,2,3,4}_results.json, ledger S1563/S1565/S1566/S1568",
   "eigen_slice_update": "2026-08-26 CERTIFIED: question@mlp11 component = rank-2 eigen slice of the class-projected quadratic form \u2014 class rise .180 at global rise -.0002 (zero cost), NR=1920, held-out slice within 4%. Cleanest single circuit component at any grain. NOT universal (S1574): late-layer (mlp17) spectra are sign-interleaved \u2014 slices mix gate and payload, units win at diffuse same-sign sites (is/months). Signed-part split + joint head+slice circuit tests queued. Ledger S1570-S1574.",
-  "signed_slice_and_joint": "2026-08-26: (1) signed split S=S+\u2212S\u2212 resolves mlp17 into per-class (payload, gate) eigen-pairs \u2014 pronouns payload +.12 at zero cost inside a \u2212.29 gate; is pure payload .30; rank-8 suffices; signed slices beat units at 2/4 late sites (S1575). (2) FIRST cross-module-type circuit: question = 5 heads {10.5,12.6,15.6,15.1,9.7} + rank-2 mlp11 slice, 99.4% additive, slice marginal .166 at zero added global cost (S1576). Circuits extend beyond attention at the canonical slice grain."
+  "signed_slice_and_joint": "2026-08-26: (1) signed split S=S+\u2212S\u2212 resolves mlp17 into per-class (payload, gate) eigen-pairs \u2014 pronouns payload +.12 at zero cost inside a \u2212.29 gate; is pure payload .30; rank-8 suffices; signed slices beat units at 2/4 late sites (S1575). (2) FIRST cross-module-type circuit: question = 5 heads {10.5,12.6,15.6,15.1,9.7} + rank-2 mlp11 slice, 99.4% additive, slice marginal .166 at zero added global cost (S1576). Circuits extend beyond attention at the canonical slice grain.",
+  "joint_circuits": {
+   "question": {
+    "heads": [
+     "10.5",
+     "12.6",
+     "15.6",
+     "15.1",
+     "9.7"
+    ],
+    "mlp_member": "mlp11 rank-2 slice",
+    "additivity": 0.994,
+    "slice_marginal": 0.166,
+    "slice_global_cost": 0.0
+   },
+   "pronouns": {
+    "heads_src": "weights-only top-5",
+    "mlp_member": "mlp17 pos_r8 payload slice",
+    "additivity": 1.011,
+    "slice_marginal": 0.121,
+    "slice_global_cost": -0.0003
+   },
+   "note": "gates at mlp17 are class-private at output-correction level (S1577 cross-ablation diagonal); is/months joints + computation-level z-space gate test in flight"
+  }
  }
 }
