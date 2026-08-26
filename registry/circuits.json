@@ -232,6 +232,15 @@
    "selectivity": 26.19,
    "class_rise": 0.495,
    "ref": "S1523-24; attribution variant, bigger damage"
+  },
+  "novel_cap": {
+   "heads": [
+    "13.0",
+    "13.5"
+   ],
+   "selectivity": 9.76,
+   "class_rise": 0.0479,
+   "ref": "S1546; INSIDE the name-prediction apparatus"
   }
  },
  "non_circuits": [
@@ -253,5 +262,6 @@
  },
  "_method_note": "complementary discovery: cosine-normalized target attribution (output-defined circuits) + attention-to-source patterns (attention-defined); sink confound closed S1524. Selectivity > 50x requires NR=1920 verification (S1523).",
  "_movers_note": "heads {5.5, 10.8} are the shared context-matching movers of induction and content-copying (S1521-22)",
- "_unification_note": "S1527 CONFIRMED: the 13-head L13-17 committee is the late-stack COPYING apparatus (damage 4.8x concentrated on copied targets; copies non-names too). S1528: head 5.5 is a SEPARATE generic copy/induction channel \u2014 two copying channels, not one pipeline."
+ "_unification_note": "S1527 CONFIRMED: the 13-head L13-17 committee is the late-stack COPYING apparatus (damage 4.8x concentrated on copied targets; copies non-names too). S1528: head 5.5 is a SEPARATE generic copy/induction channel \u2014 two copying channels, not one pipeline. S1546: the committee is the general proper-name prediction apparatus \u2014 copying dominant, novel-name channel via 13.0/13.5.",
+ "_classifier_ceiling": "membership prediction (capitalization): rho .74 / FN .62 (direct weights-only score); path-aware and rank sweeps did not improve it (S1506/45)"
 }
