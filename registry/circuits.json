@@ -52,13 +52,12 @@
    "heads": [
     "6.5",
     "15.2",
-    "12.6",
     "9.5",
-    "12.5"
+    "11.7"
    ],
-   "selectivity": 20.81,
-   "class_rise": 0.0657,
-   "ref": "S1505/07"
+   "selectivity": 160.59,
+   "class_rise": 0.1122,
+   "ref": "S1513 greedy-v2 VERIFIED"
   },
   "question": {
    "heads": [
@@ -93,39 +92,31 @@
   },
   "months": {
    "heads": [
-    "5.7",
-    "4.1",
-    "2.8",
-    "8.7",
-    "9.7"
+    "14.7"
    ],
-   "selectivity": 3.7,
-   "class_rise": 0.241,
-   "ref": "S1505/07"
+   "selectivity": 21.69,
+   "class_rise": 0.0405,
+   "ref": "S1513 greedy-v2 VERIFIED"
   },
   "close_quote": {
    "heads": [
     "12.6",
     "13.3",
-    "17.2",
     "14.8",
-    "10.7"
+    "10.7",
+    "10.6"
    ],
-   "selectivity": 30.99,
-   "class_rise": 0.3414,
-   "ref": "S1505/07"
+   "selectivity": 47.96,
+   "class_rise": 0.4065,
+   "ref": "S1513 greedy-v2 VERIFIED"
   },
   "colon": {
    "heads": [
-    "12.6",
-    "6.5",
-    "11.5",
-    "6.7",
-    "9.7"
+    "12.6"
    ],
-   "selectivity": 7.65,
-   "class_rise": 0.3146,
-   "ref": "S1505/07"
+   "selectivity": 58.11,
+   "class_rise": 0.0434,
+   "ref": "S1513 greedy-v2 VERIFIED"
   },
   "semicolon": {
    "heads": [
@@ -154,26 +145,23 @@
   "said": {
    "heads": [
     "11.3",
-    "7.8",
-    "6.7",
     "9.1",
-    "15.5"
+    "11.5",
+    "12.2"
    ],
-   "selectivity": 3.5,
-   "class_rise": 0.1676,
-   "ref": "S1505/07"
+   "selectivity": 11.07,
+   "class_rise": 0.1449,
+   "ref": "S1513 greedy-v2 VERIFIED"
   },
   "dollar": {
    "heads": [
     "10.3",
     "12.6",
-    "6.7",
-    "13.7",
-    "6.3"
+    "17.2"
    ],
-   "selectivity": 4.16,
-   "class_rise": 0.1379,
-   "ref": "S1505/07"
+   "selectivity": 24.89,
+   "class_rise": 0.1377,
+   "ref": "S1513 greedy-v2 VERIFIED"
   },
   "capitalized_13head": {
    "heads": "13-head ensemble L13-17",
@@ -216,5 +204,9 @@
  "generalist_heads": {
   "12.6": "clause-boundary punctuation (S1509): question/newline/semicolon/colon/dollar/close_paren, global cost .001"
  },
- "_extraction_note": "extraction-by-restoration works for the late-stack capitalization ensemble (2.9x, S1503) but FAILS for mid-stack punctuation circuits (negative class recovery, S1512) \u2014 input paths required"
+ "_extraction_note": "extraction-by-restoration works for the late-stack capitalization ensemble (2.9x, S1503) but FAILS for mid-stack punctuation circuits (negative class recovery, S1512) \u2014 input paths required; S1514: mid-stack heads work when layers 0-6 attention is exact, but that is non-selective \u2014 minimal input-path search open",
+ "single_head_circuits": {
+  "colon": "12.6 @ 58x",
+  "months": "14.7 @ 21.7x"
+ }
 }
