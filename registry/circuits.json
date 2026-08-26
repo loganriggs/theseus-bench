@@ -5,13 +5,13 @@
    "heads": [
     "10.2",
     "12.6",
-    "6.5",
     "16.2",
-    "7.2"
+    "11.0",
+    "14.2"
    ],
-   "selectivity": 89.59,
-   "class_rise": 0.4748,
-   "ref": "S1505/07"
+   "selectivity": ">=1000 (global rise ~0, unbounded within noise)",
+   "class_rise": 0.5935,
+   "ref": "S1515 greedy-v2 VERIFIED"
   },
   "digits": {
    "heads": [
@@ -29,24 +29,19 @@
     "12.6",
     "13.3",
     "14.8",
-    "6.7",
-    "17.2"
+    "10.6"
    ],
-   "selectivity": 17.03,
-   "class_rise": 0.3062,
-   "ref": "S1505/07"
+   "selectivity": 48.33,
+   "class_rise": 0.3593,
+   "ref": "S1515 greedy-v2 VERIFIED"
   },
   "close_paren": {
    "heads": [
-    "13.8",
-    "15.1",
-    "7.2",
-    "12.6",
-    "16.8"
+    "13.8"
    ],
-   "selectivity": 200.39,
-   "class_rise": 2.2094,
-   "ref": "S1505/07"
+   "selectivity": 362.67,
+   "class_rise": 0.6045,
+   "ref": "S1515 greedy-v2 VERIFIED"
   },
   "comma": {
    "heads": [
@@ -62,14 +57,13 @@
   "question": {
    "heads": [
     "10.5",
-    "3.0",
-    "15.1",
     "12.6",
-    "5.7"
+    "7.6",
+    "9.3"
    ],
-   "selectivity": 48.39,
-   "class_rise": 1.7504,
-   "ref": "S1505/07"
+   "selectivity": 158.86,
+   "class_rise": 1.6216,
+   "ref": "S1515 greedy-v2 VERIFIED"
   },
   "the": {
    "heads": [
@@ -204,9 +198,10 @@
  "generalist_heads": {
   "12.6": "clause-boundary punctuation (S1509): question/newline/semicolon/colon/dollar/close_paren, global cost .001"
  },
- "_extraction_note": "extraction-by-restoration works for the late-stack capitalization ensemble (2.9x, S1503) but FAILS for mid-stack punctuation circuits (negative class recovery, S1512) \u2014 input paths required; S1514: mid-stack heads work when layers 0-6 attention is exact, but that is non-selective \u2014 minimal input-path search open",
+ "_extraction_note": "extraction-by-restoration works for the late-stack capitalization ensemble (2.9x, S1503) but FAILS for mid-stack punctuation circuits (negative class recovery, S1512) \u2014 input paths required; S1514: mid-stack heads work when layers 0-6 attention is exact, but that is non-selective \u2014 minimal input-path search open; S1516: inputs form in layers 0-3 (early>late 3/3) but whole-layer restoration is a shared trunk \u2014 sub-layer feeder search open",
  "single_head_circuits": {
   "colon": "12.6 @ 58x",
-  "months": "14.7 @ 21.7x"
+  "months": "14.7 @ 21.7x",
+  "close_paren": "13.8 @ 363x"
  }
 }
