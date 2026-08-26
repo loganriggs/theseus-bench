@@ -451,6 +451,52 @@
    "rec_in_bg": -0.294,
    "rec_const": 0.23,
    "finding": "compression-is-extraction confirmed on pronouns; exact circuit heads inside the compressed background are ANTI-extraction (mixed-fidelity patching breaks the self-consistent compressed pattern field)"
+  },
+  "rank_sweep": {
+   "section": "S1596",
+   "class_rise_by_rank": {
+    "r4": 2.037,
+    "r8": 0.987,
+    "r16": 0.49,
+    "r32": 0.19
+   },
+   "global_rise_by_rank": {
+    "r4": 1.755,
+    "r8": 1.028,
+    "r16": 0.485,
+    "r32": 0.162
+   },
+   "finding": "no knee; class rise halves per rank doubling and tracks global at every rank \u2014 compression damage is non-selective, circuit breaks when the model breaks"
   }
+ },
+ "_slice_writer_graph": {
+  "section": "S1597",
+  "score": "3-for-3",
+  "variable": "question@mlp11 rank-2 eigen slice span(v1,v2), eigs +144.9/-73.8",
+  "writers": {
+   "top4": [
+    "attn10",
+    "attn9",
+    "mlp9",
+    "mlp10"
+   ],
+   "share": 0.718,
+   "head_grain": {
+    "attn10": "10.5 (625, 20:1 over next)",
+    "attn9": "9.7 (221)"
+   },
+   "both_are_certified_question_circuit_heads": true
+  },
+  "causal": {
+   "top4_source_cut": {
+    "class_rise": 0.814,
+    "global_rise": -0.0002,
+    "selectivity": "unbounded within noise"
+   },
+   "mlp11_form_readout_alone": 0.178,
+   "mid4_control": 0.086
+  },
+  "finding": "first typed cross-component circuit in eigenspace grain: {9.7, 10.5, mlp9, mlp10} -> span(v1,v2) -> mlp11 quadratic form -> question logit; the 4.6x overshoot vs the readout means the subspace is a SHARED VARIABLE with unmapped downstream readers (slice_readers in flight)",
+  "recon_check": "exact linear decomposition of pre-norm mlp11 input, rel err 0.0"
  }
 }
