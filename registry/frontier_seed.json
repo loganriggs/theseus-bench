@@ -356,6 +356,12 @@
     "err": 0.04,
     "ref": "S1540/42"
    }
-  ]
+  ],
+  "behavioral_certification": {
+   "agreement_acc": 0.9317,
+   "clean_acc": 0.9572,
+   "parity_gap_retention": 1.149,
+   "ref": "S1553 VERIFIED \u2014 computations preserved under full replacement"
+  }
  }
 }
