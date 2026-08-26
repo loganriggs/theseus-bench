@@ -69,8 +69,8 @@
   "ref": "distance kernel S1447"
  },
  "attn8": {
-  "fidelity": 0.7941,
-  "ref": "kernel+digit tier live S1448"
+  "fidelity": 0.9346,
+  "ref": "roster-live 8.{1,2,3,7} + whitened r32 QK others, 50.7 Mbit, S1472"
  },
  "attn9": {
   "fidelity": 0.692,
@@ -105,8 +105,8 @@
   "ref": "kernel+committee live S1448"
  },
  "attn5": {
-  "fidelity": 0.5969,
-  "ref": "kernel+5.7 live S1448"
+  "fidelity": 0.9228,
+  "ref": "roster-live 5.7 + whitened r32 QK others, 30.4 Mbit, S1472"
  },
  "attn17": {
   "fidelity": 0.799,
