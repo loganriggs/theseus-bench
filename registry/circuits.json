@@ -412,7 +412,27 @@
     "slice_marginal": 0.121,
     "slice_global_cost": -0.0003
    },
-   "note": "gates at mlp17 are class-private at output-correction level (S1577 cross-ablation diagonal); is/months joints + computation-level z-space gate test in flight"
+   "note": "question/pronouns ~100% additive; is/months 84% (a ~16% head<->slice overlap at the late site; leave-one-out attribution in flight). Gates fully class-private at output AND computation level (S1577/S1579); single z-direction mean-substitution is the strongest gate handle (the@mlp17: one direction = -.174, 2x the output-side r8 correction).",
+   "is": {
+    "heads": [
+     "11.3",
+     "7.8",
+     "10.5",
+     "9.7",
+     "6.7"
+    ],
+    "mlp_member": "mlp17 pos_r8 payload slice",
+    "additivity": 0.84,
+    "slice_marginal": 0.184,
+    "slice_global_cost": 0.0002
+   },
+   "months": {
+    "heads_src": "weights-only top-5",
+    "mlp_member": "mlp17 pos_r8 payload slice",
+    "additivity": 0.842,
+    "slice_marginal": 0.084,
+    "slice_global_cost": 0.0001
+   }
   }
  }
 }
