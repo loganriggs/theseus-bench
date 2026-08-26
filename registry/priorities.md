@@ -3,20 +3,20 @@
 Ranked by **unexplained global CE** = Δ_opt × (1 − best fidelity).
 A low-importance head at 100% understood ranks below a big MLP at 50%.
 Anchors from the optimal-ablation sweep (198/198 components so far;
-attention layers land last). Generated 2026-08-26 01:28 UTC; regenerate with
+attention layers land last). Generated 2026-08-26 01:44 UTC; regenerate with
 `python bench/make_priorities.py` after any frontier move or sweep progress.
 
 ## Top targets
 
 1. **mlp1** — unexplained 0.181 nats (Δ_opt 7.253, fidelity 0.97) — tok table + residual ridge [attn1,mlp0] + quad, fid_opt, S1438
 2. **mlp0** — unexplained 0.062 nats (Δ_opt 0.908, fidelity 0.93) — tok map + residual ridge [attn0,embed] + quad, fid_opt, S1439
-3. **mlp17** — unexplained 0.048 nats (Δ_opt 0.332, fidelity 0.86) — linread+quad, S1443
-4. **mlp8** — unexplained 0.047 nats (Δ_opt 0.047, fidelity 0.00) — baseline zoo only
-5. **mlp11** — unexplained 0.046 nats (Δ_opt 0.046, fidelity 0.00) — baseline zoo only
-6. **mlp12** — unexplained 0.042 nats (Δ_opt 0.042, fidelity 0.00) — baseline zoo only
-7. **mlp10** — unexplained 0.041 nats (Δ_opt 0.041, fidelity 0.00) — baseline zoo only
-8. **mlp2** — unexplained 0.041 nats (Δ_opt 0.726, fidelity 0.94) — lin2+quad S1437; rank frontier S1440 (r128 .82@7Mbit)
-9. **mlp13** — unexplained 0.039 nats (Δ_opt 0.039, fidelity 0.00) — baseline zoo only
+3. **mlp8** — unexplained 0.047 nats (Δ_opt 0.047, fidelity 0.00) — baseline zoo only
+4. **mlp11** — unexplained 0.046 nats (Δ_opt 0.046, fidelity 0.00) — baseline zoo only
+5. **mlp12** — unexplained 0.042 nats (Δ_opt 0.042, fidelity 0.00) — baseline zoo only
+6. **mlp10** — unexplained 0.041 nats (Δ_opt 0.041, fidelity 0.00) — baseline zoo only
+7. **mlp2** — unexplained 0.041 nats (Δ_opt 0.726, fidelity 0.94) — lin2+quad S1437; rank frontier S1440 (r128 .82@7Mbit)
+8. **mlp13** — unexplained 0.039 nats (Δ_opt 0.039, fidelity 0.00) — baseline zoo only
+9. **mlp17** — unexplained 0.039 nats (Δ_opt 0.332, fidelity 0.88) — linall 18-block ridge + rand quad, fid_opt, S1478 (price-heavy)
 10. **mlp15** — unexplained 0.038 nats (Δ_opt 0.038, fidelity 0.00) — baseline zoo only
 
 ## Full table
@@ -25,13 +25,13 @@ attention layers land last). Generated 2026-08-26 01:28 UTC; regenerate with
 |---|---|---|---|---|
 | mlp1 | 7.2533 | 0.97 | 0.1813 | tok table + residual ridge [attn1,mlp0] + quad, fid_opt, S1438 |
 | mlp0 | 0.9080 | 0.93 | 0.0617 | tok map + residual ridge [attn0,embed] + quad, fid_opt, S1439 |
-| mlp17 | 0.3323 | 0.86 | 0.0479 | linread+quad, S1443 |
 | mlp8 | 0.0474 | 0.00 | 0.0474 | baseline zoo only |
 | mlp11 | 0.0460 | 0.00 | 0.0460 | baseline zoo only |
 | mlp12 | 0.0416 | 0.00 | 0.0416 | baseline zoo only |
 | mlp10 | 0.0409 | 0.00 | 0.0409 | baseline zoo only |
 | mlp2 | 0.7260 | 0.94 | 0.0407 | lin2+quad S1437; rank frontier S1440 (r128 .82@7Mbit) |
 | mlp13 | 0.0393 | 0.00 | 0.0393 | baseline zoo only |
+| mlp17 | 0.3323 | 0.88 | 0.0391 | linall 18-block ridge + rand quad, fid_opt, S1478 (price-heavy) |
 | mlp15 | 0.0379 | 0.00 | 0.0379 | baseline zoo only |
 | mlp4 | 0.1051 | 0.69 | 0.0326 | lin5 ridge on [attn4,mlp0-3], opt-anchored, S1428/S1433 |
 | mlp3 | 0.6099 | 0.95 | 0.0305 | own-basis projection r256, S1130 |
