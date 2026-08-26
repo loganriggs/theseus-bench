@@ -1,0 +1,214 @@
+{
+ "_comment": "Removal-certified circuits from the 22-class screens (S1505/07). selectivity = class-CE rise / global rise under 5-head optimal-constant removal; heads from the weights-only method unless noted.",
+ "certified": {
+  "newline": {
+   "heads": [
+    "10.2",
+    "12.6",
+    "6.5",
+    "16.2",
+    "7.2"
+   ],
+   "selectivity": 89.59,
+   "class_rise": 0.4748,
+   "ref": "S1505/07"
+  },
+  "digits": {
+   "heads": [
+    "7.3",
+    "6.7",
+    "6.5",
+    "12.6",
+    "11.5"
+   ],
+   "selectivity": 5.17,
+   "class_rise": 0.1,
+   "ref": "S1505/07"
+  },
+  "open_quote": {
+   "heads": [
+    "12.6",
+    "13.3",
+    "14.8",
+    "6.7",
+    "17.2"
+   ],
+   "selectivity": 17.03,
+   "class_rise": 0.3062,
+   "ref": "S1505/07"
+  },
+  "close_paren": {
+   "heads": [
+    "13.8",
+    "15.1",
+    "7.2",
+    "12.6",
+    "16.8"
+   ],
+   "selectivity": 200.39,
+   "class_rise": 2.2094,
+   "ref": "S1505/07"
+  },
+  "comma": {
+   "heads": [
+    "6.5",
+    "15.2",
+    "12.6",
+    "9.5",
+    "12.5"
+   ],
+   "selectivity": 20.81,
+   "class_rise": 0.0657,
+   "ref": "S1505/07"
+  },
+  "question": {
+   "heads": [
+    "10.5",
+    "3.0",
+    "15.1",
+    "12.6",
+    "5.7"
+   ],
+   "selectivity": 48.39,
+   "class_rise": 1.7504,
+   "ref": "S1505/07"
+  },
+  "the": {
+   "heads": [
+    "7.3",
+    "10.8",
+    "6.7",
+    "6.5",
+    "11.7"
+   ],
+   "selectivity": 2.23,
+   "class_rise": 0.0425,
+   "ref": "S1505/07"
+  },
+  "is": {
+   "heads": [
+    "11.3",
+    "7.8",
+    "10.5",
+    "9.7",
+    "6.7"
+   ],
+   "selectivity": 2.49,
+   "class_rise": 0.231,
+   "ref": "S1505/07"
+  },
+  "months": {
+   "heads": [
+    "5.7",
+    "4.1",
+    "2.8",
+    "8.7",
+    "9.7"
+   ],
+   "selectivity": 3.7,
+   "class_rise": 0.241,
+   "ref": "S1505/07"
+  },
+  "close_quote": {
+   "heads": [
+    "12.6",
+    "13.3",
+    "17.2",
+    "14.8",
+    "10.7"
+   ],
+   "selectivity": 30.99,
+   "class_rise": 0.3414,
+   "ref": "S1505/07"
+  },
+  "colon": {
+   "heads": [
+    "12.6",
+    "6.5",
+    "11.5",
+    "6.7",
+    "9.7"
+   ],
+   "selectivity": 7.65,
+   "class_rise": 0.3146,
+   "ref": "S1505/07"
+  },
+  "semicolon": {
+   "heads": [
+    "12.6",
+    "6.5",
+    "11.7",
+    "13.5",
+    "15.2"
+   ],
+   "selectivity": 64.23,
+   "class_rise": 0.5108,
+   "ref": "S1505/07"
+  },
+  "to": {
+   "heads": [
+    "11.3",
+    "7.8",
+    "7.3",
+    "16.8",
+    "8.4"
+   ],
+   "selectivity": 3.79,
+   "class_rise": 0.1338,
+   "ref": "S1505/07"
+  },
+  "said": {
+   "heads": [
+    "11.3",
+    "7.8",
+    "6.7",
+    "9.1",
+    "15.5"
+   ],
+   "selectivity": 3.5,
+   "class_rise": 0.1676,
+   "ref": "S1505/07"
+  },
+  "dollar": {
+   "heads": [
+    "10.3",
+    "12.6",
+    "6.7",
+    "13.7",
+    "6.3"
+   ],
+   "selectivity": 4.16,
+   "class_rise": 0.1379,
+   "ref": "S1505/07"
+  },
+  "capitalized_13head": {
+   "heads": "13-head ensemble L13-17",
+   "selectivity": 9.1,
+   "class_rise": 0.6378,
+   "ref": "S1503"
+  },
+  "newline_5head": {
+   "heads": [
+    "7.2",
+    "8.2",
+    "10.2",
+    "11.0",
+    "12.6"
+   ],
+   "selectivity": 99.0,
+   "class_rise": 0.5323,
+   "ref": "S1504"
+  }
+ },
+ "non_circuits": [
+  "of",
+  "not",
+  "and",
+  "years",
+  "ing",
+  "units(n=6)"
+ ],
+ "generalist_heads": {
+  "12.6": "clause-boundary punctuation (S1509): question/newline/semicolon/colon/dollar/close_paren, global cost .001"
+ }
+}
