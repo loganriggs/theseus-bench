@@ -351,5 +351,32 @@
  "_unification_note": "S1527 CONFIRMED: the 13-head L13-17 committee is the late-stack COPYING apparatus (damage 4.8x concentrated on copied targets; copies non-names too). S1528: head 5.5 is a SEPARATE generic copy/induction channel \u2014 two copying channels, not one pipeline. S1546: the committee is the general proper-name prediction apparatus \u2014 copying dominant, novel-name channel via 13.0/13.5.",
  "_classifier_ceiling": "membership prediction (capitalization): rho .74 / FN .62 (direct weights-only score); path-aware and rank sweeps did not improve it (S1506/45)",
  "_verification_stamp": "ALL certified entries carry NR=1920 verification as of S1547 (2026-08-26)",
- "_recipe_boundary": "greedy construction requires class support >= ~40 frequent tokens or ~300 eval positions (S1559)"
+ "_recipe_boundary": "greedy construction requires class support >= ~40 frequent tokens or ~300 eval positions (S1559)",
+ "_discovery_compression_ranking": {
+  "date": "2026-08-26",
+  "question": "which compression best supports circuit discovery/removal on bilin18",
+  "methods": {
+   "weights_only": "class unembedding direction x per-head c_proj slice norm",
+   "attribution_normalized": "sink-normalized target attribution",
+   "attribution_raw": "raw target attribution"
+  },
+  "leg1_class_damage_frac_of_greedy_mean": {
+   "weights_only": 2.4,
+   "attribution_normalized": 2.07,
+   "attribution_raw": 2.14
+  },
+  "leg2_removal_selectivity_median": {
+   "weights_only": 30.74,
+   "attribution_normalized": 10.87,
+   "attribution_raw": 2.46
+  },
+  "verdict": "weights-only wins both axes (6/8 damage, 5/8 selectivity); raw attribution barely clears the 2x selectivity floor; pattern-based scoring still required for context-defined circuits (copy/induction)",
+  "source": "tensor_language compression_rank{,2}_results.json, ledger S1564/S1567"
+ },
+ "_mlp_unit_membership": {
+  "date": "2026-08-26",
+  "finding": "first MLP-unit circuit membership: ablating top-64 class-conditionally-scored units of mlp11 (1.4% of hidden) raises question-mark CE .091 at 104.8x selectivity (NR=960; NR=1920 verification in flight). Pronouns: 64 units of mlp17 at 2.9x. Weight-side unit ranking (abs or signed) FAILS - bilinear units are signed; only data-driven class-conditional scoring works.",
+  "implication": "circuits are predominantly attention-head objects (head rises .1-2.1 vs unit rises <=.09) but sub-MLP membership is real and sharply selective for some classes",
+  "source": "circuit_mlp_units{,2,3}_results.json, ledger S1563/S1565/S1566"
+ }
 }
