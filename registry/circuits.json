@@ -16,14 +16,13 @@
   "digits": {
    "heads": [
     "7.3",
-    "6.7",
     "6.5",
     "12.6",
     "11.5"
    ],
-   "selectivity": 5.17,
-   "class_rise": 0.1,
-   "ref": "S1505/07"
+   "selectivity": 8.86,
+   "class_rise": 0.0719,
+   "ref": "S1511 greedy-v2 VERIFIED"
   },
   "open_quote": {
    "heads": [
@@ -77,25 +76,20 @@
    "heads": [
     "7.3",
     "10.8",
-    "6.7",
-    "6.5",
     "11.7"
    ],
-   "selectivity": 2.23,
-   "class_rise": 0.0425,
-   "ref": "S1505/07"
+   "selectivity": 9.76,
+   "class_rise": 0.039,
+   "ref": "S1511 greedy-v2 VERIFIED"
   },
   "is": {
    "heads": [
     "11.3",
-    "7.8",
-    "10.5",
-    "9.7",
-    "6.7"
+    "15.5"
    ],
-   "selectivity": 2.49,
-   "class_rise": 0.231,
-   "ref": "S1505/07"
+   "selectivity": 16.9,
+   "class_rise": 0.0674,
+   "ref": "S1511 greedy-v2 VERIFIED"
   },
   "months": {
    "heads": [
@@ -198,6 +192,17 @@
    "selectivity": 99.0,
    "class_rise": 0.5323,
    "ref": "S1504"
+  },
+  "and": {
+   "heads": [
+    "10.5",
+    "16.8",
+    "7.3",
+    "9.5"
+   ],
+   "selectivity": 5.09,
+   "class_rise": 0.0451,
+   "ref": "S1511 greedy-v2 VERIFIED"
   }
  },
  "non_circuits": [
@@ -210,5 +215,6 @@
  ],
  "generalist_heads": {
   "12.6": "clause-boundary punctuation (S1509): question/newline/semicolon/colon/dollar/close_paren, global cost .001"
- }
+ },
+ "_extraction_note": "extraction-by-restoration works for the late-stack capitalization ensemble (2.9x, S1503) but FAILS for mid-stack punctuation circuits (negative class recovery, S1512) \u2014 input paths required"
 }
