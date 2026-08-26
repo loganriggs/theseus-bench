@@ -35,9 +35,21 @@
   "ref": "S1494"
  },
  "_laws": [
-  "selectivity is a SITE property (token-classed signal required)",
+  "selectivity is a SITE property; class-selective extraction is essentially an mlp0 phenomenon (map: 4.3/1.0/1.9/1.4 at mlp0-3)",
   "weight-basis unique advantage only at mlp0",
   "removal-specificity + generalization robust at every site",
   "single axes fail as handles; 8-32-dim channels are the grain (S1484/86)"
- ]
+ ],
+ "mlp3_block4_channel": {
+  "basis": "weight-composed top-8",
+  "class": "name-fragment",
+  "keep_class": 0.426,
+  "selectivity": 1.41,
+  "pca8_selectivity": 1.11,
+  "removal_ce": 0.031,
+  "random_removal_ce": 0.0001,
+  "generalizes": true,
+  "verdict": "causally real, weakly selective",
+  "ref": "S1495"
+ }
 }
