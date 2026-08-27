@@ -1125,7 +1125,8 @@
   "EVALUABILITY_CAVEAT": "ONLY SIX MODULES ARE EVALUABLE: mlp0-3, mlp16, mlp17. Twelve (mlp4-mlp15) have stakes of 0.028-0.104 nats, so every recovery figure for them divides by a near-zero denominator. Their mostly NEGATIVE ceilings are the instrument's noise floor, not a module property: a 50k-entry table estimated from 1920 rows carries estimation noise exceeding a 0.05-nat signal. THIS INSTRUMENT IS UNINFORMATIVE BELOW ~0.15 NATS OF STAKE and the elbow index is meaningless there (mlp4's reads -333700). Do not quote the middle rows.",
   "the_three_regimes": "FRONT (mlp0-3): high ceiling .59-.95, largely token-tableable. MIDDLE (mlp4-15): below the instrument's floor, unmeasured rather than measured-as-zero. TOP (mlp16/17): ceiling ~.49, genuinely half contextual. Front-minus-back ceiling gap .471 vs .206.",
   "related_artifacts": "opt_ablation_consts_all.pt holds optimal ablation constants for all 198 components; bilin18_scoreboard_mp_results.json holds per-component benefit/keep_cent/keep_mean/rand for all 36. NOTE these use DIFFERENT protocols and denominators from the ladder above -- \u00a71324 warns explicitly that its mean-ablation stake is 'not directly comparable' to the \u00a7713 rank-profile benefit. Three mlp0 numbers exist in three protocols (ladder stake .799, scoreboard benefit 2.195); never mix them.",
-  "CAVEAT_S1660_ceilings_understated": "Table ceilings here were fitted with an unseen-token fallback and substituted at ALL positions. S1660 shows that contaminates covered positions via attention and UNDERSTATES the ceiling. Measured on mlp0: 74.42% all-positions vs 90.27% covered-hybrid, a 15.9-point understatement. Only mlp0 has been remeasured; the ORDERING across modules is likely preserved but the LEVELS are not trustworthy."
+  "CAVEAT_S1660_ceilings_understated": "Table ceilings here were fitted with an unseen-token fallback and substituted at ALL positions. S1660 shows that contaminates covered positions via attention and UNDERSTATES the ceiling. Measured on mlp0: 74.42% all-positions vs 90.27% covered-hybrid, a 15.9-point understatement. Only mlp0 has been remeasured; the ORDERING across modules is likely preserved but the LEVELS are not trustworthy.",
+  "RESOLVED_S1665_middle_twelve": "the middle twelve are NOT small: joint stake 2.6453 nats against a 0.6208 sum. See _middle_band_is_redundant_not_small."
  },
  "_mlp0_dossier": {
   "purpose": "Everything the ledger establishes about mlp0 in one place, assembled 2026-08-27 for the bottom-up push. ASSEMBLED FROM EXISTING SECTIONS, NOT RE-MEASURED -- every line names its source and was verified by reading that section, after a duplicated run (LESSONS 26) showed that scattered results get re-run.",
@@ -1385,6 +1386,40 @@
   "supersedes": "S1655 (discarded for an unweighted mean constant and a zero fallback); the corrected protocol moves the rank-23 figure from 85.9% to 89.2%, so the curve SHAPE survived those bugs even though the ceiling LEVELS did not",
   "mlp1_anomaly": "mlp1 gets only 23.4% from rank 1 where the other three get 53-65%, and needs rank 16 for 88%. It is the most tableable front module and the least concentrated in a single direction.",
   "not_claimed": "mlp3 at rank 128 scores 100.75% of its own full table; the plain reading is that truncation denoises rare-token means, and it is not evidence of anything",
+  "status": "certified"
+ },
+ "_middle_band_is_redundant_not_small": {
+  "claim": "The twelve middle MLPs (mlp4-15) are individually below the instrument's floor (stakes .026-.106 nats, sum 0.6208) but carry a JOINT optimal-constant stake of 2.6453 nats -- 4.26x their sum, and more than mlp0+mlp2+mlp3 combined. They were never small; they are redundant, and single-module ablation cannot see them.",
+  "sections": "S1665",
+  "script": "bilinear_quotient/mid_band_joint.py",
+  "resolves": "the FINDINGS 13 / _mlp_module_dossier caveat that the middle twelve were UNMEASURED rather than measured-as-small -- resolved in the direction the caveat allowed for",
+  "individual_stakes_nats": {
+   "mlp4": 0.1062,
+   "mlp5": 0.0803,
+   "mlp6": 0.0777,
+   "mlp7": 0.0578,
+   "mlp8": 0.0469,
+   "mlp9": 0.0473,
+   "mlp10": 0.0363,
+   "mlp11": 0.0398,
+   "mlp12": 0.0373,
+   "mlp13": 0.0331,
+   "mlp14": 0.0261,
+   "mlp15": 0.032
+  },
+  "joint_stake_nats": 2.6453,
+  "sum_individual_nats": 0.6208,
+  "joint_table_ceiling": 0.2173,
+  "instrument_check": {
+   "known_answer": 1.0,
+   "observed": 1.0,
+   "arm": "attn0..attn15 frozen at optimal constants",
+   "status": "PASSED"
+  },
+  "scale_free_claim": "twelve modules each worth <=0.11 nats are jointly worth 2.6 -- this does not depend on any ratio",
+  "S1657_caution": "the 4.26x ratio must NOT be compared against the front band's 1.15; composition ratios track total effect size",
+  "PENDING_protocol_match": "the 21.73% joint ceiling is NOT yet comparable to the front band's 68-96% PER-SITE ceilings; band_joint_compare.py re-measures both as joint substitutions under one protocol",
+  "method_consequence": "single-component ablation under-finds redundant machinery; here by a factor of four. Any per-module importance ranking of this model understates the middle band accordingly.",
   "status": "certified"
  }
 }
