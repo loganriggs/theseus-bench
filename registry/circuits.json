@@ -1899,5 +1899,28 @@
   "CONVERGENCE_with_mlp_side": "the MLP middle band (mlp4-15) is the one a token table cannot describe (21.73% vs the front's 76.45%) and has the largest irreducibly-quadratic share (37.67%); the attention middle band (attn5-8) is where a lag-1 description fails worst. Two independent families, two different modules, same location: bilin18's front and back are cheap to describe and its middle is where the computation is.",
   "scope": "attention OUTPUT WRITE only; v1 passed through unchanged",
   "status": "certified"
+ },
+ "_attention_value_path_is_high_rank": {
+  "claim": "Holding bilin18's real attention routing exactly fixed and compressing only the value path (c_v output replaced by a rank-r least-squares map of x) is catastrophic: rank 256 of 1152 gives 67.05%, rank 64 gives 2.37%, rank 8 gives -26.10% (worse than replacing attention with a constant). Exact routing does not compensate for a compressed value path.",
+  "sections": "S1689",
+  "script": "bilinear_quotient/attn_value_simplification.py",
+  "curve": {
+   "8": -0.261,
+   "64": 0.0237,
+   "256": 0.6705,
+   "1152": 1.0001
+  },
+  "identity_check": {
+   "known_answer": 1.0,
+   "observed": 1.0001,
+   "note": "c_v is LINEAR in x so the full-rank least-squares map recovers c_v itself; the 0.01% over is ridge-level numerical difference",
+   "monotone": true,
+   "status": "PASSED"
+  },
+  "failed_predictions": "pred_a predicted rank-64 values with real routing would clear the best fixed-position family (70.08%) by >=10 points; it reaches 2.37%, i.e. 67.7 points BELOW a family that does no routing at all. pred_b also failed.",
+  "NOT_ESTABLISHED": "'routing versus values' is not a clean contrast in this design -- the positional families constrain WHICH POSITIONS may be read while leaving the read full-rank; these arms constrain the RANK of what is read while leaving routing exact. Different budgets, so 2.37% vs 70.08% prices two incomparable restrictions and cannot support 'values matter more than routing'. The defensible reading is the rank curve alone.",
+  "clean_routing_statement_from_the_other_direction": "S1687's positional families saturate at 70.08% with full-rank values and no routing, and exact routing with full-rank values is 100% by construction, so routing is worth the ~30% S1687 identified as content-routed",
+  "scope": "hooking c_v also changes the v1 block 0 exports, since v1 is that same pre-mix v",
+  "status": "certified"
  }
 }
