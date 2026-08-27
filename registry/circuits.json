@@ -2005,5 +2005,49 @@
   "negatives_are_measurements": "both identity arms return exactly 100.00% and both curves are monotone in rank -- the LESSONS 28 diagnostic for distinguishing a real negative from compounding. The substituted models really are worse than constant-ablated ones.",
   "closes_loop_with_S1679": "S1679 found the 4608 bilinear features are not sparse-SELECTABLE (top 512 pinned is worse than constant ablation, because the readout sums cancelling contributions); S1692 finds the same feature-forming path is not low-rank COMPRESSIBLE either. Two different compressions, two failures, same object.",
   "status": "certified"
+ },
+ "_compressibility_ordering_replicates_held_out": {
+  "claim": "S1692's compressibility ordering replicates exactly on fineweb_n192_skip11000, untouched by the S1689-S1692 rank work: routing 62.82->63.00, values 2.37->2.29, Down -15.16->-14.42, LeftRight -52.88->-53.39. No path moves more than 0.74 points and the ordering is identical.",
+  "sections": "S1693",
+  "script": "bilinear_quotient/compressibility_heldout.py",
+  "pattern": "house second-class confirmation (S1595, S1598, S1603; S1683 precedent); programs compiled ONCE and scored on both eval sets",
+  "deltas": {
+   "routing": 0.0018,
+   "values": -0.0009,
+   "Down": 0.0074,
+   "LeftRight": -0.0051
+  },
+  "identity_checks_travel": {
+   "skip7000": {
+    "routing": 1.0,
+    "values": 1.0001,
+    "Down": 1.0,
+    "LeftRight": 1.0
+   },
+   "skip11000": {
+    "routing": 1.0,
+    "values": 1.0,
+    "Down": 1.0,
+    "LeftRight": 0.9999
+   }
+  },
+  "reference_arm": "the skip7000 arm reproduces S1692 to +0.00% on all four paths",
+  "stakes": {
+   "skip7000": {
+    "mlp": 4.3301,
+    "attn": 3.557
+   },
+   "skip11000": {
+    "mlp": 4.5173,
+    "attn": 3.7552
+   }
+  },
+  "document_sample_note": "skip11000 is easier to predict (CE live 3.097 vs 3.292) while BOTH stakes are larger there -- the modules matter more on the easier documents. Ceilings are ratios within their own eval set, which absorbs this.",
+  "confirms": [
+   "_only_attention_routing_is_compressible",
+   "_attention_routing_is_low_rank_values_are_not",
+   "_attention_value_path_is_high_rank"
+  ],
+  "status": "certified"
  }
 }
