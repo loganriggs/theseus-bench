@@ -1790,5 +1790,21 @@
    "_program_price_curve"
   ],
   "status": "certified"
+ },
+ "_attention_v1_path_stake": {
+  "claim": "Attention's threaded v1 path is worth 0.7066 nats under position-weighted mean ablation across all 18 modules, about a fifth of the residual write path's 3.5840 nats on the same protocol. First measurement of this path.",
+  "sections": "S1684",
+  "script": "bilinear_quotient/attn_v1_path.py",
+  "arms": {
+   "write_only": 3.584,
+   "v1_only": 0.7066,
+   "both": 3.584
+  },
+  "DEGENERATE_JOINT_ARM": "the 'both' arm is identically the 'write only' arm: with all 18 attention output writes pinned to constants, v1 has no causal route to the logits (it enters only through later attention outputs). CEs agree to 5dp because they are the same computation. pred_b ('the paths are non-additive by >=10%') PASSED ON A STRUCTURAL IDENTITY, not evidence -- the LESSONS 29 shape, where a prediction about a RELATIONSHIP between arms is free when one arm is nested in the other.",
+  "not_answered": "the redundancy/composition question the joint arm was meant to answer; no composition claim is made",
+  "architectural_not_discovered": "v1's influence is entirely mediated by the attention writes above it -- this follows from the wiring, like the S1662 correction",
+  "NESTED_NOT_ADDITIVE": "v1 is worth 0.7066 nats GIVEN a live write path and nothing without one. Combining the two numbers into a total for attention would double-count.",
+  "cross_reference_not_comparator": "S1682 priced the write at 3.5570 under OPTIMAL-constant ablation; a mean constant is weaker so stakes here are larger (+0.027, expected direction and size)",
+  "status": "certified"
  }
 }
