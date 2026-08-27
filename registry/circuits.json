@@ -1931,5 +1931,41 @@
   "controls_S1690": "rank 256 reproduces S1689's 67.05% exactly; identity arm 100.01%; curve monotone",
   "vs_MLP_side": "S1664 found the front MLPs' token tables reach 92-98% at rank 64 of 1152; attention's value path needs 384 for the same fidelity -- six times the rank. Both are data-weighted rank budgets on a 1152-dimensional read inside a module, both compiled bottom-up, so the comparison is on comparable footing."
  },
- "_attention_value_path_is_high_rank_RENAMED_NOTE": "see _attention_value_path_is_high_rank; the entry's claim was corrected at S1690 and the key name now overstates it"
+ "_attention_value_path_is_high_rank_RENAMED_NOTE": "see _attention_value_path_is_high_rank; the entry's claim was corrected at S1690 and the key name now overstates it",
+ "_attention_routing_is_low_rank_values_are_not": {
+  "claim": "Under matched rank budgets on the same module (rank-r least-squares maps, data-weighted, compiled bottom-up), attention's ROUTING tolerates heavy compression while its VALUE path does not. At rank 64 of 1152 (5.6% of dims) routing keeps 62.82% of the write and values keep 2.37% -- a 60.45-point gap. The gap is 24.88 at rank 256 and closes by rank 512.",
+  "sections": "S1691",
+  "script": "bilinear_quotient/attn_routing_rank_curve.py",
+  "routing_curve": {
+   "64": 0.6282,
+   "128": 0.74,
+   "256": 0.9193,
+   "384": 0.9707,
+   "512": 0.9878,
+   "1152": 1.0
+  },
+  "value_curve_S1690": {
+   "64": 0.0237,
+   "256": 0.6705,
+   "384": 0.9497,
+   "512": 0.9832,
+   "1152": 1.0001
+  },
+  "matched_rank_gaps": {
+   "64": 0.6045,
+   "256": 0.2488,
+   "384": 0.021,
+   "512": 0.0046
+  },
+  "identity_check": {
+   "observed": 1.0,
+   "monotone": true,
+   "status": "PASSED"
+  },
+  "FAILED_PREDICTION_pred_a": "Written as 'the smallest tested rank reaching 95% of full is BELOW 384, the value path's figure'. Routing's crossing is AT 384, so the prediction FAILS. The constant was also wrong: S1690's output shows the value path reaches only 94.97% at 384 against a 95.01% bar, so its crossing is 512. The corrected comparison (routing 384, values 512) favours the claim, but a failed prediction is not rescued by fixing its constant afterwards. Recorded as a FAIL.",
+  "why_the_claim_survives": "crossings are a bad statistic here -- both curves are steep near their knees so one grid step moves them. The matched-rank GAPS are the evidence: +60.45, +24.88, +2.10, +0.46 as rank grows, consistent and large wherever either curve is under saturation.",
+  "resolves": "the routing-versus-values question S1689 opened but could not answer in comparable units",
+  "combined_picture": "with S1687 (positional families saturate at 70.08%, so routing is worth the ~30% they cannot reach), attention's write is a cheap low-rank SELECTION over an expensive nearly-full-rank PAYLOAD",
+  "status": "certified"
+ }
 }
