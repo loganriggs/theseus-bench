@@ -1806,5 +1806,27 @@
   "NESTED_NOT_ADDITIVE": "v1 is worth 0.7066 nats GIVEN a live write path and nothing without one. Combining the two numbers into a total for attention would double-count.",
   "cross_reference_not_comparator": "S1682 priced the write at 3.5570 under OPTIMAL-constant ablation; a mean constant is weaker so stakes here are larger (+0.027, expected direction and size)",
   "status": "certified"
+ },
+ "_attention_write_is_mostly_two_position": {
+  "claim": "A least-squares map from [x_t, x_(t-1)] reproduces 56.26% of bilin18's eighteen attention output writes, against 16.38% from x_t alone. The +39.88-point gain is 32.59 points lag-1-SPECIFIC: a lag-8 control at identical parameter count reaches only 23.67%.",
+  "sections": "S1685",
+  "script": "bilinear_quotient/attn_lag_family.py",
+  "curve": {
+   "lag0": 0.1638,
+   "lag1": 0.5626,
+   "lag8": 0.2367
+  },
+  "stake_nats": 3.557,
+  "control": "lag 8 has the same parameter count and no privileged relation to position t; a generic second slot is worth ~7.3 points, the previous position specifically ~32.6",
+  "decomposition": {
+   "current_position_alone": 0.1638,
+   "added_by_previous_position": 0.3988,
+   "still_requires_more_than_two": 0.4374
+  },
+  "failed_prediction": "pred_b predicted attention would stay below 50% under a two-position family. It reaches 56.26%. S1682's '83.6% non-local' was a statement about the strictly-LOCAL family, not about the depth of attention's non-locality -- most of it dissolves with one position of context.",
+  "prices_at_scale": "S843's previous-token finding, now at whole-stack scale: not one head's quirk but the largest single component of what all 18 attention modules write",
+  "not_claimed": "that attention is a previous-token copier -- 43.7% still needs something wider, and the fitted map may use x_(t-1) for anything, not just copying",
+  "scope": "attention OUTPUT WRITE only; v1 passed through unchanged (S1682, S1684)",
+  "status": "certified"
  }
 }
