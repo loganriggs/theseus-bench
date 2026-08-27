@@ -1761,5 +1761,34 @@
   "SCOPE_output_path_only": "each attention module returns (y, v1); the hook substitutes y and passes v1 -- the value embedding threaded to blocks above -- through UNCHANGED. The claim is 'attention's output write replaced', not 'attention replaced'. 83.6% is a FLOOR on the non-locality of the write.",
   "non_monotone_noted": "the curve dips 0.69 points from rank 128 to rank 512/full. Not the sign-flipping collapse LESSONS 28 was written for; ranks 512 and 1152 agree to 5dp so W's effective rank is <=512. Plain reading is rank-128 truncation acting as mild regularisation. The headline is stable across ranks 128-1152 within 0.7 points. Monotonicity was reported, not scored.",
   "status": "certified"
+ },
+ "_program_numbers_replicate_held_out": {
+  "claim": "Every load-bearing program figure of the S1664-S1682 arc replicates on fineweb_n192_skip11000, documents untouched for the whole arc: all_linear 60.81->60.50, additive 59.08->58.62, table_mlp0_2 57.16->56.25, linear_rank128 54.12->53.98. All deltas within 0.91 points; the family ordering (linear > additive > table) is identical on both sets.",
+  "sections": "S1683",
+  "script": "bilinear_quotient/program_heldout_replication.py",
+  "pattern": "house second-class confirmation (S1595, S1598, S1603); programs compiled ONCE and scored on both evals",
+  "deltas": {
+   "all_linear": -0.0031,
+   "additive": -0.0046,
+   "table_mlp0_2": -0.0091,
+   "linear_rank128": -0.0014
+  },
+  "stakes": {
+   "skip7000": 4.3301,
+   "skip11000": 4.5173
+  },
+  "ce_live": {
+   "skip7000": 3.29205,
+   "skip11000": 3.09711
+  },
+  "note_on_document_samples": "skip11000 is EASIER to predict (CE live 3.097 vs 3.292) yet its MLPs matter MORE (stake 4.517 vs 4.330). The ceiling is a ratio within its own eval set; both stakes are reported so the 0.19-nat difference in what the ratio is a fraction of is visible.",
+  "not_claimed": "no story is offered for the ordering of the four generalisation gaps -- parameter count is the obvious candidate and does not fit (the additive program has by far the most parameters and the second-smallest gap)",
+  "confirms": [
+   "_best_compiled_program_for_mlp_stack",
+   "_families_differ_in_their_relation_to_data",
+   "_per_site_family_not_band_family",
+   "_program_price_curve"
+  ],
+  "status": "certified"
  }
 }
