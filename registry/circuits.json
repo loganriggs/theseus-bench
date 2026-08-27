@@ -1901,13 +1901,17 @@
   "status": "certified"
  },
  "_attention_value_path_is_high_rank": {
-  "claim": "Holding bilin18's real attention routing exactly fixed and compressing only the value path (c_v output replaced by a rank-r least-squares map of x) is catastrophic: rank 256 of 1152 gives 67.05%, rank 64 gives 2.37%, rank 8 gives -26.10% (worse than replacing attention with a constant). Exact routing does not compensate for a compressed value path.",
+  "claim": "Attention's value path needs about a THIRD of its dimensions and then saturates: with real routing held exactly fixed, a rank-r least-squares map at c_v gives 67.05% at rank 256, 94.97% at 384, 98.32% at 512, 99.71% at 768, 100.01% at full rank. There is a sharp knee between 256 and 384 (27.9 points over 128 dimensions).",
   "sections": "S1689",
   "script": "bilinear_quotient/attn_value_simplification.py",
   "curve": {
    "8": -0.261,
    "64": 0.0237,
    "256": 0.6705,
+   "384": 0.9497,
+   "512": 0.9832,
+   "768": 0.9971,
+   "1024": 1.0,
    "1152": 1.0001
   },
   "identity_check": {
@@ -1921,6 +1925,11 @@
   "NOT_ESTABLISHED": "'routing versus values' is not a clean contrast in this design -- the positional families constrain WHICH POSITIONS may be read while leaving the read full-rank; these arms constrain the RANK of what is read while leaving routing exact. Different budgets, so 2.37% vs 70.08% prices two incomparable restrictions and cannot support 'values matter more than routing'. The defensible reading is the rank curve alone.",
   "clean_routing_statement_from_the_other_direction": "S1687's positional families saturate at 70.08% with full-rank values and no routing, and exact routing with full-rank values is 100% by construction, so routing is worth the ~30% S1687 identified as content-routed",
   "scope": "hooking c_v also changes the v1 block 0 exports, since v1 is that same pre-mix v",
-  "status": "certified"
- }
+  "status": "certified",
+  "claim_ORIGINAL_S1689": "Holding bilin18's real attention routing exactly fixed and compressing only the value path (c_v output replaced by a rank-r least-squares map of x) is catastrophic: rank 256 of 1152 gives 67.05%, rank 64 gives 2.37%, rank 8 gives -26.10% (worse than replacing attention with a constant). Exact routing does not compensate for a compressed value path.",
+  "CORRECTION_S1690": "S1689 read 'the value path is HIGH-RANK' off a single point at rank 256 that falls on the cliff edge. The filled-in curve (S1690, attn_value_rank_curve.py) shows a sharp knee at ~384 and fast saturation above 512. Two S1690 predictions failed in the direction of the model being MORE compressible than S1689 said. The supported statement is 'about a third of its dimensions', not 'high-rank'.",
+  "controls_S1690": "rank 256 reproduces S1689's 67.05% exactly; identity arm 100.01%; curve monotone",
+  "vs_MLP_side": "S1664 found the front MLPs' token tables reach 92-98% at rank 64 of 1152; attention's value path needs 384 for the same fidelity -- six times the rank. Both are data-weighted rank budgets on a 1152-dimensional read inside a module, both compiled bottom-up, so the comparison is on comparable footing."
+ },
+ "_attention_value_path_is_high_rank_RENAMED_NOTE": "see _attention_value_path_is_high_rank; the entry's claim was corrected at S1690 and the key name now overstates it"
 }
