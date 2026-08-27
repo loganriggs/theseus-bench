@@ -1329,7 +1329,8 @@
   },
   "failed_hypothesis": "pred_b (context share grows with depth) PASSED on its literal condition (mlp3-mlp0 = +22.7pts >= 5) but its motivating claim is FALSE: mlp1 breaks the ordering. Recorded so the prediction flag is not read as support for the generalisation.",
   "limitation": "frozen arms at mlp2/mlp3 replace 3-4 attention modules (CE 5.36/5.67 vs 3.28 live) and are damaged models; they serve only as the known-answer check. Only the live column describes bilin18.",
-  "status": "certified"
+  "status": "certified",
+  "CAVEAT_S1666_saturation": "mlp1's 7.005-nat stake is a saturated measurement (CE 10.28 vs 10.82 uniform); read cross-module stake comparisons as ordinal. See _CE_saturation_caveat_on_stakes."
  },
  "_mlp1_residue_is_redundant_not_sparse": {
   "claim": "mlp1's 0.279-nat un-tableable residue is DIFFUSE and REDUNDANT across the attention beneath it. Freezing attn0 removes none of it (-1.70%); freezing attn1 removes 18.73%; the best of 18 heads reaches 12.68% against a 5.56% uniform baseline; the 18 head attributions sum to 38.27%. Each front attention module is individually near-sufficient to supply mlp1's context.",
@@ -1341,7 +1342,8 @@
   "implication": "single-component ablation will systematically under-find mlp1's inputs, since each component is covered for by the other",
   "CAUTION_head_grain_at_floor": "the manipulation check passed by 0.01 points -- largest single-head ceiling shift 0.51pp against a 0.50pp bar. The NEGATIVE aggregate (no head is large) is supported precisely because everything is small; the head RANKING is NOT supported and head0.3's 12.68% is suggestive only (head1.4 scores -3.43%, comparable noise).",
   "caveat_stakes_move": "refitted stake varies by condition (7.005 live / 7.819 attn0-frozen / 6.826 attn1-frozen / 6.067 both), so attributions are not constrained to compose; the 38.27% sum is reported raw, not normalised",
-  "status": "certified"
+  "status": "certified",
+  "CAVEAT_S1666_saturation": "mlp1's 7.005-nat stake is a saturated measurement (CE 10.28 vs 10.82 uniform); read cross-module stake comparisons as ordinal. See _CE_saturation_caveat_on_stakes."
  },
  "_front_band_tables_are_low_rank": {
   "claim": "The front MLPs' per-token tables are low rank: rank 64 of 1152 recovers 96.5%/97.0%/91.7%/97.5% of the full-table ceiling at mlp0/1/2/3. The whole front band (9.25 nats of stake) is ~85% reproduced by four rank-64 lookup tables.",
@@ -1420,6 +1422,46 @@
   "S1657_caution": "the 4.26x ratio must NOT be compared against the front band's 1.15; composition ratios track total effect size",
   "PENDING_protocol_match": "the 21.73% joint ceiling is NOT yet comparable to the front band's 68-96% PER-SITE ceilings; band_joint_compare.py re-measures both as joint substitutions under one protocol",
   "method_consequence": "single-component ablation under-finds redundant machinery; here by a factor of four. Any per-module importance ranking of this model understates the middle band accordingly.",
+  "status": "certified"
+ },
+ "_front_is_tabular_middle_is_not": {
+  "claim": "With protocols matched (joint substitution, one grain, S1661 hybrid hook, covered-position scoring), the front four MLPs' joint per-token table ceiling is 76.45% and the middle twelve's is 21.73% -- a 54.7-point gap. The front band is a token lookup; the middle band is genuinely contextual.",
+  "sections": "S1666",
+  "script": "bilinear_quotient/band_joint_compare.py",
+  "bands": {
+   "front_mlp0_3": {
+    "joint_stake": 4.3922,
+    "joint_ceiling": 0.7645
+   },
+   "middle_mlp4_15": {
+    "joint_stake": 2.6453,
+    "joint_ceiling": 0.2173
+   },
+   "late_mlp16_17": {
+    "joint_stake": 0.7174,
+    "joint_ceiling": 0.5102
+   },
+   "all18": {
+    "joint_stake": 4.3196,
+    "joint_ceiling": 0.3427
+   }
+  },
+  "instrument_check": {
+   "known_answer": 1.0,
+   "observed_all_four_bands": 1.0,
+   "strongest_arm": "all18 with every attention module in the model frozen",
+   "status": "PASSED"
+  },
+  "corrects": "S1665 compared a JOINT middle ceiling against PER-SITE front ceilings; this re-measures both as joint substitutions. The contrast survives the correction.",
+  "ratios_not_interpreted": "joint/sum is 0.475 front / 4.261 middle / 1.708 late. This looks like a structural dichotomy and is NOT claimed as one: S1657 showed these ratios track total effect size, and the ordering here follows that confound exactly (sums 9.25/0.62/0.42). Ceilings are used for the comparison because they are normalised within their own condition.",
+  "status": "certified"
+ },
+ "_CE_saturation_caveat_on_stakes": {
+  "claim": "Optimal-constant stakes in this project are compressed by a CE ceiling and are not linearly comparable at large magnitudes. Live CE is 3.279 and ln(50257)=10.82, so a stake of ~4.4 already sits at 7.7 nats.",
+  "sections": "S1666",
+  "evidence": "the all-eighteen joint MLP stake (4.3196) is LOWER than the front-band-alone stake (4.3922); band stakes sum to 7.7549",
+  "AFFECTS_mlp1": "S1662 reported mlp1's individual stake as 7.005 nats, 'eight times its neighbours' -- that puts CE at 10.28 against a 10.82 uniform ceiling and is a SATURATED measurement. It licenses 'ablating mlp1 alone destroys the model'; it does NOT license 'mlp1 is 8x mlp0'. Cross-module raw-stake comparisons involving mlp1 are ordinal at best.",
+  "does_not_affect": "S1663 and S1664 findings about mlp1 -- both are ratios computed within mlp1's own condition",
   "status": "certified"
  }
 }
