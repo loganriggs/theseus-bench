@@ -1512,7 +1512,8 @@
   "failed_generalisation_b": "pred_b (quadratic remainder grows with depth) PASSED literally (front 31.3% < middle 37.7%) but its claim is FALSE: the late band is 16.4%, the smallest. Bilinearity peaks in the middle and largely switches off at the top.",
   "EXCLUDED_all18_row": "the all-eighteen arm returned -42.99% (worse than constant ablation) and is NOT a measurement -- off-distribution compounding, see LESSONS 28. The front band's rank-64 figure (12.30%) is junk for the same reason (non-monotone rank curve); only its full-rank 68.68% is a fair comparator.",
   "status": "certified",
-  "CAVEAT_S1669_all18_table_was_naive": "the all-18 token-table figure of 34.27% was fitted NAIVELY. S1669 shows naive fitting can be catastrophically wrong at 18 sites, so 34.27% may measure compilation rather than the table family. Any 'linear beats table at whole-stack scale' comparison is PENDING the compiled-table arm."
+  "CAVEAT_S1669_all18_table_was_naive": "the all-18 token-table figure of 34.27% was fitted NAIVELY. S1669 shows naive fitting can be catastrophically wrong at 18 sites, so 34.27% may measure compilation rather than the table family. Any 'linear beats table at whole-stack scale' comparison is PENDING the compiled-table arm.",
+  "RESOLVED_S1670": "the compiled all-table figure is 49.96% (not the naive 34.27%). Linear still wins at whole-stack scale but by 4.3 points, not 20. The band regimes transfer: a mixed compiled program reaches 56.29%."
  },
  "_joint_substitution_compounds_off_distribution": {
   "claim": "A substitution fitted against the real model and applied jointly at many sites compounds off-distribution and past some number of sites returns a NEGATIVE ceiling (worse than constant ablation). 12 sites: 62.33%. 18 sites: -42.99%.",
@@ -1536,6 +1537,23 @@
   "control": "on the middle band, where naive fitting already worked, compilation moves the ceiling +0.76 points -- so the +97 points at 18 sites is compounding removed, not a generically better procedure",
   "headline": "eighteen linear maps compiled bottom-up reproduce 54.28% of bilin18's entire MLP stake (4.32 nats) -- the first program in this ledger covering every MLP",
   "S546_does_not_generalise": "S546 found refitting made a 2-block TABLE substitution WORSE (+1.0647 vs +0.6654). Family and scale both differ, so 'refitting hurts' is false as a general rule and the reason it held at S546 is UNRESOLVED.",
+  "status": "certified"
+ },
+ "_best_compiled_program_for_mlp_stack": {
+  "claim": "bilin18's entire MLP stack is 56.29% reproduced by a compiled 18-piece program: per-token lookup tables at mlp0-3 and least-squares linear maps of the residual stream at mlp4-17, fitted bottom-up in stack order. This beats both pure families (all-linear 54.28%, all-table 49.96%).",
+  "sections": "S1670",
+  "script": "bilinear_quotient/compiled_program_families.py",
+  "stake_nats": 4.3196,
+  "arms": {
+   "all_table_compiled": 0.4996,
+   "all_linear_compiled": 0.5428,
+   "mixed_front_table": 0.5629,
+   "all_table_naive_S1668": 0.3427
+  },
+  "control": "the all-linear arm reproduces S1669's 54.28% exactly",
+  "out_of_sample_confirmation": "S1668's band regimes (front tabular, middle/late linear) were derived from separate per-band measurements. Applying each band's winning family inside one compiled whole-stack program beats both pure families -- the regimes transfer and predict an improvement outside the measurement that produced them.",
+  "corrects": "S1668's naive all-table figure of 34.27% was substantially a statement about fitting order; compilation lifts the table family 15.7 points. Made properly the family gap is 4.3 points, not 20.",
+  "open": "the remaining 43.71% -- located by compiled_residual_attribution.py",
   "status": "certified"
  }
 }
