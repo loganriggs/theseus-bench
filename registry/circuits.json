@@ -600,7 +600,7 @@
   "depth_profile": {
    "section": "S1602",
    "score": "1-for-3",
-   "status": "SHAPE CERTIFIED, MAGNITUDE OPEN",
+   "status": "SHAPE AND MAGNITUDE CERTIFIED (S1603)",
    "method": "per-component signed contribution summed in stack order; 96 fit rows (skip=80) + 96 held-out (skip=15000); recon rel err 6.3e-08 / 0.0",
    "curve_landmarks_fit": {
     "x0": 87.7,
@@ -620,8 +620,31 @@
     "pred_c_drawdown_ge_25pct_and_replicates": "FAILED (fit .249442 misses the .25 bar by .00056; held-out .4687, relative gap .879 vs a .20 bar)"
    },
    "replicates": "monotone accumulation with no front/middle reversal; peak at attn16; suppression confined to MLPs (mlp16, mlp17) while attn17 still writes POSITIVELY (+138.7); mlp17 the dominant drop",
-   "does_not_replicate": "the drawdown magnitude: .249 (class_n 44) vs .469 (class_n 31). Per S511 a two-sample class number carries unmeasured spread; six-sample spread run (channel_depth_spread) in flight. Do NOT quote a drawdown number until it lands.",
-   "corrects": "S1601's 'mlp11 is the main mid-depth source' framing: mlp11 is the largest single step but accumulation continues five more layers, adding a further ~1245 (31% of peak) after it. The channel is built across the WHOLE stack, not mid-stack."
-  }
+   "does_not_replicate": "SUPERSEDED by S1603 -- resolved with 6 samples; see spread_resolution.",
+   "corrects": "S1601's 'mlp11 is the main mid-depth source' framing: mlp11 is the largest single step but accumulation continues five more layers, adding a further ~1245 (31% of peak) after it. The channel is built across the WHOLE stack, not mid-stack.",
+   "spread_resolution": {
+    "section": "S1603",
+    "score": "3-for-3",
+    "samples": "6 disjoint 96-row sets (skip 80/15000/20000/25000/30000/35000), no refitting; recon rel err 0.0-1.5e-07 throughout",
+    "drawdown": {
+     "mean": 0.3584,
+     "sd": 0.0703,
+     "sem": 0.0287,
+     "n": 6,
+     "values": [
+      0.2494,
+      0.4687,
+      0.3806,
+      0.3477,
+      0.35,
+      0.3541
+     ]
+    },
+    "shape": "peak = attn16 in 6/6; largest negative step = mlp17 in 6/6",
+    "supersedes": "the S1602 'magnitude open' flag: the channel loses .358 +/- .029 of its attn16 peak before the readout",
+    "why_S1602_looked_unstable": "S1602's two samples were the MIN (.2494) and the MAX (.4687) of the six; the other four cluster at .3477-.3806 (spread .033). Drawing both extremes from six has p ~ 1/15. S1602's pred_c stays FAILED as written -- .249442 missed a .25 bar by .00056 -- but .2494 was the low outlier, not the quantity."
+   }
+  },
+  "standing_statement": "S1600-1603: heads 9.7/10.5 + mlp9/mlp10 write '?' evidence into span(v1,v2), which IS the '?' unembedding direction (logit-lens rank 1). The channel accumulates MONOTONICALLY across the whole stack with no front/middle reversal, peaking at attn16 (6/6); mlp11 is the largest single positive step (+1028) but only ~69% of the peak is reached by then. Suppression is MLP-only and late: mlp16 (-292) and mlp17 (-1151, largest of any sign) cut it back by .358 +/- .029 while attn17 still writes positively (+139). No small component set reproduces the final cut (top-4 positive = .414) because the quantity is assembled by ~34 positive steps against 2 large negative ones."
  }
 }
