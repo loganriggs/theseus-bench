@@ -1540,7 +1540,7 @@
   "status": "certified"
  },
  "_best_compiled_program_for_mlp_stack": {
-  "claim": "bilin18's entire MLP stack is 56.29% reproduced by a compiled 18-piece program: per-token lookup tables at mlp0-3 and least-squares linear maps of the residual stream at mlp4-17, fitted bottom-up in stack order. This beats both pure families (all-linear 54.28%, all-table 49.96%).",
+  "claim": "bilin18's entire MLP stack is 57.29% reproduced by a compiled 18-piece program: per-token lookup tables at mlp0-2 and least-squares linear maps at mlp3-17, fitted bottom-up in stack order (S1672). Beats all-linear 54.28% and the mlp0-3 variant 56.29%.",
   "sections": "S1670",
   "script": "bilinear_quotient/compiled_program_families.py",
   "stake_nats": 4.3196,
@@ -1554,7 +1554,9 @@
   "out_of_sample_confirmation": "S1668's band regimes (front tabular, middle/late linear) were derived from separate per-band measurements. Applying each band's winning family inside one compiled whole-stack program beats both pure families -- the regimes transfer and predict an improvement outside the measurement that produced them.",
   "corrects": "S1668's naive all-table figure of 34.27% was substantially a statement about fitting order; compilation lifts the table family 15.7 points. Made properly the family gap is 4.3 points, not 20.",
   "open": "the remaining 43.71% -- located by compiled_residual_attribution.py",
-  "status": "certified"
+  "status": "certified",
+  "SUPERSEDED_BY_S1672": "the best pure assignment is tables at mlp0-2 (57.29%), not mlp0-3 (56.29%). Adding mlp3 to the table set COSTS a point.",
+  "claim_ORIGINAL": "bilin18's entire MLP stack is 56.29% reproduced by a compiled 18-piece program: per-token lookup tables at mlp0-3 and least-squares linear maps of the residual stream at mlp4-17, fitted bottom-up in stack order. This beats both pure families (all-linear 54.28%, all-table 49.96%)."
  },
  "_compiled_program_residual_is_diffuse": {
   "claim": "The 43.71% missing from the best compiled MLP-stack program is DIFFUSE, not localised. The worst single site (mlp3) holds 9.91% of the shortfall and fourteen of eighteen sites sit within 0.8 points of each other. There is no bottleneck site.",
@@ -1571,6 +1573,29 @@
   },
   "consequence": "the gradient tracks S1662's per-site ceilings (90.27/96.01/76.98/67.55) and exposes that S1670's mlp0-3 table boundary was inherited from a BAND-level verdict over four unlike sites. mlp2 and mlp3 are 77% and 68% tabular and should probably not be tabled.",
   "recurring_shape": "second diffuse-not-sparse result of the day; S1663 was the first, at head grain inside mlp1",
+  "status": "certified"
+ },
+ "_per_site_family_not_band_family": {
+  "claim": "Family choice is a PER-SITE property, not a band property. mlp0 and mlp1 want a token table (+1.73 and +1.24 points to the whole-stack program), mlp2 is indifferent (+0.04), and mlp3 actively does not (-1.00). The band-level 'front is tabular' verdict is right about the band and wrong about mlp3.",
+  "sections": "S1672",
+  "script": "bilinear_quotient/program_family_assignment.py",
+  "ladder": {
+   "0_tables": 0.5428,
+   "mlp0": 0.5601,
+   "mlp0_1": 0.5725,
+   "mlp0_2": 0.5729,
+   "mlp0_3": 0.5629
+  },
+  "tracks": "per-site table ceilings from S1662: 90.27 / 96.01 / 76.98 / 67.55",
+  "corrects": "_program_family_table_by_band and the S1670 program, both of which tabled all four front sites on band-level evidence",
+  "status": "certified"
+ },
+ "_local_fidelity_selects_the_wrong_program": {
+  "claim": "Selecting each site's program family by how well it reconstructs that site's OWN output (position-weighted L2) picks tables at 14 of 18 sites and scores 53.78% end-to-end -- WORSE than using no tables at all (54.28%) and 3.5 points below the best assignment. Local reconstruction fidelity does not predict end-to-end usefulness.",
+  "sections": "S1672",
+  "script": "bilinear_quotient/program_family_assignment.py",
+  "mechanism": "a token table captures each middle-band site's MEAN output well, which dominates L2, while the directions that matter downstream are ones L2 barely weights",
+  "implication": "any program search that scores candidates against their own module's output is selecting on the wrong quantity -- relevant to lattice/state selection done on local fidelity",
   "status": "certified"
  }
 }
