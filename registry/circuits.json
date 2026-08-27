@@ -2085,5 +2085,28 @@
   "fix": "assert abs(ce_live - published_ce_live) <= 1e-3, pinning the baseline the same way the identity arm pins the substitution",
   "what_caught_it": "8.86 being visibly wrong to a reader of the ledger -- the same luck that caught S1681's no-op, and luck is not a control",
   "status": "certified"
+ },
+ "_half_upgrades_do_not_transfer": {
+  "claim": "Upgrading each half of bilin18 to its best known family carries only about a third of the half-level gain into the whole-model program. The attention half gains 11.79 points alone (56.26 -> 68.05 under lags 1,2,4,8) and the MLP half up to 3.5 (tables at mlp0-2); the joint 36-site program gains 4.10 (50.94% -> 55.04%).",
+  "sections": "S1696",
+  "script": "bilinear_quotient/whole_model_best_families.py",
+  "arms": {
+   "simple": {
+    "ceiling": 0.5094,
+    "nats": 2.837
+   },
+   "best": {
+    "ceiling": 0.5504,
+    "nats": 3.0647
+   }
+  },
+  "joint_stake": 5.5684,
+  "controls": "all three exact -- baseline CE 3.29205 (S1695 assert), simple arm 50.94% reproducing S1694, joint stake 5.5684 reproducing S1694",
+  "failed_prediction": "pred_a predicted >=8 points of the half-level upgrade would carry into the joint program; observed 4.10, a miss by 3.9 points",
+  "PRACTICAL_CONSEQUENCE": "half-ceilings measured with the other half real are not additive, not averageable, and not reliable even as DIRECTIONS of improvement at full scale. Budget allocated by improving one half's ceiling and assuming transfer will be over-optimistic by roughly a factor of three on this evidence.",
+  "mechanism_unresolved": "either the improved attention program's residual error still compounds through 18 MLP programs refit around it, or the wider lag set recovers information the MLP programs were already reconstructing from the stream so recovering it twice buys less. Both predict the observed shape; separating them needs an arm that upgrades one half at a time inside the joint condition, not run here.",
+  "best_account_of_the_model": "a compiled program of 18 token-or-linear maps and 18 four-position maps reproduces 3.065 of 5.568 nats (55.04%) of bilin18's 36 module output paths",
+  "scope": "attention v1 passed through unchanged -- output paths, not whole modules",
+  "status": "certified"
  }
 }
