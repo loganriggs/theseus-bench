@@ -1252,5 +1252,19 @@
    }
   },
   "implications_for_a_bottom_up_compiler": "1. Target mlp1 first if the goal is nats: 6.997 against 2.19 for mlp0+mlp2+mlp3 combined. 2. Target mlp0 first if the goal is UNDERSTANDING: it is small, near the tokens, computes a 23-dim class code, and everything above reads it (mlp4 takes .674 dCE from mlp0, \u00a71422). 3. Prefer TABLE-family components where composition matters -- they are the only family measured to compose additively, and refitting them against each other makes things WORSE not better. 4. Do not certify any front module in isolation: \u00a71616's 8.9x superadditivity and \u00a71485's mlp2 brittleness are both local!=composite failures at module grain. 5. A priced frontier already exists for mlp1 (.9624 @ 214 Mbit, \u00a71480) and a cheap repair for mlp2 (1.8 Mbit recovers .80 CE, \u00a71489) -- place new programs against these, not in a vacuum. PROTOCOL WARNING: ladder-protocol numbers throughout; \u00a71324 warns they do not compare to exact-restoration denominators. Three incompatible mlp0 values exist. Never mix denominators."
+ },
+ "_composition_ratios_are_effect_size_confounded": {
+  "finding": "S1657: joint/sum composition ratios track TOTAL EFFECT SIZE, not substitution family. Measured at four front MLPs, same rows, same cost definition: sum 2.55 -> ratio 1.03; sum 2.19 -> 1.15; sum 0.66 -> 2.14; sum 0.055 -> 2.16. At matched effect size a PROJECTION composed BETTER than a TABLE (1.029 vs 1.153), inverting the family distinction I had asserted.",
+  "mechanism": "joint/sum has a denominator that shrinks faster than its numerator as individual effects get small, because the interaction term does not shrink proportionally. This follows from the ratio's algebra, so the DIRECTION is protocol-robust even though the magnitude is not.",
+  "rule": "NEVER quote or compare a composition ratio without holding total effect size fixed, and never compare ratios measured in different protocols. S1656 did both and cost three withdrawn board posts.",
+  "ratios_in_this_ledger_and_their_effect_sizes": {
+   "S546 two blocks, tables": "ratio 0.9666 at sum 0.6884",
+   "S1656 four MLPs, tables": "ratio 1.1530 at sum 2.1890",
+   "S1657 four MLPs, rank-16 projection": "ratio 1.0294 at sum 2.5518",
+   "S1657 four MLPs, rank-64 projection": "ratio 2.1360 at sum 0.6623",
+   "S541 six blocks, rank truncation": "ratio 1.6, effect size NOT recorded here -- check before comparing",
+   "S1616 three modules, exact restoration": "ratio 8.9x at singleton sum 0.0573 -- a SMALL-effect sum, so part of that 8.9x may be the same artifact. FLAGGED, not withdrawn: it is a different protocol and I am not repeating S1656 by assuming my curve transfers."
+  },
+  "TOTAL_GLASS_IS_NOT_AFFECTED": "S1658 checked the benchmark headline series. As the ship improves its total effect shrinks (1.610 -> 1.176 -> 0.900) while compounding FALLS (1.43 -> 1.04 -> 0.80). The artifact pushes ratios UP as effects shrink, so the observed trend runs OPPOSITE to it and cannot be produced by it. v4 sub-additivity stands; the improvement was if anything MASKED. The confound is CONSERVATIVE here: equal compounding at a smaller total effect is a real gain, not a plateau."
  }
 }
