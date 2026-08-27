@@ -810,6 +810,29 @@
    "THE_ONE_LAW_THAT_HOLDS": "the estimation-NOISE floor scales as 1/sqrt(n) at rho .988-1.000 across two DISJOINT 10-class sets. It is a property of the noise, not the signal -- and it came from the CONTROL ARM of a failed experiment, not from any hypothesis.",
    "METHODOLOGICAL_WARNING": "a post-hoc candidate chosen from four options on 10 points reached rho .733 at p .020 and evaporated to .079 on fresh classes; a correlation that PASSED a registered bar at p .019 collapsed to .018. ON N=10 WITH FREELY CHOSEN PREDICTORS, p < .05 CARRIES ALMOST NO INFORMATION. Every correlational claim in this program on ~10 units needs a disjoint confirmatory set before it is quoted.",
    "bar_design_flaw_recorded": "S1616's pred_b ('SNR beats n') PASSED vacuously -- |.0788| > |.0182| is true while both are indistinguishable from zero. A comparative bar without an absolute floor can be satisfied by two null quantities. Scored as a pass because it was registered that way, and flagged."
+  },
+  "head_grain_generality": {
+   "section": "S1617",
+   "score": "2-for-3",
+   "what_was_tested": "S1608 certified the head-grain law on TWO cells at 3.1-18.8x separation. S1617 tests GENERALITY: 6 new classes (colon, months, close_paren, digits, comma, and) x both mlp11 and mlp17 x their certified layers = 30 cells, |lambda|-r8 vs matched-rank random on identical rows.",
+   "headline": {
+    "cells": 30,
+    "lambda_hits": "12 (40.0%)",
+    "random_hits": "4 (13.3%)",
+    "ratio": "3.0x"
+   },
+   "HEAD_GRAIN_FLOOR": "in 4 of the 12 lambda hits the RANDOM arm finds the SAME certified head (close_paren L13 both sites, 'and' L10 both sites) -- at those layers the certified head dominates under ANY basis. GENUINE DISCRIMINATION IS 8/30 = 26.7%, not 40%. The S1606 floor reaches head grain too; S1608 found none only because its two cells happened not to have it.",
+   "class_dependence": {
+    "colon": "2/2",
+    "close_paren": "2/2",
+    "comma": "5/8",
+    "and": "3/8",
+    "months": "0/2",
+    "digits": "0/8"
+   },
+   "digits_is_instructive": "the |lambda| top head is a consistent NEIGHBOUR of the certified head at every layer -- 7.8 vs 7.3, 6.7 vs 6.5, 12.7 vs 12.6, 11.6 vs 11.5. The slice resolves to a nearby but different head, not to noise. comma and 'and' show exact hits elsewhere, so this is not an indexing artifact.",
+   "site_effect": "mlp17 46.7% vs mlp11 33.3% -- consistent with mlp17 as the late readout. Testing both rather than guessing one avoided understating the law by a third.",
+   "REVISES_THE_UNIVERSAL_CLAIM": "S1597/S1598's 'EVERY attention writer of a certified eigen slice resolves at head grain to a certified circuit head of that class' is TOO STRONG as a general statement. Supported form: at SOME classes and sites the slice resolves to the certified head, at ~3x a matched-rank random basis and ~27% absolute after floor correction; at others (digits, months) it resolves to a NEIGHBOURING head. S1608 stands as written for its own two cells."
   }
  },
  "_priority_metric_validation": {
