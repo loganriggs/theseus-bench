@@ -486,7 +486,7 @@
     "attn9": "9.7 (221)"
    },
    "both_are_certified_question_circuit_heads": true,
-   "FLOOR_CAVEAT": "S1606: this top-4 has NOT had a random-subspace control run at its own cell (question@mlp11, rank-2). The .718 share and the membership may include generic high-norm components. The head_grain sub-claim is a WITHIN-layer ratio and is under test separately (headgrain_control)."
+   "FLOOR_CAVEAT": "S1606/S1608 RESOLVED FOR HEAD GRAIN: the head_grain sub-claim has now had its matched-rank random control (S1608) and PASSED -- 10.5 concentrates 18.8x harder than a random basis at attn10, and the S1597 20:1 ratio reproduces at 33.15 on fresh rows. THE CAVEAT STILL STANDS FOR THIS COMPONENT-LEVEL top4 AND ITS .718 SHARE, which have NOT been controlled at this cell; S1606 showed a random rank-8 subspace returns plausible-looking component writers, so membership and share may include generic high-norm components."
   },
   "causal": {
    "top4_source_cut": {
@@ -698,6 +698,19 @@
    "NOT_licensed": "any statement about S1597/S1598's head-grain law, which remains UNTESTED against a random control. The head_grain FLOOR_CAVEAT stays accurate: the control is still pending.",
    "incidental": "the 10x gap between these ratios (median 1.40) and the published ones (6.8:1, 9.1:1, 20:1) is a further instance of S1606 -- head grain is as slice-rule-dependent as component attribution",
    "in_flight": "headgrain_control2: the |lambda| rule at BOTH published cells vs matched-rank random arms"
+  },
+  "head_grain_control": {
+   "section": "S1608",
+   "score": "2-for-3",
+   "verdict": "THE HEAD-GRAIN LAW SURVIVES. |lambda| slice vs matched-rank random, 3 disjoint samples per arm, both published cells.",
+   "circuit_layer_separations": {
+    "pronouns@mlp17 attn9": "9.6 at 6.93 mean vs random 2.24 -> 3.1x",
+    "pronouns@mlp17 attn12": "12.4 at 8.45 vs random 1.23 -> 6.9x",
+    "question@mlp11 attn10": "10.5 at 33.15 vs random 1.76 -> 18.8x"
+   },
+   "published_ratios_reproduce": "S1598 attn9 6.8:1 -> 6.93 measured; S1598 attn12 9.1:1 -> 8.45; S1597 attn10 20:1 -> 33.15 (exceeds). Fresh disjoint rows, no refitting.",
+   "negative_control_inside": "question@mlp9: |lambda| head 9.7 at 1.11 vs random 1.16 = 1.0x separation, NO concentration -- and S1597 never claimed a sharp head there (attn9 slice writing 221 vs attn10's 625). The law holds where the writer graph says the circuit is and is SILENT where it is not; that asymmetry is what distinguishes mechanism from norm artifact.",
+   "pred_c_failed": "whole-stack median beats random by only 1.165x/1.395x vs a 1.5x bar. MEASUREMENT lesson, not physics: the law is layer-specific, so a median over 18 layers averages an 18.8x effect at one layer into noise from ~16 with no class signal. The registered statistic could not detect what it was registered for."
   }
  },
  "_priority_metric_validation": {
