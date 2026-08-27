@@ -1197,5 +1197,51 @@
    "claim": "mlp1's channel is NOT selective for mlp0's classes, and self-derived classes do not rescue it -- selectivity is a SITE property, not a method property. Front map: mlp0 4.3x > mlp2 1.9 > mlp3 1.4. So a class-conditioned program that works at mlp0 should NOT be assumed to transfer to mlp1."
   },
   "implications_for_the_sequential_pipeline": "1. mlp1 is where the nats are -- 6.997 against mlp0's .799. A compiler that succeeds at site 0 and fails at site 1 has captured ~10% of the early-block stake. 2. It is MORE tableable than mlp0 (94.5%), so the token-table baseline is even harder to beat here. 3. A priced frontier already exists (.9624 @ 214 Mbit); place new programs against it. 4. The mlp0->mlp1 interface is rank-32 and 64% genuine -- a sequential program must carry that channel, and \u00a71616's 8.9x superadditivity says it cannot be validated site-by-site in isolation. 5. Do NOT assume mlp0's class conditioning transfers: \u00a71491 says selectivity is a site property. PROTOCOL WARNING: ladder-protocol numbers; not comparable to exact-restoration denominators (\u00a71324)."
+ },
+ "_front_band_account": {
+  "purpose": "The bottom-up account of the EVALUABLE FRONT (mlp0-3) assembled 2026-08-27 on Logan's direction to go bottom-up from the beginning, quality first. Completes _mlp0_dossier and _mlp1_dossier. ASSEMBLED FROM EXISTING SECTIONS, NOT RE-MEASURED (LESSONS 26). Every line names its source.",
+  "the_four_evaluable_front_modules": {
+   "note": "stake = mean-ablation CE cost (nats); ceiling = 50k token-table recovery. \u00a71324/\u00a71326 ladder.",
+   "mlp0": {
+    "stake": 0.799,
+    "ceiling": 0.863,
+    "residue_nats": 0.11
+   },
+   "mlp1": {
+    "stake": 6.997,
+    "ceiling": 0.945,
+    "residue_nats": 0.385
+   },
+   "mlp2": {
+    "stake": 0.76,
+    "ceiling": 0.716,
+    "residue_nats": 0.216
+   },
+   "mlp3": {
+    "stake": 0.631,
+    "ceiling": 0.593,
+    "residue_nats": 0.257
+   },
+   "reading": "STAKE is wildly uneven -- mlp1 at 6.997 dwarfs the other three combined (2.19). CEILING decays with depth after mlp1: .945 -> .716 -> .593, i.e. the front becomes progressively LESS token-tableable as it goes up, and by mlp16/17 it is ~.49. The front is a token-dictionary cascade that thins out."
+  },
+  "what_each_does": {
+   "mlp0": "computes the token's CLASS nonlinearly, not its identity -- mean-table effective rank 22.7 vs embedding 132.4, only 44% linearly predictable from the embedding (\u00a7780)",
+   "mlp1": "the high-stake module and the MOST tableable (94.5%); its input edge from mlp0 is a ~32-direction bilinear channel that is 64% genuine signal against attention edges at 5% (\u00a71463/\u00a71473)",
+   "mlp2": "brittle -- \u00a71485 calls it 'the strongest local!=composite case at module grain': its plank is brittle in EVERY context. But \u00a71489 shows a 1.8-Mbit CE-trained correction recovers .80 CE of the ship, so the brittleness is repairable at small price",
+   "mlp3": "composes CHEAPLY -- \u00a71496's 23-module ship (+.74 CE) has mlp3's output projection and mlp17's stream-reader both composing without incident"
+  },
+  "selectivity_map": {
+   "ordering": "mlp0 4.3x > mlp2 1.9 > mlp3 1.4 > mlp1 1.0",
+   "source": "\u00a71495",
+   "reading": "Selectivity DECAYS monotonically-ish after mlp0 and is a SITE property, not a method property (\u00a71491 -- self-derived classes do not rescue mlp1's channel). Note mlp1 is LAST in selectivity while FIRST in stake: the biggest module is the least class-selective one."
+  },
+  "HOW_THEY_COMPOSE_the_key_operational_fact": {
+   "tables_compose_additively": "block0 table .1666 + block1 table .5218 -> both .6654 against a .6884 sum (\u00a7546)",
+   "refitting_makes_it_worse": "block1 refitted with block0 active: 1.0647 (\u00a7546)",
+   "projections_do_not_compose": "six blocks under rank truncation cost 1.6x their sum (\u00a7541), with cancellation in the increments (\u00a7543)",
+   "exact_restoration_is_strongly_superadditive": "joint live MLP0+1+2 restoration .5115 nats vs .0573 singleton sum = 8.9x (\u00a71616)",
+   "mechanism": "\u00a7546: 'replacing a block with a table indexed on its OWN variable does not disturb the next block the way projecting its output does.' THE SUBSTITUTION FAMILY DETERMINES THE COMPOSITION LAW. Tables ~additive; projections superadditive; exact restoration strongly superadditive. These are not contradictory measurements of one quantity -- they are three families."
+  },
+  "implications_for_a_bottom_up_compiler": "1. Target mlp1 first if the goal is nats: 6.997 against 2.19 for mlp0+mlp2+mlp3 combined. 2. Target mlp0 first if the goal is UNDERSTANDING: it is small, near the tokens, computes a 23-dim class code, and everything above reads it (mlp4 takes .674 dCE from mlp0, \u00a71422). 3. Prefer TABLE-family components where composition matters -- they are the only family measured to compose additively, and refitting them against each other makes things WORSE not better. 4. Do not certify any front module in isolation: \u00a71616's 8.9x superadditivity and \u00a71485's mlp2 brittleness are both local!=composite failures at module grain. 5. A priced frontier already exists for mlp1 (.9624 @ 214 Mbit, \u00a71480) and a cheap repair for mlp2 (1.8 Mbit recovers .80 CE, \u00a71489) -- place new programs against these, not in a vacuum. PROTOCOL WARNING: ladder-protocol numbers throughout; \u00a71324 warns they do not compare to exact-restoration denominators. Three incompatible mlp0 values exist. Never mix denominators."
  }
 }
