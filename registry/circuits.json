@@ -1482,5 +1482,44 @@
   "coverage_control": "a linear map has no coverage gap; scoring the linear arms both all-positions and covered-only differs by at most 3.49% across the curve, so the table's 21.73% and the 40-point family gap are not coverage artifacts",
   "protocol": "joint substitution over the band, covered-position scoring, optimal-constant stake -- identical to S1666 so the numbers compare",
   "status": "certified"
+ },
+ "_program_family_table_by_band": {
+  "claim": "bilin18 has three program regimes. FRONT (mlp0-3) is the only TABULAR band: token table 76.45% beats a full-rank linear map of the residual stream at 68.68%. MIDDLE (mlp4-15) is linear-ish and the most bilinear: linear 62.33% vs token 21.73%, quadratic remainder 37.67%. LATE (mlp16-17) is nearly a linear readout: linear 83.60%, quadratic remainder only 16.40%.",
+  "sections": "S1668",
+  "script": "bilinear_quotient/band_linear_compare.py",
+  "table": {
+   "front": {
+    "stake": 4.3922,
+    "token": 0.7645,
+    "linear_full": 0.6868,
+    "quadratic_remainder": 0.3132
+   },
+   "middle": {
+    "stake": 2.6453,
+    "token": 0.2173,
+    "linear_full": 0.6233,
+    "quadratic_remainder": 0.3767
+   },
+   "late": {
+    "stake": 0.7174,
+    "token": 0.5102,
+    "linear_full": 0.836,
+    "quadratic_remainder": 0.164
+   }
+  },
+  "control": "the middle band replicates S1667's 62.33% to the digit within the same execution",
+  "failed_prediction_a": "predicted the front band would be more linear than tabular like the middle; it is the REVERSE by 7.8 points. This strengthens _front_is_tabular_middle_is_not -- a linear map with the whole residual stream does worse than a table with only the token.",
+  "failed_generalisation_b": "pred_b (quadratic remainder grows with depth) PASSED literally (front 31.3% < middle 37.7%) but its claim is FALSE: the late band is 16.4%, the smallest. Bilinearity peaks in the middle and largely switches off at the top.",
+  "EXCLUDED_all18_row": "the all-eighteen arm returned -42.99% (worse than constant ablation) and is NOT a measurement -- off-distribution compounding, see LESSONS 28. The front band's rank-64 figure (12.30%) is junk for the same reason (non-monotone rank curve); only its full-rank 68.68% is a fair comparator.",
+  "status": "certified"
+ },
+ "_joint_substitution_compounds_off_distribution": {
+  "claim": "A substitution fitted against the real model and applied jointly at many sites compounds off-distribution and past some number of sites returns a NEGATIVE ceiling (worse than constant ablation). 12 sites: 62.33%. 18 sites: -42.99%.",
+  "sections": "S1668",
+  "lesson": "LESSONS 28",
+  "diagnostic": "non-monotonicity in the rank curve. The front band ran 30.1%, -9.0%, 9.8%, 12.3%, 52.6%, 68.7% -- a curve that dips below its own rank-1 value is reporting compounding, not dimensionality.",
+  "usable_arms": "the full-rank arm (no truncation error, isolates compounding alone) and single-band arms small enough to stay stable",
+  "prior_art": "S546 found the opposite remedy also fails -- refitting block 1 against an already-substituted block 0 cost +1.0647 vs +0.6654 naive. Neither naive nor refitted composition is safe by default.",
+  "status": "certified"
  }
 }
