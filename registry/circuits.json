@@ -744,6 +744,30 @@
    "S1598_verdict_strengthened": "S1598 scored .482 against an arbitrary registered bar of .55 and called it a failure of sparsity. The actual null at that cell is .7295. Against the null the pronoun slice is DRAMATICALLY less concentrated than a meaningless basis -- a positive structural claim about distributed writing, not a negative result.",
    "membership_at_question": "lambda top-4 = mlp17, mlp11, attn10, mlp9; random top-4 = mlp17, mlp10, mlp11, mlp16. FLOOR = {mlp17, mlp11}. RULE-SPECIFIC = {attn10, mlp9}, absent from random in 3/3.",
    "WITHDRAWS": "S1610's claim that attn10 is 'not distinguishable from floor'. That used the positive-only statistic. Under the correct absolute-mass statistic attn10 is ABSENT from the random top-4 in 3/3 -- S1597's headline head SURVIVES the control."
+  },
+  "null_share_is_not_tabulable": {
+   "section": "S1613",
+   "score": "1-for-3",
+   "question": "can the matched-rank null share be tabulated from (rank, TOP) and reused, or does every claim need its own random arm?",
+   "answer": "EVERY CLAIM NEEDS ITS OWN MATCHED-CLASS, MATCHED-RANK ARM. The class effect (.1417) is 3.3x the rank effect (.0427), so the dominant term changes with every claim.",
+   "class_sweep_rank2_TOP4": {
+    "question": 0.4489,
+    "is": 0.5183,
+    "pronouns": 0.557,
+    "the": 0.5906,
+    "range": 0.1417
+   },
+   "rank_sweep_question_TOP4": {
+    "r2": 0.4489,
+    "r4": 0.4591,
+    "r8": 0.4916,
+    "r16": 0.4809,
+    "range": 0.0427,
+    "monotone": false
+   },
+   "self_consistency": "the question rank-2 null reproduced S1612's .4489 to four decimals -- the harness is sound, so the two failures are real",
+   "n_hypothesis_NOT_supported": "the null loosely tracks class count (question n=102 lowest, 'the' n=2354 highest) but Spearman rho = .800 on N=4 with exact permutation p = .167; 'is' (519) and 'pronouns' (399) invert the ordering. UNDERPOWERED, not supported. Needs ~7+ classes.",
+   "CONSTRAINS_S1612": "the pronouns-vs-question null gap (.7295 vs .4489) confounds rank, TOP and class together. S1612's WITHIN-cell conclusions stand (each slice vs its own null on identical rows), but nothing licenses comparing the two cells' shares -- and by the same logic S1598's .482 must NOT be set against S1597's .718."
   }
  },
  "_priority_metric_validation": {
