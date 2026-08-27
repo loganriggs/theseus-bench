@@ -2049,5 +2049,41 @@
    "_attention_value_path_is_high_rank"
   ],
   "status": "certified"
+ },
+ "_whole_model_program": {
+  "claim": "A 36-piece compiled program -- a linear map of the residual stream at each of bilin18's 18 MLPs and a lag-1 map [x_t, x_(t-1)] at each of its 18 attention output writes, compiled INTERLEAVED bottom-up -- reproduces 50.94% of a 5.5684-nat joint stake (2.836 nats). First whole-model figure in this arc.",
+  "sections": "S1694",
+  "script": "bilinear_quotient/whole_model_program.py",
+  "arms": {
+   "mlp_only": {
+    "sites": 18,
+    "stake": 4.3301,
+    "ceiling": 0.6081
+   },
+   "attn_only": {
+    "sites": 18,
+    "stake": 3.557,
+    "ceiling": 0.5626
+   },
+   "both": {
+    "sites": 36,
+    "stake": 5.5684,
+    "ceiling": 0.5094
+   }
+  },
+  "controls": "the MLP-only arm reproduces S1676's 60.81% and the attention-only arm S1685's 56.26%, both exactly; the baseline CE reproduces 3.29205",
+  "halves_compound_gently": "the joint ceiling is 9.9 points below MLP-only and 5.3 below attention-only. Each half's program was fitted against a real other half; absorbing the other's error costs ~10 points, not the collapse S1668 produced when independently-fitted programs were installed together (-42.99%). Interleaved compilation is the difference.",
+  "joint_stake_is_subadditive": "5.5684 against 7.8872 for the halves summed -- the S1666 CE-saturation effect (5.57 nats above a 3.29 live CE puts the model at 8.86 against a 10.82 uniform ceiling). The joint CEILING is a ratio within its own condition and is unaffected, but the joint STAKE is not additive.",
+  "scope": "attention v1 passed through unchanged (S1682, S1684) -- 36 output paths replaced, not 36 modules",
+  "status": "certified"
+ },
+ "_baseline_needs_a_known_answer_check": {
+  "claim": "A ceiling is a ratio of three measured numbers and a known-answer check on one is not a check on the other two. Every identity arm in the S1659-S1693 arc constrains the SUBSTITUTION; none constrains the BASELINE.",
+  "sections": "S1695",
+  "lesson": "LESSONS 29 addendum",
+  "evidence": "the first execution of whole_model_program.py measured ce_live THROUGH constant-ablation hooks registered directly on the modules, returning 8.86042 against the arc's own 3.29205. Every stake went negative, every ceiling NaN. The identity arms would have PASSED had the run reached them, because the substitution was fine.",
+  "fix": "assert abs(ce_live - published_ce_live) <= 1e-3, pinning the baseline the same way the identity arm pins the substitution",
+  "what_caught_it": "8.86 being visibly wrong to a reader of the ledger -- the same luck that caught S1681's no-op, and luck is not a control",
+  "status": "certified"
  }
 }
