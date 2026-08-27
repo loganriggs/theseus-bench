@@ -1124,7 +1124,8 @@
   },
   "EVALUABILITY_CAVEAT": "ONLY SIX MODULES ARE EVALUABLE: mlp0-3, mlp16, mlp17. Twelve (mlp4-mlp15) have stakes of 0.028-0.104 nats, so every recovery figure for them divides by a near-zero denominator. Their mostly NEGATIVE ceilings are the instrument's noise floor, not a module property: a 50k-entry table estimated from 1920 rows carries estimation noise exceeding a 0.05-nat signal. THIS INSTRUMENT IS UNINFORMATIVE BELOW ~0.15 NATS OF STAKE and the elbow index is meaningless there (mlp4's reads -333700). Do not quote the middle rows.",
   "the_three_regimes": "FRONT (mlp0-3): high ceiling .59-.95, largely token-tableable. MIDDLE (mlp4-15): below the instrument's floor, unmeasured rather than measured-as-zero. TOP (mlp16/17): ceiling ~.49, genuinely half contextual. Front-minus-back ceiling gap .471 vs .206.",
-  "related_artifacts": "opt_ablation_consts_all.pt holds optimal ablation constants for all 198 components; bilin18_scoreboard_mp_results.json holds per-component benefit/keep_cent/keep_mean/rand for all 36. NOTE these use DIFFERENT protocols and denominators from the ladder above -- \u00a71324 warns explicitly that its mean-ablation stake is 'not directly comparable' to the \u00a7713 rank-profile benefit. Three mlp0 numbers exist in three protocols (ladder stake .799, scoreboard benefit 2.195); never mix them."
+  "related_artifacts": "opt_ablation_consts_all.pt holds optimal ablation constants for all 198 components; bilin18_scoreboard_mp_results.json holds per-component benefit/keep_cent/keep_mean/rand for all 36. NOTE these use DIFFERENT protocols and denominators from the ladder above -- \u00a71324 warns explicitly that its mean-ablation stake is 'not directly comparable' to the \u00a7713 rank-profile benefit. Three mlp0 numbers exist in three protocols (ladder stake .799, scoreboard benefit 2.195); never mix them.",
+  "CAVEAT_S1660_ceilings_understated": "Table ceilings here were fitted with an unseen-token fallback and substituted at ALL positions. S1660 shows that contaminates covered positions via attention and UNDERSTATES the ceiling. Measured on mlp0: 74.42% all-positions vs 90.27% covered-hybrid, a 15.9-point understatement. Only mlp0 has been remeasured; the ORDERING across modules is likely preserved but the LEVELS are not trustworthy."
  },
  "_mlp0_dossier": {
   "purpose": "Everything the ledger establishes about mlp0 in one place, assembled 2026-08-27 for the bottom-up push. ASSEMBLED FROM EXISTING SECTIONS, NOT RE-MEASURED -- every line names its source and was verified by reading that section, after a duplicated run (LESSONS 26) showed that scattered results get re-run.",
@@ -1167,7 +1168,8 @@
    "source": "\u00a71614",
    "claim": "The prose-content factorization at MLP0/1 is FALSIFIED by a local same-realization oracle; MLP2 is a regularizer sign, not a replacement."
   },
-  "implications_for_an_executable_compiler": "1. The target is bounded: mlp0's entire stake is .799 nats in the ladder protocol. 2. A TOKEN TABLE is an executable program (zero original-MLP calls) worth ~86% of it, and no compiled map earns credit unless it beats that baseline -- Codex's {N,P,E,Q,O} lattice has no table arm. 3. The real target is the .110-nat un-tableable residue, not the module. 4. Expect linear grammars to underperform: the class structure is 44% linearly predictable. 5. Do not compile mlp0 alone -- \u00a71616's 8.9x superadditivity says the early block is coupled. PROTOCOL WARNING: these are LADDER-protocol numbers. Three incompatible mlp0 values exist (ladder stake .799, scoreboard benefit 2.195, exact-restoration-on-frozen-ship). \u00a71324 warns they are 'not directly comparable'. Never mix denominators."
+  "implications_for_an_executable_compiler": "1. The target is bounded: mlp0's entire stake is .799 nats in the ladder protocol. 2. A TOKEN TABLE is an executable program (zero original-MLP calls) worth ~86% of it, and no compiled map earns credit unless it beats that baseline -- Codex's {N,P,E,Q,O} lattice has no table arm. 3. The real target is the .110-nat un-tableable residue, not the module. 4. Expect linear grammars to underperform: the class structure is 44% linearly predictable. 5. Do not compile mlp0 alone -- \u00a71616's 8.9x superadditivity says the early block is coupled. PROTOCOL WARNING: these are LADDER-protocol numbers. Three incompatible mlp0 values exist (ladder stake .799, scoreboard benefit 2.195, exact-restoration-on-frozen-ship). \u00a71324 warns they are 'not directly comparable'. Never mix denominators.",
+  "CAVEAT_S1660_ceilings_understated": "Table ceilings here were fitted with an unseen-token fallback and substituted at ALL positions. S1660 shows that contaminates covered positions via attention and UNDERSTATES the ceiling. Measured on mlp0: 74.42% all-positions vs 90.27% covered-hybrid, a 15.9-point understatement. Only mlp0 has been remeasured; the ORDERING across modules is likely preserved but the LEVELS are not trustworthy."
  },
  "_mlp1_dossier": {
   "purpose": "mlp1 assembled for the bottom-up walk, 2026-08-27. Codex's v21 pipeline goes MLP0 then MLP1 ('regenerate MLP1 fit/validation states under true Q0; then freeze true Q1'), so this is the next site they will need. ASSEMBLED FROM EXISTING SECTIONS, NOT RE-MEASURED (LESSONS 26).",
@@ -1196,7 +1198,8 @@
    "source": "\u00a71490 / \u00a71491 / \u00a71495",
    "claim": "mlp1's channel is NOT selective for mlp0's classes, and self-derived classes do not rescue it -- selectivity is a SITE property, not a method property. Front map: mlp0 4.3x > mlp2 1.9 > mlp3 1.4. So a class-conditioned program that works at mlp0 should NOT be assumed to transfer to mlp1."
   },
-  "implications_for_the_sequential_pipeline": "1. mlp1 is where the nats are -- 6.997 against mlp0's .799. A compiler that succeeds at site 0 and fails at site 1 has captured ~10% of the early-block stake. 2. It is MORE tableable than mlp0 (94.5%), so the token-table baseline is even harder to beat here. 3. A priced frontier already exists (.9624 @ 214 Mbit); place new programs against it. 4. The mlp0->mlp1 interface is rank-32 and 64% genuine -- a sequential program must carry that channel, and \u00a71616's 8.9x superadditivity says it cannot be validated site-by-site in isolation. 5. Do NOT assume mlp0's class conditioning transfers: \u00a71491 says selectivity is a site property. PROTOCOL WARNING: ladder-protocol numbers; not comparable to exact-restoration denominators (\u00a71324)."
+  "implications_for_the_sequential_pipeline": "1. mlp1 is where the nats are -- 6.997 against mlp0's .799. A compiler that succeeds at site 0 and fails at site 1 has captured ~10% of the early-block stake. 2. It is MORE tableable than mlp0 (94.5%), so the token-table baseline is even harder to beat here. 3. A priced frontier already exists (.9624 @ 214 Mbit); place new programs against it. 4. The mlp0->mlp1 interface is rank-32 and 64% genuine -- a sequential program must carry that channel, and \u00a71616's 8.9x superadditivity says it cannot be validated site-by-site in isolation. 5. Do NOT assume mlp0's class conditioning transfers: \u00a71491 says selectivity is a site property. PROTOCOL WARNING: ladder-protocol numbers; not comparable to exact-restoration denominators (\u00a71324).",
+  "CAVEAT_S1660_ceilings_understated": "Table ceilings here were fitted with an unseen-token fallback and substituted at ALL positions. S1660 shows that contaminates covered positions via attention and UNDERSTATES the ceiling. Measured on mlp0: 74.42% all-positions vs 90.27% covered-hybrid, a 15.9-point understatement. Only mlp0 has been remeasured; the ORDERING across modules is likely preserved but the LEVELS are not trustworthy."
  },
  "_front_band_account": {
   "purpose": "The bottom-up account of the EVALUABLE FRONT (mlp0-3) assembled 2026-08-27 on Logan's direction to go bottom-up from the beginning, quality first. Completes _mlp0_dossier and _mlp1_dossier. ASSEMBLED FROM EXISTING SECTIONS, NOT RE-MEASURED (LESSONS 26). Every line names its source.",
@@ -1266,5 +1269,35 @@
    "S1616 three modules, exact restoration": "ratio 8.9x at singleton sum 0.0573 -- a SMALL-effect sum, so part of that 8.9x may be the same artifact. FLAGGED, not withdrawn: it is a different protocol and I am not repeating S1656 by assuming my curve transfers."
   },
   "TOTAL_GLASS_IS_NOT_AFFECTED": "S1658 checked the benchmark headline series. As the ship improves its total effect shrinks (1.610 -> 1.176 -> 0.900) while compounding FALLS (1.43 -> 1.04 -> 0.80). The artifact pushes ratios UP as effects shrink, so the observed trend runs OPPOSITE to it and cannot be produced by it. v4 sub-additivity stands; the improvement was if anything MASKED. The confound is CONSERVATIVE here: equal compounding at a smaller total effect is a real gain, not a plateau."
+ },
+ "_mlp0_dossier_resolved": {
+  "claim": "mlp0 is ~90% a current-token lookup table, and 100% of the remaining residue is context delivered by attn0. mlp0 computes no context-dependence of its own.",
+  "sections": "S1659-S1661",
+  "script": "bilinear_quotient/mlp0_inherited_context3.py",
+  "measurement": {
+   "protocol": "per-token mean table for mlp0, fit skip1200 / eval skip7000, positions>=64; HYBRID substitution (table only at covered positions, mlp0 LIVE elsewhere); CE scored on covered positions only; ablation baseline = optimal constant from opt_ablation_consts_all.pt",
+   "live_attn0_covered_ceiling": 0.90265,
+   "frozen_attn0_covered_ceiling": 1.0,
+   "stake_nats_live": 0.85521,
+   "context_share": 0.09735,
+   "context_share_nats": 0.0833
+  },
+  "instrument_check": {
+   "known_answer_derivation": "attn0 frozen at a constant => residual stream below mlp0 is embedding+constant => mlp0 is position-wise deterministic in the current token => a covered table must be exact => ceiling must be 1.0",
+   "observed": 1.0,
+   "hard_evidence": "ce_table == ce_live == 3.50924 to five decimals",
+   "status": "PASSED"
+  },
+  "answers_open_question_in": "_mlp0_dossier",
+  "not_claimed": "the 100% frozen ceiling is a CHECK, not a discovery -- with attn0 constant mlp0 is a token function by construction. The finding is the live arm's 90.27% and the fact that freezing one module accounts for the entire remainder.",
+  "supersedes": "two earlier versions of this measurement (S1659) whose instrument check failed; neither was reported",
+  "status": "certified"
+ },
+ "_position_wise_masking_cannot_isolate": {
+  "claim": "In a transformer, excluding positions from a CE average does NOT isolate a position-wise substitution applied at those positions: the wrong values propagate upward and attention mixes them into the retained positions. Interventions must be restricted in the FORWARD PASS, not repaired in the score.",
+  "sections": "S1660",
+  "lesson": "LESSONS 27",
+  "evidence": "on a quantity with an analytically known answer of 1.0: substitute-everywhere + mask-score gave 0.5583; substitute-only-where-valid gave 1.0000. A 44-point error.",
+  "status": "certified"
  }
 }
