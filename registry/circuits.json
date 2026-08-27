@@ -1341,5 +1341,50 @@
   "CAUTION_head_grain_at_floor": "the manipulation check passed by 0.01 points -- largest single-head ceiling shift 0.51pp against a 0.50pp bar. The NEGATIVE aggregate (no head is large) is supported precisely because everything is small; the head RANKING is NOT supported and head0.3's 12.68% is suggestive only (head1.4 scores -3.43%, comparable noise).",
   "caveat_stakes_move": "refitted stake varies by condition (7.005 live / 7.819 attn0-frozen / 6.826 attn1-frozen / 6.067 both), so attributions are not constrained to compose; the 38.27% sum is reported raw, not normalised",
   "status": "certified"
+ },
+ "_front_band_tables_are_low_rank": {
+  "claim": "The front MLPs' per-token tables are low rank: rank 64 of 1152 recovers 96.5%/97.0%/91.7%/97.5% of the full-table ceiling at mlp0/1/2/3. The whole front band (9.25 nats of stake) is ~85% reproduced by four rank-64 lookup tables.",
+  "sections": "S1664",
+  "script": "bilinear_quotient/front_table_rank_structure.py",
+  "protocol": "per-token table, SVD centred on the position-weighted mean with rows scaled by sqrt(count) so truncation minimises POSITION-weighted error; S1661 hybrid substitution; covered-position scoring",
+  "rank_curve_frac_of_full": {
+   "mlp0": {
+    "1": 0.6503,
+    "8": 0.7718,
+    "16": 0.8555,
+    "23": 0.8924,
+    "64": 0.9652,
+    "128": 0.9893
+   },
+   "mlp1": {
+    "1": 0.2341,
+    "8": 0.6655,
+    "16": 0.8848,
+    "23": 0.92,
+    "64": 0.9702,
+    "128": 0.9914
+   },
+   "mlp2": {
+    "1": 0.5303,
+    "8": 0.6595,
+    "16": 0.7563,
+    "23": 0.801,
+    "64": 0.9167,
+    "128": 0.9722
+   },
+   "mlp3": {
+    "1": 0.5974,
+    "8": 0.8341,
+    "16": 0.9066,
+    "23": 0.9227,
+    "64": 0.9751,
+    "128": 1.0075
+   }
+  },
+  "replicates": "S780's effective rank 22.7 for mlp0 -- rank 23 reaches 89.24% of its full table. Also replicates all four S1662 full-table ceilings to the digit.",
+  "supersedes": "S1655 (discarded for an unweighted mean constant and a zero fallback); the corrected protocol moves the rank-23 figure from 85.9% to 89.2%, so the curve SHAPE survived those bugs even though the ceiling LEVELS did not",
+  "mlp1_anomaly": "mlp1 gets only 23.4% from rank 1 where the other three get 53-65%, and needs rank 16 for 88%. It is the most tableable front module and the least concentrated in a single direction.",
+  "not_claimed": "mlp3 at rank 128 scores 100.75% of its own full table; the plain reading is that truncation denoises rare-token means, and it is not evidence of anything",
+  "status": "certified"
  }
 }
