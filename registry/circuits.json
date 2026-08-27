@@ -1168,5 +1168,34 @@
    "claim": "The prose-content factorization at MLP0/1 is FALSIFIED by a local same-realization oracle; MLP2 is a regularizer sign, not a replacement."
   },
   "implications_for_an_executable_compiler": "1. The target is bounded: mlp0's entire stake is .799 nats in the ladder protocol. 2. A TOKEN TABLE is an executable program (zero original-MLP calls) worth ~86% of it, and no compiled map earns credit unless it beats that baseline -- Codex's {N,P,E,Q,O} lattice has no table arm. 3. The real target is the .110-nat un-tableable residue, not the module. 4. Expect linear grammars to underperform: the class structure is 44% linearly predictable. 5. Do not compile mlp0 alone -- \u00a71616's 8.9x superadditivity says the early block is coupled. PROTOCOL WARNING: these are LADDER-protocol numbers. Three incompatible mlp0 values exist (ladder stake .799, scoreboard benefit 2.195, exact-restoration-on-frozen-ship). \u00a71324 warns they are 'not directly comparable'. Never mix denominators."
+ },
+ "_mlp1_dossier": {
+  "purpose": "mlp1 assembled for the bottom-up walk, 2026-08-27. Codex's v21 pipeline goes MLP0 then MLP1 ('regenerate MLP1 fit/validation states under true Q0; then freeze true Q1'), so this is the next site they will need. ASSEMBLED FROM EXISTING SECTIONS, NOT RE-MEASURED (LESSONS 26).",
+  "why_mlp1_matters_most": {
+   "stake_mean_ablation_nats": 6.997,
+   "next_largest_mlp": "mlp0 at 0.799 -- mlp1 is 8.8x larger than any other MLP in the model",
+   "token_table_ceiling": 0.945,
+   "un_tableable_residue_nats": 0.385,
+   "source": "\u00a71324 / \u00a71326 ladder",
+   "reading": "mlp1 is THE high-stake MLP: 6.997 nats, more than every other MLP combined by the ladder's own table. And it is MORE token-tableable than mlp0, not less -- 94.5% against 86.3%. A 50k token lookup recovers ~6.6 of its 7 nats. The single largest simplification target in this model is also one of its most table-like."
+  },
+  "already_priced": {
+   "best_priced_point": "tier8000 + rank-256 ridge = .9624 fidelity @ 214 Mbit",
+   "max_fidelity": 0.975,
+   "source": "\u00a71480",
+   "reading": "mlp1 ALREADY HAS A PRICED FRONTIER. Any new compiled program for this site must be placed against .9624 @ 214 Mbit and the .975 max-fidelity point, not proposed in a vacuum."
+  },
+  "its_input_edge": {
+   "mlp0_to_mlp1_channel_rank": 32,
+   "genuine_signal_fraction": 0.64,
+   "contrast_attention_edge": 0.05,
+   "source": "\u00a71463 / \u00a71473",
+   "reading": "The mlp0->mlp1 edge is a ~32-direction bilinear channel and 64% GENUINE SIGNAL, against attention edges at 5%. This is the cleanest inter-module channel found in the model, and it is exactly the interface a sequential MLP0-then-MLP1 compiler has to carry."
+  },
+  "selectivity_is_a_site_property": {
+   "source": "\u00a71490 / \u00a71491 / \u00a71495",
+   "claim": "mlp1's channel is NOT selective for mlp0's classes, and self-derived classes do not rescue it -- selectivity is a SITE property, not a method property. Front map: mlp0 4.3x > mlp2 1.9 > mlp3 1.4. So a class-conditioned program that works at mlp0 should NOT be assumed to transfer to mlp1."
+  },
+  "implications_for_the_sequential_pipeline": "1. mlp1 is where the nats are -- 6.997 against mlp0's .799. A compiler that succeeds at site 0 and fails at site 1 has captured ~10% of the early-block stake. 2. It is MORE tableable than mlp0 (94.5%), so the token-table baseline is even harder to beat here. 3. A priced frontier already exists (.9624 @ 214 Mbit); place new programs against it. 4. The mlp0->mlp1 interface is rank-32 and 64% genuine -- a sequential program must carry that channel, and \u00a71616's 8.9x superadditivity says it cannot be validated site-by-site in isolation. 5. Do NOT assume mlp0's class conditioning transfers: \u00a71491 says selectivity is a site property. PROTOCOL WARNING: ladder-protocol numbers; not comparable to exact-restoration denominators (\u00a71324)."
  }
 }
