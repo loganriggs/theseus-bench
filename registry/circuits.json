@@ -866,6 +866,28 @@
    "ALL_SUSPICION_WITHDRAWN": "across S1620-S1623 the published figure was suspected four times -- corpus, row set, sample size, skip -- and the fault was mine every time. Origin: S1601's channel_budget correctly used all 37 components and the full forward for the FINAL-residual channel; that setup was inherited into the writer-floor work without re-deriving it for the new question.",
    "scope_of_the_error": "every share in S1609-S1622 measures FINAL-RESIDUAL attribution and is NOT comparable to S1597's .718 or S1598's .482. All WITHIN-RUN comparisons survive untouched, since both arms always measured the same quantity on the same rows: the null is cell-dependent (S1612), unpredictable (S1613-S1616), and question sits above its null while pronouns sits far below (S1620-S1622).",
    "open": "pronouns@mlp17 needs its own run at SITE_STOP=17 to test S1598's .482 the same way. The pronouns line in the S1623 run used SITE_STOP=11 on a site-17 cell and is INVALID (excluded from scoring)."
+  },
+  "both_published_shares_reproduce": {
+   "sections": "S1623 (question) + S1624 (pronouns)",
+   "result": {
+    "S1597 question@mlp11": {
+     "measured": 0.7179,
+     "published": 0.718,
+     "delta": 0.0001,
+     "null": 0.5711
+    },
+    "S1598 pronouns@mlp17": {
+     "measured": 0.4823,
+     "published": 0.482,
+     "delta": 0.0003,
+     "null": 0.5744
+    }
+   },
+   "BOTH_VINDICATED": "the same correction reproduces both figures at DIFFERENT sites, ranks and TOP values, which confirms the mechanism rather than a coincidence that happened to hit .718.",
+   "what_has_to_match": "(1) the forward STOPS at the slice site with P = the site's INPUT residual; (2) components are the UPSTREAM set only; (3) depth coefficients are site-relative. My harness ran the full 18 layers, attributed the FINAL residual over all 37 components, and used full-stack coefficients -- a DIFFERENT QUANTITY.",
+   "S1598_diffuse_confirmed": "S1598 registered pred_a >= .55, failed at .482 and called the writers DIFFUSE. The matched-rank null is .5744, so its arbitrary threshold sat within .025 of the true null and the diffuseness is real: .482 is .092 BELOW what a meaningless basis achieves on the same rows.",
+   "forward_stop_dominates_component_count": "at SITE=17 upstream is 36 of 37 components, yet the restriction still moved the share .5819 -> .4823. The excluded component is mlp17, whose contribution S1601 measured at -1151, the largest magnitude in the budget. One excluded component can dominate; do not reason from component COUNTS.",
+   "directional_findings_survive": "S1612/S1620/S1622 found pronouns below its null while measuring the WRONG quantity; measured correctly it is STILL below its null. Within-run comparisons always shared a quantity even when that quantity was not the published one."
   }
  },
  "_priority_metric_validation": {
