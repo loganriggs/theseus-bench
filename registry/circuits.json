@@ -1329,5 +1329,17 @@
   "failed_hypothesis": "pred_b (context share grows with depth) PASSED on its literal condition (mlp3-mlp0 = +22.7pts >= 5) but its motivating claim is FALSE: mlp1 breaks the ordering. Recorded so the prediction flag is not read as support for the generalisation.",
   "limitation": "frozen arms at mlp2/mlp3 replace 3-4 attention modules (CE 5.36/5.67 vs 3.28 live) and are damaged models; they serve only as the known-answer check. Only the live column describes bilin18.",
   "status": "certified"
+ },
+ "_mlp1_residue_is_redundant_not_sparse": {
+  "claim": "mlp1's 0.279-nat un-tableable residue is DIFFUSE and REDUNDANT across the attention beneath it. Freezing attn0 removes none of it (-1.70%); freezing attn1 removes 18.73%; the best of 18 heads reaches 12.68% against a 5.56% uniform baseline; the 18 head attributions sum to 38.27%. Each front attention module is individually near-sufficient to supply mlp1's context.",
+  "sections": "S1663",
+  "script": "bilinear_quotient/mlp1_residue_attribution.py",
+  "attribution_def": "(ceiling_frozen - ceiling_live) / (1 - ceiling_live), table refitted under each condition",
+  "failed_prediction": "pred_b predicted concentration (best head >= 33%); observed 12.68%. The failure IS the result.",
+  "not_architecturally_forced": "nothing required attn0 and attn1 to write overlapping information; the joint 100% IS forced and is used only as the instrument check",
+  "implication": "single-component ablation will systematically under-find mlp1's inputs, since each component is covered for by the other",
+  "CAUTION_head_grain_at_floor": "the manipulation check passed by 0.01 points -- largest single-head ceiling shift 0.51pp against a 0.50pp bar. The NEGATIVE aggregate (no head is large) is supported precisely because everything is small; the head RANKING is NOT supported and head0.3's 12.68% is suggestive only (head1.4 scores -3.43%, comparable noise).",
+  "caveat_stakes_move": "refitted stake varies by condition (7.005 live / 7.819 attn0-frozen / 6.826 attn1-frozen / 6.067 both), so attributions are not constrained to compose; the 38.27% sum is reported raw, not normalised",
+  "status": "certified"
  }
 }
