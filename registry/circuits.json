@@ -486,7 +486,7 @@
     "attn9": "9.7 (221)"
    },
    "both_are_certified_question_circuit_heads": true,
-   "FLOOR_CAVEAT": "S1611: the component floor control at this cell measured POSITIVE-ONLY share, while this entry's .718 is ABSOLUTE attribution mass (S1597 slice_writers.py:216). THE .718 FIGURE HAS NOT YET BEEN TESTED against a matched-rank null; a rerun with matching .abs().sum() ranking is queued. What IS established: on the positive-only statistic a random basis concentrates MORE than the certified slice (.7223 vs .5946, 3/3, n~110), so concentration per se is not evidence. The head_grain sub-claim is separately CONTROLLED AND PASSED (S1608, 18.8x over random)."
+   "FLOOR_CAVEAT": "S1612 (supersedes the S1610/S1611 caveats): tested with the ABSOLUTE-mass statistic these numbers were computed with. At this cell the matched-rank random null share is .4489 and the certified slice is .5563 -- the slice concentrates MORE than the null, so the concentration claim has real content, but the informative quantity is share MINUS null (~.11), not the raw share. MEMBERSHIP: attn10 and mlp9 are RULE-SPECIFIC (absent from the random top-4 in 3/3); mlp17 and mlp11 are FLOOR (present in both arms). head_grain separately controlled and PASSED (S1608, 18.8x)."
   },
   "causal": {
    "top4_source_cut": {
@@ -723,6 +723,27 @@
    "standing_rule": "stronger than LESSONS 15 as written: a component's presence in a top-k writer list is not evidence unless it is ABSENT from the matched-rank random list. Report the random top-k per component, not just the aggregate share.",
    "CORRECTION_S1611": "STATISTIC MISMATCH, found 2026-08-27 06:45. This harness ranks components by POSITIVE-ONLY signed contribution; S1597 (slice_writers.py:216) and S1598 (slice_writers_p.py:205) both rank by ABSOLUTE attribution mass (.abs().sum()). Different statistic, ranking and denominator. The headline 'random .7223 is indistinguishable from S1597's .718' compares two DIFFERENT quantities and is WITHDRAWN -- the closeness is coincidence. Whether S1597's .718 is a null result is UNTESTED.",
    "what_still_stands": "the WITHIN-RUN comparison, since both arms used the same statistic on the same rows: on positive-only share at question@mlp11, a matched-rank random basis scores .7223 vs the certified slice's .5946, 3/3 samples at n~110. Also attn10 in the random top-4 3/3 -- but that is the positive-only top-4, NOT S1597's absolute-mass top-4 (my consensus matches S1597's published set on only 3 of 4, which is the ranking difference showing)."
+  },
+  "share_null_calibration": {
+   "section": "S1612",
+   "score": "0-for-3",
+   "statistic": "ABSOLUTE attribution mass, matching slice_writers.py:216 and slice_writers_p.py:205 exactly (S1611 corrected the earlier positive-only harness)",
+   "THE_NULL_IS_CELL_DEPENDENT": {
+    "question@mlp11 rank-2 TOP=4": {
+     "slice": 0.5563,
+     "random_null": 0.4489,
+     "slice_is": "ABOVE null"
+    },
+    "pronouns@mlp17 rank-8 TOP=6": {
+     "slice": 0.5846,
+     "random_null": 0.7295,
+     "slice_is": "FAR BELOW null"
+    }
+   },
+   "finding": "a top-K share is neither self-evidently meaningful nor self-evidently null: the matched-rank random share is .45 at one cell and .73 at another, and the certified slice sits ABOVE it at question@mlp11 and BELOW it at pronouns@mlp17. The informative quantity is share MINUS null, never share.",
+   "S1598_verdict_strengthened": "S1598 scored .482 against an arbitrary registered bar of .55 and called it a failure of sparsity. The actual null at that cell is .7295. Against the null the pronoun slice is DRAMATICALLY less concentrated than a meaningless basis -- a positive structural claim about distributed writing, not a negative result.",
+   "membership_at_question": "lambda top-4 = mlp17, mlp11, attn10, mlp9; random top-4 = mlp17, mlp10, mlp11, mlp16. FLOOR = {mlp17, mlp11}. RULE-SPECIFIC = {attn10, mlp9}, absent from random in 3/3.",
+   "WITHDRAWS": "S1610's claim that attn10 is 'not distinguishable from floor'. That used the positive-only statistic. Under the correct absolute-mass statistic attn10 is ABSENT from the random top-4 in 3/3 -- S1597's headline head SURVIVES the control."
   }
  },
  "_priority_metric_validation": {
