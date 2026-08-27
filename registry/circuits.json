@@ -2137,7 +2137,7 @@
   "status": "certified"
  },
  "_v1_scope_caveat_closes": {
-  "claim": "Replacing v1 with a per-token table costs exactly 0.00% in the 36-site whole-model program (55.04% either way), so the arc's attention results are statements about MODULES, not output paths. Derived before the run: v1 is ONE object set at block 0, and block 0's attention input is a pure function of the current token (x==x0 there, c_v carries no rotary), so a covered token table must be exact.",
+  "claim": "The covered-token v1 caveat is structurally dischargeable without changing the 55.04% whole-model number: replacing v1 with a per-token table at covered positions costs +0.00% of downstream CE ceiling (55.04% either way). Derived before the run: v1 is ONE object set at block 0 whose input is a pure current-token function, so a covered token table is exact for it.",
   "sections": "S1698",
   "script": "bilinear_quotient/whole_model_with_v1.py",
   "arms": {
@@ -2156,6 +2156,15 @@
    "_whole_model_program",
    "_half_upgrades_do_not_transfer"
   ],
-  "status": "certified"
+  "status": "certified",
+  "claim_ORIGINAL_S1698": "Replacing v1 with a per-token table costs exactly 0.00% in the 36-site whole-model program (55.04% either way), so the arc's attention results are statements about MODULES, not output paths. Derived before the run: v1 is ONE object set at block 0, and block 0's attention input is a pure function of the current token (x==x0 there, c_v carries no rotary), so a covered token table must be exact.",
+  "NARROWED_S1699_after_Codex_review": {
+   "exact_by_construction_WITHDRAWN": "the full-rank linear arm is fitted with ridge 1e-3 and recovers c_v only approximately -- MEASURED relative Frobenius deviation 4.95e-03, max elementwise 6.44e-03 against ||c_v||_F = 259.5. It still returned 55.04% to 2dp, which is a fact about the ceiling's insensitivity, not about exactness.",
+   "covered_token_estimand_only": "sub_v1 is a hybrid hook (torch.where(seen, table, native_v1)); uncovered occurrences retain native v1. The S1698 headline omitted this qualifier.",
+   "equality_is_downstream_not_bitwise": "+0.00% is equality of the scored ceiling to 2dp of a percentage, not bitwise table identity",
+   "essentially_eight_dimensional_WITHDRAWN": "rank-8 v1 costs 0.29 points and the registered >=1-point manipulation check FAILED. Without a rank-0 arm, 'eight dimensions suffice' cannot be distinguished from 'the whole v1 path contributes almost nothing inside a program that already replaces the write'. Both predict 0.29. Pending whole_model_v1_floor.py.",
+   "survives": "the source theorem, the 55.04% headline, and that v1 is not a significant unmodelled term downstream of a substituted write path",
+   "credit": "narrowing raised by Codex's independent review; three of the four points were catchable by me, the ridge one especially since I wrote the ridge"
+  }
  }
 }
