@@ -768,6 +768,16 @@
    "self_consistency": "the question rank-2 null reproduced S1612's .4489 to four decimals -- the harness is sound, so the two failures are real",
    "n_hypothesis_NOT_supported": "the null loosely tracks class count (question n=102 lowest, 'the' n=2354 highest) but Spearman rho = .800 on N=4 with exact permutation p = .167; 'is' (519) and 'pronouns' (399) invert the ordering. UNDERPOWERED, not supported. Needs ~7+ classes.",
    "CONSTRAINS_S1612": "the pronouns-vs-question null gap (.7295 vs .4489) confounds rank, TOP and class together. S1612's WITHIN-cell conclusions stand (each slice vs its own null on identical rows), but nothing licenses comparing the two cells' shares -- and by the same logic S1598's .482 must NOT be set against S1597's .718."
+  },
+  "null_share_mechanism_is_not_n": {
+   "section": "S1614",
+   "score": "2-for-3",
+   "powered_result": "rho(class n, null share) = .6727 at permutation p = .0192 over 10 classes spanning n=118 to 6911. S1613's underpowered association (rho .800, p .167 on 4 classes) is REAL at power.",
+   "but_n_is_NOT_the_mechanism": "equalising every class to a common 117 class positions removes only 6.1% of the spread (.1780 -> .1672), and the class ORDERING survives at rank correlation .952 -- 'said' lowest in both, 'the' highest in both.",
+   "control_validity": "the n-controlled range (.1672) stays far above the .01 floor, so subsampling did not destroy the measurement -- this distinguishes 'n is not the cause' from 'the control broke the instrument'.",
+   "PRACTICAL_RULE": "a matched-CLASS random arm is mandatory and CANNOT be substituted by matching n. The null cannot be tabulated from (rank, TOP) (S1613) and cannot be normalised away by equalising sample size (S1614). Every writer-graph claim carries its own arm at its own class.",
+   "bookkeeping": "S1613's printed class counts were the LAST CHUNK's, not totals (question n=102 there vs 334 total). The two sets of n figures must not be read against each other; S1613's conclusions are unaffected as its comparisons were within-run.",
+   "open": "what property of a class's POSITIONS sets its null -- position-in-sequence distribution, document concentration, or local context entropy. n is a correlate of that property, not the cause."
   }
  },
  "_priority_metric_validation": {
