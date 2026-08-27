@@ -1658,5 +1658,45 @@
   "shape": "ranks 8-256 are flat within 0.4 points; only full rank collapses, by 3.5. The harm is concentrated in the tail directions estimated from a handful of token occurrences -- it is not a capacity trade-off with an optimum to tune.",
   "failed_prediction": "pred_b predicted the regularised additive would overtake pure linear at this fit size; it does not (57.26% vs 58.17%). A token term at all 18 sites is not yet worth its estimation cost.",
   "status": "certified"
+ },
+ "_feature_basis_not_sparse_selectable": {
+  "claim": "bilin18's MLPs cannot be described by keeping a subset of their own 4608 bilinear features. Keeping the top 512 by std(h_j)*||Down[:,j]|| and pinning the rest to their means gives a whole-stack ceiling of -49.93% (worse than replacing every MLP with a constant), and the curve is non-monotone. A rotated basis is monotone and strong: 512 of 1152 output principal directions give 94.87%.",
+  "sections": "S1678-S1679",
+  "scripts": [
+   "bilinear_quotient/bilinear_feature_count.py",
+   "bilinear_quotient/feature_basis_vs_rotated.py"
+  ],
+  "curves": {
+   "topk_features": {
+    "8": -0.3468,
+    "32": -0.2995,
+    "128": -0.4962,
+    "512": -0.4993,
+    "4608": 1.0
+   },
+   "random_features": {
+    "8": -1.2125,
+    "32": -1.2437,
+    "128": -1.2984,
+    "512": -1.3172
+   },
+   "rotated_output_pca": {
+    "8": -0.9175,
+    "32": 0.3969,
+    "128": 0.6361,
+    "512": 0.9487,
+    "1152": 1.0
+   }
+  },
+  "criterion_is_not_the_problem": "top-k beats random by ~80 points, so the ranking is real; both fail anyway",
+  "mechanism": "the readout sums large cancelling contributions; removing either side of a cancelling pair does more damage than the pair was worth",
+  "identity_checks": {
+   "features_k4608": 1.0,
+   "rotated_k1152": 1.0,
+   "status": "both exact"
+  },
+  "CATEGORY_WARNING": "the rotated arm still RUNS the MLP and truncates its output; the linear/table/additive programs REPLACE the module. 94.87% is NOT a better program than the linear map's 58.17% -- it answers 'how much of the effect lives in k output directions', not 'how well can a program compute the output without the module'.",
+  "consequence": "any account treating individual bilinear features as units of computation works in a basis where units cannot be removed, while 512 rotated directions capture 95% of the same output. For this model the interpretable decomposition is a subspace, not a feature list.",
+  "status": "certified"
  }
 }
