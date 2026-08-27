@@ -724,5 +724,18 @@
   "independence_reassessed": "Beyond Codex's point: the two instruments are not independent either. priorities.md ranks by delta_opt x (1 - best fidelity) -- the residual CE cost of substituting a component -- and the factorial measures the CE cost of substituting the deployed planks for a group. Those are close to the SAME quantity computed per-component vs per-group. Worse, the ship's planks were BUILT by targeting the priority board, so mlp012 carrying the residual error is partly a construction artifact: Codex notes the early planks were fit under the attention composite and the bundle includes incumbent MLP2 glue.",
   "what_the_agreement_DOES_show": "a coherence check, not a validation: per-component unexplained-CE estimates aggregate to the right group ranking EVEN THOUGH group effects are non-additive and one is negative. That is mildly informative about the aggregation, and nothing more. The priority metric remains WITHOUT an independent validation.",
   "provisional_data": "Codex's red-team also found factorial v1 bugs: the copy mask covers distances 2-65 rather than 1-64, and rare vocabularies were recomputed per split. TOKEN-CELL values (copy / novel_freq / novel_rare) are therefore PROVISIONAL. The global MLP0-2 allocation 0.7277 / 0.8727 is unaffected. The non-additivity and negative-attention findings rest on the global numbers and on the m+d vs ALL3 contrast, which survive; but any per-cell number quoted from S1608-era boards should be treated as provisional."
+ },
+ "_compression_synthesis_pointer": {
+  "date": "2026-08-27",
+  "question": "does compression help circuits? -- the benchmark's motivating question",
+  "answer_one_line": "compression buys real fidelity cheaply, buys a bounded 2x on quadratic slices, and buys NOTHING circuit-specific: class and generic function degrade in lockstep at every rank tested.",
+  "full_synthesis": "tensor_language basis_aligned/bilinear_quotient/FINDINGS.md entry 11 -- kept in ONE place to avoid divergence; this is a pointer, not a copy.",
+  "load_bearing_negative": "S1596: at r in {4,8,16,32} the class rise ~= the GLOBAL rise at every rank (.99/1.03, .49/.49, .19/.16). No privileged fragile core to cut out, no privileged robust core either.",
+  "confidence": "HIGH for compression-is-extraction (S1594-95), for the non-selectivity (S1596), and for the inertia 2x (verified both bounds 2026-08-27). MEDIUM for the discovery-degrades-faster result (one harness, one rank, its bar met at exactly 0.000 margin).",
+  "registry_dossiers": [
+   "_extraction_asymmetry",
+   "_discovery_compression_ranking",
+   "_mlp_unit_membership"
+  ]
  }
 }
