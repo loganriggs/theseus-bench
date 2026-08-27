@@ -1967,5 +1967,43 @@
   "resolves": "the routing-versus-values question S1689 opened but could not answer in comparable units",
   "combined_picture": "with S1687 (positional families saturate at 70.08%, so routing is worth the ~30% they cannot reach), attention's write is a cheap low-rank SELECTION over an expensive nearly-full-rank PAYLOAD",
   "status": "certified"
+ },
+ "_only_attention_routing_is_compressible": {
+  "claim": "Across four matched rank budgets in bilin18 (same fit, same bottom-up compilation, same currency), only attention's ROUTING tolerates compression. At rank 64 of 1152: attention routing +62.82%, attention values +2.37%, MLP readout (Down) -15.16%, MLP feature-forming (Left/Right) -52.88%. Left/Right is still -37.10% at rank 256.",
+  "sections": "S1692",
+  "script": "bilinear_quotient/mlp_path_rank_curve.py",
+  "curves": {
+   "Down": {
+    "8": -0.894,
+    "32": -0.3803,
+    "64": -0.1516,
+    "256": 0.4397,
+    "1152": 1.0
+   },
+   "LeftRight": {
+    "8": -1.0516,
+    "32": -0.6138,
+    "64": -0.5288,
+    "256": -0.371,
+    "1152": 1.0
+   }
+  },
+  "rank64_ranking": {
+   "attention_routing": 0.6282,
+   "attention_values": 0.0237,
+   "mlp_readout": -0.1516,
+   "mlp_features": -0.5288
+  },
+  "identity_checks": {
+   "Down": 1.0,
+   "LeftRight": 1.0,
+   "monotone": true,
+   "status": "PASSED"
+  },
+  "failed_prediction": "pred_b predicted both MLP arms would clear 50% at rank 64 against attention's 2.37%, on the reading that attention's payload was unusually expensive. Both are NEGATIVE there. Attention's value path is the SECOND CHEAPEST of the four paths, not the expensive outlier -- this reverses the framing given in S1691.",
+  "headline": "a compact program can afford to approximate WHERE the model looks, but not WHAT it computes",
+  "negatives_are_measurements": "both identity arms return exactly 100.00% and both curves are monotone in rank -- the LESSONS 28 diagnostic for distinguishing a real negative from compounding. The substituted models really are worse than constant-ablated ones.",
+  "closes_loop_with_S1679": "S1679 found the 4608 bilinear features are not sparse-SELECTABLE (top 512 pinned is worse than constant ablation, because the readout sums cancelling contributions); S1692 finds the same feature-forming path is not low-rank COMPRESSIBLE either. Two different compressions, two failures, same object.",
+  "status": "certified"
  }
 }
