@@ -2167,7 +2167,8 @@
    "essentially_eight_dimensional_WITHDRAWN": "rank-8 v1 costs 0.29 points and the registered >=1-point manipulation check FAILED. Without a rank-0 arm, 'eight dimensions suffice' cannot be distinguished from 'the whole v1 path contributes almost nothing inside a program that already replaces the write'. Both predict 0.29. Pending whole_model_v1_floor.py.",
    "survives": "the source theorem, the 55.04% headline, and that v1 is not a significant unmodelled term downstream of a substituted write path",
    "credit": "narrowing raised by Codex's independent review; three of the four points were catchable by me, the ridge one especially since I wrote the ridge"
-  }
+  },
+  "RESOLVED_S1702": "the rank-0 arm Codex asked for confirms their objection: the whole v1 path is 0.35 points [0.30,0.40] and rank 8 captures ~1/6 of it. 'Essentially eight-dimensional' was wrong twice over. See _v1_path_floor."
  },
  "_uncertainty_intervals_missing_from_the_arc": {
   "claim": "Every ceiling reported in S1659-S1699 (~40 sections) is a POINT ESTIMATE with no interval, against a standing convention to quote spread. Two decisions in the arc turned on margins too fine to read without one: S1691's pred_a failed exactly at a grid boundary, and S1690's value-path 95% crossing turned on 94.97% vs a 95.01% bar.",
@@ -2251,6 +2252,40 @@
    "_half_upgrades_do_not_transfer",
    "_half_upgrade_shortfall_is_compounding_not_redundancy"
   ],
+  "status": "certified"
+ },
+ "_v1_path_floor": {
+  "claim": "Inside the 36-site whole-model program, replacing v1 with a single constant costs 0.35 points [0.30, 0.40] of a 55-point program. Rank-8 v1 has already given up 0.29 of that 0.35, so eight dimensions capture about ONE SIXTH of the path's contribution.",
+  "sections": "S1702",
+  "script": "bilinear_quotient/whole_model_v1_floor.py",
+  "arms_ci95": {
+   "v1_real": [
+    0.5433,
+    0.5571
+   ],
+   "v1_rank8": [
+    0.5405,
+    0.5543
+   ],
+   "v1_const": [
+    0.5398,
+    0.5536
+   ]
+  },
+  "costs_ci95": {
+   "real_minus_const": [
+    0.003,
+    0.004
+   ],
+   "real_minus_rank8": [
+    0.0023,
+    0.0034
+   ]
+  },
+  "intervals": "95%, ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered (the rowcache carries no per-row document ids)",
+  "SETTLES_S1699_AGAINST_ME": "I wrote that v1 is 'essentially eight-dimensional as far as the compiled program is concerned', inferring it from rank-8 costing 0.29 points. Codex objected that 0.29 cannot distinguish 'eight dimensions suffice' from 'the whole path contributes almost nothing' and asked for the rank-0 arm. With it, the phrase is wrong twice: eight dimensions recover ~1/6 of the path, and the entire path is 0.35 points. My inference had the direction backwards -- I read a small number as evidence that a small rank was adequate, when it was evidence that the quantity being approximated was itself small.",
+  "what_stands": "v1's covered-token caveat is dischargeable (S1698, token table costs +0.00%); the 55.04% headline is unchanged; v1 is not a significant unmodelled term downstream of a substituted write path -- now with an interval on 'not significant'",
+  "consistent_with_S1684": "S1684 measured v1 at 0.7066 nats against a LIVE write and found it nested inside the write; S1702 gets 0.35 points of a 5.5684-nat stake (~0.019 nats) against a SUBSTITUTED write. Consistent because of S1684's own nesting finding.",
   "status": "certified"
  }
 }
