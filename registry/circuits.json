@@ -486,7 +486,7 @@
     "attn9": "9.7 (221)"
    },
    "both_are_certified_question_circuit_heads": true,
-   "FLOOR_CAVEAT": "S1606/S1608 RESOLVED FOR HEAD GRAIN: the head_grain sub-claim has now had its matched-rank random control (S1608) and PASSED -- 10.5 concentrates 18.8x harder than a random basis at attn10, and the S1597 20:1 ratio reproduces at 33.15 on fresh rows. THE CAVEAT STILL STANDS FOR THIS COMPONENT-LEVEL top4 AND ITS .718 SHARE, which have NOT been controlled at this cell; S1606 showed a random rank-8 subspace returns plausible-looking component writers, so membership and share may include generic high-norm components."
+   "FLOOR_CAVEAT": "S1610: the .718 share is NOT evidence of sparsity -- a matched-rank RANDOM basis scores .7223 on the same corpus while the certified slice scores .5946. Of the four listed members, mlp11/mlp9/attn9 are rule-specific but ATTN10 APPEARS IN THE RANDOM TOP-4 IN 3/3 SAMPLES and is not distinguishable from floor by this test. The head_grain sub-claim is separately CONTROLLED AND PASSED (S1608, 18.8x over random at attn10) -- head grain and component membership are different measurements and only the former has cleared its control for attn10."
   },
   "causal": {
    "top4_source_cut": {
@@ -711,6 +711,16 @@
    "published_ratios_reproduce": "S1598 attn9 6.8:1 -> 6.93 measured; S1598 attn12 9.1:1 -> 8.45; S1597 attn10 20:1 -> 33.15 (exceeds). Fresh disjoint rows, no refitting.",
    "negative_control_inside": "question@mlp9: |lambda| head 9.7 at 1.11 vs random 1.16 = 1.0x separation, NO concentration -- and S1597 never claimed a sharp head there (attn9 slice writing 221 vs attn10's 625). The law holds where the writer graph says the circuit is and is SILENT where it is not; that asymmetry is what distinguishes mechanism from norm artifact.",
    "pred_c_failed": "whole-stack median beats random by only 1.165x/1.395x vs a 1.5x bar. MEASUREMENT lesson, not physics: the law is layer-specific, so a median over 18 layers averages an 18.8x effect at one layer into noise from ~16 with no class signal. The registered statistic could not detect what it was registered for."
+  },
+  "component_floor_control_question": {
+   "sections": "S1609 (provisional, n=25/3/5) SUPERSEDED on pred_b by S1610 (n=105/127/102)",
+   "score": "S1610: 1-for-3",
+   "corpus": "local curated_rows.pt == census_state_diverse['rows'] == cl.rows() (1000x513); 335 question positions vs 39 in bilin18_eval_tokens_large.pt. NOT fresh (census rows) -- shares are NOT comparable to S1597's .718 across corpora; the within-run arm-vs-arm comparison is the valid one.",
+   "headline": "A RANDOM rank-2 basis's top-4 share is .7223 -- the certified |lambda| slice concentrates LESS, at .5946, in 3/3 samples. S1597 reported .718 for the real slice. 'The top-4 carry ~72%' is the NULL RESULT, not the finding.",
+   "attn10_is_not_distinguishable": "attn10 -- S1597's headline circuit head -- appears in the RANDOM top-4 in 3/3 samples. Its presence in the |lambda| top-4 is not by itself evidence.",
+   "what_survives": "the |lambda| top-4 is perfectly stable ({mlp11, attn10, mlp9, attn9} in 3/3) and THREE members -- mlp11, mlp9, attn9 -- are absent from the random consensus. Those three are rule-specific; attn10 is not.",
+   "correction_of_S1609": "S1609 concluded 'S1597's MEMBERSHIP claim is vindicated' from pred_b passing at n=25/3/5. At n~110 pred_b FAILS 0/3. S1609 was scored correctly on its own data and its PROVISIONAL marking caught this, but that conclusion must NOT be cited.",
+   "standing_rule": "stronger than LESSONS 15 as written: a component's presence in a top-k writer list is not evidence unless it is ABSENT from the matched-rank random list. Report the random top-k per component, not just the aggregate share."
   }
  },
  "_priority_metric_validation": {
