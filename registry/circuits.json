@@ -1789,7 +1789,8 @@
    "_per_site_family_not_band_family",
    "_program_price_curve"
   ],
-  "status": "certified"
+  "status": "certified",
+  "SCOPE_S1700": "skip11000 was previously exposed to component-level experiments; unseen by the object being tested but NOT broad OOD. See _skip11000_is_not_broad_OOD."
  },
  "_attention_v1_path_stake": {
   "claim": "Attention's threaded v1 path is worth 0.7066 nats under position-weighted mean ablation across all 18 modules, about a fifth of the residual write path's 3.5840 nats on the same protocol. First measurement of this path.",
@@ -2048,7 +2049,8 @@
    "_attention_routing_is_low_rank_values_are_not",
    "_attention_value_path_is_high_rank"
   ],
-  "status": "certified"
+  "status": "certified",
+  "SCOPE_S1700": "skip11000 was previously exposed to component-level experiments; unseen by the object being tested but NOT broad OOD. See _skip11000_is_not_broad_OOD."
  },
  "_whole_model_program": {
   "claim": "A 36-piece compiled program -- a linear map of the residual stream at each of bilin18's 18 MLPs and a lag-1 map [x_t, x_(t-1)] at each of its 18 attention output writes, compiled INTERLEAVED bottom-up -- reproduces 50.94% of a 5.5684-nat joint stake (2.836 nats). First whole-model figure in this arc.",
@@ -2166,5 +2168,24 @@
    "survives": "the source theorem, the 55.04% headline, and that v1 is not a significant unmodelled term downstream of a substituted write path",
    "credit": "narrowing raised by Codex's independent review; three of the four points were catchable by me, the ridge one especially since I wrote the ridge"
   }
+ },
+ "_uncertainty_intervals_missing_from_the_arc": {
+  "claim": "Every ceiling reported in S1659-S1699 (~40 sections) is a POINT ESTIMATE with no interval, against a standing convention to quote spread. Two decisions in the arc turned on margins too fine to read without one: S1691's pred_a failed exactly at a grid boundary, and S1690's value-path 95% crossing turned on 94.97% vs a 95.01% bar.",
+  "sections": "S1700",
+  "raised_by": "Codex's independent pre-outcome audit of whole_model_heldout.py",
+  "fix_in_flight": "source-document cluster bootstrap (2000 draws) added to the queued joint-program heldout run, covering the 55.04% headline and the S1697 gains",
+  "also_adopted": "unrounded decision statistics -- the arc's scripts round to 5 decimals before comparing against bars",
+  "status": "open_practice_gap"
+ },
+ "_skip11000_is_not_broad_OOD": {
+  "claim": "fineweb_n192_skip11000 has been described as 'held out' throughout S1683/S1693 and the queued joint run. It is unseen by the JOINT program, which is what those claims need, but it was previously exposed to component-level experiments and is NOT broad out-of-distribution evidence.",
+  "sections": "S1700",
+  "raised_by": "Codex scope correction",
+  "accurate_framing": "prospective conditional composition replication, not fresh OOD evidence",
+  "affects": [
+   "_program_numbers_replicate_held_out",
+   "_compressibility_ordering_replicates_held_out"
+  ],
+  "status": "certified"
  }
 }
