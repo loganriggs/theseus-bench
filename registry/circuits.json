@@ -777,7 +777,39 @@
    "control_validity": "the n-controlled range (.1672) stays far above the .01 floor, so subsampling did not destroy the measurement -- this distinguishes 'n is not the cause' from 'the control broke the instrument'.",
    "PRACTICAL_RULE": "a matched-CLASS random arm is mandatory and CANNOT be substituted by matching n. The null cannot be tabulated from (rank, TOP) (S1613) and cannot be normalised away by equalising sample size (S1614). Every writer-graph claim carries its own arm at its own class.",
    "bookkeeping": "S1613's printed class counts were the LAST CHUNK's, not totals (question n=102 there vs 334 total). The two sets of n figures must not be read against each other; S1613's conclusions are unaffected as its comparisons were within-run.",
-   "open": "what property of a class's POSITIONS sets its null -- position-in-sequence distribution, document concentration, or local context entropy. n is a correlate of that property, not the cause."
+   "open": "what property of a class's POSITIONS sets its null -- position-in-sequence distribution, document concentration, or local context entropy. n is a correlate of that property, not the cause.",
+   "WITHDRAWN_BY_S1616": "THE POWERED RESULT DOES NOT GENERALISE. This entry recorded rho(class n, null share) = .6727 at p = .0192 as 'REAL at power'. On 10 DISJOINT classes (S1616, verified zero overlap, n range 115-7394) the same measurement gives rho = .0182 at p = .9601. The association was a property of that particular 10-class set, not of the method. The powered_result claim is WITHDRAWN.",
+   "what_survives": "the NEGATIVE finding, which never depended on the correlation: equalising every class to a common 117 positions removes only 6.1% of the class spread and the class ordering survives at rank rho .952. n is not the mechanism -- that stands. What is withdrawn is that n is even a reliable CORRELATE."
+  },
+  "nothing_predicts_the_null": {
+   "section": "S1616",
+   "score": "2-for-3",
+   "summary": "after five sections and four failed hypotheses, NOTHING predicts the null share: not n (S1614, withdrawn), not position or document structure (S1614n), not deviation magnitude (S1615), not signal-to-noise (S1616). S1613's core claim is unaffected -- it rests on the OBSERVED spread, not on any predictor.",
+   "collapse_table": {
+    "rho(SNR, share)": {
+     "discovery": 0.7333,
+     "disjoint": 0.0788,
+     "p_disjoint": 0.84
+    },
+    "rho(n, share)": {
+     "discovery": 0.6727,
+     "disjoint": 0.0182,
+     "p_disjoint": 0.96
+    },
+    "rho(DEV, share)": {
+     "discovery": 0.2242,
+     "disjoint": 0.1879,
+     "p_disjoint": 0.6
+    },
+    "rho(1/sqrt n, shuffled_DEV)": {
+     "discovery": 1.0,
+     "disjoint": 0.9879,
+     "p_disjoint": 0.0
+    }
+   },
+   "THE_ONE_LAW_THAT_HOLDS": "the estimation-NOISE floor scales as 1/sqrt(n) at rho .988-1.000 across two DISJOINT 10-class sets. It is a property of the noise, not the signal -- and it came from the CONTROL ARM of a failed experiment, not from any hypothesis.",
+   "METHODOLOGICAL_WARNING": "a post-hoc candidate chosen from four options on 10 points reached rho .733 at p .020 and evaporated to .079 on fresh classes; a correlation that PASSED a registered bar at p .019 collapsed to .018. ON N=10 WITH FREELY CHOSEN PREDICTORS, p < .05 CARRIES ALMOST NO INFORMATION. Every correlational claim in this program on ~10 units needs a disjoint confirmatory set before it is quoted.",
+   "bar_design_flaw_recorded": "S1616's pred_b ('SNR beats n') PASSED vacuously -- |.0788| > |.0182| is true while both are indistinguishable from zero. A comparative bar without an absolute floor can be satisfied by two null quantities. Scored as a pass because it was registered that way, and flagged."
   }
  },
  "_priority_metric_validation": {
