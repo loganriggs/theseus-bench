@@ -66,6 +66,7 @@ class PricingTests(unittest.TestCase):
         )
         self.assertEqual(result["inertia"], (1, 1))
         self.assertEqual(result["products"], 1)
+        self.assertEqual(result["interface_dimension"], 2)
         torch.testing.assert_close(reconstructed, matrix)
 
     def test_quadratic_product_count_is_maximum_inertia(self):
@@ -78,6 +79,7 @@ class PricingTests(unittest.TestCase):
         )
         self.assertEqual(result["inertia"], (2, 1))
         self.assertEqual(result["products"], 2)
+        self.assertEqual(result["interface_dimension"], 3)
         torch.testing.assert_close(reconstructed, matrix)
 
     def test_scalar_quadratic_program_uses_minimal_bilinear_rank(self):
@@ -90,6 +92,7 @@ class PricingTests(unittest.TestCase):
         self.assertEqual(body["op"], "scalar_quadratic_bilinear")
         self.assertEqual(body["rank"], 1)
         self.assertEqual(body["inertia"], [1, 1])
+        self.assertEqual(body["interface_dimension"], 2)
 
     def test_rate_distortion_sweep_prices_quantized_artifact(self):
         table = torch.linspace(-1, 1, 257, dtype=torch.float64)

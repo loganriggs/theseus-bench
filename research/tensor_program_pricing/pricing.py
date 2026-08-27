@@ -159,6 +159,7 @@ def scalar_quadratic_bilinear_factors(matrix, tolerance=None):
     return {"left": left, "right": right,
             "inertia": (len(positive), len(negative)),
             "products": max(len(positive), len(negative)),
+            "interface_dimension": len(positive) + len(negative),
             "tolerance": tolerance}
 
 
@@ -169,6 +170,7 @@ def canonical_scalar_quadratic(matrix, step, tolerance=None):
     body = canonical_bilinear_cp(factors["left"], factors["right"], down, step)
     body["op"] = "scalar_quadratic_bilinear"
     body["inertia"] = list(factors["inertia"])
+    body["interface_dimension"] = factors["interface_dimension"]
     return body
 
 
