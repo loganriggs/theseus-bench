@@ -837,6 +837,27 @@
    "site_effect": "mlp17 46.7% vs mlp11 33.3% -- consistent with mlp17 as the late readout. Testing both rather than guessing one avoided understating the law by a third.",
    "REVISES_THE_UNIVERSAL_CLAIM": "S1597/S1598's 'EVERY attention writer of a certified eigen slice resolves at head grain to a certified circuit head of that class' is TOO STRONG as a general statement. Supported form: at SOME classes and sites the slice resolves to the certified head, at ~3x a matched-rank random basis and ~27% absolute after floor correction; at others (digits, months) it resolves to a NEIGHBOURING head. S1608 stands as written for its own two cells.",
    "S1618_mechanism": "the digits 0/8 failure is EXPLAINED: the slice picks high-norm generalists (selectivity 0.10-1.20) over the certified specialists (6.7-11.2), confirmed by causal removal. Where attribution and removal DISAGREE, prefer removal -- causal won 3/4 on rise and 3/4 on selectivity, with the losses concentrated where selectivity was tied."
+  },
+  "published_shares_on_canonical_fineweb": {
+   "section": "S1620",
+   "score": "2-for-3 on the registered (docstring) bars",
+   "corpus": "Codex's canonical .rowcache/fineweb_n480_skip80.pt -- authority pinned_local_ordered_manifest, scored-work true, receipt sha256[:16] 815b21618c2e477e. FRESH FineWeb, so shares ARE comparable to the published figures for the first time. .rowcache_shadow (authority none) untouched.",
+   "measured": {
+    "question@mlp11 r2 TOP4": {
+     "lambda": 0.545,
+     "matched_null": 0.426,
+     "published": 0.718
+    },
+    "pronouns@mlp17 r8 TOP6": {
+     "lambda": 0.5808,
+     "matched_null": 0.7331,
+     "published": 0.482
+    }
+   },
+   "NEITHER_PUBLISHED_NUMBER_REPRODUCES": "question .545 vs .718 (off by .173); pronouns .581 vs .482 (off by .099). BUT SEE open_question -- this may be an artifact of the 3x160-chunk design, not a discrepancy in the published work.",
+   "DIRECTIONAL_FINDINGS_HOLD": "question sits ABOVE its matched null by .119 (the concentration claim has real content); pronouns sits BELOW its null by .153 in every chunk (confirming S1612 on the corpus S1598's .482 came from -- that slice is far LESS concentrated than a meaningless basis, so the DIFFUSE verdict is right and understated).",
+   "open_question": "S1597 used NR=960 rows; S1620 used 3 chunks of 160 (n=56-80 question positions per chunk). Share is a ratio over 37 components and a better-estimated class mean may concentrate more. UNTIL A SAMPLE-SIZE SWEEP IS RUN, THE .718/.545 GAP MUST NOT BE REPORTED AS A DISCREPANCY IN S1597.",
+   "process_note": "the run machine-scored STALE bars inherited from the parent harness (0-for-3); the docstring registration -- which is the real one under the house rule -- scores 2-for-3. Recoverable only because raw shares are printed. LESSONS 19."
   }
  },
  "_priority_metric_validation": {
