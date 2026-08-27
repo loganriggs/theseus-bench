@@ -1698,5 +1698,47 @@
   "CATEGORY_WARNING": "the rotated arm still RUNS the MLP and truncates its output; the linear/table/additive programs REPLACE the module. 94.87% is NOT a better program than the linear map's 58.17% -- it answers 'how much of the effect lives in k output directions', not 'how well can a program compute the output without the module'.",
   "consequence": "any account treating individual bilinear features as units of computation works in a basis where units cannot be removed, while 512 rotated directions capture 95% of the same output. For this model the interpretable decomposition is a subspace, not a feature list.",
   "status": "certified"
+ },
+ "_program_price_curve": {
+  "claim": "The compiled linear program's price curve: rank 8 gives 41.59% of the 4.33-nat MLP stake for 0.33M reals (1.4% of full cost, 68% of full fidelity); rank 128 gives 54.12% for 5.31M (89% of fidelity, 22% of cost); rank 1152 gives 60.81% for 23.89M. Most fidelity is in the first 128 directions; the last 640 buy 0.4 points for 2.7M reals.",
+  "sections": "S1680",
+  "script": "bilinear_quotient/compiled_linear_rank_price.py",
+  "curve": {
+   "8": {
+    "ceiling": 0.4159,
+    "reals": 331776
+   },
+   "32": {
+    "ceiling": 0.4608,
+    "reals": 1327104
+   },
+   "128": {
+    "ceiling": 0.5412,
+    "reals": 5308416
+   },
+   "512": {
+    "ceiling": 0.6045,
+    "reals": 21233664
+   },
+   "1152": {
+    "ceiling": 0.60814,
+    "reals": 23887872
+   }
+  },
+  "validates": "the curve is MONOTONE against S1668's non-monotone curve for the same family fitted naively -- the check that S1669's bottom-up compilation fix is real. Identity arm reproduces S1676's 60.81% exactly.",
+  "failed_prediction": "pred_b predicted rank 128 would reach >=90% of full-rank fidelity; it reaches 89.0%",
+  "status": "certified"
+ },
+ "_passing_predictions_do_not_verify_the_instrument": {
+  "claim": "A rank sweep returned an identical ceiling at every rank because the truncation was never inserted (a string-patch that matched nothing), and ALL THREE registered predictions passed on the no-op: monotone (constant), 100% of full rank, identity reproduced.",
+  "sections": "S1681",
+  "lesson": "LESSONS 29",
+  "why_defences_failed": "every prediction was a claim about RELATIONSHIPS BETWEEN ARMS, which a no-op makes trivially true; and the known-answer instrument check is precisely the arm a no-op gets right",
+  "rules": [
+   "at build time, assert the count of every anchor BEFORE replacing (assert s.count(old)==1) -- asserting a marker afterwards proves the marker, not the edit",
+   "at run time, any parameter sweep must assert its arms are not all identical"
+  ],
+  "general_shape": "predictions constrain the SCIENCE, instrument checks constrain the MEASUREMENT, neither constrains whether the INTERVENTION was applied",
+  "status": "certified"
  }
 }
