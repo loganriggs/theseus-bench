@@ -2135,5 +2135,27 @@
   "consequence_for_pricing": "attenuation is the tractable diagnosis: gains from independent work on the two halves can be SUMMED and then DISCOUNTED rather than being unpredictable. On this evidence the discount is ~4x for attention-side work and ~3x for MLP-side work.",
   "resolves": "the mechanism question left open by _half_upgrades_do_not_transfer",
   "status": "certified"
+ },
+ "_v1_scope_caveat_closes": {
+  "claim": "Replacing v1 with a per-token table costs exactly 0.00% in the 36-site whole-model program (55.04% either way), so the arc's attention results are statements about MODULES, not output paths. Derived before the run: v1 is ONE object set at block 0, and block 0's attention input is a pure function of the current token (x==x0 there, c_v carries no rotary), so a covered token table must be exact.",
+  "sections": "S1698",
+  "script": "bilinear_quotient/whole_model_with_v1.py",
+  "arms": {
+   "v1_real": 0.5504,
+   "v1_table": 0.5504,
+   "v1_full_linear": 0.5504,
+   "v1_rank8": 0.5475
+  },
+  "controls": "baseline CE 3.29205 and v1_real reproducing S1696's 55.04%, both exact",
+  "QUALIFICATION_failed_pred_c": "the manipulation check (crushing v1 to rank 8 should cost >=1 point) FAILED at 0.29 points. v1 is essentially eight-dimensional as far as the compiled program is concerned, so ANY cheap treatment of v1 would have been nearly free. The derivation is unaffected and the 0.00% confirms it, but the caveat's closure is less decisive than a pass on pred_b alone would suggest -- the prediction should not have been written as though it were.",
+  "consistent_with_S1684": "S1684 measured v1 at 0.7066 nats NESTED inside the write path; S1698 shows that within a program already replacing the write, v1's remaining program-relevant content sits in ~8 dimensions. Most of what v1 contributes is reachable through the already-substituted write path.",
+  "closes_caveat_on": [
+   "_attention_output_write_is_nonlocal",
+   "_attention_write_is_mostly_two_position",
+   "_attention_residue_is_content_routed_not_long_range",
+   "_whole_model_program",
+   "_half_upgrades_do_not_transfer"
+  ],
+  "status": "certified"
  }
 }
