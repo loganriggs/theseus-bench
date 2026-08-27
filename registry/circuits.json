@@ -1271,7 +1271,7 @@
   "TOTAL_GLASS_IS_NOT_AFFECTED": "S1658 checked the benchmark headline series. As the ship improves its total effect shrinks (1.610 -> 1.176 -> 0.900) while compounding FALLS (1.43 -> 1.04 -> 0.80). The artifact pushes ratios UP as effects shrink, so the observed trend runs OPPOSITE to it and cannot be produced by it. v4 sub-additivity stands; the improvement was if anything MASKED. The confound is CONSERVATIVE here: equal compounding at a smaller total effect is a real gain, not a plateau."
  },
  "_mlp0_dossier_resolved": {
-  "claim": "mlp0 is ~90% a current-token lookup table, and 100% of the remaining residue is context delivered by attn0. mlp0 computes no context-dependence of its own.",
+  "claim": "mlp0 is 90.27% reproducible by a current-token lookup table in the running model (covered-position, hybrid-substitution protocol). The remaining 9.73% (0.083 nats) is cross-position information, which in a transformer necessarily arrives via attention.",
   "sections": "S1659-S1661",
   "script": "bilinear_quotient/mlp0_inherited_context3.py",
   "measurement": {
@@ -1291,13 +1291,43 @@
   "answers_open_question_in": "_mlp0_dossier",
   "not_claimed": "the 100% frozen ceiling is a CHECK, not a discovery -- with attn0 constant mlp0 is a token function by construction. The finding is the live arm's 90.27% and the fact that freezing one module accounts for the entire remainder.",
   "supersedes": "two earlier versions of this measurement (S1659) whose instrument check failed; neither was reported",
-  "status": "certified"
+  "status": "certified",
+  "CORRECTION_S1662": "The original wording claimed '100% of the residue is attn0's write' as an empirical attribution. It is not: attention is the only module that moves information across positions, so an MLP with its attention inputs frozen is token-deterministic BY CONSTRUCTION and its covered table is exact NECESSARILY. The frozen arm is an instrument check, not evidence of attribution. The empirical content is the live 90.27% split. WHICH attention delivers the residue is a real open question and is not answered here.",
+  "claim_ORIGINAL": "mlp0 is ~90% a current-token lookup table, and 100% of the remaining residue is context delivered by attn0. mlp0 computes no context-dependence of its own."
  },
  "_position_wise_masking_cannot_isolate": {
   "claim": "In a transformer, excluding positions from a CE average does NOT isolate a position-wise substitution applied at those positions: the wrong values propagate upward and attention mixes them into the retained positions. Interventions must be restricted in the FORWARD PASS, not repaired in the score.",
   "sections": "S1660",
   "lesson": "LESSONS 27",
   "evidence": "on a quantity with an analytically known answer of 1.0: substitute-everywhere + mask-score gave 0.5583; substitute-only-where-valid gave 1.0000. A 44-point error.",
+  "status": "certified"
+ },
+ "_front_band_tableability_ladder": {
+  "claim": "Live covered-position table ceilings across the evaluable front MLPs are NOT ordered by depth: mlp0 90.27%, mlp1 96.01%, mlp2 76.98%, mlp3 67.55%. mlp1 is the most tableable despite being deeper than mlp0.",
+  "sections": "S1662",
+  "script": "bilinear_quotient/mlp_context_share_ladder.py",
+  "protocol": "per-token mean table, fit skip1200 / eval skip7000, positions>=64, HYBRID substitution (table only at covered positions, MLP live elsewhere), CE on covered positions only, optimal-constant ablation baseline",
+  "stakes_nats": {
+   "mlp0": 0.8552,
+   "mlp1": 7.005,
+   "mlp2": 0.7719,
+   "mlp3": 0.6201
+  },
+  "residue_nats": {
+   "mlp0": 0.083,
+   "mlp1": 0.279,
+   "mlp2": 0.178,
+   "mlp3": 0.201
+  },
+  "mlp1_anomaly": "stake 7.005 nats = 8x each neighbour, AND the most tableable at 96.01%; its 3.99% residue is nonetheless the LARGEST absolute un-tableable quantity in the band at 0.279 nats",
+  "instrument_check": {
+   "known_answer": 1.0,
+   "observed_all_four_sites": 1.0,
+   "hard_evidence": "ce_table == ce_live to 5dp in every frozen arm",
+   "status": "PASSED"
+  },
+  "failed_hypothesis": "pred_b (context share grows with depth) PASSED on its literal condition (mlp3-mlp0 = +22.7pts >= 5) but its motivating claim is FALSE: mlp1 breaks the ordering. Recorded so the prediction flag is not read as support for the generalisation.",
+  "limitation": "frozen arms at mlp2/mlp3 replace 3-4 attention modules (CE 5.36/5.67 vs 3.28 live) and are damaged models; they serve only as the known-answer check. Only the live column describes bilin18.",
   "status": "certified"
  }
 }
