@@ -2107,6 +2107,33 @@
   "mechanism_unresolved": "either the improved attention program's residual error still compounds through 18 MLP programs refit around it, or the wider lag set recovers information the MLP programs were already reconstructing from the stream so recovering it twice buys less. Both predict the observed shape; separating them needs an arm that upgrades one half at a time inside the joint condition, not run here.",
   "best_account_of_the_model": "a compiled program of 18 token-or-linear maps and 18 four-position maps reproduces 3.065 of 5.568 nats (55.04%) of bilin18's 36 module output paths",
   "scope": "attention v1 passed through unchanged -- output paths, not whole modules",
+  "status": "certified",
+  "RESOLVED_S1697": "mechanism identified as COMPOUNDING, not redundancy: the two single-half upgrades sum to +3.97 against a joint +4.10 (0.13-point gap), so they are additive and each is independently damped. See _half_upgrade_shortfall_is_compounding_not_redundancy."
+ },
+ "_half_upgrade_shortfall_is_compounding_not_redundancy": {
+  "claim": "Upgrading one half at a time inside the joint 36-site condition gives +2.66 (attention) and +1.31 (MLP) over the simple program, summing to +3.97 against a both-upgraded +4.10 -- a 0.13-point gap. The upgrades are ADDITIVE; redundancy is not detectable. S1696's shortfall is COMPOUNDING: each half's upgrade is independently damped by the other half's residual error.",
+  "sections": "S1697",
+  "script": "bilinear_quotient/whole_model_upgrade_attribution.py",
+  "arms": {
+   "simple": 0.5094,
+   "attn_upgraded": 0.536,
+   "mlp_upgraded": 0.5225,
+   "both": 0.5504
+  },
+  "gains": {
+   "attn": 0.0266,
+   "mlp": 0.0131,
+   "sum_of_singles": 0.0397,
+   "joint": 0.041
+  },
+  "controls": "simple arm reproduces S1694's 50.94% and the both arm S1696's 55.04%, both exactly",
+  "failed_prediction": "pred_a predicted strongly SUB-additive gains if redundancy dominated. The 0.13-point gap is an order of magnitude below the 7.7-point shortfall the mechanisms were competing to explain, so redundancy is not detectable.",
+  "damping_factors": {
+   "attention": "worth +11.79 alone, +2.66 jointly -- 4.4x",
+   "mlp": "worth <=+3.5 alone, +1.31 jointly -- ~2.7x"
+  },
+  "consequence_for_pricing": "attenuation is the tractable diagnosis: gains from independent work on the two halves can be SUMMED and then DISCOUNTED rather than being unpredictable. On this evidence the discount is ~4x for attention-side work and ~3x for MLP-side work.",
+  "resolves": "the mechanism question left open by _half_upgrades_do_not_transfer",
   "status": "certified"
  }
 }
