@@ -916,5 +916,41 @@
    "_discovery_compression_ranking",
    "_mlp_unit_membership"
   ]
+ },
+ "multiseed_null_methodology": {
+  "sections": "S1628-S1632",
+  "date": "2026-08-27",
+  "question": "is a matched-rank random arm drawn from ONE basis a control?",
+  "answer": "NO. A single random basis is a sample of size one and its bias is confounded with the mask and site it is applied to. Every null in S1612-S1627 used seed 1729 alone.",
+  "seed_1729_is_unrepresentative_and_the_direction_varies": {
+   "question@mlp11": "null ran HIGH (.586-.612 vs 20-seed .567-.573) -> shrank a POSITIVE gap",
+   "pronouns@mlp17": "null ran LOW (.5744 vs 20-seed .6151) -> shrank a NEGATIVE gap",
+   "within_mlp11_across_classes": "delta from -.0568 (is) to +.0141 (to): a .07 spread on a statistic whose entire class range is .088",
+   "consequence": "BOTH published effects were UNDERSTATED. The bias is site-dependent AND class-dependent."
+  },
+  "LAW": "IDENTITY (which components or heads carry the mass) is uninformative unless the fraction is measured. MAGNITUDE (how concentrated the mass is) is informative, but its margin is CELL-DEPENDENT and perfect separation is not the general case.",
+  "identity_measurements_fraction_of_60_random_trials": {
+   "attn10 in top-4, question@mlp11": "32/60 = 53.3%",
+   "attn9 in top-4, question@mlp11": "53/60 = 88.3%",
+   "mlp16 in top-6, pronouns@mlp17": "60/60 = 100%",
+   "x0 in top-6, pronouns@mlp17": "9/60 = 15.0%",
+   "head 10.5 top of layer 10, question": "60/60 = 100%",
+   "mlp10 in top-4, of@mlp14": "36/60 = 60.0%",
+   "x0 in top-4, of@mlp14": "28/60 = 46.7% -- x0's informativeness is CELL-specific, NOT a property of x0"
+  },
+  "magnitude_measurements": {
+   "question@mlp11 CERTIFIED": "lambda min .7257 > random max .7185 -> 60/60 perfect",
+   "pronouns@mlp17 CERTIFIED": "lambda max .4871 < random min .5361 -> 60/60 perfect",
+   "of@mlp14 FRESH uncertified": "lambda min .4827 vs random max .4975 -> 54/60 only; gap .058-.074 vs .153-.172 at question",
+   "SELECTION_EFFECT": "Both perfect-separation cells were already certified and published, i.e. chosen because someone had found strong structure. At a cell picked only for being fresh, 6 of 60 random bases beat the certified slice."
+  },
+  "published_figures_all_replicate": {
+   "S1597 share .718": ".7179 (S1623)",
+   "S1598 share .482": ".4823 (S1624)",
+   "S1597 head-grain 20:1": "20.00 measured; beats random p95 of 6.36, 60/60 (S1631)",
+   "note": "all three replicate to the digit under the corrected quantity. What changes is INTERPRETATION, not the numbers."
+  },
+  "S1627_WITHDRAWN_BY_S1630": "S1627 reported that 3 of 6 classes have slices writing LESS concentratedly than random and concluded 'below-null is common'. Under a 20-seed null comma and is are ABOVE their nulls and the is marginal. WITHDRAWN. Its 12/12 sign agreements were real but uninformative: the same biased basis was used in all three chunks, so sign stability across ROW samples never tested basis bias.",
+  "PRACTICAL_RULE": "Use >= 20 independent bases. Report a FRACTION for any identity claim and a MARGIN for any magnitude claim. Never infer specificity from one draw, and never generalise a separation margin from cells that were selected for being interesting."
  }
 }
