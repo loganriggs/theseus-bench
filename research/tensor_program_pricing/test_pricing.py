@@ -57,6 +57,40 @@ class PricingTests(unittest.TestCase):
     def test_generic_tensor_dof_removes_internal_gauge(self):
         self.assertEqual(PRICING.generic_tensor_dof([(4, 3), (3, 5)], [3]), 18)
 
+    def test_indefinite_rank_two_quadratic_needs_one_product(self):
+        matrix = torch.diag(torch.tensor([4.0, -9.0], dtype=torch.float64))
+        result = PRICING.scalar_quadratic_bilinear_factors(matrix)
+        reconstructed = sum(
+            (torch.outer(left, right) + torch.outer(right, left)) / 2
+            for left, right in zip(result["left"], result["right"])
+        )
+        self.assertEqual(result["inertia"], (1, 1))
+        self.assertEqual(result["products"], 1)
+        torch.testing.assert_close(reconstructed, matrix)
+
+    def test_quadratic_product_count_is_maximum_inertia(self):
+        matrix = torch.diag(torch.tensor([16.0, 1.0, -9.0, 0.0],
+                                         dtype=torch.float64))
+        result = PRICING.scalar_quadratic_bilinear_factors(matrix)
+        reconstructed = sum(
+            (torch.outer(left, right) + torch.outer(right, left)) / 2
+            for left, right in zip(result["left"], result["right"])
+        )
+        self.assertEqual(result["inertia"], (2, 1))
+        self.assertEqual(result["products"], 2)
+        torch.testing.assert_close(reconstructed, matrix)
+
+    def test_scalar_quadratic_program_uses_minimal_bilinear_rank(self):
+        matrix = torch.diag(torch.tensor([144.9, -73.8], dtype=torch.float64))
+        canonical = PRICING.canonical_program({"nodes": [{
+            "name": "question_channel", "op": "scalar_quadratic",
+            "matrix": matrix,
+        }]}, step=1e-6)
+        body = canonical["nodes"][0]["body"]
+        self.assertEqual(body["op"], "scalar_quadratic_bilinear")
+        self.assertEqual(body["rank"], 1)
+        self.assertEqual(body["inertia"], [1, 1])
+
     def test_rate_distortion_sweep_prices_quantized_artifact(self):
         table = torch.linspace(-1, 1, 257, dtype=torch.float64)
         program = {"constants": {"table": table}}

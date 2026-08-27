@@ -87,6 +87,91 @@ def canonical_bilinear_cp(left, right, down, step):
             "components": [component for _, component in components]}
 
 
+def scalar_quadratic_bilinear_factors(matrix, tolerance=None):
+    """Return a minimum-product real bilinear factorization of ``x.T @ S @ x``.
+
+    A product gate computes ``(left @ x) * (right @ x)``.  If the symmetric
+    part of ``S`` has inertia ``(positive, negative)``, the exact minimum gate
+    count is ``max(positive, negative)``.  Opposite-sign eigendirections share
+    one gate via a difference of squares; unpaired directions use a square.
+
+    The skew-symmetric part is discarded because it contributes zero to the
+    scalar quadratic.  Eigenvalues at or below ``tolerance`` are treated as
+    zero.  The returned rows satisfy
+
+        S_symmetric = sum_r sym(left[r] outer right[r])
+
+    up to the selected numerical tolerance.
+    """
+    matrix = matrix.detach().double().cpu()
+    if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
+        raise ValueError("scalar quadratic matrix must be square")
+    symmetric = (matrix + matrix.T) / 2
+    eigenvalues, eigenvectors = torch.linalg.eigh(symmetric)
+    scale = float(eigenvalues.abs().max()) if eigenvalues.numel() else 0.0
+    if tolerance is None:
+        tolerance = torch.finfo(matrix.dtype).eps * max(matrix.shape) * scale
+    tolerance = float(tolerance)
+    if tolerance < 0:
+        raise ValueError("tolerance must be nonnegative")
+
+    positive = [index for index in range(eigenvalues.numel())
+                if float(eigenvalues[index]) > tolerance]
+    negative = [index for index in range(eigenvalues.numel())
+                if float(eigenvalues[index]) < -tolerance]
+    positive.sort(key=lambda index: float(eigenvalues[index]), reverse=True)
+    negative.sort(key=lambda index: abs(float(eigenvalues[index])), reverse=True)
+
+    # Fix the otherwise arbitrary sign of every (simple) eigendirection.
+    vectors = eigenvectors.clone()
+    for index in positive + negative:
+        vector = vectors[:, index]
+        pivot = int(vector.abs().argmax())
+        if vector[pivot] < 0:
+            vectors[:, index] *= -1
+
+    left_rows = []
+    right_rows = []
+    paired = min(len(positive), len(negative))
+    for offset in range(paired):
+        pos = positive[offset]
+        neg = negative[offset]
+        pos_vector = math.sqrt(float(eigenvalues[pos])) * vectors[:, pos]
+        neg_vector = math.sqrt(-float(eigenvalues[neg])) * vectors[:, neg]
+        left_rows.append(pos_vector + neg_vector)
+        right_rows.append(pos_vector - neg_vector)
+    for pos in positive[paired:]:
+        vector = math.sqrt(float(eigenvalues[pos])) * vectors[:, pos]
+        left_rows.append(vector)
+        right_rows.append(vector)
+    for neg in negative[paired:]:
+        vector = math.sqrt(-float(eigenvalues[neg])) * vectors[:, neg]
+        left_rows.append(vector)
+        right_rows.append(-vector)
+
+    dimension = matrix.shape[0]
+    if left_rows:
+        left = torch.stack(left_rows)
+        right = torch.stack(right_rows)
+    else:
+        left = torch.empty((0, dimension), dtype=matrix.dtype)
+        right = torch.empty((0, dimension), dtype=matrix.dtype)
+    return {"left": left, "right": right,
+            "inertia": (len(positive), len(negative)),
+            "products": max(len(positive), len(negative)),
+            "tolerance": tolerance}
+
+
+def canonical_scalar_quadratic(matrix, step, tolerance=None):
+    """Canonical payload for a scalar quadratic in the bilinear-product grammar."""
+    factors = scalar_quadratic_bilinear_factors(matrix, tolerance)
+    down = torch.ones((1, factors["products"]), dtype=torch.float64)
+    body = canonical_bilinear_cp(factors["left"], factors["right"], down, step)
+    body["op"] = "scalar_quadratic_bilinear"
+    body["inertia"] = list(factors["inertia"])
+    return body
+
+
 def canonical_program(program, step):
     """Canonicalize a small typed program.
 
@@ -108,6 +193,10 @@ def canonical_program(program, step):
             nodes.append({"name": node["name"],
                           "body": canonical_bilinear_cp(node["left"], node["right"],
                                                         node["down"], step)})
+        elif op == "scalar_quadratic":
+            nodes.append({"name": node["name"],
+                          "body": canonical_scalar_quadratic(
+                              node["matrix"], step, node.get("tolerance"))})
         elif op == "generic":
             nodes.append({"name": node["name"], "body": {
                 "op": "generic", "kind": node["kind"],

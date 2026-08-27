@@ -21,9 +21,28 @@ It canonicalizes two equivalence classes needed by the current bilin18 work:
 - `bilinear_cp` normalizes and sign-fixes every CP component, orders the commutative
   left/right factors, and sorts components, removing scale, sign, and permutation
   gauges under the generic CP assumption.
+- `scalar_quadratic` uses the exact real bilinear-product complexity of a quadratic
+  form. If its symmetric matrix has inertia `(p, q)`, it needs `max(p, q)` products,
+  not `rank(S) = p + q`. One product can pair a positive and a negative eigenmode:
+
+  ```
+  lambda (u.x)^2 - mu (v.x)^2
+    = (sqrt(lambda) u.x + sqrt(mu) v.x)
+      (sqrt(lambda) u.x - sqrt(mu) v.x).
+  ```
+
+  Minimality follows because the symmetric matrix of one product of two real linear
+  forms has at most one positive and one negative eigenvalue. Thus any `k`-product
+  representation has `p <= k` and `q <= k`; pairing opposite signs and squaring the
+  remaining eigendirections attains the bound. This prices multiplication gates in
+  this grammar. It does not by itself minimize projection storage or account for
+  sharing those projections elsewhere in a DAG.
 
 This is not yet a general tensor-network canonicalizer. Looped networks, repeated
 singular values, and nongeneric non-unique CP tensors require stronger machinery.
+Repeated eigenvalues likewise require an eigenspace-level convention before the
+`scalar_quadratic` serialization is fully gauge invariant, although its product
+count remains invariant.
 
 ## Verification
 
@@ -41,4 +60,3 @@ Do not replace `bench/complexity.py` until the codec passes:
 3. no worse than 1% run-to-run bit variation;
 4. matched-price rankings that are stable across at least two canonical grammars;
 5. a red-team suite for constant smuggling, duplicated tensors, and library stuffing.
-
