@@ -1828,5 +1828,28 @@
   "not_claimed": "that attention is a previous-token copier -- 43.7% still needs something wider, and the fitted map may use x_(t-1) for anything, not just copying",
   "scope": "attention OUTPUT WRITE only; v1 passed through unchanged (S1682, S1684)",
   "status": "certified"
+ },
+ "_attention_beyond_lag1_is_diffuse": {
+  "claim": "Beyond the previous position, attention's output write depends DIFFUSELY on context: a spread window (1,2,4,8) reaches 68.05% while a contiguous one (1,2,3,4) at identical slot count reaches 66.71%. Sampling context widely is slightly BETTER than sampling it densely, so the dependence beyond lag 1 is 'some history', not 'the immediately preceding tokens'.",
+  "sections": "S1686",
+  "script": "bilinear_quotient/attn_multilag.py",
+  "curve": {
+   "none": 0.1638,
+   "1": 0.5626,
+   "1,2": 0.6259,
+   "1,2,3,4": 0.6671,
+   "1,2,4,8": 0.6805
+  },
+  "controls": "the empty set reproduces S1682's 16.38% and the single lag reproduces S1685's 56.26%, both exactly",
+  "decomposition": {
+   "current_position": 0.1638,
+   "previous_position_specifically": 0.3988,
+   "any_four_further_positions": 0.1179,
+   "outside_a_five_position_linear_description": 0.3195
+  },
+  "failed_predictions": "pred_b predicted four recent positions would exceed 70% (66.71%); pred_c predicted contiguous would beat spread by >=3 points -- spread WINS by 1.34. The recency framing was wrong for every slot except the first.",
+  "third_diffuse_result": "S1663 (mlp1's residue across 18 heads), S1671 (the compiled program's shortfall across 18 sites), S1686 (attention's positional dependence beyond lag 1). Three grains, same shape.",
+  "scope": "attention OUTPUT WRITE only; v1 passed through unchanged",
+  "status": "certified"
  }
 }
