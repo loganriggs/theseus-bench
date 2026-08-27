@@ -1874,5 +1874,30 @@
   "control": "(1,2,4,8) reproduces S1686's 68.05% exactly",
   "scope": "attention OUTPUT WRITE only; v1 passed through unchanged and worth 0.7066 nats NESTED inside the write, not additively (S1684)",
   "status": "certified"
+ },
+ "_lag1_failure_is_middle_band": {
+  "claim": "The lag-1 positional program's shortfall is CONCENTRATED in the middle attention band. Exempt-one (recompiled per exemption): attn5 +11.60% (26.53% of the 43.74-point shortfall) against a 5.56% uniform split; best described are attn17 +1.27%, attn15 +2.91%, attn0 +2.99%. Spread across layers is ~9x.",
+  "sections": "S1688",
+  "script": "bilinear_quotient/attn_layer_locality.py",
+  "worst": {
+   "attn5": 0.116,
+   "attn6": 0.0987,
+   "attn7": 0.0985
+  },
+  "best": {
+   "attn17": 0.0127,
+   "attn15": 0.0291,
+   "attn0": 0.0299
+  },
+  "mean_gain": {
+   "attn0_3": 0.0512,
+   "attn4_17": 0.066
+  },
+  "control": "the no-exemption arm reproduces S1685's 56.26% exactly",
+  "first_concentrated_result": "after three diffuse-not-sparse findings (S1663 heads, S1671 sites, S1686 positions), attention's departure from a lag-1 description does have structure",
+  "failed_generalisation": "pred_a (early attention best described, motivated by S843 placing previous-token writing at attn0) PASSED by 1.48 points on its literal condition but its story is refuted by the same run: attn17 and attn15 are better described than attn0. The pattern is middle-versus-ends, not early-versus-late. Fourth prediction in this arc to pass while its generalisation failed.",
+  "CONVERGENCE_with_mlp_side": "the MLP middle band (mlp4-15) is the one a token table cannot describe (21.73% vs the front's 76.45%) and has the largest irreducibly-quadratic share (37.67%); the attention middle band (attn5-8) is where a lag-1 description fails worst. Two independent families, two different modules, same location: bilin18's front and back are cheap to describe and its middle is where the computation is.",
+  "scope": "attention OUTPUT WRITE only; v1 passed through unchanged",
+  "status": "certified"
  }
 }
