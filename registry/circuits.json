@@ -1851,5 +1851,28 @@
   "third_diffuse_result": "S1663 (mlp1's residue across 18 heads), S1671 (the compiled program's shortfall across 18 sites), S1686 (attention's positional dependence beyond lag 1). Three grains, same shape.",
   "scope": "attention OUTPUT WRITE only; v1 passed through unchanged",
   "status": "certified"
+ },
+ "_attention_residue_is_content_routed_not_long_range": {
+  "claim": "Attention's output write saturates under fixed-position linear description at four or five slots: widening a geometric spread from (1,2,4,8) to (1,2,4,8,16,32,64) -- out to a quarter of the 256-token window -- buys only 2.03 points, and the last three doublings buy 0.82 together. The remaining ~30% is therefore NOT long-range structure a wider window would catch; it is outside any fixed-position description, i.e. content-dependent routing.",
+  "sections": "S1687",
+  "script": "bilinear_quotient/attn_wide_spread.py",
+  "curve": {
+   "1,2,4,8": 0.6805,
+   "1,2,4,8,16": 0.6927,
+   "1,2,4,8,16,32": 0.6989,
+   "1,2,4,8,16,32,64": 0.7008,
+   "2,4,8,16,32,64": 0.4199
+  },
+  "lag1_irreplaceable": "removing lag 1 from the six-slot spread costs 27.90 points (69.89 -> 41.99) even with six other positions available to reconstruct it from",
+  "full_account": {
+   "current_position": 0.1638,
+   "previous_position": 0.3988,
+   "further_positions": 0.1382,
+   "content_routed_residue": 0.2992
+  },
+  "failed_prediction": "pred_a predicted >=3 points from widening to lag 64 if the residue were long-range; it buys 2.03",
+  "control": "(1,2,4,8) reproduces S1686's 68.05% exactly",
+  "scope": "attention OUTPUT WRITE only; v1 passed through unchanged and worth 0.7066 nats NESTED inside the write, not additively (S1684)",
+  "status": "certified"
  }
 }
