@@ -22,7 +22,10 @@
    ],
    "selectivity": 7.66,
    "class_rise": 0.0719,
-   "ref": "S1511 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547"
+   "ref": "S1511 greedy-v2 VERIFIED; NR=1920 VERIFIED S1547",
+   "CONTROLLED_S1618": "VINDICATED against a head-grain challenge. S1617's |lambda| eigen slice resolved to a NEIGHBOUR of every certified head 4/4 (7.8/7.3, 6.7/6.5, 12.7/12.6, 11.6/11.5). Settled causally by optimal-constant removal, one head at a time (S1618): the certified heads win class rise 3/4 and selectivity 3/4. The slice's neighbours at L7 and L12 have selectivity 0.24 and 0.10 -- BELOW 1, i.e. they damage global function MORE than the digits class. They are high-norm GENERALISTS. No correction required.",
+   "S1617_explained": "S1617's digits 0/8 head-grain miss is the HEAD-GRAIN FLOOR selecting generalists, not evidence against this entry. The |lambda| head-grain statistic resolves to whichever head projects largest onto the slice subspace, which favours high-norm heads.",
+   "single_open_cell": "L6 is the one exception: slice head 6.7 beats certified 6.5 on class rise (+.0176 vs +.0054) with selectivity essentially TIED (2.95 vs 2.84). Not enough to move the entry -- a tied selectivity means a bigger effect, not a cleaner specialist -- but it is the cell to revisit if digits is reopened."
   },
   "open_quote": {
    "heads": [
@@ -832,7 +835,8 @@
    },
    "digits_is_instructive": "the |lambda| top head is a consistent NEIGHBOUR of the certified head at every layer -- 7.8 vs 7.3, 6.7 vs 6.5, 12.7 vs 12.6, 11.6 vs 11.5. The slice resolves to a nearby but different head, not to noise. comma and 'and' show exact hits elsewhere, so this is not an indexing artifact.",
    "site_effect": "mlp17 46.7% vs mlp11 33.3% -- consistent with mlp17 as the late readout. Testing both rather than guessing one avoided understating the law by a third.",
-   "REVISES_THE_UNIVERSAL_CLAIM": "S1597/S1598's 'EVERY attention writer of a certified eigen slice resolves at head grain to a certified circuit head of that class' is TOO STRONG as a general statement. Supported form: at SOME classes and sites the slice resolves to the certified head, at ~3x a matched-rank random basis and ~27% absolute after floor correction; at others (digits, months) it resolves to a NEIGHBOURING head. S1608 stands as written for its own two cells."
+   "REVISES_THE_UNIVERSAL_CLAIM": "S1597/S1598's 'EVERY attention writer of a certified eigen slice resolves at head grain to a certified circuit head of that class' is TOO STRONG as a general statement. Supported form: at SOME classes and sites the slice resolves to the certified head, at ~3x a matched-rank random basis and ~27% absolute after floor correction; at others (digits, months) it resolves to a NEIGHBOURING head. S1608 stands as written for its own two cells.",
+   "S1618_mechanism": "the digits 0/8 failure is EXPLAINED: the slice picks high-norm generalists (selectivity 0.10-1.20) over the certified specialists (6.7-11.2), confirmed by causal removal. Where attribution and removal DISAGREE, prefer removal -- causal won 3/4 on rise and 3/4 on selectivity, with the losses concentrated where selectivity was tied."
   }
  },
  "_priority_metric_validation": {
