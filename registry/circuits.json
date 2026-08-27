@@ -486,7 +486,7 @@
     "attn9": "9.7 (221)"
    },
    "both_are_certified_question_circuit_heads": true,
-   "FLOOR_CAVEAT": "S1610: the .718 share is NOT evidence of sparsity -- a matched-rank RANDOM basis scores .7223 on the same corpus while the certified slice scores .5946. Of the four listed members, mlp11/mlp9/attn9 are rule-specific but ATTN10 APPEARS IN THE RANDOM TOP-4 IN 3/3 SAMPLES and is not distinguishable from floor by this test. The head_grain sub-claim is separately CONTROLLED AND PASSED (S1608, 18.8x over random at attn10) -- head grain and component membership are different measurements and only the former has cleared its control for attn10."
+   "FLOOR_CAVEAT": "S1611: the component floor control at this cell measured POSITIVE-ONLY share, while this entry's .718 is ABSOLUTE attribution mass (S1597 slice_writers.py:216). THE .718 FIGURE HAS NOT YET BEEN TESTED against a matched-rank null; a rerun with matching .abs().sum() ranking is queued. What IS established: on the positive-only statistic a random basis concentrates MORE than the certified slice (.7223 vs .5946, 3/3, n~110), so concentration per se is not evidence. The head_grain sub-claim is separately CONTROLLED AND PASSED (S1608, 18.8x over random)."
   },
   "causal": {
    "top4_source_cut": {
@@ -716,11 +716,13 @@
    "sections": "S1609 (provisional, n=25/3/5) SUPERSEDED on pred_b by S1610 (n=105/127/102)",
    "score": "S1610: 1-for-3",
    "corpus": "local curated_rows.pt == census_state_diverse['rows'] == cl.rows() (1000x513); 335 question positions vs 39 in bilin18_eval_tokens_large.pt. NOT fresh (census rows) -- shares are NOT comparable to S1597's .718 across corpora; the within-run arm-vs-arm comparison is the valid one.",
-   "headline": "A RANDOM rank-2 basis's top-4 share is .7223 -- the certified |lambda| slice concentrates LESS, at .5946, in 3/3 samples. S1597 reported .718 for the real slice. 'The top-4 carry ~72%' is the NULL RESULT, not the finding.",
+   "headline": "SUPERSEDED by CORRECTION_S1611 -- retained above so the error and its correction are both legible.",
    "attn10_is_not_distinguishable": "attn10 -- S1597's headline circuit head -- appears in the RANDOM top-4 in 3/3 samples. Its presence in the |lambda| top-4 is not by itself evidence.",
    "what_survives": "the |lambda| top-4 is perfectly stable ({mlp11, attn10, mlp9, attn9} in 3/3) and THREE members -- mlp11, mlp9, attn9 -- are absent from the random consensus. Those three are rule-specific; attn10 is not.",
    "correction_of_S1609": "S1609 concluded 'S1597's MEMBERSHIP claim is vindicated' from pred_b passing at n=25/3/5. At n~110 pred_b FAILS 0/3. S1609 was scored correctly on its own data and its PROVISIONAL marking caught this, but that conclusion must NOT be cited.",
-   "standing_rule": "stronger than LESSONS 15 as written: a component's presence in a top-k writer list is not evidence unless it is ABSENT from the matched-rank random list. Report the random top-k per component, not just the aggregate share."
+   "standing_rule": "stronger than LESSONS 15 as written: a component's presence in a top-k writer list is not evidence unless it is ABSENT from the matched-rank random list. Report the random top-k per component, not just the aggregate share.",
+   "CORRECTION_S1611": "STATISTIC MISMATCH, found 2026-08-27 06:45. This harness ranks components by POSITIVE-ONLY signed contribution; S1597 (slice_writers.py:216) and S1598 (slice_writers_p.py:205) both rank by ABSOLUTE attribution mass (.abs().sum()). Different statistic, ranking and denominator. The headline 'random .7223 is indistinguishable from S1597's .718' compares two DIFFERENT quantities and is WITHDRAWN -- the closeness is coincidence. Whether S1597's .718 is a null result is UNTESTED.",
+   "what_still_stands": "the WITHIN-RUN comparison, since both arms used the same statistic on the same rows: on positive-only share at question@mlp11, a matched-rank random basis scores .7223 vs the certified slice's .5946, 3/3 samples at n~110. Also attn10 in the random top-4 3/3 -- but that is the positive-only top-4, NOT S1597's absolute-mass top-4 (my consensus matches S1597's published set on only 3 of 4, which is the ranking difference showing)."
   }
  },
  "_priority_metric_validation": {
