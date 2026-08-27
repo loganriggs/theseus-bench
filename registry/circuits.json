@@ -1125,5 +1125,48 @@
   "EVALUABILITY_CAVEAT": "ONLY SIX MODULES ARE EVALUABLE: mlp0-3, mlp16, mlp17. Twelve (mlp4-mlp15) have stakes of 0.028-0.104 nats, so every recovery figure for them divides by a near-zero denominator. Their mostly NEGATIVE ceilings are the instrument's noise floor, not a module property: a 50k-entry table estimated from 1920 rows carries estimation noise exceeding a 0.05-nat signal. THIS INSTRUMENT IS UNINFORMATIVE BELOW ~0.15 NATS OF STAKE and the elbow index is meaningless there (mlp4's reads -333700). Do not quote the middle rows.",
   "the_three_regimes": "FRONT (mlp0-3): high ceiling .59-.95, largely token-tableable. MIDDLE (mlp4-15): below the instrument's floor, unmeasured rather than measured-as-zero. TOP (mlp16/17): ceiling ~.49, genuinely half contextual. Front-minus-back ceiling gap .471 vs .206.",
   "related_artifacts": "opt_ablation_consts_all.pt holds optimal ablation constants for all 198 components; bilin18_scoreboard_mp_results.json holds per-component benefit/keep_cent/keep_mean/rand for all 36. NOTE these use DIFFERENT protocols and denominators from the ladder above -- \u00a71324 warns explicitly that its mean-ablation stake is 'not directly comparable' to the \u00a7713 rank-profile benefit. Three mlp0 numbers exist in three protocols (ladder stake .799, scoreboard benefit 2.195); never mix them."
+ },
+ "_mlp0_dossier": {
+  "purpose": "Everything the ledger establishes about mlp0 in one place, assembled 2026-08-27 for the bottom-up push. ASSEMBLED FROM EXISTING SECTIONS, NOT RE-MEASURED -- every line names its source and was verified by reading that section, after a duplicated run (LESSONS 26) showed that scattered results get re-run.",
+  "size_and_ceiling": {
+   "stake_mean_ablation_nats": 0.799,
+   "token_table_ceiling": 0.863,
+   "un_tableable_residue_nats": 0.11,
+   "source": "\u00a71324 / \u00a71326 ladder",
+   "reading": "mlp0 is SMALL -- .799 nats against mlp1's 6.997 one block later, 8.8x. And it is largely TOKEN-TABLEABLE: 86.3% of that stake is reachable by a 50k per-token lookup, leaving .110 nats that no token-indexed function can produce."
+  },
+  "what_it_computes": {
+   "mean_table_effective_rank": 22.7,
+   "embedding_effective_rank": 132.4,
+   "linear_predictability_from_embedding_R2": 0.44,
+   "source": "\u00a7780",
+   "reading": "mlp0 does NOT re-encode the token -- the embedding never leaves the residual stream. It computes the token's CLASS: ~360 distinct tokens collapse into a ~23-dim space, 6x below the embedding. And it does so NONLINEARLY -- that class structure is only 44% linearly predictable from the embedding it is computed from. STANDING PREDICTION: any affine/linear read of mlp0 caps out low. Codex's v1 affine compiler independently hit this (QNN +0.010, 11.2% of its oracle)."
+  },
+  "what_reads_it": {
+   "mlp4_dCE_from_mlp0": 0.674,
+   "mlp4_dCE_from_mlp3": 0.373,
+   "attention_share_of_mlp4_diet": 0.068,
+   "source": "\u00a71422",
+   "reading": "mlp4 reads the CLASS-CODE tier, not the token table. mlp0 is its dominant input at 1.8x mlp3."
+  },
+  "coupling": {
+   "joint_mlp012_restoration_nats": 0.5115,
+   "singleton_sum_nats": 0.0573,
+   "source": "\u00a71616",
+   "reading": "The early block is a COUPLED causal program: joint live MLP0+1+2 restoration gains .5115 nats against a singleton sum of .0573 -- 8.9x superadditive, and MLP2 FLIPS SIGN after upstream repair. mlp0 cannot be understood or compiled in isolation from mlp1/mlp2."
+  },
+  "what_the_residue_is_NOT": {
+   "prev_token_share": 0.2068,
+   "prev_token_null": 0.2115,
+   "dce_prev": 0.0155,
+   "dce_random": 0.0035,
+   "source": "context_residual_results.json",
+   "reading": "The context residual is NOT previous-token: its share (.2068) is at or below its own null (.2115). A prev-token feature does not explain what the table cannot."
+  },
+  "falsified": {
+   "source": "\u00a71614",
+   "claim": "The prose-content factorization at MLP0/1 is FALSIFIED by a local same-realization oracle; MLP2 is a regularizer sign, not a replacement."
+  },
+  "implications_for_an_executable_compiler": "1. The target is bounded: mlp0's entire stake is .799 nats in the ladder protocol. 2. A TOKEN TABLE is an executable program (zero original-MLP calls) worth ~86% of it, and no compiled map earns credit unless it beats that baseline -- Codex's {N,P,E,Q,O} lattice has no table arm. 3. The real target is the .110-nat un-tableable residue, not the module. 4. Expect linear grammars to underperform: the class structure is 44% linearly predictable. 5. Do not compile mlp0 alone -- \u00a71616's 8.9x superadditivity says the early block is coupled. PROTOCOL WARNING: these are LADDER-protocol numbers. Three incompatible mlp0 values exist (ladder stake .799, scoreboard benefit 2.195, exact-restoration-on-frozen-ship). \u00a71324 warns they are 'not directly comparable'. Never mix denominators."
  }
 }
