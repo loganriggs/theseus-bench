@@ -485,7 +485,8 @@
     "attn10": "10.5 (625, 20:1 over next)",
     "attn9": "9.7 (221)"
    },
-   "both_are_certified_question_circuit_heads": true
+   "both_are_certified_question_circuit_heads": true,
+   "FLOOR_CAVEAT": "S1606: this top-4 has NOT had a random-subspace control run at its own cell (question@mlp11, rank-2). The .718 share and the membership may include generic high-norm components. The head_grain sub-claim is a WITHIN-layer ratio and is under test separately (headgrain_control)."
   },
   "causal": {
    "top4_source_cut": {
@@ -510,7 +511,8 @@
      "mlp9",
      "mlp14",
      "attn9"
-    ]
+    ],
+    "FLOOR_CAVEAT": "S1606: mlp16 and mlp15 of this top-6 are in the RANDOM-subspace floor at this exact cell, so the .482 share is inflated by components a random basis also returns. The DIFFUSE conclusion is not overturned (a floor makes a set more diffuse, not less) and no retraction is required, but the membership list must not be read as six identified writers."
    },
    "head_grain_law_replicates": {
     "attn9": "9.6 (6.8:1) \u2014 circuit head",
@@ -662,6 +664,28 @@
    },
    "unregistered_stable": "top-2 positive writers are mlp12, mlp13 in 6/6 -- NOT S1598's set (mlp16, x0, mlp15, mlp9, mlp14, attn9), which was measured into the |lambda|-top-8 slice. THE WRITER SET IS A PROPERTY OF THE (site, slice-rule) PAIR, NOT OF THE CLASS ALONE -- a caution for every writer-graph number in this program.",
    "in_flight": "readwrite_2x2: {question,pronouns} x {mlp11,mlp17} under one uniform slice rule, to identify whether SITE or CLASS decides the read-write sign (S1601 and S1604 differ in both, so neither is identified)."
+  },
+  "readwrite_2x2": {
+   "section": "S1605",
+   "score": "0-for-3",
+   "design": "{question,pronouns} x {mlp11,mlp17}, one uniform pos_r8 payload rule, 3 disjoint samples per cell; recon rel err 6.3e-08 to 3.6e-07",
+   "self_write_mean": {
+    "question@mlp11": 730.2,
+    "question@mlp17": 563.1,
+    "pronouns@mlp11": -129.4,
+    "pronouns@mlp17": -2214.0
+   },
+   "finding": "THE SELF-WRITE SIGN TRACKS THE CLASS, NOT THE SITE. Question writes INTO its payload directions at both sites (6/6 samples); pronouns writes AGAINST its own at both (6/6). The S1601-vs-S1604 contrast previously attributed to depth is a class difference. The driver's site hypothesis was exactly inverted and all three registered bars FAILED.",
+   "instrument_limit": "TWO OF FOUR CELLS ARE DEGENERATE AND THEIR DEPTH CURVES MUST NOT BE USED: question@mlp17 peaks at layers 1-2 with drawdowns nan/nan/35.85 (curve never rises, ratio divides by ~0); pronouns@mlp11 peaks at the TERMINAL component so drawdown is exactly 0.000 by construction. Both are OFF-SITE cells. The depth-curve method yields a coherent accumulation profile ONLY at a class's own certified site. Self-write is a signed sum with no division and stays valid everywhere, which is why the class-not-site conclusion survives while cross-cell drawdown/peak comparisons do not.",
+   "do_not_use": "the |mlp17|/|mlp11| ratios (.771 question, 17.11 pronouns) -- question's numerator comes from a degenerate curve"
+  },
+  "writer_floor_control": {
+   "section": "S1606",
+   "score": "1-for-3",
+   "finding": "A RANDOM rank-8 subspace has 'writers': consensus top-6 mlp17, mlp16, mlp15, attn16, attn17, attn13. Component attribution onto ANY low-rank subspace is dominated by the largest-output-norm components. All three real slice rules at pronouns@mlp17 share exactly {mlp17, mlp16, mlp15} with the random control.",
+   "floor_corrected": "raw Jaccard(|lambda|-rule, payload-rule) = .333; FLOOR-CORRECTED = .000 -- the entire apparent agreement between two slice rules was the floor. Rule-specific tails are disjoint: |lambda| picks x0/attn12/mlp9, payload picks mlp11/mlp12/mlp13, gate picks mlp14/x0/attn12.",
+   "passed": "Jaccard(|lambda|, gate) .714 > Jaccard(|lambda|, payload) .333 -- the |lambda| slice at a suppression-dominated site is gate-dominated (S1598's own lesson, confirmed from the other side).",
+   "standing_requirement": "EVERY component-level writer/attribution claim needs a random-subspace control at matched rank; only the floor-corrected set may be named as writers. LESSONS 15."
   }
  }
 }
