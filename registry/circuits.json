@@ -1463,5 +1463,24 @@
   "AFFECTS_mlp1": "S1662 reported mlp1's individual stake as 7.005 nats, 'eight times its neighbours' -- that puts CE at 10.28 against a 10.82 uniform ceiling and is a SATURATED measurement. It licenses 'ablating mlp1 alone destroys the model'; it does NOT license 'mlp1 is 8x mlp0'. Cross-module raw-stake comparisons involving mlp1 are ordinal at best.",
   "does_not_affect": "S1663 and S1664 findings about mlp1 -- both are ratios computed within mlp1's own condition",
   "status": "certified"
+ },
+ "_middle_band_program_family_prices": {
+  "claim": "The middle band (mlp4-15, joint) is 21.73% reproducible by a per-token table, 62.33% by a full-rank linear map of the module input, leaving 37.67% irreducibly quadratic. A rank-1 linear direction (20.55%) matches the entire 50257-row token table.",
+  "sections": "S1667",
+  "script": "bilinear_quotient/mid_band_linear_program.py",
+  "linear_curve_covered": {
+   "1": 0.2055,
+   "8": 0.3628,
+   "32": 0.4143,
+   "64": 0.4493,
+   "256": 0.5544,
+   "1152": 0.6233
+  },
+  "token_table_comparator": 0.2173,
+  "quadratic_remainder": 0.3767,
+  "why_the_remainder_is_meaningful": "bilin18's MLPs are pure bilinear with no elementwise nonlinearity, so 1 - (full-rank linear ceiling) prices what the quadratic form does that no linear map of the same input can imitate -- it is not approximation error",
+  "coverage_control": "a linear map has no coverage gap; scoring the linear arms both all-positions and covered-only differs by at most 3.49% across the curve, so the table's 21.73% and the 40-point family gap are not coverage artifacts",
+  "protocol": "joint substitution over the band, covered-position scoring, optimal-constant stake -- identical to S1666 so the numbers compare",
+  "status": "certified"
  }
 }
