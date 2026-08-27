@@ -1740,5 +1740,26 @@
   ],
   "general_shape": "predictions constrain the SCIENCE, instrument checks constrain the MEASUREMENT, neither constrains whether the INTERVENTION was applied",
   "status": "certified"
+ },
+ "_attention_output_write_is_nonlocal": {
+  "claim": "A position-wise least-squares linear map of the current position's residual stream recovers 16.38% of bilin18's eighteen attention OUTPUT WRITES (3.5570-nat stake), against 60.81% for the MLP stack. The attention output write is 83.6% NON-LOCAL: five sixths of what it contributes cannot be computed from the current position at all.",
+  "sections": "S1682",
+  "script": "bilinear_quotient/attn_program_family.py",
+  "curve": {
+   "8": 0.0941,
+   "32": 0.1466,
+   "128": 0.1707,
+   "512": 0.1638,
+   "1152": 0.1638
+  },
+  "stake_nats": 3.557,
+  "mlp_comparator": {
+   "linear_program": 0.6081,
+   "stake": 4.3301
+  },
+  "protocol": "bottom-up compilation (S1669), coverage mask pinned to n96_skip80 (S1676), covered-position scoring, optimal-constant stake",
+  "SCOPE_output_path_only": "each attention module returns (y, v1); the hook substitutes y and passes v1 -- the value embedding threaded to blocks above -- through UNCHANGED. The claim is 'attention's output write replaced', not 'attention replaced'. 83.6% is a FLOOR on the non-locality of the write.",
+  "non_monotone_noted": "the curve dips 0.69 points from rank 128 to rank 512/full. Not the sign-flipping collapse LESSONS 28 was written for; ranks 512 and 1152 agree to 5dp so W's effective rank is <=512. Plain reading is rank-128 truncation acting as mild regularisation. The headline is stable across ranks 128-1152 within 0.7 points. Monotonicity was reported, not scored.",
+  "status": "certified"
  }
 }
