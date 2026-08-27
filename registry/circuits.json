@@ -989,5 +989,141 @@
   "WHY_S1647_IS_NOT_PROMOTED": "CAUTION 1 IS UNDISCHARGED. S1647's rho .6783 at p .0186 on n=12 sits almost exactly on S1614's rho .6727 at p .0192 on n=10, which S1616 then refuted at rho .0182 / p .9601 on disjoint classes. The structural difference is real -- S1614 was IN-SAMPLE while S1647/S1648 are out-of-sample against a hypothesis registered before each run, which is the protection S1614 lacked -- but this ledger has been fooled at exactly this magnitude and scale before. Two pre-registered held-out sets are better evidence than S1614 ever had and are still not a certified result.",
   "SLICE_CONSTRUCTION_LIMIT": "The ablation cost VANISHES for very broad classes. In S1648: `cap` (7156 scored positions, 10735 vocabulary tokens) gives relative CE rise -.0008 and `digit` (1702 positions, 1691 tokens) gives +.00004. A rank-2 slice cannot carry much about a class spanning thousands of vocabulary items, so there is little for a mean-ablation to remove. This is a limit on the SLICE CONSTRUCTION, not on the ratio hypothesis, and it predicts the effect should vanish for any sufficiently broad class.",
   "CURRENCY_CORRECTION_HOLDS": "S1645's fix -- score RELATIVE CE rise (rise / that class's own base CE) rather than absolute -- continues to hold. rho(n_positions, relative rise) is -.098 on set 1 and +.0000 on set 2, across classes spanning 97 to 7156 positions. The absolute-rise confound that dominated S1644 (rho -.580) does not return under the corrected currency."
+ },
+ "_mlp_module_dossier": {
+  "source": "\u00a71326 (mlp_ladder_depth.py), with \u00a71323-\u00a71325 as the per-module entries. VERBATIM from the ledger, not re-measured.",
+  "why_this_entry_exists": "The full-depth ladder existed only inside BILIN18_CONNECTION.md and appeared in neither FINDINGS nor this registry. On 2026-08-27 that cost real work: I began re-measuring mlp0's mean-ablation stake and token-table ceiling from scratch before Logan pointed out it was already done. Surfacing it here so the next reader -- human or agent -- finds it before spending GPU.",
+  "columns": "stake = mean-ablation CE cost (nats) | ceiling = 50k token-table recovery | elbow = k16/ceiling | freq = K=16 log-frequency spread over shuffled null",
+  "table": {
+   "mlp0": {
+    "stake": 0.799,
+    "ceiling": 0.863,
+    "elbow": 0.43,
+    "freq": "10.3x",
+    "evaluable": true
+   },
+   "mlp1": {
+    "stake": 6.997,
+    "ceiling": 0.945,
+    "elbow": 0.43,
+    "freq": "16.3x",
+    "evaluable": true
+   },
+   "mlp2": {
+    "stake": 0.76,
+    "ceiling": 0.716,
+    "elbow": 0.14,
+    "freq": "22.3x",
+    "evaluable": true
+   },
+   "mlp3": {
+    "stake": 0.631,
+    "ceiling": 0.593,
+    "elbow": 0.4,
+    "freq": "11.0x",
+    "evaluable": true
+   },
+   "mlp4": {
+    "stake": 0.104,
+    "ceiling": -0.252,
+    "elbow": null,
+    "freq": "3.5x",
+    "evaluable": false
+   },
+   "mlp5": {
+    "stake": 0.083,
+    "ceiling": -0.036,
+    "elbow": null,
+    "freq": "4.6x",
+    "evaluable": false
+   },
+   "mlp6": {
+    "stake": 0.079,
+    "ceiling": -0.06,
+    "elbow": null,
+    "freq": "1.7x",
+    "evaluable": false
+   },
+   "mlp7": {
+    "stake": 0.057,
+    "ceiling": -0.148,
+    "elbow": null,
+    "freq": "1.6x",
+    "evaluable": false
+   },
+   "mlp8": {
+    "stake": 0.048,
+    "ceiling": -0.099,
+    "elbow": null,
+    "freq": "1.8x",
+    "evaluable": false
+   },
+   "mlp9": {
+    "stake": 0.051,
+    "ceiling": -0.067,
+    "elbow": null,
+    "freq": "2.4x",
+    "evaluable": false
+   },
+   "mlp10": {
+    "stake": 0.04,
+    "ceiling": -0.06,
+    "elbow": null,
+    "freq": "1.4x",
+    "evaluable": false
+   },
+   "mlp11": {
+    "stake": 0.043,
+    "ceiling": -0.032,
+    "elbow": null,
+    "freq": "1.4x",
+    "evaluable": false
+   },
+   "mlp12": {
+    "stake": 0.039,
+    "ceiling": 0.005,
+    "elbow": null,
+    "freq": "1.7x",
+    "evaluable": false
+   },
+   "mlp13": {
+    "stake": 0.035,
+    "ceiling": 0.059,
+    "elbow": null,
+    "freq": "1.4x",
+    "evaluable": false
+   },
+   "mlp14": {
+    "stake": 0.028,
+    "ceiling": 0.039,
+    "elbow": null,
+    "freq": "1.3x",
+    "evaluable": false
+   },
+   "mlp15": {
+    "stake": 0.035,
+    "ceiling": 0.141,
+    "elbow": 0.78,
+    "freq": "3.4x",
+    "evaluable": false
+   },
+   "mlp16": {
+    "stake": 0.15,
+    "ceiling": 0.494,
+    "elbow": 1.1,
+    "freq": "3.6x",
+    "evaluable": true
+   },
+   "mlp17": {
+    "stake": 0.381,
+    "ceiling": 0.497,
+    "elbow": 0.84,
+    "freq": "8.9x",
+    "evaluable": true
+   }
+  },
+  "EVALUABILITY_CAVEAT": "ONLY SIX MODULES ARE EVALUABLE: mlp0-3, mlp16, mlp17. Twelve (mlp4-mlp15) have stakes of 0.028-0.104 nats, so every recovery figure for them divides by a near-zero denominator. Their mostly NEGATIVE ceilings are the instrument's noise floor, not a module property: a 50k-entry table estimated from 1920 rows carries estimation noise exceeding a 0.05-nat signal. THIS INSTRUMENT IS UNINFORMATIVE BELOW ~0.15 NATS OF STAKE and the elbow index is meaningless there (mlp4's reads -333700). Do not quote the middle rows.",
+  "the_three_regimes": "FRONT (mlp0-3): high ceiling .59-.95, largely token-tableable. MIDDLE (mlp4-15): below the instrument's floor, unmeasured rather than measured-as-zero. TOP (mlp16/17): ceiling ~.49, genuinely half contextual. Front-minus-back ceiling gap .471 vs .206.",
+  "related_artifacts": "opt_ablation_consts_all.pt holds optimal ablation constants for all 198 components; bilin18_scoreboard_mp_results.json holds per-component benefit/keep_cent/keep_mean/rand for all 36. NOTE these use DIFFERENT protocols and denominators from the ladder above -- \u00a71324 warns explicitly that its mean-ablation stake is 'not directly comparable' to the \u00a7713 rank-profile benefit. Three mlp0 numbers exist in three protocols (ladder stake .799, scoreboard benefit 2.195); never mix them."
  }
 }
