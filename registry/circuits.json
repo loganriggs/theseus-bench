@@ -555,7 +555,73 @@
     "final_plus_readers": 1.502,
     "rank": 1
    },
-   "finding": "span(v1,v2) of the mlp11 question form IS the '?' unembedding channel; the certified circuit reads and writes the class's own output direction. Completeness pred failed (final+readers=1.80x source) \u2014 the three cuts remove different channel content; full-depth signed budget (channel_budget) queued."
+   "finding": "span(v1,v2) of the mlp11 question form IS the '?' unembedding channel; the certified circuit reads and writes the class's own output direction. Completeness pred failed (final+readers=1.80x source) \u2014 the three cuts remove different channel content; full-depth signed budget resolved this in S1601 (see signed_budget below)."
+  },
+  "signed_budget": {
+   "section": "S1601",
+   "score": "2-for-3",
+   "method": "exact linear decomposition of the final residual's span(v1,v2) coords over all 37 components (x0, ao_0..17, mo_0..17); recon rel err 0.0",
+   "top_positive": {
+    "mlp11": 1028.5,
+    "attn10": 879.9,
+    "attn9": 613.5,
+    "mlp9": 554.7,
+    "attn12": 385.8
+   },
+   "most_negative": {
+    "mlp17": -1150.8,
+    "mlp16": -292.0
+   },
+   "head_grain": {
+    "attn10": "10.5 (946.4, 20:1)",
+    "attn9": "9.7 (335.2), 9.3 (262.4)",
+    "attn12": "12.6 (401.0)"
+   },
+   "causal": {
+    "final_cut_ref_class_rise": 2.0113,
+    "top4_positive_cut": {
+     "class_rise": 0.833,
+     "global_rise": -0.0003,
+     "frac_of_final": 0.414,
+     "selectivity": "unbounded within noise (global rise negative, sub-noise at NR=960; raw ratio 8.3e5 is a divide-by-noise artifact, S1515 precedent)"
+    },
+    "top4_negative_cut": {
+     "class_rise": -0.245,
+     "frac_of_final": -0.122
+    }
+   },
+   "preds": {
+    "pred_a_mlp11_top2": "PASSED (mlp11 is the single largest positive writer)",
+    "pred_b_mlp17_most_negative": "PASSED (and largest magnitude of ANY sign)",
+    "pred_c_top4_ge_60pct_of_final": "FAILED (.414 vs .60 bar)"
+   },
+   "finding": "the '?' channel is a near-cancellation of two large opposing flows: mlp11 (+1028, the module that also READS the channel) against mlp17 (-1151, the largest single contribution in the whole budget, and suppressive). Top-4 positive writers carry only .573 of positive mass, so no small cut reproduces the final cut -- which is why the S1600 completeness prediction failed. Head grain lands on certified question-circuit heads (10.5/9.7/9.3/12.6) from a decomposition that never used the circuit labels."
+  },
+  "depth_profile": {
+   "section": "S1602",
+   "score": "1-for-3",
+   "status": "SHAPE CERTIFIED, MAGNITUDE OPEN",
+   "method": "per-component signed contribution summed in stack order; 96 fit rows (skip=80) + 96 held-out (skip=15000); recon rel err 6.3e-08 / 0.0",
+   "curve_landmarks_fit": {
+    "x0": 87.7,
+    "mlp5": 302.1,
+    "mlp9": 1761.9,
+    "mlp11": 3982.9,
+    "mlp13": 4829.0,
+    "mlp15": 5191.8,
+    "attn16_PEAK": 5228.1,
+    "mlp16": 4936.1,
+    "attn17": 5074.9,
+    "mlp17_final": 3924.0
+   },
+   "preds": {
+    "pred_a_peak_by_L13": "FAILED (peak is attn16, layer 16)",
+    "pred_b_largest_drop_mlp17": "PASSED (both row sets)",
+    "pred_c_drawdown_ge_25pct_and_replicates": "FAILED (fit .249442 misses the .25 bar by .00056; held-out .4687, relative gap .879 vs a .20 bar)"
+   },
+   "replicates": "monotone accumulation with no front/middle reversal; peak at attn16; suppression confined to MLPs (mlp16, mlp17) while attn17 still writes POSITIVELY (+138.7); mlp17 the dominant drop",
+   "does_not_replicate": "the drawdown magnitude: .249 (class_n 44) vs .469 (class_n 31). Per S511 a two-sample class number carries unmeasured spread; six-sample spread run (channel_depth_spread) in flight. Do NOT quote a drawdown number until it lands.",
+   "corrects": "S1601's 'mlp11 is the main mid-depth source' framing: mlp11 is the largest single step but accumulation continues five more layers, adding a further ~1245 (31% of peak) after it. The channel is built across the WHOLE stack, not mid-stack."
   }
  }
 }
