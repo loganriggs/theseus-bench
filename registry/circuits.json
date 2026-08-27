@@ -1540,7 +1540,7 @@
   "status": "certified"
  },
  "_best_compiled_program_for_mlp_stack": {
-  "claim": "bilin18's entire MLP stack is 57.29% reproduced by a compiled 18-piece program: per-token lookup tables at mlp0-2 and least-squares linear maps at mlp3-17, fitted bottom-up in stack order (S1672). Beats all-linear 54.28% and the mlp0-3 variant 56.29%.",
+  "claim": "Two figures, answering different questions. STANDALONE (the program fully replaces the MLPs at every position): eighteen least-squares linear maps of the residual stream, compiled bottom-up, reproduce 54.28% of bilin18's 4.3196-nat MLP stake. UNDER THE COVERED-POSITION PROTOCOL used throughout this ledger (module left live at the 23.4% of positions whose token was unseen at fit): linear 57.99% > token tables at mlp0-2 57.29% > additive 54.35%.",
   "sections": "S1670",
   "script": "bilinear_quotient/compiled_program_families.py",
   "stake_nats": 4.3196,
@@ -1556,7 +1556,9 @@
   "open": "the remaining 43.71% -- located by compiled_residual_attribution.py",
   "status": "certified",
   "SUPERSEDED_BY_S1672": "the best pure assignment is tables at mlp0-2 (57.29%), not mlp0-3 (56.29%). Adding mlp3 to the table set COSTS a point.",
-  "claim_ORIGINAL": "bilin18's entire MLP stack is 56.29% reproduced by a compiled 18-piece program: per-token lookup tables at mlp0-3 and least-squares linear maps of the residual stream at mlp4-17, fitted bottom-up in stack order. This beats both pure families (all-linear 54.28%, all-table 49.96%)."
+  "claim_ORIGINAL": "bilin18's entire MLP stack is 56.29% reproduced by a compiled 18-piece program: per-token lookup tables at mlp0-3 and least-squares linear maps of the residual stream at mlp4-17, fitted bottom-up in stack order. This beats both pure families (all-linear 54.28%, all-table 49.96%).",
+  "claim_ORIGINAL_S1672": "bilin18's entire MLP stack is 57.29% reproduced by a compiled 18-piece program: per-token lookup tables at mlp0-2 and least-squares linear maps at mlp3-17, fitted bottom-up in stack order (S1672). Beats all-linear 54.28% and the mlp0-3 variant 56.29%.",
+  "CORRECTION_S1674": "I quoted 57.29% as 'the best program' from S1670 onward. The hybrid hook leaves the module LIVE at uncovered positions -- a genuine artifact limitation for a TABLE (which has no entry there) but simply 'not substituting' for a LINEAR MAP (which is defined everywhere). Family comparisons stay fair since every arm leaves the same positions live, but the absolute figure overstates a standalone program. STRUCTURAL ASYMMETRY: there is no standalone table program at all -- a table substituted everywhere is the arm LESSONS 27 showed is broken. A linear map can be a program; a lookup table can only be an account of the positions it covers."
  },
  "_compiled_program_residual_is_diffuse": {
   "claim": "The 43.71% missing from the best compiled MLP-stack program is DIFFUSE, not localised. The worst single site (mlp3) holds 9.91% of the shortfall and fourteen of eighteen sites sit within 0.8 points of each other. There is no bottleneck site.",
@@ -1596,6 +1598,26 @@
   "script": "bilinear_quotient/program_family_assignment.py",
   "mechanism": "a token table captures each middle-band site's MEAN output well, which dominates L2, while the directions that matter downstream are ones L2 barely weights",
   "implication": "any program search that scores candidates against their own module's output is selecting on the wrong quantity -- relevant to lattice/state selection done on local fidelity",
+  "status": "certified",
+  "MECHANISM_UNRESOLVED_S1673": "I asserted the mechanism was 'L2 weights directions that do not matter downstream'. That was untested. A simpler account: the greedy criterion was evaluated IN-SAMPLE on the fit rows, where a 6.9M-parameter table beats a 1.3M-parameter linear map by construction. The EMPIRICAL finding is unchanged (local in-sample selection is 3.5 points worse end-to-end than ignoring it); the mechanism is unresolved between these two and should not have been asserted."
+ },
+ "_additive_family_loses_to_its_own_special_cases": {
+  "claim": "The additive program y = b(token) + xW scores 54.35% under matched coverage, BELOW both of its own special cases (all-linear 57.99%, tables-at-mlp0-2 57.29%). Coverage policy is worth 3.71-7.01 points and does not explain it.",
+  "sections": "S1673",
+  "scripts": [
+   "bilinear_quotient/additive_program_family.py",
+   "bilinear_quotient/additive_coverage_controlled.py"
+  ],
+  "design": "family (linear|additive|table) x coverage policy (everywhere|hybrid), both reference points reproducing exactly",
+  "grid": {
+   "linear_everywhere": 0.5428,
+   "linear_hybrid": 0.5799,
+   "additive_everywhere": 0.4734,
+   "additive_hybrid": 0.5435,
+   "table_mlp0_2_hybrid": 0.5729
+  },
+  "LEADING_HYPOTHESIS_NOT_A_FINDING": "estimation, not expressiveness. The additive arm fits a per-token table at ALL 18 sites -- 6009x1152 parameters from 24576 fit positions, ~4 positions per token. At mlp0-2 the token determines the output (ceilings 90/96/77) so the estimator is sound; at the other fifteen sites b is near noise and W is then fitted on a noisy residual. Adding a term you cannot estimate is worse than omitting it. fit_size_scaling.py tests this at 5x data.",
+  "revises": "the mechanism asserted in _local_fidelity_selects_the_wrong_program -- see that entry's MECHANISM_UNRESOLVED_S1673 note",
   "status": "certified"
  }
 }
