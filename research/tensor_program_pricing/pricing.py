@@ -103,14 +103,22 @@ def scalar_quadratic_bilinear_factors(matrix, tolerance=None):
 
     up to the selected numerical tolerance.
     """
-    matrix = matrix.detach().double().cpu()
+    matrix = matrix.detach().cpu()
     if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
         raise ValueError("scalar quadratic matrix must be square")
+    if matrix.is_complex():
+        raise ValueError("scalar quadratic matrix must be real")
+    source_dtype = matrix.dtype
+    matrix = matrix.double()
     symmetric = (matrix + matrix.T) / 2
     eigenvalues, eigenvectors = torch.linalg.eigh(symmetric)
     scale = float(eigenvalues.abs().max()) if eigenvalues.numel() else 0.0
     if tolerance is None:
-        tolerance = torch.finfo(matrix.dtype).eps * max(matrix.shape) * scale
+        precision_dtype = source_dtype if source_dtype.is_floating_point else matrix.dtype
+        # Promotion improves the solve but cannot remove roundoff already baked
+        # into a low-precision input matrix. Numerical inertia must therefore use
+        # the source precision unless the caller supplies a semantic threshold.
+        tolerance = torch.finfo(precision_dtype).eps * max(matrix.shape) * scale
     tolerance = float(tolerance)
     if tolerance < 0:
         raise ValueError("tolerance must be nonnegative")

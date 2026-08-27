@@ -94,6 +94,18 @@ class PricingTests(unittest.TestCase):
         self.assertEqual(body["inertia"], [1, 1])
         self.assertEqual(body["interface_dimension"], 2)
 
+    def test_inertia_tolerance_respects_source_precision(self):
+        gen = torch.Generator().manual_seed(19)
+        left = torch.randn(32, generator=gen, dtype=torch.float32)
+        right = torch.randn(32, generator=gen, dtype=torch.float32)
+        # Exactly one product in float32 arithmetic; its symmetric matrix has
+        # rank at most two, but a float64 eigensolve sees baked-in tiny modes.
+        matrix = (torch.outer(left, right) + torch.outer(right, left)) / 2
+        result = PRICING.scalar_quadratic_bilinear_factors(matrix)
+        self.assertEqual(result["inertia"], (1, 1))
+        self.assertEqual(result["products"], 1)
+        self.assertEqual(result["interface_dimension"], 2)
+
     def test_rate_distortion_sweep_prices_quantized_artifact(self):
         table = torch.linspace(-1, 1, 257, dtype=torch.float64)
         program = {"constants": {"table": table}}
