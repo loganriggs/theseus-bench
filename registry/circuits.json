@@ -1618,6 +1618,16 @@
   },
   "LEADING_HYPOTHESIS_NOT_A_FINDING": "estimation, not expressiveness. The additive arm fits a per-token table at ALL 18 sites -- 6009x1152 parameters from 24576 fit positions, ~4 positions per token. At mlp0-2 the token determines the output (ceilings 90/96/77) so the estimator is sound; at the other fifteen sites b is near noise and W is then fitted on a noisy residual. Adding a term you cannot estimate is worse than omitting it. fit_size_scaling.py tests this at 5x data.",
   "revises": "the mechanism asserted in _local_fidelity_selects_the_wrong_program -- see that entry's MECHANISM_UNRESOLVED_S1673 note",
+  "status": "certified",
+  "S1675_HYPOTHESIS_STILL_OPEN": "The fit-size test is CONFOUNDED: the coverage mask is derived from the fit set, so 5x data took coverage from 5419 to 16110 tokens, simultaneously improving estimation and removing the hybrid policy's live-module crutch. Symptom: the LINEAR arm lost 3.29 points on 5x data, which no least-squares fit does. The offset control passed cleanly (<=0.56 points). SUGGESTIVE ONLY: at 480 rows the ordering inverts to table 56.50% > additive 55.02% > linear 54.88%, so the S1673 verdict may be specific to the small fit set. fit_size_fixed_mask.py pins the mask."
+ },
+ "_coverage_mask_confounds_fit_size_comparisons": {
+  "claim": "Under the hybrid substitution policy, the coverage mask is derived from the fit set, so comparisons across fit-set SIZE vary the measurement difficulty at the same time as the estimation quality. More fit data means more coverage, which means fewer positions left live for the real module and a harder task for the program.",
+  "sections": "S1675",
+  "script": "bilinear_quotient/fit_size_scaling.py",
+  "diagnostic": "the linear arm lost 3.29 points going from 96 to 480 fit rows -- a least-squares fit does not get worse with 5x data, so the degradation is the mask",
+  "fix": "hold the coverage mask fixed across fit sizes (same positions substituted, left live, and scored); only then does the comparison isolate estimation",
+  "clean_result_from_the_same_run": "document offset is NOT a variable -- at fixed size, skip1200 vs skip80 moves every family by <=0.56 points",
   "status": "certified"
  }
 }
