@@ -1643,5 +1643,20 @@
    "table_mlp0_2": 0.5716
   },
   "status": "certified"
+ },
+ "_additive_estimation_confirmed_by_truncation": {
+  "claim": "Truncating the token term b to low rank buys the additive program +3.47 points at the small fit set with NO extra data (53.79% -> 57.26% at rank 8). Combined with the +5.29 points from 5x data (S1676), two opposite interventions confirm the deficit is estimation, not expressiveness.",
+  "sections": "S1677",
+  "script": "bilinear_quotient/additive_lowrank_token.py",
+  "curve": {
+   "8": 0.5726,
+   "32": 0.5689,
+   "64": 0.5701,
+   "256": 0.5689,
+   "1152": 0.5379
+  },
+  "shape": "ranks 8-256 are flat within 0.4 points; only full rank collapses, by 3.5. The harm is concentrated in the tail directions estimated from a handful of token occurrences -- it is not a capacity trade-off with an optimum to tune.",
+  "failed_prediction": "pred_b predicted the regularised additive would overtake pure linear at this fit size; it does not (57.26% vs 58.17%). A token term at all 18 sites is not yet worth its estimation cost.",
+  "status": "certified"
  }
 }
