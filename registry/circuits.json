@@ -645,6 +645,23 @@
     "why_S1602_looked_unstable": "S1602's two samples were the MIN (.2494) and the MAX (.4687) of the six; the other four cluster at .3477-.3806 (spread .033). Drawing both extremes from six has p ~ 1/15. S1602's pred_c stays FAILED as written -- .249442 missed a .25 bar by .00056 -- but .2494 was the low outlier, not the quantity."
    }
   },
-  "standing_statement": "S1600-1603: heads 9.7/10.5 + mlp9/mlp10 write '?' evidence into span(v1,v2), which IS the '?' unembedding direction (logit-lens rank 1). The channel accumulates MONOTONICALLY across the whole stack with no front/middle reversal, peaking at attn16 (6/6); mlp11 is the largest single positive step (+1028) but only ~69% of the peak is reached by then. Suppression is MLP-only and late: mlp16 (-292) and mlp17 (-1151, largest of any sign) cut it back by .358 +/- .029 while attn17 still writes positively (+139). No small component set reproduces the final cut (top-4 positive = .414) because the quantity is assembled by ~34 positive steps against 2 large negative ones."
+  "standing_statement": "S1600-1603: heads 9.7/10.5 + mlp9/mlp10 write '?' evidence into span(v1,v2), which IS the '?' unembedding direction (logit-lens rank 1). The channel accumulates MONOTONICALLY across the whole stack with no front/middle reversal, peaking at attn16 (6/6); mlp11 is the largest single positive step (+1028) but only ~69% of the peak is reached by then. Suppression is MLP-only and late: mlp16 (-292) and mlp17 (-1151, largest of any sign) cut it back by .358 +/- .029 while attn17 still writes positively (+139). The late-peak SHAPE is general (12/12, two classes, two sites) but the READ-WRITE relationship is NOT: mlp11 amplifies the channel it reads (+1028) while mlp17 opposes its own payload (-1374 to -5111), so any 'module X reads and writes the same variable' claim needs testing per site (S1604). No small component set reproduces the final cut (top-4 positive = .414) because the quantity is assembled by ~34 positive steps against 2 large negative ones.",
+  "pronouns_depth_profile": {
+   "section": "S1604",
+   "score": "1-for-3",
+   "site": "mlp17",
+   "slice": "pos_r8 payload (8 most POSITIVE eigendirections; S1598 rule -- mlp17 slices must be sign-split, never |lambda|-ordered)",
+   "samples": "6 disjoint 96-row sets; recon rel err 1.1e-07 to 3.6e-07",
+   "passed": "peak at layer >=14 in 6/6 (attn16 x5, attn17 x1). With question's attn16 6/6 (S1603) the late-peak whole-stack-accumulation shape is 12/12 ACROSS TWO CLASSES AND TWO SITES -- the most robust result in the S1600-1604 arc.",
+   "failed_pred_b": "mlp17 is a large NEGATIVE writer of its OWN payload subspace in 6/6 (-1374 to -5111); predicted top-2 POSITIVE. The S1601 read-write coincidence (mlp11 was the largest positive writer of the subspace it reads) does NOT generalise.",
+   "failed_pred_c": "mean drawdown .5050 vs a registered <= .10. Sign-splitting the READ basis does not remove suppression because the suppression is a WRITE.",
+   "driver_error": "conflated how a form READS with how a module WRITES: the eigen-sign of the class-projected form describes the module as a reader of the residual and carries no information about the sign of its output along those same directions.",
+   "do_not_overread": {
+    "vs_question": "pronouns .5050 +/- .1095 vs question .3584 +/- .0287 is 1.30 sigma -- NOT significant. 'Pronouns is suppressed more' is unsupported.",
+    "magnitude_open": "pronouns sem .1095 (sd .2682) is well above the .05 that closed question in S1603. Six samples do NOT pin the pronouns drawdown; the SIGN is certain (6/6), the SIZE is not."
+   },
+   "unregistered_stable": "top-2 positive writers are mlp12, mlp13 in 6/6 -- NOT S1598's set (mlp16, x0, mlp15, mlp9, mlp14, attn9), which was measured into the |lambda|-top-8 slice. THE WRITER SET IS A PROPERTY OF THE (site, slice-rule) PAIR, NOT OF THE CLASS ALONE -- a caution for every writer-graph number in this program.",
+   "in_flight": "readwrite_2x2: {question,pronouns} x {mlp11,mlp17} under one uniform slice rule, to identify whether SITE or CLASS decides the read-write sign (S1601 and S1604 differ in both, so neither is identified)."
+  }
  }
 }
