@@ -2530,17 +2530,18 @@
  "_CURRENT_HEADLINE_FIGURES": {
   "purpose": "Disambiguation pointer. The registry states 24 different 5x.xx% program figures across 13 entries. Each is correct in its own condition, but they are NOT interchangeable and quoting the wrong one is easy. This entry names the condition for each and which figure is current.",
   "THE_CURRENT_NUMBER": {
-   "value": 0.558,
-   "sections": "S1709",
-   "what": "the best whole-model program: 36 sites substituted (18 MLPs + 18 attention output writes, v1 tabled), token tables at mlp0-2, linear maps at mlp3-17 with the middle band mlp4-15 augmented by 64 of each module's own bilinear features, four-position maps at every attention write, compiled interleaved bottom-up",
+   "value": 0.5871,
+   "sections": "S1710",
+   "what": "36 sites substituted (18 MLPs + 18 attention output writes, v1 tabled): token tables at mlp0-2, linear maps at mlp3-17 with mlp4-15 augmented by 512 of each module's own bilinear features, four-position maps at every attention write, compiled interleaved bottom-up",
    "stake": "5.5684 nats, the joint 36-site optimal-constant stake",
-   "caveat": "not yet replicated held-out; the 55.04% predecessor was, at 53.69% [52.92, 54.39]"
+   "caveat": "not replicated held-out; the 55.04% predecessor was, at 53.69% [52.92,54.39]. The k-curve has not turned, so this is not a ceiling for the family."
   },
   "whole_model_36_site_condition": {
    "50.94%": "S1694 -- simplest families (linear everywhere, lag-1 everywhere)",
    "55.04%": "S1696 -- best PURE families (tables mlp0-2, lags 1,2,4,8); the figure most often quoted and the one Codex carries",
    "55.80%": "S1709 -- CURRENT, adds 64 own-features at mlp4-15",
-   "53.69% [52.92,54.39]": "S1701 -- the 55.04% program scored on held-out skip11000"
+   "53.69% [52.92,54.39]": "S1701 -- the 55.04% program scored on held-out skip11000",
+   "58.71%": "S1710 -- CURRENT, adds 512 own-features at mlp4-15"
   },
   "MLP_ONLY_condition_attention_running_real": {
    "60.81%": "S1676 -- 18 linear maps, 480 fit rows, mask pinned. NOT comparable to the 36-site figures: different stake (4.3301 nats) and the other half is real",
@@ -2554,6 +2555,39 @@
   },
   "rule": "never compare across the three condition blocks above. The stakes differ (5.5684 vs 4.3301 vs 3.5570 nats) and in the single-half blocks the other half of the model is running real, which S1696/S1697/S1704 showed does not transfer.",
   "sections": "S1669-S1709",
+  "status": "certified"
+ },
+ "_mid_band_feature_ksweep": {
+  "claim": "Augmenting the middle-band linear maps with k of each module's own bilinear features keeps climbing steeply: k=64 +0.77 [+0.65,+0.89], k=256 +2.34 [+2.21,+2.48], k=512 +3.67 [+3.51,+3.84], giving a new best whole-model program of 58.71%. At k=512 the augmentation recovers 29.4% of the middle band's +12.52-point shortfall.",
+  "sections": "S1710",
+  "script": "bilinear_quotient/mid_band_feature_ksweep.py",
+  "curve": {
+   "0": 0.5504,
+   "64": 0.558,
+   "256": 0.5738,
+   "512": 0.5871
+  },
+  "gain_ci95": {
+   "k64": [
+    0.0065,
+    0.0089
+   ],
+   "k256": [
+    0.0221,
+    0.0248
+   ],
+   "k512": [
+    0.0351,
+    0.0384
+   ]
+  },
+  "controls": "k=0 reproduces S1696's 55.04% exactly; k=64 replicates S1709's +0.77 to the digit; baseline CE 3.29205",
+  "FAILED_pred_c": "predicted diminishing returns -- that the 64->512 step would be smaller than the earlier 8->64 step of +0.93. It is +2.91, three times larger. The family is still in its steep region at k=512 and the sweep has NOT found the shape. The docstring stated this consequence in advance.",
+  "CORRECTS_S1709": "S1709 concluded from the k=64 point alone that the band's content 'is not mostly a few missing bilinear features' and that the family 'barely touches it'. At k=512 it recovers 29.4% of the band shortfall. Generalising from one point on a curve that had not turned is the same error S1690 recorded when reading 'high-rank' off a point sitting on a cliff edge -- second occurrence.",
+  "augmentation_vs_replacement": "S1679 kept k features and PINNED the rest (replacement) and was -49.93% at k=512; augmentation at k=512 gives +3.67. NOT numerically comparable (S1679 replaced all 18 MLPs in the MLP-only condition; this augments 12 middle sites inside the joint program) but the qualitative gap is large and the cancellation structure separates them.",
+  "price": "7.08M extra reals across 12 sites, ~30% on top of the linear program's 23.89M (S1680), for +3.67 points; the curve has not turned so the marginal price is not yet known",
+  "identity_check_available": "at k=4608 all features are retained and y = Down(h)+b is exactly linear in h, so least squares on [x, h_all] recovers the module exactly; the augmented program should then equal S1703's band-exempt ceiling of 67.55% -- a derivable known answer for the family construction",
+  "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
   "status": "certified"
  }
 }
