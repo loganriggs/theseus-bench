@@ -3496,8 +3496,10 @@
       "rank-64 learned map vs the neighbour": "+0.03 (S1785/S1786)",
       "rank-8 learned map vs the neighbour": "-0.055, WORSE than copying"
      }
-    }
+    },
+    "NOT_UNIFORM_S1787": "S1785/S1786 measured the learned map at table rank 64 only, which is where its gain is LARGEST on every role (+0.0186 / +0.0301 / +0.0060). Swept across six table ranks it loses at two of eighteen cells, both on skip1200: rank 256 by -0.0085 and rank 16 by -0.0041. The edge is real but small and cell-dependent -- at most +0.030 -- against the +0.43 that switching from a global mean row to a neighbour bought (S1777). The large win in this thread was the neighbour; everything after it has been worth a few hundredths."
    }
-  }
+  },
+  "DESIGN_POINT_IS_POPULATION_DEPENDENT_S1787": "The rank-4 cost-efficiency optimum recorded here and at S1771 is a COVERED-POSITION result. On ALL-position scoring under the settled fallback the optimum is table rank 64 on all three roles (0.01231 / 0.00950 / 0.00725 nats per million against the fit-mean all-tabled all-position baseline), and rank 4 is NEGATIVE -- the program is worse than that baseline by 0.198 / 0.289 / 0.297 nats. State the population with any design point from this frontier."
  }
 }
