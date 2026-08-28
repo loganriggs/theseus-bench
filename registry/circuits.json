@@ -2788,5 +2788,123 @@
   "FOURTH_LIMITATION_S1722": "the audit scores COMPONENT SETS, not CLAIMS. Three entries naming the same twelve sites return identical numbers despite asserting different things about them. It screens which components matter and how simply they can be stated; it does not test what a circuit says. Sharper than S1721's third point and it bounds what the tool can be used for without per-claim predicates.",
   "coverage": "16 of 55 certified entries",
   "status": "certified"
+ },
+ "_mlp_stack_damage_is_novel_concentrated": {
+  "claim": "Constant-ablating all 18 MLPs damages `induction` targets 0.843x as much per token as `novel` targets (95% CI 0.794-0.892, held-out skip11000); constant-ablating all 18 attention sites damages both alike at 0.974x (CI 0.891-1.059). The held-out difference is +0.131 with 95% CI (0.0608, 0.2057), excluding zero. Where the target is absent from the context there is nothing to route, so the weights are the only source and the MLP stack is what carries it.",
+  "sections": "S1727-S1729",
+  "script": "bilinear_quotient/ops/class_ratio_joint_ci.py",
+  "components": {
+   "mlp": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ],
+   "attn": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  "reference_set": {
+   "skip7000": {
+    "mlp": 0.8382,
+    "attn": 1.0015,
+    "diff_ci95": [
+     0.1048,
+     0.2235
+    ]
+   }
+  },
+  "held_out_set": {
+   "skip11000": {
+    "mlp": 0.843,
+    "mlp_ci95": [
+     0.7936,
+     0.8924
+    ],
+    "attn": 0.9743,
+    "attn_ci95": [
+     0.8913,
+     1.059
+    ],
+    "diff": 0.1313,
+    "diff_ci95": [
+     0.0608,
+     0.2057
+    ]
+   }
+  },
+  "classes": "target-side, disjoint, exhaustive: induction (target appears earlier in the context, preceded there by the current token), repeat (appears earlier, not in an induction position), novel (absent). Base rates 8.4% / 38.9% / 52.7% of scored tokens.",
+  "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64, 2000 ROW-level bootstrap draws (NOT document-clustered -- the rowcache carries no document ids, S1701)",
+  "SCOPE_stack_not_site": "this is a property of the STACKS. The per-site version FAILED its held-out predictions in S1728: mlp_L sits below attn_L at only 11 of 18 matched layers (bar 12) and the stack-median intervals overlap. Do not read this as a per-layer law.",
+  "status": "certified"
+ },
+ "_late_attention_is_harmful_on_novel_targets": {
+  "claim": "attn14, attn15 and attn16 have NEGATIVE per-token damage on `novel` targets on both eval sets -- replacing them with their optimal constant IMPROVES cross-entropy on targets absent from the context (-0.0100, -0.0022, -0.0148 nats/token held out) -- while costing on induction and repeat targets. Their TOTAL removal is positive at all three (+0.0301, +0.0071, +0.0159), so the sites are net useful and only their novel component is harmful. Specialisation for context-retrievable answers, invisible to any pooled-CE measurement.",
+  "sections": "S1728-S1729",
+  "script": "bilinear_quotient/ops/class_ratio_joint_ci.py",
+  "components": {
+   "attn": [
+    14,
+    15,
+    16
+   ]
+  },
+  "held_out_set": {
+   "skip11000": {
+    "attn14": {
+     "induction": 0.0353,
+     "repeat": 0.0833,
+     "novel": -0.01,
+     "total": 0.0301
+    },
+    "attn15": {
+     "induction": 0.0075,
+     "repeat": 0.0197,
+     "novel": -0.0022,
+     "total": 0.0071
+    },
+    "attn16": {
+     "induction": 0.0191,
+     "repeat": 0.0567,
+     "novel": -0.0148,
+     "total": 0.0159
+    }
+   }
+  },
+  "SCALE_stated": "small sites. Total removal 0.007-0.030 nats against mlp1's 7.02. The SIGN is robust across both eval sets and all three sites; the QUANTITY is a few hundredths of a nat. A real effect at small scale, not a major pathway.",
+  "NOT_YET_INTERVALLED": "the sign is reproduced on two eval sets but carries no bootstrap interval per site. Certified on two-set sign replication, not on a CI.",
+  "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64",
+  "status": "certified"
  }
 }
