@@ -3183,5 +3183,16 @@
   ],
   "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64, 2000 ROW-level bootstrap draws (NOT document-clustered -- S1701), float64 accumulation",
   "status": "certified"
+ },
+ "_COMPILED_PROGRAM_IS_POSITION_WISE": {
+  "purpose": "Scope pointer, and the most important one for reading any table+linear program figure. Established by direct measurement at S1765 and derivable from the program's own form.",
+  "sections": "S1765-S1766",
+  "the_fact": "Every site substitute in the table+linear class is `table[token_j] + f(x_j) W` -- a function of position j's own token and own residual. At layer 0 the residual is rmsnorm(wte(token_j)), a function of token j alone. So if every site at position j is substituted, by induction over layers the ENTIRE forward at position j is a function of token j alone. Attention is the model's only cross-position path and replacing its OUTPUT with a position-wise expression removes it. The program does not approximate attention badly; it deletes attention.",
+  "measured": "With the 36-site program installed, a +10-per-channel poke at any position changes NO later position's loss -- exactly 0.000e+00, at both a covered and an uncovered poke site. The identical poke on the live model moves later covered positions by 1.184e-01 nats (S1765, ops/poke_in_program_context.py).",
+  "consequence": "Every recovery figure for a fully-installed table+linear program (S1747-S1758) is the recovery of a PURE PER-TOKEN FUNCTION. The best of them, +0.78536 nats of a 4.2611-nat stake at table rank 64 with a rank-128 correction, is what a map from the current token alone achieves. The remaining gap is not program quality; it is the part of the model that is about other positions.",
+  "not_a_bigram_though": "S1766: the program beats a bigram fitted on the same 24,576 fit tokens by 1.33 nats (6.57289 against 7.90729 covered CE, skip11000), and the plain table baseline beats it by 0.55. The tables are estimated from the MODEL's activations, so they inherit per-token knowledge the fit corpus does not contain. This is a floor on what the fit data supports, not a claim about lookup tables in general.",
+  "explains": "S1747's -0.5462 joint composition failure (installing all 36 deletes attention, installing one does not); S1751's rank saturation (no rank helps a position-wise map represent something non-local); S1764's exact covered/uncovered partition; and why S1752's partial restoration of context made things worse rather than better.",
+  "does_not_apply_to": "S1736-S1746, which are ablation and importance results on the LIVE model, and to any program whose substitute reads other positions.",
+  "status": "certified"
  }
 }
