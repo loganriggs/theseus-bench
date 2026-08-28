@@ -2647,7 +2647,8 @@
   "status": "certified",
   "unaffected_by_the_withdrawal": "the ridge k-curve (55.038/58.713/60.619/63.378/67.544), the price curve, the accelerating-gains result and S1709's k=8 negative are ridge-fitted empirical measurements that never rested on the identity arm",
   "IDENTITY_CHECK_PASSES_S1716": "BIT-EXACT. With Down_bias restored, the constructed exact map at mlp4-15 and leaving mlp4-15 live give identical CE 5.098802047929132 in the same shared-object run; pooled and maximum per-row differences are ZERO and the corrected-arm replay is bit-identical, corresponding to 67.5533% against S1703's 67.553%. Two earlier attempts were invalid (S1713: no intercept + ridge, landed 0.009 from target; S1715: omitted Down_bias, landed 0.506 ABOVE target). The difference is categorical, not quantitative: a correct identity lands ON its target, not near it. Codex's construction and run.",
-  "WRONG_DENOMINATOR_S1718": "S1714 called k=4608 'the module re-implemented, not a compression' by comparing to the BASE PROGRAM (2.7x it). Against what it actually replaces -- the 36 modules total 430.00M params (18 MLPs at 15.926M, 18 attention at 7.963M) -- k=4608 is 87.59M = 20.4%, a ~5x COMPRESSION. The base program is 5.6% of the modules for 55.0% of their effect."
+  "WRONG_DENOMINATOR_S1718": "S1714 called k=4608 'the module re-implemented, not a compression' by comparing to the BASE PROGRAM (2.7x it). Against what it actually replaces -- the 36 modules total 430.00M params (18 MLPs at 15.926M, 18 attention at 7.963M) -- k=4608 is 87.59M = 20.4%, a ~5x COMPRESSION. The base program is 5.6% of the modules for 55.0% of their effect.",
+  "COMPRESSION_CLAIM_CORRECTED_S1720": "S1718 called k=4608 'a ~5x compression of the modules'. At the corrected 3x cost it is 214.991M against the 430.00M modules -- 50.0%, a 2x compression, recovering 67.5% of their effect. S1714 divided by the base program, S1718 divided by the modules with a 3x-undercounted numerator; third pass over the same denominator."
  },
  "_programs_priced_in_params_per_nat": {
   "claim": "Priced in the project's own params/nat metric on the 5.5684-nat joint stake, the middle-band feature augmentation is a WORSE program than the base linear one at every k. Base 7.80 M/nat; adding features costs 34.6 M/nat at the first margin and 152.6 M/nat by k=4608, with overall efficiency degrading monotonically 7.80 -> 23.29.",
@@ -2689,6 +2690,50 @@
   "comparison_NOT_made": "MDL_BILL's 1.03M params/nat commons bill is a different object in a different currency (attention-head kits vs capability-nats), so the apparent 8-23x gap is not a valid comparison -- S1656 is the standing warning.",
   "practice_change": "every program figure should carry its params/nat, and 'best' means best on the frontier, not best on fidelity",
   "status": "certified",
-  "OVERCLAIM_CORRECTED_S1718": "The claim that the augmentation is a WORSE program does not survive. All five points are monotone increasing in BOTH parameters and nats, so none Pareto-dominates any other -- they are all on the frontier. Ranking by params/nat is a SCALARIZATION that assumes an exchange rate (that one would never pay 152M params for a marginal nat); that is a preference, not a measurement. What survives is the frontier's SHAPE: marginal cost rises monotonically 34.6/66.7/92.1/152.6 M per nat with NO KNEE, which is evidence that no compressible chunk exists and needs no exchange rate to state."
+  "OVERCLAIM_CORRECTED_S1718": "The claim that the augmentation is a WORSE program does not survive. All five points are monotone increasing in BOTH parameters and nats, so none Pareto-dominates any other -- they are all on the frontier. Ranking by params/nat is a SCALARIZATION that assumes an exchange rate (that one would never pay 152M params for a marginal nat); that is a preference, not a measurement. What survives is the frontier's SHAPE: marginal cost rises monotonically 34.6/66.7/92.1/152.6 M per nat with NO KNEE, which is evidence that no compressible chunk exists and needs no exchange rate to state.",
+  "PARAMETER_COUNTS_3X_TOO_LOW_S1720": "Codex audit: my ledger charged only the selected Down decoder columns. Zero-native-call feature computation ALSO requires the selected Left and Right rows, so extra cost is 3x: 21.234M/42.467M/84.935M/191.103M. Corrected totals against the 23.887872M base give 13.80/19.66/30.84/57.16 M per recovered nat, marginals 103.8/200.1/276.4/457.7."
+ },
+ "_price_curve_gain_replicates_heldout": {
+  "claim": "The middle-band feature augmentation's GAIN replicates on held-out documents: +3.675% [+3.514,+3.841] on skip7000 becomes +3.811% [+3.671,+3.957] on skip11000, a +0.136 move with the interval excluding zero. The LEVEL drops 1.208 points, inside the 1.23-1.34 band S1701's four arms showed.",
+  "sections": "S1719",
+  "script": "bilinear_quotient/mid_band_feature_heldout.py",
+  "arms": {
+   "skip7000": {
+    "k0": 0.55038,
+    "k512": 0.58713,
+    "gain": 0.03675,
+    "gain_ci": [
+     0.03514,
+     0.03841
+    ],
+    "stake": 5.5684
+   },
+   "skip11000": {
+    "k0": 0.53694,
+    "k512": 0.57505,
+    "gain": 0.03811,
+    "gain_ci": [
+     0.03671,
+     0.03957
+    ],
+    "stake": 5.775
+   }
+  },
+  "fourth_replication_same_shape": "levels move ~1 point, gains hold to within ~0.14 -- consistent across S1683, S1693, S1701, S1719; now the expectation rather than a finding",
+  "status": "certified"
+ },
+ "_cost_axis_has_no_instrument_checks": {
+  "claim": "Three separate cost-axis errors (S1714 wrong denominator, S1717 scalarizing a frontier, S1718 3x-undercounted numerator) were each found by the peer lane, none by a registered prediction -- because every registered prediction in the arc was about FIDELITY. The cost axis has had no identity arm, no known-answer, and nothing that would fail if the accounting were wrong.",
+  "sections": "S1720",
+  "status": "certified",
+  "consequence": "cost accounting needs the same instrument discipline as fidelity: a derivable check that fails when the parameter count is wrong"
+ },
+ "_circuit_audit_is_a_screen_not_a_validation": {
+  "claim": "ops/circuit_audit.py is a component-set SCREEN, not a validation. Codex audit, accepted in full: (1) its 'OOD' is a second FineWeb split, not out-of-distribution -- same corpus and preprocessing, so it measures document resampling; (2) its 'removal' is global constant-ablation importance with NO collateral control, so it shows a component matters, not that it matters for the claimed reason; (3) its 'extraction' is a single per-token-table candidate, not a comparison among complexity measures at matched causal fidelity.",
+  "sections": "S1721",
+  "script": "bilinear_quotient/ops/circuit_audit.py",
+  "status": "certified",
+  "also_bootstrapped": "every circuit is scored on the same standard rows; per-circuit evaluation data is an open problem and narrow-trigger circuits read weaker than they are",
+  "coverage": "16 of 55 certified entries have a component list"
  }
 }
