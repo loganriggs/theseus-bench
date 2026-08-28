@@ -3194,5 +3194,32 @@
   "explains": "S1747's -0.5462 joint composition failure (installing all 36 deletes attention, installing one does not); S1751's rank saturation (no rank helps a position-wise map represent something non-local); S1764's exact covered/uncovered partition; and why S1752's partial restoration of context made things worse rather than better.",
   "does_not_apply_to": "S1736-S1746, which are ablation and importance results on the LIVE model, and to any program whose substitute reads other positions.",
   "status": "certified"
+ },
+ "_POSITION_WISE_CLASS_CEILING": {
+  "claim": "The exact ceiling of the position-wise program class is the model's own output given only the current token, obtained by running each of the 5419 covered tokens as a LENGTH-1 sequence. It scores 5.97902 covered CE on skip11000 and 6.03465 on skip7000, against an all-tabled baseline of 7.35825 / 7.35114 and a live model at 3.09711 / 3.29205. On the 4.2611-nat and 4.0591-nat stakes this decomposes IDENTICALLY on both roles: the class can reach 32.4% of the stake, and 67.6% is CONTEXT that no position-wise program can touch.",
+  "sections": "S1768",
+  "script": "bilinear_quotient/ops/model_own_per_token_ceiling.py",
+  "decomposition_held_out_skip11000": {
+   "stake_nats": 4.2611,
+   "ceiling_recovers_nats": 1.37923,
+   "ceiling_pct_of_stake": 0.324,
+   "best_program_recovers_nats": 0.78536,
+   "best_program_pct_of_stake": 0.184,
+   "unclaimed_inside_the_class_nats": 0.59387,
+   "unclaimed_pct_of_reachable": 0.431,
+   "context_nats": 2.88191,
+   "context_pct_of_stake": 0.676
+  },
+  "replicates_on_skip7000": {
+   "ceiling_pct_of_stake": 0.324,
+   "context_pct_of_stake": 0.676,
+   "best_program_pct_of_stake": 0.191
+  },
+  "why_this_is_a_ceiling_and_S1767's_was_not": "The compiled program does NOT beat it (6.57289 against 5.97902). It DID beat S1767's leave-one-out bigram by 0.76 nats, because a bigram from 27k eval tokens is data-limited while the model's own per-token function is not. S1767's pred_c caught that and its pred_a/pred_b are withdrawn.",
+  "consequence_for_the_no_go": "Codex's CONTEXTUAL_COMPILER_NO_GO_AND_GATE.md prunes the position-wise grammar on a correct derivation (S1765). This gives the prune its number: the dominant term is context at 67.6% of the stake and is genuinely unreachable -- AND 0.59387 nats, 43% of what the class CAN deliver, is still unclaimed by the best program in it. The prune is right about the dominant term and it is not free.",
+  "construction": "each covered token as a length-1 sequence; log-softmax over the FULL 50,304-wide head, since slicing to the tokenizer's 50,257 would change the normalisation and the CE. Zero lookup misses on both eval roles.",
+  "position_caveat": "there is no additive positional embedding and rotary cancels for a position attending only to itself, so a self-only forward is position-independent. RMSNorm and any length-dependent statistics are NOT ruled out by a length-1 batch, so this is the model's per-token function evaluated at position 0.",
+  "protocol": "covered positions from 64, coverage mask pinned to n96_skip80 (5419 of 50257), matching every published figure in S1747-S1758",
+  "status": "certified"
  }
 }
