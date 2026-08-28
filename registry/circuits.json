@@ -2530,18 +2530,19 @@
  "_CURRENT_HEADLINE_FIGURES": {
   "purpose": "Disambiguation pointer. The registry states 24 different 5x.xx% program figures across 13 entries. Each is correct in its own condition, but they are NOT interchangeable and quoting the wrong one is easy. This entry names the condition for each and which figure is current.",
   "THE_CURRENT_NUMBER": {
-   "value": 0.5871,
-   "sections": "S1710",
-   "what": "36 sites substituted (18 MLPs + 18 attention output writes, v1 tabled): token tables at mlp0-2, linear maps at mlp3-17 with mlp4-15 augmented by 512 of each module's own bilinear features, four-position maps at every attention write, compiled interleaved bottom-up",
+   "value": "a curve, not a scalar",
+   "sections": "S1714",
+   "what": "the best whole-model program is a price/fidelity CHOICE: 58.71% at 7.08M extra reals (0.3x the base program), 63.38% at 28.31M (1.2x), 67.54% at 63.70M (2.7x). All are 36 sites with token tables at mlp0-2, four-position attention maps, v1 tabled, and mlp4-15 augmented by k own-features.",
    "stake": "5.5684 nats, the joint 36-site optimal-constant stake",
-   "caveat": "not replicated held-out; the 55.04% predecessor was, at 53.69% [52.92,54.39]. The k-curve has not turned, so this is not a ceiling for the family. The construction's identity check is still OUTSTANDING -- S1713 shows the k=4608 ridge arm cannot serve as one; Codex's separate exact-map arm is the valid check and is in flight."
+   "caveat": "quoting 67.54% without its 2.7x cost would be quoting the module re-implemented, not a program. The 55.04% predecessor is the figure replicated held-out (53.69% [52.92,54.39]); none of the augmented arms has been."
   },
   "whole_model_36_site_condition": {
    "50.94%": "S1694 -- simplest families (linear everywhere, lag-1 everywhere)",
    "55.04%": "S1696 -- best PURE families (tables mlp0-2, lags 1,2,4,8); the figure most often quoted and the one Codex carries",
    "55.80%": "S1709 -- CURRENT, adds 64 own-features at mlp4-15",
    "53.69% [52.92,54.39]": "S1701 -- the 55.04% program scored on held-out skip11000",
-   "58.71%": "S1710 -- CURRENT, adds 512 own-features at mlp4-15"
+   "58.71%": "S1710 -- CURRENT, adds 512 own-features at mlp4-15",
+   "58.71% / 63.38% / 67.54%": "S1714 -- CURRENT, mlp4-15 augmented by k=512 / 2048 / 4608 own-features at 0.3x / 1.2x / 2.7x the base program's parameter count"
   },
   "MLP_ONLY_condition_attention_running_real": {
    "60.81%": "S1676 -- 18 linear maps, 480 fit rows, mask pinned. NOT comparable to the 36-site figures: different stake (4.3301 nats) and the other half is real",
@@ -2602,6 +2603,47 @@
   ],
   "diagnostic_lesson": "S1711 eliminated OOM, the GPU watchdog, a job timeout and the arm's cost -- all correct, all machine-level, none able to find the cause. On a shared box the PROCESS TABLE is part of the diagnosis; `ps -o ppid` on the surviving process answered in one command what four machine-level checks could not.",
   "integrity_consequence": "interleaved writes mean the k=0 line in the shared log cannot be attributed to either process. It matches S1696's control exactly, which is reassuring but is not provenance.",
+  "status": "certified"
+ },
+ "_mid_band_feature_price_curve": {
+  "claim": "The middle band's quadratic content has NO low-rank shortcut in the module's own feature basis. Recovery is approximately proportional to features spent: k=512 recovers 29.4% of the band shortfall for 7.08M extra reals (0.3x the base program), k=1024 44.6% for 14.16M (0.6x), k=2048 66.6% for 28.31M (1.2x), k=4608 99.9% for 63.70M (2.7x). Gains ACCELERATE in log k -- there is no knee.",
+  "sections": "S1714",
+  "script": "bilinear_quotient/mid_band_feature_ksweep2.py (repaired by Codex, c564b0c8)",
+  "curve": {
+   "0": 0.55038,
+   "512": 0.58713,
+   "1024": 0.60619,
+   "2048": 0.63378,
+   "4608": 0.67544,
+   "exact_map": 0.68059
+  },
+  "gain_ci95": {
+   "k512": [
+    0.03514,
+    0.03841
+   ],
+   "k1024": [
+    0.05382,
+    0.05778
+   ],
+   "k2048": [
+    0.08067,
+    0.08607
+   ],
+   "k4608": [
+    0.12113,
+    0.12879
+   ],
+   "exact4608": [
+    0.12618,
+    0.13409
+   ]
+  },
+  "IDENTITY_CHECK_PASSES": "the exact-map arm -- Down(Left(x)*Right(x)) including Down.bias, constructed inside the same interleaved compiler -- lands at 68.059% against the derivable 67.553%, a 0.51-point margin. Hook, feature-selection and compiler machinery are validated. Codex's construction (S1713); mine could not have served.",
+  "ridge_arm_coincidence": "my ridge k=4608 arm landed at 67.544%, 0.009 from the target. That was luck, not derivation -- the missing intercept and ridge COULD have made it miss. An empirical arm coinciding with a derivable value is not a known-answer check.",
+  "FAILED_pred_b": "predicted the shape would bend. Successive steps are +3.675, +1.906, +2.759, +4.166 -- convex in log k, accelerating. No knee.",
+  "k4608_is_nearly_tautological": "at the full basis the linear map is handed the module's entire hidden state and re-derives its readout; recovering 99.9% there is close to definitional, and the price (2.7x the whole base program) says so. It is the module re-implemented, not a compression.",
+  "extends": "S1679 (features not sparse-selectable) and S1692 (feature-forming path not low-rank compressible) -- the content is not merely hard to select or compress, it is genuinely distributed across the basis",
   "status": "certified"
  }
 }
