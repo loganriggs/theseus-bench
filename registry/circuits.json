@@ -2439,5 +2439,34 @@
   "discriminating_test_queued": "a MIDDLE pair has ~9 blocks downstream. Depth predicts an excess between +41.8% and -20.1%; functional character does not, since the middle MLPs are the least tabular and most bilinear (S1668: 37.7% quadratic remainder).",
   "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
   "status": "certified"
+ },
+ "_synergy_excess_is_monotone_in_downstream_depth": {
+  "claim": "Composition excess is monotone in how much model lies downstream: mlp0+mlp1 (16 blocks below) +41.8%, mlp8+mlp9 (9 blocks) -4.2%, mlp16+mlp17 (1 block) -20.1%. The middle pair lands intermediate with its excess interval excluding zero, as the depth reading predicts.",
+  "sections": "S1707",
+  "script": "bilinear_quotient/mid_pair_synergy.py",
+  "pair_gain_ci95": [
+   0.0238,
+   0.0256
+  ],
+  "excess_ci95_points": [
+   -0.0019,
+   -0.0001
+  ],
+  "singles_ci95": {
+   "mlp8": [
+    0.0105,
+    0.0116
+   ],
+   "mlp9": [
+    0.014,
+    0.0154
+   ]
+  },
+  "controls": "the no-exemption arm reproduces S1696's 55.04% exactly; all arms fresh (no prior run exempted mlp8 or mlp9); same program, protocol, mask and eval rows as S1704-S1706",
+  "functional_reading_disfavoured": "on function the middle MLPs are the EXTREME case -- S1666 puts their joint table ceiling at 21.73% vs the front's 76.45%, S1668 gives them the largest quadratic remainder at 37.7% -- so a functional account predicted a value OUTSIDE the [-20.1%, +41.8%] span. It landed inside, closer to the late end.",
+  "WEAK_PASS_ACKNOWLEDGED": "pred_a's window spans 62 percentage points, so 'intermediate' was a large target and many outcomes would have cleared it. The competing reading predicted a value OUTSIDE that span, so a FAILURE would have been decisive while the pass is merely consistent. Three points are also a thin basis for a monotone claim and the spacing is not proportional to depth (16->9 blocks costs 46 points of excess, 9->1 blocks only 16). The ORDERING is claimed, not a functional form.",
+  "confound_narrowed_not_eliminated": "depth and function still covary across these three pairs. The clean test is an EARLY pair whose FUNCTION is unlike mlp0/mlp1 -- mlp2+mlp3 (S1662 ceilings 76.98% and 67.55% vs 90.27% and 96.01%). Depth says it should resemble +41.8%; function says far lower. Queued as early_atypical_pair_synergy.py.",
+  "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
+  "status": "certified"
  }
 }
