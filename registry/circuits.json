@@ -3038,5 +3038,119 @@
   "SUPERSEDES": "_late_attention_is_harmful_on_novel_targets, withdrawn 2026-08-28 (future-looking mask, S1733).",
   "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64",
   "status": "certified"
+ },
+ "_site_ablation_is_superadditive_for_mlps_subadditive_for_attention": {
+  "claim": "The sum of the 18 one-at-a-time constant-ablation removals over the joint 18-site removal is 2.361 for the MLP stack (95% CI 2.318-2.405) and 0.399 for the attention stack (CI 0.383-0.416) on skip11000, a confirmation role whose additivity numbers had never been seen. MLP sites are REDUNDANT -- the other seventeen absorb most of any one site's loss, so one-at-a-time ablation overstates a site by ~2.4x. Attention sites are COOPERATIVE -- most of the stack's contribution exists only jointly, so one-at-a-time ablation recovers only 40% of it.",
+  "sections": "S1735-S1736",
+  "script": "bilinear_quotient/ops/site_additivity.py",
+  "components": {
+   "mlp": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ],
+   "attn": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  "roles": {
+   "skip7000": "discovery (its sums were printed in S1735)",
+   "skip11000": "CONFIRMATION -- computed inside S1735 but never printed, stored or seen"
+  },
+  "measurements": {
+   "skip7000_covered": {
+    "mlp": {
+     "sum": 10.2983,
+     "joint": 4.3301,
+     "ratio": 2.378,
+     "ci95": [
+      2.3277,
+      2.43
+     ]
+    },
+    "attn": {
+     "sum": 1.4206,
+     "joint": 3.557,
+     "ratio": 0.399,
+     "ci95": [
+      0.38,
+      0.4185
+     ]
+    }
+   },
+   "skip11000_covered": {
+    "mlp": {
+     "sum": 10.6655,
+     "joint": 4.5173,
+     "ratio": 2.361,
+     "ci95": [
+      2.3176,
+      2.4047
+     ]
+    },
+    "attn": {
+     "sum": 1.4974,
+     "joint": 3.7552,
+     "ratio": 0.399,
+     "ci95": [
+      0.3826,
+      0.4158
+     ]
+    }
+   },
+   "skip11000_all_positions": {
+    "mlp": {
+     "ratio": 2.325,
+     "ci95": [
+      2.285,
+      2.3659
+     ]
+    },
+    "attn": {
+     "ratio": 0.347,
+     "ci95": [
+      0.3341,
+      0.36
+     ]
+    }
+   }
+  },
+  "NOT_A_COVERAGE_ARTIFACT": "a registered arm scored EVERY position instead of only fit-covered ones and the asymmetry holds (MLP 2.325, attention 0.347). The effect is about the modules, not about which tokens are counted.",
+  "CONSEQUENCE_FOR_EXISTING_NUMBERS": "every single-site importance figure in this arc is a one-at-a-time constant-ablation cost, so relative to the joint stack MLP sites are inflated ~2.4x and attention sites deflated ~2.5x, in OPPOSITE directions. Any table ranking MLP against attention sites by individual removal compares two differently-scaled quantities. This includes the `removal` column of ops/circuit_audit and the specificity ratios built on it (S1722, S1724, S1725).",
+  "EXPLAINS": "S1728's per-site class contrast failed partly because attention has 1.42 nats of per-site signal against a 3.56-nat joint stake -- a one-at-a-time test works with 40% of the effect it tries to resolve.",
+  "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80 for the primary arm, covered-position scoring from position 64, 2000 ROW-level bootstrap draws (NOT document-clustered -- S1701), per-row losses accumulated in float64",
+  "status": "certified"
  }
 }
