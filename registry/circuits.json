@@ -3220,7 +3220,10 @@
   "construction": "each covered token as a length-1 sequence; log-softmax over the FULL 50,304-wide head, since slicing to the tokenizer's 50,257 would change the normalisation and the CE. Zero lookup misses on both eval roles.",
   "position_caveat": "there is no additive positional embedding and rotary cancels for a position attending only to itself, so a self-only forward is position-independent. RMSNorm and any length-dependent statistics are NOT ruled out by a length-1 batch, so this is the model's per-token function evaluated at position 0.",
   "protocol": "covered positions from 64, coverage mask pinned to n96_skip80 (5419 of 50257), matching every published figure in S1747-S1758",
-  "status": "certified"
+  "status": "certified",
+  "CORRECTED_2026_08_28_CODEX_RED_TEAM": "This entry originally called 5.97902 THE CEILING of the position-wise class. That is not licensed. For the class of all position-wise predictors g(t_j) the CE optimum is the true conditional P(t_{j+1}|t_j), i.e. H(T_{j+1}|T_j); the length-1 transformer output is ONE FEASIBLE member of the class, not its optimum. Because it is achievable, its CE is an UPPER bound on the class optimum, so the bounds run the other way: the class reaches AT LEAST 32.4% of the stake, and context is AT MOST 67.6%. The 'unclaimed 43%' figure is void -- S1769's context-free tables reach this reference exactly and the distance to the true optimum is unknown. Quantifying it needs a defensible estimate of H(T_{j+1}|T_j), which S1767 showed these row budgets cannot supply.",
+  "what_it_is": "a replicated SELF-ONLY REFERENCE: 5.97902 covered CE on skip11000 and 6.03465 on skip7000, achieved by the model's own output at sequence length one. Achievable, so an upper bound on the position-wise optimum's CE.",
+  "what_survives_unchanged": "the installed program has ZERO cross-position dependence (S1765, measured at exactly 0.000e+00 and derived by induction), so it cannot recover any contextual effect. That never depended on the ceiling framing."
  },
  "_CONTEXT_FREE_TABLE_FRONTIER": {
   "claim": "Building each site's per-token table from the CONTEXT-FREE value (the site's output on a length-1 sequence) instead of the per-token mean over fit contexts closes the entire 0.594-nat gap to the position-wise ceiling and dominates every program in S1748-S1758. Held out on skip11000, against the same fit-mean all-tabled baseline of 7.35825 and a 4.26114-nat stake: rank 8 recovers +0.80353 for 1.975M reals (13.1x cheaper AND +0.018 nats better than S1758's best of +0.78536 for 25.839M, 13.4x the efficiency); rank 64 recovers +1.14673 for 15.223M (46% more fidelity at 59% of the cost); full rank reaches the ceiling at +1.37925 for 224.778M.",
@@ -3260,6 +3263,25 @@
   "STILL_POSITION_WISE": "this is a program in the class S1765 showed has no cross-position expression; see _COMPILED_PROGRAM_IS_POSITION_WISE and _POSITION_WISE_CLASS_CEILING. Its ceiling is 32.4% of the stake and the other 67.6% is context it cannot reach.",
   "SUPERSEDES": "the frontier of S1748-S1758 and the design points of S1756/S1758. Those measurements are correct for the programs they describe and are not withdrawn; the frontier they define is dominated at every point.",
   "protocol": "covered positions from 64, hybrid coverage rule (S1661), coverage mask pinned to n96_skip80 (5419 of 50257), cost accounting identical to S1755/S1756",
-  "status": "certified"
+  "status": "certified",
+  "BOUND_DIRECTION_CORRECTED_2026_08_28": "Where this entry says the class reaches 32.4% of the stake and 67.6% is context, read those as a LOWER bound and an UPPER bound respectively, per the Codex red team recorded in _POSITION_WISE_CLASS_CEILING. The measured frontier figures are unaffected; only the interpretation of the residual as 'unreachable context' was overstated.",
+  "low_rank_extension_S1771": {
+   "rank_4": {
+    "cost_M": 1.029,
+    "recovered_skip11000": 0.63791,
+    "nats_per_M": 0.6198,
+    "note": "the cost-efficiency optimum, bracketed on both sides"
+   },
+   "rank_2": {
+    "cost_M": 0.556,
+    "recovered_skip11000": 0.23992,
+    "nats_per_M": 0.4315
+   },
+   "rank_1": {
+    "cost_M": 0.32,
+    "recovered_skip11000": -0.34772,
+    "note": "NEGATIVE -- one direction of per-token variation per site is not enough, mirroring S1756's rank-0 result on fit-mean tables"
+   }
+  }
  }
 }
