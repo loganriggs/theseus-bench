@@ -3475,7 +3475,28 @@
     "margin": "+0.0057 to +0.0301, positive at every rank and role -- a real but SMALL gain, nothing like the 0.43 nats that switching from a global mean row to a neighbour bought (S1777).",
     "worth_the_reals": "0.03006 nats for 5.308M at rank 64 is 0.00566 nats per million, against 0.00367 for spending the same on table rank (S1770's rank 64 -> 256 step). At rank 64 the map is the better marginal buy.",
     "S1784_DEFECT_REPAIRED_AT_S1785": "S1784 fitted the maps once against the FULL-rank tables and reused them at rank 64, so that arm had truncated covered rows and untruncated predicted ones -- not a coherent program -- and it FAILED the >0.005 bar on skip1200/rank64 at -0.00091. Refitting inside each truncated basis fixes it to +0.00602. The tell was the learned arm's uncovered-only CE being identical across table ranks to five decimals; after the repair it differs by 0.022-0.032.",
-    "uncovered_positions_are_not_uniformly_harder": "backing uncovered-only CE out of the two measured populations: skip7000 5.93936 against covered 6.03465 (EASIER), skip11000 6.00171 against 5.97900 (harder by 0.023), skip1200 6.11891 against 5.96423 (harder by 0.155). The covered/uncovered split is not a difficulty ordering; S1784's pred_b assumed it was."
+    "uncovered_positions_are_not_uniformly_harder": "backing uncovered-only CE out of the two measured populations: skip7000 5.93936 against covered 6.03465 (EASIER), skip11000 6.00171 against 5.97900 (harder by 0.023), skip1200 6.11891 against 5.96423 (harder by 0.155). The covered/uncovered split is not a difficulty ordering; S1784's pred_b assumed it was.",
+    "MAP_RANK_SWEEP_S1786": {
+     "table_rank": 64,
+     "all_position_CE_skip11000": {
+      "neighbour": 6.18267,
+      "map8": 6.23746,
+      "map16": 6.20111,
+      "map64": 6.15261,
+      "map256": 6.15217
+     },
+     "THERE_IS_A_FLOOR": "map ranks 8 and 16 are WORSE than copying the neighbour -- by 0.055-0.089 and 0.018-0.034 nats across the three roles. Below roughly rank 32 a learned map's systematic error is worse than the neighbour's idiosyncratic one. Predicting the row is only better once the map has enough capacity to be right.",
+     "design_point": "map rank 64, bracketed on BOTH sides on all three roles. Rank 256 buys +0.0004 for 4x the map cost (21.234M against 5.308M).",
+     "no_overfitting_up_to_rank_256": "fidelity is monotone increasing in map rank at every role, unlike the fit-mean TABLES which overfitted at full rank (S1755). Different object, different behaviour.",
+     "settled_prices_for_the_uncovered_quarter": {
+      "neighbour vs global mean row": "+0.43 (S1777)",
+      "one neighbour vs an average of k": "up to +0.09 (S1779)",
+      "output-distribution vs input-embedding similarity": "+0.05 (S1780/S1781)",
+      "keeping the true token's embedding channel": "+0.15 (S1783)",
+      "rank-64 learned map vs the neighbour": "+0.03 (S1785/S1786)",
+      "rank-8 learned map vs the neighbour": "-0.055, WORSE than copying"
+     }
+    }
    }
   }
  }
