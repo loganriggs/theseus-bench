@@ -2332,5 +2332,51 @@
   "gains_do_not_sum": "the six gains total 38.00 against a 44.96 shortfall; each arm is a separate compilation, so these are six independent counterfactuals, not a decomposition. The 6.96-point difference is cross-arm non-additivity, reported rather than normalised away.",
   "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
   "status": "certified"
+ },
+ "_front_mlps_are_synergistic": {
+  "claim": "Exempting the four front MLPs one at a time from the 36-site program buys +1.98 (mlp2), +1.62 (mlp3), +1.00 (mlp1), +0.36 (mlp0), summing to +4.97 -- against +7.53 for exempting the band as a whole. The band gain exceeds the sum of singles by 2.56 points (52%), so the front MLPs are strongly SYNERGISTIC, not decomposable.",
+  "sections": "S1704",
+  "script": "bilinear_quotient/front_mlp_site_shortfall.py",
+  "site_gains_ci95": {
+   "mlp2": [
+    0.0188,
+    0.0208
+   ],
+   "mlp3": [
+    0.0152,
+    0.0172
+   ],
+   "mlp1": [
+    0.0094,
+    0.0106
+   ],
+   "mlp0": [
+    0.0032,
+    0.004
+   ]
+  },
+  "controls": "the no-exemption arm reproduces S1696's 55.04% exactly; all four gains positive; the largest CI excludes the smallest",
+  "FAILED_pred_a": "predicted mlp1 would dominate (largest module by stake, highest table ceiling); it is THIRD at +1.00 against the other three's +3.96",
+  "FAILED_pred_b": "predicted additivity within 25%; observed 52% super-additive",
+  "MLP_only_does_not_predict_joint": {
+   "note": "residual nats (1-ceiling)*stake from the MLP-only condition rank mlp1 > mlp3 > mlp2 > mlp0; observed joint gains rank mlp2 > mlp3 > mlp1 > mlp0. Only the extremes keep their places. This is a quantitative test of the transfer failure _half_upgrades_do_not_transfer established qualitatively.",
+   "residual_nats": {
+    "mlp1": 0.2795,
+    "mlp3": 0.2012,
+    "mlp2": 0.1777,
+    "mlp0": 0.0832
+   },
+   "joint_gains": {
+    "mlp2": 0.0198,
+    "mlp3": 0.0162,
+    "mlp1": 0.01,
+    "mlp0": 0.0036
+   },
+   "why_mlp1_displaced": "S1666's saturation caveat -- mlp1's 7.005-nat stake sits at CE 10.28 against a 10.82 uniform ceiling and is ordinal at best; I used it inside a product anyway when writing pred_a"
+  },
+  "mechanism": "leaving one front MLP real buys little because the other three still feed it their error; leaving all four real removes the front-band cascade. S1697's compounding seen from the opposite side -- there an UPGRADE to one half was attenuated by the other's error, here RESTORING one site is attenuated by its neighbours'.",
+  "not_a_contradiction_with_S1697": "S1697 found half-level UPGRADES additive to within 0.13 points; S1704 finds site-level EXEMPTIONS super-additive by 52%. Different operations at different grains. Jointly: additivity cannot be assumed in either direction and must be measured per operation.",
+  "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
+  "status": "certified"
  }
 }
