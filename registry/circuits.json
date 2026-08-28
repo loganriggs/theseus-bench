@@ -3380,6 +3380,31 @@
      ]
     },
     "verdict": "4/4. The effect replicates at every rank on every role, the magnitudes transfer within 0.10 nats, and the rank-64 standalone program lands within a 0.034-nat spread across three roles whose live CEs differ by 0.30. The nearest-covered map is built from input embeddings alone and does not depend on any eval role."
+   },
+   "BETTER_SIMILARITY_S1780": {
+    "what": "the neighbour should be chosen by the model's own LENGTH-1 NEXT-TOKEN DISTRIBUTION, not by input-embedding cosine. A table row is an output object.",
+    "all_position_CE_skip11000_standalone": {
+     "full": {
+      "embedding": 6.03786,
+      "output": 6.00048
+     },
+     "64": {
+      "embedding": 6.2348,
+      "output": 6.18248
+     },
+     "8": {
+      "embedding": 6.54141,
+      "output": 6.49065
+     },
+     "4": {
+      "embedding": 6.69203,
+      "output": 6.65145
+     }
+    },
+    "the_striking_number": "the two similarities pick the SAME neighbour for only 7.53% of the 44,838 uncovered token ids. The embedding map was not a worse version of the right map; it was a different map that happened to work.",
+    "best_standalone_program": "rank 64, 15.223M reals, 6.18248 all-position CE -- better than the best fallback-USING program in the arc (6.28596). At full rank 6.00048, within 0.021 nats of the position-wise reference (5.97902) on ALL positions.",
+    "cost": "one extra index; 50,257 length-1 forwards at build time instead of 5,419; nothing stored beyond the map.",
+    "SCOPE": "measured on skip11000 at four ranks. NOT yet confirmed on the other two roles -- S1778 confirmed the EMBEDDING map on three roles, this one has one."
    }
   }
  }
