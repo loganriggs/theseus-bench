@@ -2530,11 +2530,11 @@
  "_CURRENT_HEADLINE_FIGURES": {
   "purpose": "Disambiguation pointer. The registry states 24 different 5x.xx% program figures across 13 entries. Each is correct in its own condition, but they are NOT interchangeable and quoting the wrong one is easy. This entry names the condition for each and which figure is current.",
   "THE_CURRENT_NUMBER": {
-   "value": "a curve, not a scalar",
-   "sections": "S1714",
-   "what": "the best whole-model program is a price/fidelity CHOICE: 58.71% at 7.08M extra reals (0.3x the base program), 63.38% at 28.31M (1.2x), 67.54% at 63.70M (2.7x). All are 36 sites with token tables at mlp0-2, four-position attention maps, v1 tabled, and mlp4-15 augmented by k own-features.",
+   "value": "55.038% at 7.80 M params/nat -- the FRONTIER point, not the highest fidelity",
+   "sections": "S1717",
+   "what": "the base 36-site compiled program (token tables mlp0-2, linear maps mlp3-17, four-position attention maps, v1 tabled, interleaved bottom-up compilation). Feature augmentation reaches higher fidelity (58.71% / 63.38% / 67.54%) but at strictly worse params/nat (9.47 / 14.79 / 23.29), so it is not an improvement as a PROGRAM.",
    "stake": "5.5684 nats, the joint 36-site optimal-constant stake",
-   "caveat": "quoting 67.54% without its 2.7x cost would be quoting the module re-implemented. The construction's identity check PASSES BIT-EXACTLY (S1716). The 55.04% predecessor is the figure replicated held-out (53.69% [52.92,54.39]); no augmented arm has been -- that is the open item."
+   "caveat": "fidelity and simplicity must be quoted together; quoting 67.54% alone inverts the ranking. The construction's identity check passes bit-exactly (S1716). 55.04% is the figure replicated held-out (53.69% [52.92,54.39])."
   },
   "whole_model_36_site_condition": {
    "50.94%": "S1694 -- simplest families (linear everywhere, lag-1 everywhere)",
@@ -2647,5 +2647,46 @@
   "status": "certified",
   "unaffected_by_the_withdrawal": "the ridge k-curve (55.038/58.713/60.619/63.378/67.544), the price curve, the accelerating-gains result and S1709's k=8 negative are ridge-fitted empirical measurements that never rested on the identity arm",
   "IDENTITY_CHECK_PASSES_S1716": "BIT-EXACT. With Down_bias restored, the constructed exact map at mlp4-15 and leaving mlp4-15 live give identical CE 5.098802047929132 in the same shared-object run; pooled and maximum per-row differences are ZERO and the corrected-arm replay is bit-identical, corresponding to 67.5533% against S1703's 67.553%. Two earlier attempts were invalid (S1713: no intercept + ridge, landed 0.009 from target; S1715: omitted Down_bias, landed 0.506 ABOVE target). The difference is categorical, not quantitative: a correct identity lands ON its target, not near it. Codex's construction and run."
+ },
+ "_programs_priced_in_params_per_nat": {
+  "claim": "Priced in the project's own params/nat metric on the 5.5684-nat joint stake, the middle-band feature augmentation is a WORSE program than the base linear one at every k. Base 7.80 M/nat; adding features costs 34.6 M/nat at the first margin and 152.6 M/nat by k=4608, with overall efficiency degrading monotonically 7.80 -> 23.29.",
+  "sections": "S1717",
+  "table": {
+   "base": {
+    "params_M": 23.89,
+    "nats": 3.065,
+    "M_per_nat": 7.8
+   },
+   "k512": {
+    "params_M": 30.97,
+    "nats": 3.269,
+    "M_per_nat": 9.47,
+    "marginal_M_per_nat": 34.6
+   },
+   "k1024": {
+    "params_M": 38.05,
+    "nats": 3.376,
+    "M_per_nat": 11.27,
+    "marginal_M_per_nat": 66.7
+   },
+   "k2048": {
+    "params_M": 52.2,
+    "nats": 3.529,
+    "M_per_nat": 14.79,
+    "marginal_M_per_nat": 92.1
+   },
+   "k4608": {
+    "params_M": 87.59,
+    "nats": 3.761,
+    "M_per_nat": 23.29,
+    "marginal_M_per_nat": 152.6
+   }
+  },
+  "CORRECTS_S1714_FRAMING": "S1714 called 58.71% the 'new best whole-model program'. It is the best FIDELITY at 36 sites and simultaneously a WORSE program than the 55.038% it replaced once simplicity is priced. The cost was reported honestly but ALONGSIDE the fidelity rather than as part of the score.",
+  "project_rule_it_violated": "LAYER_PROGRAM.md records the 2026-08-17 directive that replacement must win on fidelity AND on MDL; BENCHMARK.md frames the benchmark as an explicit fidelity-vs-simplicity trade-off; MDL_BILL.md prices in params/nat; RESULTS.md carries a dCE-vs-description-length Pareto figure.",
+  "strengthens_not_weakens": "the S1714 structural finding (recovery proportional to features spent, no low-rank shortcut, gains convex in log k) is STRENGTHENED -- convex gains in log k is what 'no compressible structure' looks like on a cost axis. S1716's bit-exact identity and S1709's k=8 negative are unaffected.",
+  "comparison_NOT_made": "MDL_BILL's 1.03M params/nat commons bill is a different object in a different currency (attention-head kits vs capability-nats), so the apparent 8-23x gap is not a valid comparison -- S1656 is the standing warning.",
+  "practice_change": "every program figure should carry its params/nat, and 'best' means best on the frontier, not best on fidelity",
+  "status": "certified"
  }
 }
