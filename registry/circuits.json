@@ -2530,11 +2530,11 @@
  "_CURRENT_HEADLINE_FIGURES": {
   "purpose": "Disambiguation pointer. The registry states 24 different 5x.xx% program figures across 13 entries. Each is correct in its own condition, but they are NOT interchangeable and quoting the wrong one is easy. This entry names the condition for each and which figure is current.",
   "THE_CURRENT_NUMBER": {
-   "value": "55.038% at 7.80 M params/nat -- the FRONTIER point, not the highest fidelity",
-   "sections": "S1717",
-   "what": "the base 36-site compiled program (token tables mlp0-2, linear maps mlp3-17, four-position attention maps, v1 tabled, interleaved bottom-up compilation). Feature augmentation reaches higher fidelity (58.71% / 63.38% / 67.54%) but at strictly worse params/nat (9.47 / 14.79 / 23.29), so it is not an improvement as a PROGRAM.",
+   "value": "a FRONTIER, and no point on it is 'best' without saying what the description is for",
+   "sections": "S1718",
+   "what": "36-site compiled programs against modules totalling 430.00M params: base 23.89M (5.6%) recovering 55.0%; k=512 30.97M (7.2%) 58.7%; k=1024 38.05M (8.8%) 60.6%; k=2048 52.20M (12.1%) 63.4%; k=4608 87.59M (20.4%) 67.5%. All are Pareto-optimal -- monotone in both axes, none dominates.",
    "stake": "5.5684 nats, the joint 36-site optimal-constant stake",
-   "caveat": "fidelity and simplicity must be quoted together; quoting 67.54% alone inverts the ranking. The construction's identity check passes bit-exactly (S1716). 55.04% is the figure replicated held-out (53.69% [52.92,54.39])."
+   "caveat": "do NOT rank these by params/nat -- that scalarization smuggles in an exchange rate. The scientific content is the frontier's SHAPE (marginal cost rises monotonically with no knee => no compressible chunk), not a ranking. Fidelity alone is won by the model itself; simplicity alone by a constant."
   },
   "whole_model_36_site_condition": {
    "50.94%": "S1694 -- simplest families (linear everywhere, lag-1 everywhere)",
@@ -2646,7 +2646,8 @@
   "extends": "S1679 (features not sparse-selectable) and S1692 (feature-forming path not low-rank compressible) -- the content is not merely hard to select or compress, it is genuinely distributed across the basis",
   "status": "certified",
   "unaffected_by_the_withdrawal": "the ridge k-curve (55.038/58.713/60.619/63.378/67.544), the price curve, the accelerating-gains result and S1709's k=8 negative are ridge-fitted empirical measurements that never rested on the identity arm",
-  "IDENTITY_CHECK_PASSES_S1716": "BIT-EXACT. With Down_bias restored, the constructed exact map at mlp4-15 and leaving mlp4-15 live give identical CE 5.098802047929132 in the same shared-object run; pooled and maximum per-row differences are ZERO and the corrected-arm replay is bit-identical, corresponding to 67.5533% against S1703's 67.553%. Two earlier attempts were invalid (S1713: no intercept + ridge, landed 0.009 from target; S1715: omitted Down_bias, landed 0.506 ABOVE target). The difference is categorical, not quantitative: a correct identity lands ON its target, not near it. Codex's construction and run."
+  "IDENTITY_CHECK_PASSES_S1716": "BIT-EXACT. With Down_bias restored, the constructed exact map at mlp4-15 and leaving mlp4-15 live give identical CE 5.098802047929132 in the same shared-object run; pooled and maximum per-row differences are ZERO and the corrected-arm replay is bit-identical, corresponding to 67.5533% against S1703's 67.553%. Two earlier attempts were invalid (S1713: no intercept + ridge, landed 0.009 from target; S1715: omitted Down_bias, landed 0.506 ABOVE target). The difference is categorical, not quantitative: a correct identity lands ON its target, not near it. Codex's construction and run.",
+  "WRONG_DENOMINATOR_S1718": "S1714 called k=4608 'the module re-implemented, not a compression' by comparing to the BASE PROGRAM (2.7x it). Against what it actually replaces -- the 36 modules total 430.00M params (18 MLPs at 15.926M, 18 attention at 7.963M) -- k=4608 is 87.59M = 20.4%, a ~5x COMPRESSION. The base program is 5.6% of the modules for 55.0% of their effect."
  },
  "_programs_priced_in_params_per_nat": {
   "claim": "Priced in the project's own params/nat metric on the 5.5684-nat joint stake, the middle-band feature augmentation is a WORSE program than the base linear one at every k. Base 7.80 M/nat; adding features costs 34.6 M/nat at the first margin and 152.6 M/nat by k=4608, with overall efficiency degrading monotonically 7.80 -> 23.29.",
@@ -2687,6 +2688,7 @@
   "strengthens_not_weakens": "the S1714 structural finding (recovery proportional to features spent, no low-rank shortcut, gains convex in log k) is STRENGTHENED -- convex gains in log k is what 'no compressible structure' looks like on a cost axis. S1716's bit-exact identity and S1709's k=8 negative are unaffected.",
   "comparison_NOT_made": "MDL_BILL's 1.03M params/nat commons bill is a different object in a different currency (attention-head kits vs capability-nats), so the apparent 8-23x gap is not a valid comparison -- S1656 is the standing warning.",
   "practice_change": "every program figure should carry its params/nat, and 'best' means best on the frontier, not best on fidelity",
-  "status": "certified"
+  "status": "certified",
+  "OVERCLAIM_CORRECTED_S1718": "The claim that the augmentation is a WORSE program does not survive. All five points are monotone increasing in BOTH parameters and nats, so none Pareto-dominates any other -- they are all on the frontier. Ranking by params/nat is a SCALARIZATION that assumes an exchange rate (that one would never pay 152M params for a marginal nat); that is a preference, not a measurement. What survives is the frontier's SHAPE: marginal cost rises monotonically 34.6/66.7/92.1/152.6 M per nat with NO KNEE, which is evidence that no compressible chunk exists and needs no exchange rate to state."
  }
 }
