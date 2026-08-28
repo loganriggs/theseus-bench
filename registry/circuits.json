@@ -3404,7 +3404,27 @@
     "the_striking_number": "the two similarities pick the SAME neighbour for only 7.53% of the 44,838 uncovered token ids. The embedding map was not a worse version of the right map; it was a different map that happened to work.",
     "best_standalone_program": "rank 64, 15.223M reals, 6.18248 all-position CE -- better than the best fallback-USING program in the arc (6.28596). At full rank 6.00048, within 0.021 nats of the position-wise reference (5.97902) on ALL positions.",
     "cost": "one extra index; 50,257 length-1 forwards at build time instead of 5,419; nothing stored beyond the map.",
-    "SCOPE": "measured on skip11000 at four ranks. NOT yet confirmed on the other two roles -- S1778 confirmed the EMBEDDING map on three roles, this one has one."
+    "SCOPE": "RESOLVED at S1781: confirmed on all three roles, 4/4. Gains 0.0374-0.0600 nats, transferring within 0.02 at every rank; output similarity wins at every rank on every role; skip1200 (the hardest) gains the most. The design point for the uncovered quarter is settled: the covered token whose length-1 next-token distribution is most similar, ONE neighbour, no averaging (S1779).",
+    "three_role_gains": {
+     "skip7000": [
+      0.0386,
+      0.054,
+      0.0495,
+      0.0415
+     ],
+     "skip11000": [
+      0.0374,
+      0.0523,
+      0.0508,
+      0.0406
+     ],
+     "skip1200": [
+      0.0391,
+      0.06,
+      0.0556,
+      0.0466
+     ]
+    }
    }
   }
  }
