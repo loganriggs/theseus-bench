@@ -2534,7 +2534,7 @@
    "sections": "S1714",
    "what": "the best whole-model program is a price/fidelity CHOICE: 58.71% at 7.08M extra reals (0.3x the base program), 63.38% at 28.31M (1.2x), 67.54% at 63.70M (2.7x). All are 36 sites with token tables at mlp0-2, four-position attention maps, v1 tabled, and mlp4-15 augmented by k own-features.",
    "stake": "5.5684 nats, the joint 36-site optimal-constant stake",
-   "caveat": "quoting 67.54% without its 2.7x cost would be quoting the module re-implemented. The 55.04% predecessor is the figure replicated held-out (53.69% [52.92,54.39]); no augmented arm has been. The construction's IDENTITY CHECK IS OUTSTANDING -- both attempts were invalid (S1713: no intercept + ridge; S1715: omitted Down_bias)."
+   "caveat": "quoting 67.54% without its 2.7x cost would be quoting the module re-implemented. The construction's identity check PASSES BIT-EXACTLY (S1716). The 55.04% predecessor is the figure replicated held-out (53.69% [52.92,54.39]); no augmented arm has been -- that is the open item."
   },
   "whole_model_36_site_condition": {
    "50.94%": "S1694 -- simplest families (linear everywhere, lag-1 everywhere)",
@@ -2645,7 +2645,7 @@
   "k4608_is_nearly_tautological": "at the full basis the linear map is handed the module's entire hidden state and re-derives its readout; recovering 99.9% there is close to definitional, and the price (2.7x the whole base program) says so. It is the module re-implemented, not a compression.",
   "extends": "S1679 (features not sparse-selectable) and S1692 (feature-forming path not low-rank compressible) -- the content is not merely hard to select or compress, it is genuinely distributed across the basis",
   "status": "certified",
-  "IDENTITY_CHECK_OUTSTANDING": "The exact-map arm reported 68.059% but OMITTED Down_bias (Codex source audit; fixed in fb80575b at 02:50, six minutes after the 02:44 artifact). It is a zero-bias ablation, not the module. Down_bias norms are 31.17/29.13/23.14 at mlp4/8/15 against ||Down.weight||_F of 244-259 -- a constant offset of norm ~29 at every augmented site. The arm came out ABOVE the target (68.059 vs 67.553), and an arm meant to REPRODUCE the module cannot legitimately beat it; the sign alone should have prompted a source check. A corrected run is in flight. The construction is NOT yet validated.",
-  "unaffected_by_the_withdrawal": "the ridge k-curve (55.038/58.713/60.619/63.378/67.544), the price curve, the accelerating-gains result and S1709's k=8 negative are ridge-fitted empirical measurements that never rested on the identity arm"
+  "unaffected_by_the_withdrawal": "the ridge k-curve (55.038/58.713/60.619/63.378/67.544), the price curve, the accelerating-gains result and S1709's k=8 negative are ridge-fitted empirical measurements that never rested on the identity arm",
+  "IDENTITY_CHECK_PASSES_S1716": "BIT-EXACT. With Down_bias restored, the constructed exact map at mlp4-15 and leaving mlp4-15 live give identical CE 5.098802047929132 in the same shared-object run; pooled and maximum per-row differences are ZERO and the corrected-arm replay is bit-identical, corresponding to 67.5533% against S1703's 67.553%. Two earlier attempts were invalid (S1713: no intercept + ridge, landed 0.009 from target; S1715: omitted Down_bias, landed 0.506 ABOVE target). The difference is categorical, not quantitative: a correct identity lands ON its target, not near it. Codex's construction and run."
  }
 }
