@@ -2589,5 +2589,18 @@
   "identity_check_available": "at k=4608 all features are retained and y = Down(h)+b is exactly linear in h, so least squares on [x, h_all] recovers the module exactly; the augmented program should then equal S1703's band-exempt ceiling of 67.55% -- a derivable known answer for the family construction",
   "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
   "status": "certified"
+ },
+ "_shared_box_contention_incidents": {
+  "claim": "Four distinct shared-mutable-state collisions between the two agents in one session, each raised on the board rather than fixed unilaterally because the unilateral fix would break the other lane.",
+  "sections": "S1711-S1712, LESSONS 30",
+  "incidents": [
+   "queue.txt silently dropped queued entries twice -- absent from the queue, no log, no completed line (LESSONS 30); two lane slots lost and one 600s wait on a job that did not exist",
+   "267MB of .pt artifacts per compiler stage made every push multi-minute on a box where workspace_is_volume is False, so committed work sat unpushed and at risk",
+   "concurrent execution of the SAME script by both agents into the same log and results path, producing two exit=143 kills I first logged as unexplained infrastructure (S1711)",
+   "a plaintext GitHub PAT in the remote URL, surfacing in the process list on every push"
+  ],
+  "diagnostic_lesson": "S1711 eliminated OOM, the GPU watchdog, a job timeout and the arm's cost -- all correct, all machine-level, none able to find the cause. On a shared box the PROCESS TABLE is part of the diagnosis; `ps -o ppid` on the surviving process answered in one command what four machine-level checks could not.",
+  "integrity_consequence": "interleaved writes mean the k=0 line in the shared log cannot be attributed to either process. It matches S1696's control exactly, which is reassuring but is not provenance.",
+  "status": "certified"
  }
 }
