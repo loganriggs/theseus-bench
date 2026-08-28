@@ -3437,6 +3437,45 @@
      "dropping the true token's embedding channel": 0.15
     },
     "note": "a position-wise program built from site tables is NOT 'the neighbour's prediction'; it is the real token's embedding pushed through the neighbour's writes."
+   },
+   "LEARNED_ROW_MAP_S1784_S1785": {
+    "what": "instead of copying the output-NN neighbour's row at an uncovered position, PREDICT the row from the token's own embedding with a rank-64 ridge map fitted on the 5419 covered tokens. Still a function of the current token alone. 5.308M reals on top of the tables.",
+    "all_position_CE": {
+     "skip7000": {
+      "full": {
+       "neighbour": 6.01897,
+       "learned": 6.01167
+      },
+      "64": {
+       "neighbour": 6.19187,
+       "learned": 6.1733
+      }
+     },
+     "skip11000": {
+      "full": {
+       "neighbour": 6.00091,
+       "learned": 5.98477
+      },
+      "64": {
+       "neighbour": 6.18267,
+       "learned": 6.15261
+      }
+     },
+     "skip1200": {
+      "full": {
+       "neighbour": 6.00733,
+       "learned": 6.00165
+      },
+      "64": {
+       "neighbour": 6.15065,
+       "learned": 6.14463
+      }
+     }
+    },
+    "margin": "+0.0057 to +0.0301, positive at every rank and role -- a real but SMALL gain, nothing like the 0.43 nats that switching from a global mean row to a neighbour bought (S1777).",
+    "worth_the_reals": "0.03006 nats for 5.308M at rank 64 is 0.00566 nats per million, against 0.00367 for spending the same on table rank (S1770's rank 64 -> 256 step). At rank 64 the map is the better marginal buy.",
+    "S1784_DEFECT_REPAIRED_AT_S1785": "S1784 fitted the maps once against the FULL-rank tables and reused them at rank 64, so that arm had truncated covered rows and untruncated predicted ones -- not a coherent program -- and it FAILED the >0.005 bar on skip1200/rank64 at -0.00091. Refitting inside each truncated basis fixes it to +0.00602. The tell was the learned arm's uncovered-only CE being identical across table ranks to five decimals; after the repair it differs by 0.022-0.032.",
+    "uncovered_positions_are_not_uniformly_harder": "backing uncovered-only CE out of the two measured populations: skip7000 5.93936 against covered 6.03465 (EASIER), skip11000 6.00171 against 5.97900 (harder by 0.023), skip1200 6.11891 against 5.96423 (harder by 0.155). The covered/uncovered split is not a difficulty ordering; S1784's pred_b assumed it was."
    }
   }
  }
