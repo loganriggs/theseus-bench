@@ -2908,5 +2908,135 @@
   "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64",
   "WITHDRAWN_2026_08_28": "The novel cell was defined as not-seen-in-past AND not-selected-by-the-erroneous-future-induction-mask. It therefore was not the documented set of targets absent from context. The reported signs and specialization interpretation are invalid. The original values remain only as failure provenance and must not be used downstream.",
   "status": "withdrawn"
+ },
+ "_attention_carries_copy_work_mlps_carry_weight_resident_work": {
+  "claim": "Constant-ablating the 18 attention sites costs MORE per token on `induction` targets than on `novel` ones (ratio 1.1654 / 1.1269 / 1.0521 across three eval roles); constant-ablating the 18 MLPs costs LESS (0.8814 / 0.8900 / 0.9197). The difference is positive with a 95% interval excluding zero on all three roles, including skip1200 (0.0498, 0.2193), a pinned role that had never been scored for this hypothesis. Attention carries the copy/retrieval work; the MLP stack carries what has to come from the weights.",
+  "sections": "S1734",
+  "script": "bilinear_quotient/ops/class_ratio_confirm_skip1200.py",
+  "components": {
+   "mlp": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ],
+   "attn": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  "roles": {
+   "skip7000": "discovery",
+   "skip11000": "discovery",
+   "skip1200": "CONFIRMATION -- never scored for this hypothesis before this run"
+  },
+  "ratios": {
+   "skip7000": {
+    "mlp": 0.8814,
+    "mlp_ci95": [
+     0.8325,
+     0.9322
+    ],
+    "attn": 1.1654,
+    "attn_ci95": [
+     1.091,
+     1.241
+    ],
+    "diff_ci95": [
+     0.2326,
+     0.3366
+    ]
+   },
+   "skip11000": {
+    "mlp": 0.89,
+    "mlp_ci95": [
+     0.8421,
+     0.938
+    ],
+    "attn": 1.1269,
+    "attn_ci95": [
+     1.0498,
+     1.2054
+    ],
+    "diff_ci95": [
+     0.1778,
+     0.2967
+    ]
+   },
+   "skip1200": {
+    "mlp": 0.9197,
+    "mlp_ci95": [
+     0.8464,
+     1.0047
+    ],
+    "attn": 1.0521,
+    "attn_ci95": [
+     0.9413,
+     1.1681
+    ],
+    "diff_ci95": [
+     0.0498,
+     0.2193
+    ]
+   }
+  },
+  "classes": "target-side, disjoint, exhaustive, PAST-FACING (ops/target_token_classes.py, shared and unit-tested): induction (target appears at some p<j preceded there by the current token), repeat (appears in the available context, not induction), novel (absent). Counts on skip7000: 3394 / 9127 / 15453.",
+  "controls": "classifier known-answer check run in-process before loading (a hand-built 4-token example plus future-suffix invariance); partition-INVARIANT S1662/S1682 total stakes reproduce at 4.33011 vs 4.3301 and 3.55704 vs 3.5570. Deliberately NO comparison against any S1727-S1729 class number.",
+  "SUPERSEDES": "_mlp_stack_damage_is_novel_concentrated, withdrawn 2026-08-28. That entry was computed on a FUTURE-looking induction mask (S1733) and read attention as class-flat at 1.0015; corrected, attention is above 1 on all three roles. This is a different and stronger claim, not a restoration.",
+  "SCOPE_stack_not_site": "a property of the STACKS. The per-site version failed its held-out predictions in S1728 and has not been retested on the corrected partition.",
+  "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64, 2000 ROW-level bootstrap draws (NOT document-clustered -- S1701)",
+  "status": "certified"
+ },
+ "_attn14_and_attn16_are_harmful_on_novel_targets": {
+  "claim": "attn14 and attn16 have NEGATIVE per-token damage on `novel` targets on all three eval roles -- replacing them with their optimal constant IMPROVES cross-entropy on targets absent from the context (attn14 -0.0128/-0.0096/-0.0102; attn16 -0.0138/-0.0145/-0.0120) -- while their TOTAL removal stays positive (+0.0213 and +0.0165 on the confirmation role). Net-useful sites that are actively wrong on the majority token class, which no pooled-CE removal number can see.",
+  "sections": "S1734",
+  "script": "bilinear_quotient/ops/class_ratio_confirm_skip1200.py",
+  "components": {
+   "attn": [
+    14,
+    16
+   ]
+  },
+  "roles": {
+   "skip7000": "discovery",
+   "skip11000": "discovery",
+   "skip1200": "CONFIRMATION"
+  },
+  "TWO_SITES_NOT_THREE": "the withdrawn S1729 entry named attn14, attn15 and attn16. attn15 FLIPS POSITIVE on the confirmation role (+0.0015 against -0.0014 / -0.0022 on the discovery roles) and its magnitudes were the smallest of the three throughout. It is excluded.",
+  "SCALE_stated": "small sites. Total removal 0.017-0.030 nats against the MLP stack's 4.33. The SIGN reproduces on three roles; the QUANTITY is a few hundredths of a nat. Real at small scale, not a major pathway.",
+  "NOT_INTERVALLED": "certified on three-role sign replication. No per-site bootstrap interval on the novel component; the sweep that would have provided one was retired on role-burn grounds and has not been rebuilt on a clean role.",
+  "SUPERSEDES": "_late_attention_is_harmful_on_novel_targets, withdrawn 2026-08-28 (future-looking mask, S1733).",
+  "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64",
+  "status": "certified"
  }
 }
