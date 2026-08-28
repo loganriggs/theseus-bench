@@ -2526,5 +2526,34 @@
   "open": "k=64 is the largest tried and the gain is still climbing from the k=8 crossing; a k-sweep to 256/512 decides whether there is a path or a plateau",
   "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
   "status": "certified"
+ },
+ "_CURRENT_HEADLINE_FIGURES": {
+  "purpose": "Disambiguation pointer. The registry states 24 different 5x.xx% program figures across 13 entries. Each is correct in its own condition, but they are NOT interchangeable and quoting the wrong one is easy. This entry names the condition for each and which figure is current.",
+  "THE_CURRENT_NUMBER": {
+   "value": 0.558,
+   "sections": "S1709",
+   "what": "the best whole-model program: 36 sites substituted (18 MLPs + 18 attention output writes, v1 tabled), token tables at mlp0-2, linear maps at mlp3-17 with the middle band mlp4-15 augmented by 64 of each module's own bilinear features, four-position maps at every attention write, compiled interleaved bottom-up",
+   "stake": "5.5684 nats, the joint 36-site optimal-constant stake",
+   "caveat": "not yet replicated held-out; the 55.04% predecessor was, at 53.69% [52.92, 54.39]"
+  },
+  "whole_model_36_site_condition": {
+   "50.94%": "S1694 -- simplest families (linear everywhere, lag-1 everywhere)",
+   "55.04%": "S1696 -- best PURE families (tables mlp0-2, lags 1,2,4,8); the figure most often quoted and the one Codex carries",
+   "55.80%": "S1709 -- CURRENT, adds 64 own-features at mlp4-15",
+   "53.69% [52.92,54.39]": "S1701 -- the 55.04% program scored on held-out skip11000"
+  },
+  "MLP_ONLY_condition_attention_running_real": {
+   "60.81%": "S1676 -- 18 linear maps, 480 fit rows, mask pinned. NOT comparable to the 36-site figures: different stake (4.3301 nats) and the other half is real",
+   "57.29%": "S1672 -- best pure family assignment at 96 fit rows",
+   "54.28%": "S1674 -- the honest STANDALONE figure, substituting at every position rather than leaving the module live where uncovered"
+  },
+  "ATTENTION_ONLY_condition_MLPs_running_real": {
+   "16.38%": "S1682 -- position-wise linear map of the output write",
+   "56.26%": "S1685 -- two-position map [x_t, x_(t-1)]",
+   "70.08%": "S1687 -- widest positional family (lags 1,2,4,8,16,32,64); saturates there"
+  },
+  "rule": "never compare across the three condition blocks above. The stakes differ (5.5684 vs 4.3301 vs 3.5570 nats) and in the single-half blocks the other half of the model is running real, which S1696/S1697/S1704 showed does not transfer.",
+  "sections": "S1669-S1709",
+  "status": "certified"
  }
 }
