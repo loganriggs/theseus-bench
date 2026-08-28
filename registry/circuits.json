@@ -2441,7 +2441,7 @@
   "status": "certified"
  },
  "_synergy_excess_is_monotone_in_downstream_depth": {
-  "claim": "Composition excess is monotone in how much model lies downstream: mlp0+mlp1 (16 blocks below) +41.8%, mlp8+mlp9 (9 blocks) -4.2%, mlp16+mlp17 (1 block) -20.1%. The middle pair lands intermediate with its excess interval excluding zero, as the depth reading predicts.",
+  "claim": "SUPERSEDED at S1708. The MEASUREMENTS stand -- mlp0+mlp1 +41.8% [+0.86,+1.09], mlp8+mlp9 -4.2% [-0.19,-0.01], mlp16+mlp17 -20.1%, ordered as reported -- but the CAUSAL reading (depth) is REFUTED: a fourth pair at matched depth, mlp2+mlp3 (14-15 blocks below vs 16), shows +1.5% with an interval INCLUDING ZERO, 40.3 points below its depth-mate. Composition excess is site-specific, not a depth law.",
   "sections": "S1707",
   "script": "bilinear_quotient/mid_pair_synergy.py",
   "pair_gain_ci95": [
@@ -2467,6 +2467,37 @@
   "WEAK_PASS_ACKNOWLEDGED": "pred_a's window spans 62 percentage points, so 'intermediate' was a large target and many outcomes would have cleared it. The competing reading predicted a value OUTSIDE that span, so a FAILURE would have been decisive while the pass is merely consistent. Three points are also a thin basis for a monotone claim and the spacing is not proportional to depth (16->9 blocks costs 46 points of excess, 9->1 blocks only 16). The ORDERING is claimed, not a functional form.",
   "confound_narrowed_not_eliminated": "depth and function still covary across these three pairs. The clean test is an EARLY pair whose FUNCTION is unlike mlp0/mlp1 -- mlp2+mlp3 (S1662 ceilings 76.98% and 67.55% vs 90.27% and 96.01%). Depth says it should resemble +41.8%; function says far lower. Queued as early_atypical_pair_synergy.py.",
   "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
+  "status": "certified",
+  "claim_ORIGINAL_S1707": "Composition excess is monotone in how much model lies downstream: mlp0+mlp1 (16 blocks below) +41.8%, mlp8+mlp9 (9 blocks) -4.2%, mlp16+mlp17 (1 block) -20.1%. The middle pair lands intermediate with its excess interval excluding zero, as the depth reading predicts.",
+  "REFUTED_BY_S1708": "early_atypical_pair_synergy.py. The three pairs of S1707 varied in FUNCTION as well as depth; function was carrying the signal. The super-additivity belongs to mlp0 and mlp1 specifically -- the two modules S1672 found genuinely want token tables (S1662 ceilings 90.27%/96.01% vs 76.98%/67.55%, mlp3 actively hostile). Every other pair measured, including one at matched depth, is at or slightly below additive."
+ },
+ "_composition_excess_is_site_specific": {
+  "claim": "Composition excess in the 36-site program is site-specific: it is NOT a depth law, NOT a band-size law, and NOT an interaction-count law. mlp0+mlp1 is +41.8% super-additive; mlp2+mlp3 at matched depth is +1.5% with an interval including zero; mlp8+mlp9 is -4.2%; mlp16+mlp17 is -20.1%. The excess belongs to the one pair of modules that genuinely want token tables.",
+  "sections": "S1704-S1708",
+  "scripts": [
+   "front_mlp_site_shortfall.py",
+   "late_mlp_site_synergy.py",
+   "early_pair_synergy.py",
+   "mid_pair_synergy.py",
+   "early_atypical_pair_synergy.py"
+  ],
+  "excesses": {
+   "mlp0_mlp1": 0.418,
+   "mlp2_mlp3": 0.015,
+   "mlp8_mlp9": -0.042,
+   "mlp16_mlp17": -0.201
+  },
+  "mlp2_mlp3_ci_includes_zero": [
+   -0.0011,
+   0.0023
+  ],
+  "readings_killed": [
+   "cascade-by-interaction-count (S1704)",
+   "band-size (S1705)",
+   "downstream depth (S1706, S1707)"
+  ],
+  "epistemic_note": "S1706's caution proved correct: 'one confirming test of a story invented to fit the data it now explains is weaker than an independently motivated prediction'. Two confirmations later the first genuinely discriminating test killed it. Confirmations of post-hoc stories should not accumulate into confidence, because the tests that confirm are usually the ones the story was built to survive.",
+  "line_stopped_deliberately": "five runs established a real negative; further probing would characterise one pair's quirk. The remaining program shortfall is better attacked directly at the middle MLPs (S1703 largest total, S1668 37.7% beyond any linear map).",
   "status": "certified"
  }
 }
