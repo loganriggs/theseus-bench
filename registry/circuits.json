@@ -3282,6 +3282,14 @@
     "recovered_skip11000": -0.34772,
     "note": "NEGATIVE -- one direction of per-token variation per site is not enough, mirroring S1756's rank-0 result on fit-mean tables"
    }
+  },
+  "THIRD_ROLE_CONFIRMATION_S1774": {
+   "role": "fineweb_n96_skip1200 -- pinned, half the row count, never scored for a program-frontier quantity; it was the confirmation role for the token-class family in S1734, so this is a SECOND-CLASS confirmation, not a virgin role",
+   "role_is_harder": "live CE 3.40277 and a 3.79378-nat stake, against skip11000's 3.09711 and 4.26114",
+   "replicates": "the cost-efficiency design point (rank 4) and the negative floor (rank 1) both replicate",
+   "normalised_levels": "as a fraction of each role's OWN stake the top four ranks agree to 0.36 percentage points across all three roles: full 32.4/32.4/32.5%, rank64 26.9/26.9/27.3%, rank8 19.0/18.9/19.2%, rank4 15.1/15.0/14.6%",
+   "SCOPE_cheap_end_is_role_sensitive": "ranks 2 and 1 do NOT transfer: 6.0/5.6/3.8% and -9.9/-8.2/-14.3% of stake, absolute gaps of 0.094 and 0.195 nats against skip11000. The frontier's useful range replicates; its cheap end is role-sensitive and should not be quoted without the role.",
+   "raw_nats_do_not_transfer": "the registered bar asked for raw-nat recoveries within 15% relative and FAILED at ranks 2 and 1. Raw nats were the wrong normalisation for roles of different difficulty; the fraction of each role's own stake is the transferable quantity."
   }
  }
 }
