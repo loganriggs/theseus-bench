@@ -2409,5 +2409,15 @@
   "post_hoc_untested": "Candidate refinement: cascade amplification needs downstream depth (front MLPs have 14 blocks below, late MLPs at most 1); with no amplification what remains is overlap, since mlp16 and mlp17 both write into the final residual. Fitted after the fact to two data points and NOT claimed. Decisive test is an EARLY two-site pair at matched band size -- early_pair_synergy.py.",
   "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
   "status": "certified"
+ },
+ "_predictions_that_cannot_fail": {
+  "claim": "Three registered predictions in this arc passed without testing anything, by three different mechanisms: a no-op made every relationship-between-arms claim trivially true (S1681); arms nested by construction made a non-additivity claim a structural identity (S1684); and a one-sided bar was cleared by the very sign it was meant to test (S1705).",
+  "sections": "S1681, S1684, S1705",
+  "lesson": "LESSONS 31",
+  "common_structure": "in each case the prediction was satisfiable WITHOUT the phenomenon being present -- a property of how the bar was written, invisible from the pass/fail line",
+  "why_defences_miss_it": "registered predictions constrain the science and known-answer identity arms constrain the measurement, but neither asks whether the bar is reachable from the other side. A no-op gets the identity arm RIGHT; a nested arm computes honestly; a one-sided bar is arithmetically correct.",
+  "check": "before registering, name the specific observable result that would make the bar FALSE and confirm it is achievable under the run's own design",
+  "not_a_reason_to_weaken_bars": "all three were strict; strictness does not help when the quantity cannot move",
+  "status": "certified"
  }
 }
