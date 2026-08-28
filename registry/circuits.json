@@ -3335,7 +3335,52 @@
    },
    "milestone": "at rank 64 (15.223M reals) a FULLY STANDALONE program reaches 6.23480 all-position CE, beating S1776's best program (fit-mean plus hybrid fallback, 6.28596) by 0.051 nats; at full rank 6.03786, by 0.248. Every earlier program that beat it on all positions called the native module at 24% of positions. A program that calls the module it replaces is not a replacement; that objection is now removed and the fallback term, the largest unpriced quantity from S1748 onward, is zero.",
    "covered_CE_unchanged": "identical between fallback arms at every rank (5.97900 / 6.21152 / 6.55472 / 6.72034), so the change is confined to uncovered tokens as it must be.",
-   "still_position_wise": "zero cross-position dependence (_COMPILED_PROGRAM_IS_POSITION_WISE). The class optimum is bounded above by 5.97902 (_POSITION_WISE_CLASS_CEILING, corrected at S1771b); it reaches AT LEAST 32.4% of the stake and context is worth AT MOST 67.6%."
+   "still_position_wise": "zero cross-position dependence (_COMPILED_PROGRAM_IS_POSITION_WISE). The class optimum is bounded above by 5.97902 (_POSITION_WISE_CLASS_CEILING, corrected at S1771b); it reaches AT LEAST 32.4% of the stake and context is worth AT MOST 67.6%.",
+   "THREE_ROLE_CONFIRMATION_S1778": {
+    "all_position_CE_standalone_nearest": {
+     "full": {
+      "skip7000": 6.05666,
+      "skip11000": 6.03786,
+      "skip1200": 6.0474
+     },
+     "64": {
+      "skip7000": 6.24543,
+      "skip11000": 6.2348,
+      "skip1200": 6.21155
+     },
+     "8": {
+      "skip7000": 6.53214,
+      "skip11000": 6.54141,
+      "skip1200": 6.48844
+     },
+     "4": {
+      "skip7000": 6.67601,
+      "skip11000": 6.69203,
+      "skip1200": 6.63885
+     }
+    },
+    "gains_over_mean_row": {
+     "skip7000": [
+      0.365,
+      0.345,
+      0.303,
+      0.28
+     ],
+     "skip11000": [
+      0.432,
+      0.408,
+      0.358,
+      0.33
+     ],
+     "skip1200": [
+      0.395,
+      0.381,
+      0.335,
+      0.317
+     ]
+    },
+    "verdict": "4/4. The effect replicates at every rank on every role, the magnitudes transfer within 0.10 nats, and the rank-64 standalone program lands within a 0.034-nat spread across three roles whose live CEs differ by 0.30. The nearest-covered map is built from input embeddings alone and does not depend on any eval role."
+   }
   }
  }
 }
