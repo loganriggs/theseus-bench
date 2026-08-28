@@ -2386,5 +2386,28 @@
   "not_a_contradiction_with_S1697": "S1697 found half-level UPGRADES additive to within 0.13 points; S1704 finds site-level EXEMPTIONS super-additive by 52%. Different operations at different grains. Jointly: additivity cannot be assumed in either direction and must be measured per operation.",
   "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
   "status": "certified"
+ },
+ "_band_synergy_sign_depends_on_band": {
+  "claim": "The front band's synergy does NOT generalise. Exempting the two late MLPs individually buys +1.25 (mlp17) and +1.13 (mlp16), summing to +2.39 against S1703's band gain of +1.99 -- SUB-additive by -0.40 points (-20.1% of the band), against the front band's +34.0% SUPER-additivity.",
+  "sections": "S1705",
+  "script": "bilinear_quotient/late_mlp_site_synergy.py",
+  "site_gains_ci95": {
+   "mlp17": [
+    0.0115,
+    0.0135
+   ],
+   "mlp16": [
+    0.0106,
+    0.0122
+   ]
+  },
+  "controls": "the no-exemption arm reproduces S1696's 55.04% exactly; both gains positive; same program, protocol and eval rows as S1703/S1704 so the band comparator is direct",
+  "FAILED_pred_a": "predicted the late band would be super-additive like the front band; the sign flipped",
+  "VACUOUS_pred_b": "The bar was written as excess_fraction < 0.340, expecting a smaller POSITIVE excess. The observed -0.201 clears a one-sided bar trivially by being negative, so the pass carries no information. Same defect as S1684's degenerate joint arm and S1681's no-op in a third form: a ONE-SIDED BAR CANNOT TEST A CLAIM WHOSE SIGN IS IN QUESTION. Scored as a vacuous pass, not a confirmation.",
+  "FAILED_pred_d": "mlp16 and mlp17 are indistinguishable -- [+1.15,+1.35] and [+1.06,+1.22] overlap, so the +1.25 vs +1.13 ordering is not resolved. Without the interval I would have reported an ordering the data does not support.",
+  "REFUTES_the_S1704_cascade_reading_as_stated": "S1704 explained front-band synergy as an error cascade and that mechanism predicted a smaller POSITIVE excess for a two-site band; the sign went the other way.",
+  "post_hoc_untested": "Candidate refinement: cascade amplification needs downstream depth (front MLPs have 14 blocks below, late MLPs at most 1); with no amplification what remains is overlap, since mlp16 and mlp17 both write into the final residual. Fitted after the fact to two data points and NOT claimed. Decisive test is an EARLY two-site pair at matched band size -- early_pair_synergy.py.",
+  "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
+  "status": "certified"
  }
 }
