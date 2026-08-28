@@ -2534,7 +2534,7 @@
    "sections": "S1710",
    "what": "36 sites substituted (18 MLPs + 18 attention output writes, v1 tabled): token tables at mlp0-2, linear maps at mlp3-17 with mlp4-15 augmented by 512 of each module's own bilinear features, four-position maps at every attention write, compiled interleaved bottom-up",
    "stake": "5.5684 nats, the joint 36-site optimal-constant stake",
-   "caveat": "not replicated held-out; the 55.04% predecessor was, at 53.69% [52.92,54.39]. The k-curve has not turned, so this is not a ceiling for the family."
+   "caveat": "not replicated held-out; the 55.04% predecessor was, at 53.69% [52.92,54.39]. The k-curve has not turned, so this is not a ceiling for the family. The construction's identity check is still OUTSTANDING -- S1713 shows the k=4608 ridge arm cannot serve as one; Codex's separate exact-map arm is the valid check and is in flight."
   },
   "whole_model_36_site_condition": {
    "50.94%": "S1694 -- simplest families (linear everywhere, lag-1 everywhere)",
@@ -2588,7 +2588,8 @@
   "price": "7.08M extra reals across 12 sites, ~30% on top of the linear program's 23.89M (S1680), for +3.67 points; the curve has not turned so the marginal price is not yet known",
   "identity_check_available": "at k=4608 all features are retained and y = Down(h)+b is exactly linear in h, so least squares on [x, h_all] recovers the module exactly; the augmented program should then equal S1703's band-exempt ceiling of 67.55% -- a derivable known answer for the family construction",
   "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
-  "status": "certified"
+  "status": "certified",
+  "FALSE_IDENTITY_CLAIM_CORRECTED_S1713": "S1710 and the ksweep2 docstring claimed k=4608 carries a DERIVABLE known answer (least squares with all features recovers the module, so the program must equal S1703's 67.55%). It does not, for two independent reasons Codex identified in repair commit c564b0c8: the augmented map [x,h]W has NO INTERCEPT so Down_bias is not representable, and RIDGE=1e-3 shrinks even a representable solution. The ridge k=4608 arm is EMPIRICAL, not an identity. Their fix adds a separate arm constructing the exact native map Down(Left(x)*Right(x)) including bias inside the same compiler, which does have the derivable 67.55% target. SECOND OCCURRENCE of the error S1699 already corrected -- I reused the same ridge and added a missing intercept. The measured k-curve (+0.77/+2.34/+3.67) and the 58.71% headline are ridge-fitted empirical values and stand."
  },
  "_shared_box_contention_incidents": {
   "claim": "Four distinct shared-mutable-state collisions between the two agents in one session, each raised on the board rather than fixed unilaterally because the unilateral fix would break the other lane.",
