@@ -2531,10 +2531,12 @@
   "purpose": "Disambiguation pointer. The registry states 24 different 5x.xx% program figures across 13 entries. Each is correct in its own condition, but they are NOT interchangeable and quoting the wrong one is easy. This entry names the condition for each and which figure is current.",
   "THE_CURRENT_NUMBER": {
    "value": "a FRONTIER, and no point on it is 'best' without saying what the description is for",
-   "sections": "S1718",
-   "what": "36-site compiled programs against modules totalling 430.00M params: base 23.89M (5.6%) recovering 55.0%; k=512 30.97M (7.2%) 58.7%; k=1024 38.05M (8.8%) 60.6%; k=2048 52.20M (12.1%) 63.4%; k=4608 87.59M (20.4%) 67.5%. All are Pareto-optimal -- monotone in both axes, none dominates.",
+   "sections": "S1718, costs corrected at S1720, scope narrowed at S1723",
+   "what": "36-site compiled programs, priced against modules totalling 430.00M params: base 23.888M (5.6%) recovering 55.0%; k=512 45.122M (10.5%) 58.7%; k=1024 66.355M (15.4%) 60.6%; k=2048 108.823M (25.3%) 63.4%; k=4608 214.991M (50.0%) 67.5%. All are Pareto-optimal -- monotone in both axes, none dominates.",
    "stake": "5.5684 nats, the joint 36-site optimal-constant stake",
-   "caveat": "do NOT rank these by params/nat -- that scalarization smuggles in an exchange rate. The scientific content is the frontier's SHAPE (marginal cost rises monotonically with no knee => no compressible chunk), not a ranking. Fidelity alone is won by the model itself; simplicity alone by a constant."
+   "caveat": "do NOT rank these by params/nat -- that scalarization smuggles in an exchange rate. The scientific content is the frontier's SHAPE (marginal cost rises monotonically with no knee => no compressible chunk), not a ranking. Fidelity alone is won by the model itself; simplicity alone by a constant.",
+   "COST_CORRECTED_2026_08_28": "This field previously read 23.89 / 30.97 / 38.05 / 52.20 / 87.59M at 5.6 / 7.2 / 8.8 / 12.1 / 20.4%. Every augmented figure was THREE TIMES TOO LOW -- zero-native-call feature computation needs the selected `Left` and `Right` rows, not only the `Down` columns (S1718, corrected at S1720). The FIDELITY column and the Pareto statement are unchanged; a constant factor cannot reorder a monotone frontier. An entry whose purpose is to stop people quoting superseded figures was itself quoting superseded figures for several hours.",
+   "NO_COMPRESSION_RATIO_S1723": "Do NOT read the '% of the 430M modules' column as a compression ratio. S1723: 214.991M prices the 18-MLP linear base plus selected native factors for MLP4-15 and is not a complete zero-native-call replacement for all 36 modules, so dividing by 430M licenses nothing. The column is a scale reference only."
   },
   "whole_model_36_site_condition": {
    "50.94%": "S1694 -- simplest families (linear everywhere, lag-1 everywhere)",
@@ -2542,7 +2544,7 @@
    "55.80%": "S1709 -- CURRENT, adds 64 own-features at mlp4-15",
    "53.69% [52.92,54.39]": "S1701 -- the 55.04% program scored on held-out skip11000",
    "58.71%": "S1710 -- CURRENT, adds 512 own-features at mlp4-15",
-   "58.71% / 63.38% / 67.54%": "S1714 -- CURRENT, mlp4-15 augmented by k=512 / 2048 / 4608 own-features at 0.3x / 1.2x / 2.7x the base program's parameter count"
+   "58.71% / 63.38% / 67.54%": "S1714 -- CURRENT, mlp4-15 augmented by k=512 / 2048 / 4608 own-features. The old '0.3x / 1.2x / 2.7x the base program's parameter count' framing is withdrawn twice: S1718 established the base program is the WRONG denominator (the modules are), and S1720 established the numerators were 3x undercounted. Corrected totals are 45.122M / 108.823M / 214.991M."
   },
   "MLP_ONLY_condition_attention_running_real": {
    "60.81%": "S1676 -- 18 linear maps, 480 fit rows, mask pinned. NOT comparable to the 36-site figures: different stake (4.3301 nats) and the other half is real",
