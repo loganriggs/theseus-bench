@@ -3312,6 +3312,30 @@
     "needs_live_modules": false
    },
    "note": "if the fallback is allowed, fit-mean plus fallback is best; if it is not -- and a program that calls the module it replaces is not a replacement -- context-free is best by 1.26 nats. Different questions; state which one a figure answers."
+  },
+  "NEAREST_COVERED_FALLBACK_S1777": {
+   "what": "each of the 44,838 uncovered token ids is mapped to the COVERED token with the most similar input embedding and takes that token's table row, instead of a mean over 5,419 unrelated rows. Position-wise (the map is token to row, not position to row) and stores no extra values beyond one 50,257-entry index.",
+   "all_position_CE_skip11000_standalone": {
+    "full": {
+     "mean_row": 6.46948,
+     "nearest_row": 6.03786
+    },
+    "64": {
+     "mean_row": 6.64292,
+     "nearest_row": 6.2348
+    },
+    "8": {
+     "mean_row": 6.89892,
+     "nearest_row": 6.54141
+    },
+    "4": {
+     "mean_row": 7.02245,
+     "nearest_row": 6.69203
+    }
+   },
+   "milestone": "at rank 64 (15.223M reals) a FULLY STANDALONE program reaches 6.23480 all-position CE, beating S1776's best program (fit-mean plus hybrid fallback, 6.28596) by 0.051 nats; at full rank 6.03786, by 0.248. Every earlier program that beat it on all positions called the native module at 24% of positions. A program that calls the module it replaces is not a replacement; that objection is now removed and the fallback term, the largest unpriced quantity from S1748 onward, is zero.",
+   "covered_CE_unchanged": "identical between fallback arms at every rank (5.97900 / 6.21152 / 6.55472 / 6.72034), so the change is confined to uncovered tokens as it must be.",
+   "still_position_wise": "zero cross-position dependence (_COMPILED_PROGRAM_IS_POSITION_WISE). The class optimum is bounded above by 5.97902 (_POSITION_WISE_CLASS_CEILING, corrected at S1771b); it reaches AT LEAST 32.4% of the stake and context is worth AT MOST 67.6%."
   }
  }
 }
