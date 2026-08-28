@@ -2558,7 +2558,8 @@
   },
   "rule": "never compare across the three condition blocks above. The stakes differ (5.5684 vs 4.3301 vs 3.5570 nats) and in the single-half blocks the other half of the model is running real, which S1696/S1697/S1704 showed does not transfer.",
   "sections": "S1669-S1709",
-  "status": "certified"
+  "status": "certified",
+  "SINGLE_SITE_REMOVAL_SCOPE_S1736": "Where any figure here rests on a per-site removal, see _SINGLE_SITE_REMOVAL_SCOPE: one-at-a-time ablation overstates MLP sites ~2.4x and understates attention sites ~2.5x relative to their stacks, so cross-kind rankings built on it are invalid. Stakes and ceilings computed against a stake are unaffected."
  },
  "_mid_band_feature_ksweep": {
   "claim": "Augmenting the middle-band linear maps with k of each module's own bilinear features keeps climbing steeply: k=64 +0.77 [+0.65,+0.89], k=256 +2.34 [+2.21,+2.48], k=512 +3.67 [+3.51,+3.84], giving a new best whole-model program of 58.71%. At k=512 the augmentation recovers 29.4% of the middle band's +12.52-point shortfall.",
@@ -2792,7 +2793,8 @@
   "mlp1_caveat": "96.06% extraction on a 7.02-nat removal, but S1666 flags that stake as SATURATED (CE past 10 against a 10.82 uniform ceiling) and therefore ordinal at best",
   "FOURTH_LIMITATION_S1722": "the audit scores COMPONENT SETS, not CLAIMS. Three entries naming the same twelve sites return identical numbers despite asserting different things about them. It screens which components matter and how simply they can be stated; it does not test what a circuit says. Sharper than S1721's third point and it bounds what the tool can be used for without per-claim predicates.",
   "coverage": "16 of 55 certified entries",
-  "status": "certified"
+  "status": "certified",
+  "CROSS_KIND_RANKING_SCOPE_S1736": "The `removal` column of this table is ONE-AT-A-TIME for the single-site rows and JOINT for the multi-site rows, and the two are not on the same scale: S1736 measured the sum of one-at-a-time MLP removals at 2.361x the joint MLP removal and attention at 0.399x. Do NOT rank MLP against attention rows by this column. The extraction column and its conclusions are unaffected -- they are fractions of each row's own removal. See _SINGLE_SITE_REMOVAL_SCOPE."
  },
  "_mlp_stack_damage_is_novel_concentrated": {
   "claim": "Constant-ablating all 18 MLPs damages `induction` targets 0.843x as much per token as `novel` targets (95% CI 0.794-0.892, held-out skip11000); constant-ablating all 18 attention sites damages both alike at 0.974x (CI 0.891-1.059). The held-out difference is +0.131 with 95% CI (0.0608, 0.2057), excluding zero. Where the target is absent from the context there is nothing to route, so the weights are the only source and the MLP stack is what carries it.",
@@ -3156,6 +3158,30 @@
   "CONSEQUENCE_FOR_EXISTING_NUMBERS": "every single-site importance figure in this arc is a one-at-a-time constant-ablation cost, so relative to the joint stack MLP sites are inflated ~2.4x and attention sites deflated ~2.5x, in OPPOSITE directions. Any table ranking MLP against attention sites by individual removal compares two differently-scaled quantities. This includes the `removal` column of ops/circuit_audit and the specificity ratios built on it (S1722, S1724, S1725).",
   "EXPLAINS": "S1728's per-site class contrast failed partly because attention has 1.42 nats of per-site signal against a 3.56-nat joint stake -- a one-at-a-time test works with 40% of the effect it tries to resolve.",
   "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80 for the primary arm, covered-position scoring from position 64, 2000 ROW-level bootstrap draws (NOT document-clustered -- S1701), per-row losses accumulated in float64",
+  "status": "certified"
+ },
+ "_SINGLE_SITE_REMOVAL_SCOPE": {
+  "purpose": "Scope pointer. Many entries quote optimal-constant ablation figures. Those are ONE-AT-A-TIME removals unless the entry says otherwise, and S1736-S1739 established what that measure can and cannot support. Read this before ranking anything by a removal column.",
+  "sections": "S1736-S1739",
+  "what_is_established": {
+   "composition_is_kind_dependent": "The sum of the 18 one-at-a-time MLP removals is 2.361x the joint 18-MLP removal (95% CI 2.318-2.405, held out); for attention it is 0.399x (CI 0.383-0.416). MLP sites are REDUNDANT and attention sites are COOPERATIVE, so one-at-a-time ablation OVERSTATES an MLP site by ~2.4x and UNDERSTATES an attention site by ~2.5x relative to its stack.",
+   "not_a_coverage_artifact": "a registered arm scored every position rather than only fit-covered ones and the asymmetry holds (2.325 / 0.347).",
+   "so_cross_kind_ranking_is_invalid": "any table that ranks MLP sites against attention sites by individual removal compares two differently-scaled quantities. The scaling errs in OPPOSITE directions, so the distortion compounds.",
+   "and_the_ranking_carries_no_allocation_information": "at a matched budget of 6 native sites of 36, the one-at-a-time ranking recovers 12.79% / 12.22% of the table-program stake against a random allocation's 12.48% / 12.10% median (S1739). It allocates like a coin flip. In program context the same ranking is near-INVERTED, Spearman -0.66 / -0.69 (S1738), and against leave-one-out it is uncorrelated, Spearman 0.026 / 0.011 (S1737)."
+  },
+  "what_is_still_fine": "A one-at-a-time removal is a valid STAKE -- the CE cost of replacing that component with its optimal constant -- and every such figure in this registry is correct as that. The denominator of a ceiling is a stake, so ceilings computed against one are unaffected. What it is NOT is a measure of where a program's work is, or a basis for ranking sites of different kinds against each other.",
+  "applies_to": [
+   "_circuit_audit_first_run",
+   "_mlp0_dossier_resolved",
+   "_front_band_tableability_ladder",
+   "_middle_band_is_redundant_not_small",
+   "_middle_band_program_family_prices",
+   "_best_compiled_program_for_mlp_stack",
+   "_front_mlps_are_synergistic",
+   "_program_family_table_by_band",
+   "_CURRENT_HEADLINE_FIGURES"
+  ],
+  "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64, 2000 ROW-level bootstrap draws (NOT document-clustered -- S1701), float64 accumulation",
   "status": "certified"
  }
 }
