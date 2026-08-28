@@ -3425,6 +3425,18 @@
       0.0466
      ]
     }
+   },
+   "DECOMPOSITION_S1782_S1783": {
+    "covered_positions": "the composed 36-site context-free program is the length-1 model BIT-IDENTICALLY (0.00e+00 difference against a direct length-1 logit lookup, all three roles, S1782). S1769's -0.00002 identity is now exact.",
+    "uncovered_positions": "the program is the TRUE token's embedding pushed through the OUTPUT-NN neighbour's 36 site writes. That is strictly better than the neighbour's own output: composed 6.00091 against direct lookup 6.15184 on skip11000, and 0.127/0.151/0.146 nats across the three roles.",
+    "mechanism_confirmed_exactly": "presenting the neighbour's token id to the embedding as well lands on 6.14589/6.15184/6.15373 -- EQUAL to the direct lookup to five decimals on all three roles, because the composed forward then IS the neighbour's length-1 forward. The advantage is entirely the true token's embedding channel (S1783).",
+    "price_of_each_design_choice_skip11000": {
+     "global mean row instead of a neighbour": 0.43,
+     "averaging k>1 neighbours": "up to 0.09",
+     "input-embedding neighbour instead of output-distribution": 0.05,
+     "dropping the true token's embedding channel": 0.15
+    },
+    "note": "a position-wise program built from site tables is NOT 'the neighbour's prediction'; it is the real token's embedding pushed through the neighbour's writes."
    }
   }
  }
