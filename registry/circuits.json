@@ -2287,5 +2287,50 @@
   "what_stands": "v1's covered-token caveat is dischargeable (S1698, token table costs +0.00%); the 55.04% headline is unchanged; v1 is not a significant unmodelled term downstream of a substituted write path -- now with an interval on 'not significant'",
   "consistent_with_S1684": "S1684 measured v1 at 0.7066 nats against a LIVE write and found it nested inside the write; S1702 gets 0.35 points of a 5.5684-nat stake (~0.019 nats) against a SUBSTITUTED write. Consistent because of S1684's own nesting finding.",
   "status": "certified"
+ },
+ "_joint_shortfall_by_band": {
+  "claim": "Locating the 36-site program's 45-point shortfall by band (exempt one band, recompile the whole program): middle bands dominate the TOTALS (mlp_mid +12.52 [12.12,12.89], attn_mid +12.14 [11.38,12.98]) but only because they are 12 sites each. PER SITE the worst-modelled sites in the model are the FRONT MLPs at 1.883 points each and the best are the front attention writes at 0.150 -- a 12x spread the totals hide.",
+  "sections": "S1703",
+  "script": "bilinear_quotient/whole_model_shortfall_bands.py",
+  "band_gains_ci95": {
+   "mlp_mid": [
+    0.1212,
+    0.1289
+   ],
+   "attn_mid": [
+    0.1138,
+    0.1298
+   ],
+   "mlp_front": [
+    0.0723,
+    0.0783
+   ],
+   "attn_late": [
+    0.0301,
+    0.0344
+   ],
+   "mlp_late": [
+    0.0186,
+    0.0213
+   ],
+   "attn_front": [
+    0.0048,
+    0.0071
+   ]
+  },
+  "per_site_gain": {
+   "mlp_front": 1.883,
+   "attn_late": 1.61,
+   "mlp_mid": 1.043,
+   "attn_mid": 1.012,
+   "mlp_late": 0.995,
+   "attn_front": 0.15
+  },
+  "controls": "the no-exemption arm reproduces S1696's 55.04% exactly; all six gains positive; the largest band's CI excludes the smallest's",
+  "transfers": "S1668's MLP-middle bilinearity and S1688's attention-middle lag-1 failure BOTH transfer into the joint condition and land within 0.4 points of each other (CIs overlap, so they are not distinguishable)",
+  "FAILED_pred_b": "Predicted the attention side would carry more shortfall than the MLP side, from S1697 where upgrading attention was worth +2.66 against MLP's +1.31. Observed the reverse: MLP 22.03, attention 15.95. The error is a category slip -- the value of UPGRADING a family says nothing about the TOTAL headroom at those sites. S1697 measures what a better family buys; S1703 measures what having any program at all costs.",
+  "gains_do_not_sum": "the six gains total 38.00 against a 44.96 shortfall; each arm is a separate compilation, so these are six independent counterfactuals, not a decomposition. The 6.96-point difference is cross-arm non-additivity, reported rather than normalised away.",
+  "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
+  "status": "certified"
  }
 }
