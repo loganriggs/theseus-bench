@@ -3221,5 +3221,45 @@
   "position_caveat": "there is no additive positional embedding and rotary cancels for a position attending only to itself, so a self-only forward is position-independent. RMSNorm and any length-dependent statistics are NOT ruled out by a length-1 batch, so this is the model's per-token function evaluated at position 0.",
   "protocol": "covered positions from 64, coverage mask pinned to n96_skip80 (5419 of 50257), matching every published figure in S1747-S1758",
   "status": "certified"
+ },
+ "_CONTEXT_FREE_TABLE_FRONTIER": {
+  "claim": "Building each site's per-token table from the CONTEXT-FREE value (the site's output on a length-1 sequence) instead of the per-token mean over fit contexts closes the entire 0.594-nat gap to the position-wise ceiling and dominates every program in S1748-S1758. Held out on skip11000, against the same fit-mean all-tabled baseline of 7.35825 and a 4.26114-nat stake: rank 8 recovers +0.80353 for 1.975M reals (13.1x cheaper AND +0.018 nats better than S1758's best of +0.78536 for 25.839M, 13.4x the efficiency); rank 64 recovers +1.14673 for 15.223M (46% more fidelity at 59% of the cost); full rank reaches the ceiling at +1.37925 for 224.778M.",
+  "sections": "S1769-S1770",
+  "script": "bilinear_quotient/ops/context_free_rank_sweep.py",
+  "frontier_skip11000": {
+   "full": {
+    "cost_M": 224.778,
+    "recovered": 1.37925,
+    "nats_per_M": 0.0061
+   },
+   "256": {
+    "cost_M": 60.641,
+    "recovered": 1.31322,
+    "nats_per_M": 0.0217
+   },
+   "64": {
+    "cost_M": 15.223,
+    "recovered": 1.14673,
+    "nats_per_M": 0.0753
+   },
+   "16": {
+    "cost_M": 3.868,
+    "recovered": 0.93526,
+    "nats_per_M": 0.2418
+   },
+   "8": {
+    "cost_M": 1.975,
+    "recovered": 0.80353,
+    "nats_per_M": 0.4069
+   }
+  },
+  "the_cause": "Every table in S1747-S1758 was a per-token MEAN over the fit-row contexts that token appeared in. A fully-installed program is a pure function of the current token (S1765), so it can never use a context average; its own optimum is the context-FREE value. S1769: 36 context-free tables compose to the ceiling to -0.00002 nats and beat the best fit-mean program by +0.59389, matching S1768's unattributed gap of 0.59387 to five decimals.",
+  "the_correction_becomes_unnecessary": "The context-free table ALONE, with no linear correction, beats the fit-mean table WITH a rank-128 correction (5.97900 against 6.57289). The entire correction apparatus of S1748-S1758 -- 0.664M to 25.839M reals of factors, plus downstream training and rank sweeps -- was buying back an error the table itself introduced.",
+  "compression_is_pure_loss": "Unlike fit-mean tables, which IMPROVED under rank-64 truncation because they were overfitted to 96 fit rows (S1755), context-free tables degrade monotonically: 5.97900, 6.04503, 6.21152, 6.42299, 6.55472. That confirms S1755's overfitting explanation in the case where it predicts the opposite sign.",
+  "SWEEP_UNDER_BUDGETED": "cost-efficiency rises monotonically to the bottom of the tested range (0.4069 nats/M at rank 8) with no interior optimum, so this sweep cannot name a design point. Ranks 4, 2, 1 are outstanding.",
+  "STILL_POSITION_WISE": "this is a program in the class S1765 showed has no cross-position expression; see _COMPILED_PROGRAM_IS_POSITION_WISE and _POSITION_WISE_CLASS_CEILING. Its ceiling is 32.4% of the stake and the other 67.6% is context it cannot reach.",
+  "SUPERSEDES": "the frontier of S1748-S1758 and the design points of S1756/S1758. Those measurements are correct for the programs they describe and are not withdrawn; the frontier they define is dominated at every point.",
+  "protocol": "covered positions from 64, hybrid coverage rule (S1661), coverage mask pinned to n96_skip80 (5419 of 50257), cost accounting identical to S1755/S1756",
+  "status": "certified"
  }
 }
