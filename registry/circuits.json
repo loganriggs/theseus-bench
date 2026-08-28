@@ -2867,7 +2867,8 @@
   "classes": "target-side, disjoint, exhaustive: induction (target appears earlier in the context, preceded there by the current token), repeat (appears earlier, not in an induction position), novel (absent). Base rates 8.4% / 38.9% / 52.7% of scored tokens.",
   "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64, 2000 ROW-level bootstrap draws (NOT document-clustered -- the rowcache carries no document ids, S1701)",
   "SCOPE_stack_not_site": "this is a property of the STACKS. The per-site version FAILED its held-out predictions in S1728: mlp_L sits below attn_L at only 11 of 18 matched layers (bar 12) and the stack-median intervals overlap. Do not read this as a per-layer law.",
-  "status": "certified"
+  "WITHDRAWN_2026_08_28": "The induction mask reversed its matrix axes: it computed j < p (future source positions) while the claim requires p < j (past source positions). The exhaustive partition control still passed because repeat used a past-facing mask and novel explicitly excluded the erroneous induction cell. All class-conditioned ratios and intervals in S1727-S1729 are invalid. The original fields remain only as failure provenance and must not be consumed as measurements of induction, novelty, routing, or MLP specialisation.",
+  "status": "withdrawn"
  },
  "_late_attention_is_harmful_on_novel_targets": {
   "claim": "attn14, attn15 and attn16 have NEGATIVE per-token damage on `novel` targets on both eval sets -- replacing them with their optimal constant IMPROVES cross-entropy on targets absent from the context (-0.0100, -0.0022, -0.0148 nats/token held out) -- while costing on induction and repeat targets. Their TOTAL removal is positive at all three (+0.0301, +0.0071, +0.0159), so the sites are net useful and only their novel component is harmful. Specialisation for context-retrievable answers, invisible to any pooled-CE measurement.",
@@ -2905,6 +2906,7 @@
   "SCALE_stated": "small sites. Total removal 0.007-0.030 nats against mlp1's 7.02. The SIGN is robust across both eval sets and all three sites; the QUANTITY is a few hundredths of a nat. A real effect at small scale, not a major pathway.",
   "NOT_YET_INTERVALLED": "the sign is reproduced on two eval sets but carries no bootstrap interval per site. Certified on two-set sign replication, not on a CI.",
   "protocol": "optimal-constant ablation, coverage mask pinned to n96_skip80, covered-position scoring from position 64",
-  "status": "certified"
+  "WITHDRAWN_2026_08_28": "The novel cell was defined as not-seen-in-past AND not-selected-by-the-erroneous-future-induction-mask. It therefore was not the documented set of targets absent from context. The reported signs and specialization interpretation are invalid. The original values remain only as failure provenance and must not be used downstream.",
+  "status": "withdrawn"
  }
 }
