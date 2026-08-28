@@ -2499,5 +2499,32 @@
   "epistemic_note": "S1706's caution proved correct: 'one confirming test of a story invented to fit the data it now explains is weaker than an independently motivated prediction'. Two confirmations later the first genuinely discriminating test killed it. Confirmations of post-hoc stories should not accumulate into confidence, because the tests that confirm are usually the ones the story was built to survive.",
   "line_stopped_deliberately": "five runs established a real negative; further probing would characterise one pair's quirk. The remaining program shortfall is better attacked directly at the middle MLPs (S1703 largest total, S1668 37.7% beyond any linear map).",
   "status": "certified"
+ },
+ "_mid_band_feature_augmentation": {
+  "claim": "Augmenting the linear maps at mlp4-15 with k of each module's OWN bilinear features raises the 36-site whole-model program from 55.04% to 55.80% at k=64 (gain +0.77 [+0.65,+0.89]) for 0.88M extra reals across twelve sites. At k=8 it HURTS significantly (-0.16 [-0.25,-0.07]).",
+  "sections": "S1709",
+  "script": "bilinear_quotient/mid_band_feature_augment.py",
+  "curve": {
+   "0": 0.5504,
+   "8": 0.5487,
+   "64": 0.558
+  },
+  "gain_ci95": {
+   "k8": [
+    -0.0025,
+    -0.0007
+   ],
+   "k64": [
+    0.0065,
+    0.0089
+   ]
+  },
+  "controls": "the k=0 arm reproduces S1696's 55.04% exactly; baseline CE 3.29205",
+  "CONTRADICTS_MY_OWN_DESIGN_ARGUMENT": "The docstring argued augmentation should avoid S1679's cancellation problem because the linear map carries the bulk and features only correct it. True at k=64, FALSE at k=8, where eight features make the program significantly worse. S1679's mechanism carries over at low k: removing a handful of features from a readout that sums large cancelling contributions injects an imbalance the linear map must absorb, and eight do not pay for themselves. The curve is non-monotone in k at the low end -- the same signature S1679 reported for replacement (8 -> -34.68%, 32 -> -29.95%, 128 -> -49.62%); augmentation shifts the crossing down rather than removing it.",
+  "does_not_reach_the_quadratic_remainder": "S1703 puts the middle band's total shortfall at +12.52 points and S1668 puts 37.7% of the band beyond any linear map; 64 features recover 0.77 of the 12.52, about 6%. The band's irreducible content is not mostly 'a few missing bilinear features from the module's own basis'.",
+  "price": "0.074M extra reals per augmented site, 12 sites, ~3.7% on top of the linear program's 23.89M (S1680)",
+  "open": "k=64 is the largest tried and the gain is still climbing from the k=8 crossing; a k-sweep to 256/512 decides whether there is a path or a plateau",
+  "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
+  "status": "certified"
  }
 }
