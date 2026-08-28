@@ -2419,5 +2419,25 @@
   "check": "before registering, name the specific observable result that would make the bar FALSE and confirm it is achievable under the run's own design",
   "not_a_reason_to_weaken_bars": "all three were strict; strictness does not help when the quantity cannot move",
   "status": "certified"
+ },
+ "_synergy_sign_tracks_downstream_depth": {
+  "claim": "At matched band size (two sites), an EARLY MLP pair is +41.8% SUPER-additive (gain +2.34% [+2.22,+2.46] against a +1.36% singles sum, excess CI [+0.86,+1.09] excluding zero) while a LATE pair is -20.1% SUB-additive. The front band's super-additivity was not about having four sites: the two-site early pair's +41.8% exceeds the four-site band's +34.0%, so the excess is not monotone in site count either.",
+  "sections": "S1706",
+  "script": "bilinear_quotient/early_pair_synergy.py",
+  "pair_gain_ci95": [
+   0.0222,
+   0.0246
+  ],
+  "excess_ci95": [
+   0.0086,
+   0.0109
+  ],
+  "controls": "the no-exemption arm reproduces S1696's 55.04% exactly; same program, protocol, mask and eval rows as S1704/S1705 so the comparators are direct",
+  "supersedes_two_readings": "cascade-by-interaction-count (S1704) and band-size (S1705's pred_b framing) are both out",
+  "CONFOUND_depth_vs_function": "Depth is confounded with function in this model. S1666/S1668 establish that front MLPs are tabular and token-driven while late MLPs are nearly linear readouts (quadratic remainder 31.3% front vs 16.4% late), so 'early vs late' and 'tabular vs linear readout' are the same contrast here. The supported claim is that two-site pairs at opposite ends of the stack have OPPOSITE synergy signs; depth-of-downstream is the leading explanation and functional character is an untested alternative.",
+  "epistemic_status": "the depth story was POST HOC (S1705 fitted it to two points and said so). This run tested it prospectively at matched band size with a two-sided bar and a sign that had to survive a bootstrap interval. That is a real confirmation but is one confirming test of a story invented to fit the data it now explains -- weaker than an independently motivated prediction.",
+  "discriminating_test_queued": "a MIDDLE pair has ~9 blocks downstream. Depth predicts an excess between +41.8% and -20.1%; functional character does not, since the middle MLPs are the least tabular and most bilinear (S1668: 37.7% quadratic remainder).",
+  "intervals": "95% ROW-level cluster bootstrap, 2000 paired draws; NOT document-clustered",
+  "status": "certified"
  }
 }
