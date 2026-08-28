@@ -2735,5 +2735,58 @@
   "status": "certified",
   "also_bootstrapped": "every circuit is scored on the same standard rows; per-circuit evaluation data is an open problem and narrow-trigger circuits read weaker than they are",
   "coverage": "16 of 55 certified entries have a component list"
+ },
+ "_circuit_audit_first_run": {
+  "claim": "The standing circuit audit runs in 144.7s over 16 auditable circuits and discriminates strongly: extraction by per-token table spans -19.34% to 96.06%. It recovers the arc's main structural finding in one column -- MLPs extract in a gradient (front 76.45%, middle 20.92%) while attention extracts NEGATIVELY (-1.87% all writes, -19.33% middle), because a function of the current token cannot represent a cross-position component and actively injects error.",
+  "sections": "S1722",
+  "script": "bilinear_quotient/ops/circuit_audit.py",
+  "table": {
+   "mlp1": {
+    "sites": 1,
+    "removal": 7.0213,
+    "extraction": 0.9606
+   },
+   "front_mlp_0_3": {
+    "sites": 4,
+    "removal": 4.3928,
+    "extraction": 0.7645
+   },
+   "late_mlp_16_17": {
+    "sites": 2,
+    "removal": 0.7112,
+    "extraction": 0.5002
+   },
+   "all_18_mlp": {
+    "sites": 18,
+    "removal": 4.3301,
+    "extraction": 0.3454
+   },
+   "all_36_modules": {
+    "sites": 36,
+    "removal": 5.5684,
+    "extraction": 0.271
+   },
+   "middle_mlp_4_15": {
+    "sites": 12,
+    "removal": 2.6496,
+    "extraction": 0.2092
+   },
+   "all_18_attn": {
+    "sites": 18,
+    "removal": 3.557,
+    "extraction": -0.0187
+   },
+   "middle_attn_4_15": {
+    "sites": 12,
+    "removal": 2.1137,
+    "extraction": -0.1933
+   }
+  },
+  "controls": "MLP-stack removal 4.33011 vs S1662's 4.3301; worst OOD removal move 12.79% relative",
+  "negative_extraction_is_meaningful": "a negative score is the signature of 'this component's whole purpose is something this program class cannot express' -- attention is cross-position, a per-token table cannot represent it",
+  "mlp1_caveat": "96.06% extraction on a 7.02-nat removal, but S1666 flags that stake as SATURATED (CE past 10 against a 10.82 uniform ceiling) and therefore ordinal at best",
+  "FOURTH_LIMITATION_S1722": "the audit scores COMPONENT SETS, not CLAIMS. Three entries naming the same twelve sites return identical numbers despite asserting different things about them. It screens which components matter and how simply they can be stated; it does not test what a circuit says. Sharper than S1721's third point and it bounds what the tool can be used for without per-claim predicates.",
+  "coverage": "16 of 55 certified entries",
+  "status": "certified"
  }
 }
