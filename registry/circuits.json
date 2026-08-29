@@ -959,6 +959,15 @@
   "status": "CERTIFIED",
   "what_the_shape_says": "The asymmetry rules out both easy readings. Not distance to the boundary -- mlp5 is nearer than mlp3 and costs a third as much. Not depth -- the profile rises then falls. Layer 4 is distinguished and its adjacent layer 5 is not. With S1983 (mlp4's content is irrelevant; a constant row costs the same 10.67), what attention 6 needs from position-4 activations is that they VARY."
  },
+ "THE_FREQUENCY_GRADIENT_IS_GENERIC_S1995": {
+  "builds_on": "THRESHOLD_GAP_IS_NOT_A_FALLBACK_ARTEFACT_S1994",
+  "claim": "S1994's 3:1 target-frequency gradient is a property of compiling ANYTHING, not of attention 6. The ratio of damage in the most frequent bucket to damage in the unseen bucket is 0.41-0.45 for mlp2+attention 5,6; 0.39 for mlp2+attention 5; 0.29 for a lone mlp2; 0.21-0.23 for a lone mlp4; 0.27 for the full 36-site program -- all clustered around the threshold gap's 0.29, though total damage across those arms differs by a factor of 2.2.",
+  "evidence": "ops/is_the_frequency_gradient_generic.py, 4.5s warm, six arms x three roles at 5,419. pred_a/b/c all True, derived controls True, all three reference deviations 0.000000.",
+  "open": "The threshold itself remains unexplained. The cheapest unasked question is one of DEGREE rather than membership: how much of attention 6 does it take? S1996 sweeps attention 6's table rank from 16 to 384 with everything else fixed, using per-site table ranks added to bqlib for it.",
+  "section": "S1995",
+  "status": "CERTIFIED as a NEGATIVE. The observation in S1994 stands; the mechanism lead does not.",
+  "why_it_matters": "This is the control S1986, S1990 and S1992 did not get. Each of those was a shape that fit every number available, published as a rule, and falsified within the hour. S1994's gradient was registered as an OBSERVATION and its control was queued in the same commit -- 4.5 seconds, and the story died before it reached the board."
+ },
  "THE_MINIMAL_PATH_IS_THREE_SITES_S1990": {
   "WITHDRAWN_RULE_NOTE": "S1991 falsifies the RULE'S FORM, not S1990's measurements. The 'every attention layer strictly above the compiled site' statement was derived from one site and cannot distinguish a chain from its endpoint. S1991 removed attention 3 from mlp2's path (mlp2+attn4-6 = 1.845) and it got BETTER than the unbroken version (mlp2+attn3-6 = 1.887) by 0.042 nats at pooled t = +18.9. There is no chain. What every working arm shares is attention 5 and attention 6. S1990's numbers stand and reproduced to 0.000000 in S1991.",
   "builds_on": "THE_SPIKE_IS_MLP4_NOT_LAYER_4_S1989",
