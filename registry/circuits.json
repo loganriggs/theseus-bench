@@ -1119,6 +1119,17 @@
   "status": "CERTIFIED as a NEGATIVE. The observation in S1994 stands; the mechanism lead does not.",
   "why_it_matters": "This is the control S1986, S1990 and S1992 did not get. Each of those was a shape that fit every number available, published as a rule, and falsified within the hour. S1994's gradient was registered as an OBSERVATION and its control was queued in the same commit -- 4.5 seconds, and the story died before it reached the board."
  },
+ "THE_LOCALISATION_LINE_DOES_NOT_REACH_THE_SHIPPED_PROGRAM_S2013": {
+  "builds_on": "HIGH_DIMENSIONAL_CONTENT_IS_SPECIFIC_AND_MLP_CONTENT_IS_LARGE_S2012",
+  "claim": "mlp2's entire table content inside the shipped 36-site program is worth about 0.0003 nats -- the mean row is 0.00012 BETTER than the full-rank table at skip7000 and skip1200 -- against 1.408 nats for the same site's content in S2012's three-site repaired arm. Per S1515 no ratio is quoted: the denominator is within noise and the share is unbounded.",
+  "evidence": "ops/does_it_transfer_to_the_shipped_program.py, 92.9s, nine arms x three roles at 5,419, on the second plan (the first had no same-spec pair and control_is_two_sided FAILED). pred_a/b/c all True 3/3, derived controls True, reference deviation 0.000000.",
+  "mechanism": "Structural, and it follows from S1765. In the fully compiled program every module's output is a fixed per-token row, so NOTHING DOWNSTREAM READS mlp2's output -- it contributes only its own additive term to the residual stream. S2012's 1.408 nats were entirely about live downstream attention, which the shipped program does not have.",
+  "open": "The mechanism predicts the fully compiled program's cost is ADDITIVE over sites, since each contributes an independent residual term. S1981 measured badly non-additive costs but every arm there had LIVE attention. In the shipped frame the prediction is exact additivity and it is cheap to falsify. S2014 runs it.",
+  "section": "S2013",
+  "shippable_corollary": "Dropping mlp2 from rank 768 to rank 128 costs 0.00025 nats at pooled t = +8.97 -- real, and far under S1947's 0.010-per-100M bar. The parameters saved are 4.2M at that one site, worth 0.00042 nats at that price. Rank 128 at mlp2 is marginally justified, by 0.0002 nats, at one site of eighteen. S1947 and S1959 swept the MLP rank uniformly and jointly with attention; a per-site allocation has never been priced.",
+  "status": "CERTIFIED, and it BOUNDS the S1983-S2012 arc.",
+  "the_boundary": "Fourteen sections localised a penalty that exists only when attention is alive. The shipped program has no interface to break, no ceiling, no lever and no threshold. Everything from the ceiling to attention 5's presence-only character is a statement about programs S1765 does not produce."
+ },
  "THE_MINIMAL_PATH_IS_THREE_SITES_S1990": {
   "WITHDRAWN_RULE_NOTE": "S1991 falsifies the RULE'S FORM, not S1990's measurements. The 'every attention layer strictly above the compiled site' statement was derived from one site and cannot distinguish a chain from its endpoint. S1991 removed attention 3 from mlp2's path (mlp2+attn4-6 = 1.845) and it got BETTER than the unbroken version (mlp2+attn3-6 = 1.887) by 0.042 nats at pooled t = +18.9. There is no chain. What every working arm shares is attention 5 and attention 6. S1990's numbers stand and reproduced to 0.000000 in S1991.",
   "builds_on": "THE_SPIKE_IS_MLP4_NOT_LAYER_4_S1989",
