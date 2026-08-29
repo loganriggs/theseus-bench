@@ -3851,8 +3851,12 @@
     "sections": [
       "\u00a71895",
       "\u00a71910",
-      "\u00a71911"
+      "\u00a71911",
+      "\u00a71912"
     ],
-    "open": "whether the confidence gradient and \u00a71908's alignment result are the same fact seen from the logit and residual sides"
+    "open": "whether the program's confidence is predictable from the token alone \u2014 it must be, since the program is a pure function of the current token (\u00a71765), which would turn the program-margin axis into a precomputable TOKEN property rather than a per-position measurement",
+    "not_inheritance_S1912": "The program does NOT inherit the model's decidedness: Spearman between the live and program top-2 margins is only +0.109/+0.111/+0.120. Yet within the model's highest-confidence quartile, splitting on the PROGRAM's own margin moves agreement from 5.77 to 9.84x (+4.07/+5.74/+4.84x) \u2014 as large as \u00a71911's whole effect. Two near-independent signals, each roughly doubling the tracking.",
+    "the_corner": "Within the model's most-decided quartile, positions where the PROGRAM is unsure track at 5.77/4.95/5.82x \u2014 indistinguishable from the overall least-decided quartile (5.36/5.06/5.80x). The model being sure buys nothing where the program is not; agreement needs both.",
+    "four_axes": "correctness NOT (\u00a71895); sequence position NOT (\u00a71910); model confidence YES (\u00a71911); program confidence YES and near-independent of the model's (\u00a71912)."
   }
 }
