@@ -817,6 +817,17 @@
   "section": "S1947",
   "status": "CERTIFIED for pred_a (3/3) and pred_d; pred_b and pred_c both FALSE 0/3, and both failures sharpen the answer."
  },
+ "THE_PREMISE_COSTS_2P7_NATS_S1977": {
+  "builds_on": "FALLBACK_BEATS_COVERAGE_PER_PARAMETER_S1976",
+  "claim": "S1765's 36-site substitution costs 2.63 to 2.98 nats against the live model. The entire S1946-S1976 arc recovered 0.069 nats -- 2.4% of it. The fallback lever is worth 0.072 and coverage 0.074; the marginal parameters of S1957-S1974 are worth 0.001-0.005 each. Everything optimised since S1946 lives in the last 2.5% of the gap the premise opens.",
+  "evidence": "Arithmetic on ops/what_we_built_results.json. No run.",
+  "method_note": "Six numbers already sitting in an artifact written two hours earlier for a different purpose. The ce_live column has been carried in every cells() payload since S1936 as a CONTROL, and it answered the arc's largest open question at zero cost. Recording the control alongside the result rather than a pass/fail on it is what made that possible -- the same property that let S1974 re-read 190 comparisons under a new instrument.",
+  "not_a_criticism": "S1946-S1976 optimised WITHIN the premise and did it well -- 18% cheaper and 69 milli-nats better than the deployed design with every axis settled under a stated criterion. This is a proportion the ledger did not contain, and it says a next order of magnitude would have to come from relaxing S1765 itself -- letting some sites see context again -- which no section since S1746 has tried to price.",
+  "open": "Pricing a PARTIAL substitution -- restoring context to some sites and measuring what each is worth -- needs a `sites` parameter bqlib's row hook does not have: every arm substitutes all 36. A small library change, and the first experiment since S1946 that would ask what the compiled program is GIVING UP rather than how cheaply it can give it up.",
+  "section": "S1977",
+  "status": "CERTIFIED as a statement of proportion.",
+  "where_the_price_is": "NOT the fallback. The COVERED arm -- positions where the program has an exact per-token table for the current token -- costs +2.57 to +2.89 nats, within 0.2 nats of the uncovered arm's +2.93 to +3.25. Having the right table is worth about 0.3 nats; having ATTENTION is worth about 2.7. S1936's covered/uncovered gap, which S1975 closed 40% of, is a tenth the size of the gap both arms share."
+ },
  "THRESHOLD_IS_DEFENSIBLE_LEVERS_ARE_NOT_EQUALISED_S1958": {
   "alpha_is_not_a_spending_lever": "mix10m512 and mix40m512 store the same rank-512 map and index -- identical cost, 178.9M both -- so the blend's alpha has no nats-per-100M at all (0/0). Alpha is a FREE parameter to be set at its optimum (S1943: 0.25), never traded against money. The first scoring left the resulting nan in the set and computed a median and max/min over it; both came out right only because Python's sorted() and max() do not propagate nan. Cost-neutral levers are now excluded explicitly and the exclusion is printed.",
   "builds_on": "DEPLOYED_COVERAGE_BUILD_IS_768_384_S1957",
