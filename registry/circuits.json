@@ -19,11 +19,24 @@
   ],
   "status": "CERTIFIED \u2014 all four predictions TRUE on a designed falsification test"
  },
+ "ALPHA_FAILS_THE_STOPPING_RULE_S1968": {
+  "builds_on": "TILT_AXIS_SETTLED_S1967",
+  "claim": "Applying S1967's stopping rule to S1961's own artifact (no GPU): alpha FAILS on 6 of 6 role-coverage cells -- the three grid points around its optimum span 2.10/3.48/1.19 milli-nats at 5,419 and 0.57/1.08/0.51 at 16,110, against a 0.50 bar and up to seven times the tilt's span. It is not a grid-density artefact: the two grids have comparable spacing.",
+  "consequence": "Alpha is worth pinning to +-5 points and the tilt is not. S1961 swept 10/20/25/30/40/50 and never looked between 0.25 and 0.35, where the optimum sits on 5 of 6 cells.",
+  "corrects": "ALPHA_IS_FLAT_AND_EFFECTIVELY_OPTIMAL_S1961",
+  "corrects_S1961": "S1961 called alpha 'flat and effectively optimal' by noting alpha=0.10 costs +10 to +12 milli-nats -- flat RELATIVE TO THE FAR ENDS of the grid. S1967's rule asks what being ONE GRID STEP off costs: for alpha up to 3.48 milli-nats (alpha=0.40 is expensive), for the tilt under 0.5. 'Flat compared to a bad value' is not 'flat near the optimum'. S1961's operational advice (0.25 and 0.30 interchangeable, worth 0.08-1.19 milli-nats) survives; the characterisation does not.",
+  "evidence": "Arithmetic on ops/alpha_reoptimised_results.json. No run.",
+  "limitation_of_the_rule": "Stated now rather than discovered later: the three-point span is sensitive to ASYMMETRY, not only flatness. Alpha's large span is driven mostly by 0.40 being bad while 0.25 is close; a rule measuring only the better neighbour would call it settled. The two-sided form is kept deliberately -- the cost of landing one step the WRONG way is what makes an axis worth pinning -- but it should be read as 'how much does a one-step error cost', not 'is the curve symmetric and flat'.",
+  "open": "S1967's rule has been applied to two axes and retro-applied to a third. The other two settled axes -- table rank (S1947/S1950) and attention share (S1948/S1952) -- were closed before the rule existed, on the 0.010 nats/100M threshold, which asks about cost-efficiency and not about the penalty for a one-step error. Both artifacts are on disk and the same arithmetic applies.",
+  "section": "S1968",
+  "status": "CERTIFIED as a correction."
+ },
  "ALPHA_IS_FLAT_AND_EFFECTIVELY_OPTIMAL_S1961": {
   "builds_on": "ONE_BUILD_SUFFICES_S1960",
   "claim": "S1943's blend alpha = 0.25, chosen at 5,419 on full-rank tables with a rank-512 map, is STALE at the current operating point -- the CE optimum is 0.30 on 3/3 roles at 5,419 -- but the move is worth only -0.549/-0.078/-1.187 milli-nats and is significant on 1 of 3 roles. The optimum does NOT depend on coverage (16,110 argmins 30/30/25, within one grid step), so alpha is a property of the two fallback components rather than of the build.",
   "closes": "All four levers are now priced at the operating point: tables and map at their knees (S1947, S1959), attention below threshold at 16,110 and marginally above at 5,419 (S1948, S1957), alpha free and effectively optimal. S1958's exchange rates said nothing remained above threshold; this closes the one lever that was free and therefore exempt from that argument.",
   "controls": "coverages exactly 5,419 and 16,110; plan-derived control non-vacuous both ways (15 same-spec pairs exactly inert at covered inputs, 6 differing-spec pairs not); buckets partition; live per-cell identical at 0.00e+00; S1949's published CE reproduced to 0.000000 via B.ref() (forty-fifth clean reading).",
+  "corrected_by": "S1968: the 'flat' characterisation fails S1967's stopping rule on 6/6 cells (three-point span 2.10/3.48/1.19 milli-nats at 5,419). S1961 compared against alpha=0.10 at the far end of the grid; the right question is what a one-step error costs. The operational advice stands, the characterisation does not.",
   "cost_neutrality_checked": "pred_d includes the clause that makes the section meaningful: every alpha arm costs EXACTLY the same at each coverage, spread 0.00e+00M. S1958 asserted alpha is cost-neutral; this checks it rather than assuming it.",
   "evidence": "ops/alpha_reoptimised.py, 238.1s. Six alphas x three roles x two coverages at {mlp 768, attn 320} with a rank-576 map. pred_a True 3/3, pred_b True 3/3, pred_c False 1/3, pred_d True.",
   "open": "Every section from S1946 has optimised POOLED CE. S1953 showed the build is a redistribution and S1954 that the shape inverts with coverage, but S1957-S1961 bought milli-nats without once checking the bucket structure. No section since S1954 has looked at where the last five purchases landed.",
@@ -843,6 +856,16 @@
   ],
   "settled": "Table lookups track the model at ~7.2-7.6x chance, \u00a71870's fallback map at ~2.7-3.0x \u2014 a ratio near 2.5x that survives holding the target bucket fixed and does not depend on coverage.",
   "status": "CERTIFIED \u2014 confirmed second-class at a second coverage (\u00a71888), all four predictions TRUE"
+ },
+ "TWO_KINDS_OF_AXIS_TWO_STOPPING_RULES_S1969": {
+  "builds_on": "ALPHA_FAILS_THE_STOPPING_RULE_S1968",
+  "claim": "S1967's flatness stopping rule is INAPPLICABLE to the table-rank and attention-share axes, because both are MONOTONE in capacity (S1947, S1948) -- their argmin sits at a grid end, so the three-point span measures the edge of the grid, not flatness. Applied naively they read 0.73/0.89/0.41 and 7.44/7.20/5.75 milli-nats and look unsettled; the number is meaningless for them.",
+  "corrects": "ALPHA_FAILS_THE_STOPPING_RULE_S1968 (its open question)",
+  "evidence": "Arithmetic on ops/attention_share_at_knee_results.json and ops/table_curve_knee_results.json. No run.",
+  "open": "Both rules are now attached to the right axes, but only the tilt (S1967) has been re-measured under its correct criterion since that criterion was written. Alpha is in flight (S1970). The two monotone axes were priced at a SINGLE operating point (S1958), and the operating point has since moved twice -- S1959's map rank and S1967's tilt.",
+  "section": "S1969",
+  "status": "CERTIFIED as a methodological correction. S1968's open question was mis-posed and is corrected in place.",
+  "taxonomy": "The build has four parameters in two kinds. MONOTONE IN CAPACITY (table rank, attention share): correct criterion is a PRICE -- S1947's 0.010 nats/100M, vindicated by S1958's measured exchange rate of 0.0143/0.0147/0.0090. INTERIOR OPTIMUM (per-token tilt, alpha): correct criterion is the one-step-error span -- S1967's rule. Applying a price rule to an axis with an interior optimum stops too early; applying a flatness rule to a monotone axis is meaningless."
  },
  "UNEVEN_PER_SITE_RANK_S1928": {
   "behavioural_is_not_storage": "\u00a71891/\u00a71904 showed attention carries the program's behavioural fidelity (attention restorations change up to 96.56% of covered predictions against the MLP maximum of 0.03%, a 3,200x ratio). That does NOT transfer to storage: restoring an attention site matters because it reintroduces CONTEXT, which the compiled program cannot store at any table rank (\u00a71765). Which sites carry fidelity and which sites' tables are hardest to compress are different questions.",
