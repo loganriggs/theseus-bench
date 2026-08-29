@@ -398,6 +398,18 @@
   "section": "S1938",
   "status": "CERTIFIED -- rung 2, second-class confirmation of S1937 with a different instrument"
  },
+ "MAP_CURVE_TURNS_OVER_AT_640_S1959": {
+  "builds_on": "THRESHOLD_IS_DEFENSIBLE_LEVERS_ARE_NOT_EQUALISED_S1958",
+  "claim": "At 5,419, with {mlp 768, attn 384}, the fallback map's CE curve is strictly convex across ranks 256/384/512/640/768/1024 on 3/3 roles and its 0.010 nats/100M crossing sits at rank 640 on 2 of 3 roles (512 on skip11000). Rank 640 beats S1949's rank 512 significantly, paired t = -7.67/-6.24/-4.81, for +10.6M and 0.0011/0.0010/0.0011 nats. S1949's map rank of 512 was one step short at this coverage.",
+  "controls": "coverage exactly 5,419; plan-derived control non-vacuous both ways (15 same-spec pairs exactly inert at covered inputs, 6 differing-spec pairs not); buckets partition; live per-cell identical at 0.00e+00; S1957's CE reproduced to 0.000000 via B.ref() (forty-third clean reading).",
+  "corrects_scope_of": "FALLBACK_OPTIMUM_MOVES_AT_THE_KNEE_S1949",
+  "deployed_coverage_build": "{mlp 768, attn 384}, fallback = 25% output-NN neighbour + 75% rank-640 map, 189.5M -- 18% cheaper than S1789's 230.087M deployed design and better on both instruments.",
+  "evidence": "ops/map_curve_turnover.py, 104.6s. Seven builds x three roles at 5,419, per-position top-1 and CE with a paired t vs rank 512. All four predicates TRUE.",
+  "open": "Every marginal purchase in S1957-S1959 was found at 5,419 and none checked at 16,110, where S1948/S1950 put the same levers below threshold. The coverages now disagree about attention rank (384 vs 256) and probably map rank (640 vs 512), so 'the build' is now TWO builds, and no section has asked whether one compromise build beats running the coverage-specific pair.",
+  "reconciles_S1958": "S1958 found the map the RICHEST lever on 3/3 and the next available purchase (512->1024) below threshold. The turnover is between them: the marginal rate falls monotonically and collapses to ~0.000 beyond rank 768.",
+  "section": "S1959",
+  "status": "CERTIFIED."
+ },
  "MAP_GAIN_IS_BROAD_NOT_UNSEEN_ONLY_S1935": {
   "claim": "Raising bilin18's compiled-program fallback map (S1870, ridge-regressed embedding->row) from rank 64 to 512 at full table rank and 5,419 coverage raises kept-fraction in ALL FOUR rarer target-frequency buckets on ALL THREE held-out roles -- 12/12 cells positive -- and lowers it only in the most-frequent (125+) bucket, on 3/3. The largest gains are in the 1-4 and 25-124 buckets, not the unseen one.",
   "controls": "coverage exactly 5,419; the rank-64 arm reproduced S1932's PUBLISHED deployed figures exactly (125+ 63.5/62.9/63.4%, unseen 2.7/6.2/3.6%); buckets partition; live per-bucket accuracy identical across all four arms at 0.00e+00 (twenty-first clean reading).",
