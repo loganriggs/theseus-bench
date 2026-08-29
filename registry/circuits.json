@@ -3858,7 +3858,8 @@
     "not_inheritance_S1912": "The program does NOT inherit the model's decidedness: Spearman between the live and program top-2 margins is only +0.109/+0.111/+0.120. Yet within the model's highest-confidence quartile, splitting on the PROGRAM's own margin moves agreement from 5.77 to 9.84x (+4.07/+5.74/+4.84x) \u2014 as large as \u00a71911's whole effect. Two near-independent signals, each roughly doubling the tracking.",
     "the_corner": "Within the model's most-decided quartile, positions where the PROGRAM is unsure track at 5.77/4.95/5.82x \u2014 indistinguishable from the overall least-decided quartile (5.36/5.06/5.80x). The model being sure buys nothing where the program is not; agreement needs both.",
     "four_axes": "correctness NOT (\u00a71895); sequence position NOT (\u00a71910); model confidence YES (\u00a71911); program confidence YES and near-independent of the model's (\u00a71912).",
-    "ranking_corrected_S1914": "\u00a71911 (+4.75/+5.27/+5.07x) and \u00a71913 (+1.07/+1.94/+1.06x) were measured against DIFFERENT permutation nulls and are not comparable. Under a COMMON global null the ranking REVERSES: the precomputable per-token program margin gives +9.50/+9.79/+9.28x against the live model margin's +6.03/+6.36/+6.02x. The program's own confidence orders its agreement with the model BETTER than the model's does, and it is a build-time token property (\u00a71913)."
+    "ranking_corrected_S1914": "\u00a71911 (+4.75/+5.27/+5.07x) and \u00a71913 (+1.07/+1.94/+1.06x) were measured against DIFFERENT permutation nulls and are not comparable. Under a COMMON global null the ranking REVERSES: the precomputable per-token program margin gives +9.50/+9.79/+9.28x against the live model margin's +6.03/+6.36/+6.02x. The program's own confidence orders its agreement with the model BETTER than the model's does, and it is a build-time token property (\u00a71913).",
+    "ranking_confirmed_S1915": "At NPERM=64, where the noise is a quarter as large, the token-margin gradient is +9.32/+9.82/+9.40x against the live-margin's +5.91/+6.38/+6.10x \u2014 reproducing \u00a71914. The reversal is not a noise artifact."
   },
   "S1765_VERIFIED_AT_THE_LOGITS_S1913": {
     "status": "CERTIFIED \u2014 all four predictions TRUE",
@@ -3877,14 +3878,17 @@
     "process_note": "the first run was INVALID \u2014 an inherited live-margin split overwrote the token-margin one seven lines later, so it re-measured \u00a71911. Caught because its quartiles matched \u00a71911 to 2dp across all twelve cells, which Spearman +0.11 makes impossible."
   },
   "ENRICHMENT_RNG_PRECISION_S1914": {
-    "status": "MEASURED \u2014 a precision bound on every enrichment quoted since \u00a71885",
+    "status": "CERTIFIED and MEASURED at \u00a71915 \u2014 the estimator is unbiased; the noise is priced",
     "claim": "At NPERM = 8 the permutation-null estimate carries roughly +-0.2 of enrichment. \u00a71914 re-ran \u00a71913's within-stratum arm on identical data and code and got 4.25/5.19/5.25/5.30 against 4.22/5.02/5.29/5.29 \u2014 a 0.17 shift at q1 \u2014 because additional global-null draws left the shared torch.Generator at a different state.",
     "consequence": "Anchor \"reproductions\" of the size reported across \u00a71885-\u00a71913 (7.16 vs 7.19, 7.49 vs 7.64) are CONSISTENT rather than exact, and several were called exact or \"to three digits\". Large effects are unaffected \u2014 \u00a71908 7.53->2.74, \u00a71911 5.36->10.11, \u00a71914 5.29->12.57 are an order above the noise.",
     "fix": "raise NPERM; no result requires it, the claims need softening",
     "sections": [
       "\u00a71885",
       "\u00a71913",
-      "\u00a71914"
-    ]
+      "\u00a71914",
+      "\u00a71915"
+    ],
+    "measured_S1915": "8 independent seeds on the covered-arm baseline: spread 0.218/0.334/0.188 at NPERM=8 and 0.061/0.123/0.096 at NPERM=64 (reductions 3.6/2.7/2.0x against sqrt(8)=2.83). Means differ by only 0.020/0.007/0.008 between the two settings, so the estimator is UNBIASED \u2014 every central value quoted since \u00a71885 is right in expectation; only the tight reproduction claims were overstated.",
+    "baseline_correction": "the covered-arm baseline quoted throughout as 7.16/7.29/7.49x measures 7.102/7.255/7.432 at NPERM=64 over 8 seeds \u2014 inside the NPERM=8 spread, but the better estimate"
   }
 }
