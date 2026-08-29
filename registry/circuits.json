@@ -1003,6 +1003,16 @@
   "section": "S1958",
   "status": "CERTIFIED. pred_c's failure is the vindication -- I asked whether 0.010 was far from the natural rate and it is not."
  },
+ "THRESHOLD_REPLICATES_AT_16110_S1993": {
+  "builds_on": "NO_RULE_ONLY_A_THRESHOLD_S1992",
+  "claim": "The S1992 threshold holds at 16,110 types with no exceptions, separating by 0.540-0.590 nats (against 0.560-0.606 at 5,419), and the four arms inside the good band rank identically at both coverages on all three roles: mlp4+{5,6} 1.547 < mlp2+{4,5,6} 1.820 < mlp2+{5,6} 1.924 < mlp3+{5,6} 1.990 (skip7000, 16,110).",
+  "evidence": "ops/the_threshold_at_both_coverages.py, 137.9s, nine arms x three roles x two coverages. pred_a/b/c all True 3/3, derived controls True, all three reference deviations 0.000000.",
+  "open": "Where the 0.55 nats live. Every artifact since S1789 carries the target-frequency buckets and the S1936 covered/uncovered input axis, so the gap can be decomposed without new plumbing: is the penalty for omitting attention 5 or 6 spread across the distribution, or concentrated in the rare-target and uncovered-input cells?",
+  "section": "S1993",
+  "statement": "Compiling attention 5 and attention 6 TOGETHER is what makes a compiled MLP below them affordable; omitting either is what makes it expensive. Everything finer -- which additional layer helps which site by 0.04 to 0.20 nats -- remains real, small and unexplained.",
+  "status": "CERTIFIED. This is the one surviving generalisation of the S1984-S1992 line; three proposed rules are withdrawn (S1986, S1990, S1992).",
+  "why_it_matters": "S1963 and S1965 each found a claim that held at 5,419 and reversed at 16,110. This one does not, and the gap barely moves with coverage, which is what distinguishes a fact about the model from a coincidence of ordering."
+ },
  "TILT_AXIS_SETTLED_S1967": {
   "builds_on": "NO_COVERAGE_DIVERGENCE_MID_TILT_WINS_S1966",
   "claim": "The per-token tilt optimum is a 25->35 tilt, interior to the grid at both coverages and at the same point within one grid step, and the curve is FLAT near it -- the three points around the optimum span under 0.5 milli-nats at both coverages. The whole axis is worth 0.1 to 0.5 milli-nats: the best point recovers -0.17/-0.49/-0.10 at 5,419 and -0.01/-0.04/-0.07 at 16,110 against the flat blend.",
