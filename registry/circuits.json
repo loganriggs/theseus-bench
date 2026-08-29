@@ -19,6 +19,18 @@
   ],
   "status": "CERTIFIED \u2014 all four predictions TRUE on a designed falsification test"
  },
+ "ALPHA_IS_FLAT_AND_EFFECTIVELY_OPTIMAL_S1961": {
+  "builds_on": "ONE_BUILD_SUFFICES_S1960",
+  "claim": "S1943's blend alpha = 0.25, chosen at 5,419 on full-rank tables with a rank-512 map, is STALE at the current operating point -- the CE optimum is 0.30 on 3/3 roles at 5,419 -- but the move is worth only -0.549/-0.078/-1.187 milli-nats and is significant on 1 of 3 roles. The optimum does NOT depend on coverage (16,110 argmins 30/30/25, within one grid step), so alpha is a property of the two fallback components rather than of the build.",
+  "closes": "All four levers are now priced at the operating point: tables and map at their knees (S1947, S1959), attention below threshold at 16,110 and marginally above at 5,419 (S1948, S1957), alpha free and effectively optimal. S1958's exchange rates said nothing remained above threshold; this closes the one lever that was free and therefore exempt from that argument.",
+  "controls": "coverages exactly 5,419 and 16,110; plan-derived control non-vacuous both ways (15 same-spec pairs exactly inert at covered inputs, 6 differing-spec pairs not); buckets partition; live per-cell identical at 0.00e+00; S1949's published CE reproduced to 0.000000 via B.ref() (forty-fifth clean reading).",
+  "cost_neutrality_checked": "pred_d includes the clause that makes the section meaningful: every alpha arm costs EXACTLY the same at each coverage, spread 0.00e+00M. S1958 asserted alpha is cost-neutral; this checks it rather than assuming it.",
+  "evidence": "ops/alpha_reoptimised.py, 238.1s. Six alphas x three roles x two coverages at {mlp 768, attn 320} with a rank-576 map. pred_a True 3/3, pred_b True 3/3, pred_c False 1/3, pred_d True.",
+  "open": "Every section from S1946 has optimised POOLED CE. S1953 showed the build is a redistribution and S1954 that the shape inverts with coverage, but S1957-S1961 bought milli-nats without once checking the bucket structure. No section since S1954 has looked at where the last five purchases landed.",
+  "section": "S1961",
+  "shape": "The curve is FLAT near the optimum and falls away sharply: alpha=0.10 costs +10 to +12 milli-nats at 5,419, ten to twenty times what the 0.25->0.30 move recovers. S1943 chose well and the value survived three changes of operating point.",
+  "status": "CERTIFIED. The actionable conclusion is a NEGATIVE: leave alpha alone."
+ },
  "ATTENTION_SHARE_IS_MONOTONE_S1948": {
   "builds_on": "TABLE_CURVE_KNEE_AT_768_256_S1947",
   "claim": "At 16,110 with mlp fixed at 768 and the S1944 blend fallback, pooled CE is STRICTLY MONOTONE DECREASING in the attention rank across 64/128/192/256/384/576 on all three roles (18/18 points). There is no interior optimum: the CE argmin is 576 -- 75% of the MLP rank -- on every role, three times the top of S1928's 12.5-25% band.",
