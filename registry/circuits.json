@@ -3569,8 +3569,9 @@
       "\u00a71878"
     ],
     "reproduced": "exactly, as the MAP arm of \u00a71878",
-    "open": "\u00a71880 \u2014 whether the \u00a71853-\u00a71865 table-rank frontier shifts under this fallback (it was mapped at map rank 64)",
-    "confirmed_by": "\u00a71878 and \u00a71879, by the failure of both stream rescues"
+    "open": "Codex's grouped shared-RRR core (48.61% map-storage saving), which by \u00a71880 applies only at table rank >= 256",
+    "confirmed_by": "\u00a71878 and \u00a71879, by the failure of both stream rescues",
+    "scope_correction_S1880": "Correct for a full-rank-table build only. \u00a71880: at table rank <= 64 the rank-512 map buys 0.00000 to 0.00044 nats for a flat +37.159M. Also corrects this entry's derived rate 833/811/916 M/nat to the directly measured 832/769/913 \u2014 the skip11000 figure was 5% optimistic (role-specific uncovered fraction)."
   },
   "STREAM_INPUT_LINE_CLOSED_S1879": {
     "status": "CERTIFIED NEGATIVE \u2014 the fallback input question is closed",
@@ -3585,5 +3586,69 @@
     "deployable_answer": "DEPLOYABLE_FALLBACK_SOTA_S1870 \u2014 the rank-512 covered-fit embedding map",
     "caveat": "\u00a71879 pred_d convergence clause passed vacuously (deltas 22.63370/5.43549/1.85551, all >1). The STREAMITER row is iterate 3 of a NON-converging sequence, not a fixed point.",
     "known_answer_control": "covered CE spread 0.00e+00 for a tenth time, with uncovered rows near-uniform"
+  },
+  "MAP_RANK_TRACKS_TABLE_RANK_S1880": {
+    "status": "CERTIFIED \u2014 all four predictions TRUE, 18 anchor figures reproduced",
+    "law": "map_rank = min(table_rank, 512). A fallback map of rank above the table rank buys EXACTLY nothing, because the map is fitted against the truncated table rows, so at table rank r the targets span a rank-r subspace and any map of rank >= r is already exact within it.",
+    "measured_gain_of_map512_over_map64": {
+      "table_full": [
+        0.04465,
+        0.04832,
+        0.0407
+      ],
+      "table_256": [
+        0.03582,
+        0.03968,
+        0.03558
+      ],
+      "table_64": [
+        0.0002,
+        0.00044,
+        0.00028
+      ],
+      "table_16": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "table_8": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "table_4": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "cost": "+37.159M reals flat, whatever the table rank \u2014 18% of the full build, 586% of the rank-4 build",
+    "rates_M_per_nat": {
+      "table_full": [
+        832,
+        769,
+        913
+      ],
+      "table_256": [
+        1037,
+        936,
+        1044
+      ],
+      "table_64": [
+        185795,
+        84452,
+        132711
+      ]
+    },
+    "caveat": "m512_64 IS Pareto-nondominated (57.69M/6.1731 vs 20.53M/6.1733) and is still a 185,795 M/nat purchase. Frontier membership is not the same as being worth buying; use \u00a71861 iso-cost there.",
+    "sections": [
+      "\u00a71858",
+      "\u00a71870",
+      "\u00a71877",
+      "\u00a71878",
+      "\u00a71880"
+    ],
+    "scopes": "DEPLOYABLE_FALLBACK_SOTA_S1870 \u2014 correct for a FULL-RANK-table build (what \u00a71789 deployed), not at table rank <= 64 where the rank-64 map is equal or better and 37.159M cheaper.",
+    "known_answer_control": "covered CE spread 0.00e+00 for an eleventh time, across 6 table ranks x 2 map ranks"
   }
 }
