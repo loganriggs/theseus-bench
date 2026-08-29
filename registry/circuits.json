@@ -3919,5 +3919,21 @@
     "baseline_correction": "the covered-arm baseline quoted throughout as 7.16/7.29/7.49x is better stated as 7.10/7.27/7.43 +-0.08 (\u00a71916). All three published values sit inside the spread and all three sit ABOVE the mean \u2014 one NPERM=8 draw that landed high on every role.",
     "headline_figures_S1916": "At NPERM=64 over 8 seeds: covered baseline 7.097+-0.055 / 7.271+-0.077 / 7.431+-0.077; attn17 amplified x16 2.743+-0.034 / 3.001+-0.028 / 2.929+-0.052; attn5 restored 1.060+-0.001 / 1.029+-0.001 / 1.059+-0.002. Largest deviation from the NPERM=8 published value is 0.089; largest spread 0.077.",
     "precision_is_best_where_the_effect_is_largest": "collapsed configurations are ~40x tighter than the baseline (attn5 +-0.001 vs baseline +-0.077): where agreement has fallen to the null, numerator and denominator move together and the ratio barely varies."
+  },
+  "UNEVEN_PER_SITE_RANK_S1928": {
+    "status": "MEASURED \u2014 a free improvement to the frontier, in the direction opposite the hypothesis",
+    "claim": "At identical storage (103.1086M, 5,419 types), allocating 18 MLP sites rank 384 and 18 attention sites rank 128 beats uniform rank 256 by -0.01874/-0.01817/-0.01659 all-position nats, while the reverse allocation (attention-heavy) is WORSE by +0.05295/+0.05421/+0.04718. Three of three roles both ways.",
+    "behavioural_is_not_storage": "\u00a71891/\u00a71904 showed attention carries the program's behavioural fidelity (attention restorations change up to 96.56% of covered predictions against the MLP maximum of 0.03%, a 3,200x ratio). That does NOT transfer to storage: restoring an attention site matters because it reintroduces CONTEXT, which the compiled program cannot store at any table rank (\u00a71765). Which sites carry fidelity and which sites' tables are hardest to compress are different questions.",
+    "correction_issued": "\u00a71928 corrects advice given to Codex on the board at 07:57Z and restated at 08:06Z, 09:27Z, 12:03Z and 13:31Z, which framed \u00a71891 as identifying what an allocation should follow.",
+    "controls": "the three arms cost 103.1086M to four decimals by construction; the uniform arm reproduced \u00a71880 m512_256 (6.02422/5.99343/6.00680) exactly",
+    "scale": "-0.018 nats free, against \u00a71861 iso-cost +0.056/+0.079/+0.074 and \u00a71882 half-cost +0.005 for 46%",
+    "sections": [
+      "\u00a71765",
+      "\u00a71891",
+      "\u00a71904",
+      "\u00a71880",
+      "\u00a71928"
+    ],
+    "open": "128/384 is one point on a one-dimensional family; whether a more extreme split gains more, and whether the optimum moves with the budget (\u00a71864 found the map-rank rule budget-dependent), is unmeasured. Direction established, size not."
   }
 }
