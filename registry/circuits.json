@@ -378,6 +378,18 @@
   ],
   "status": "CERTIFIED and MEASURED at \u00a71915 \u2014 the estimator is unbiased; the noise is priced"
  },
+ "FALLBACK_BEATS_COVERAGE_PER_PARAMETER_S1976": {
+  "builds_on": "WHAT_THE_ARC_BUILT_S1975",
+  "claim": "The fallback lever is 4.4-5.2x more parameter-efficient than buying coverage: map64 -> the converged fallback buys +71.35/+75.33/+71.89 milli-nats for 47.9M (149.1/157.4/150.2 per 100M), while coverage 5,419 -> 16,110 buys +63.68/+86.16/+73.54 for 221.7M (28.7/38.9/33.2 per 100M). The arc spent thirty sections on the right axis, which was not established until now.",
+  "control_note": "The runner rejected this plan TWICE for opposite reasons -- first no same-spec pair, then no differing-spec pair -- each time flagging control_is_two_sided=False. S1957 shipped with exactly the first hole; here it was caught before publication both times. Fifty-sixth clean reading.",
+  "evidence": "ops/coverage_vs_fallback.py, 50.4s, declarative. Four builds x three roles x two coverages. All three predicates TRUE, derived controls TRUE.",
+  "my_predicate_was_in_the_wrong_unit": "pred_a registered 'raising coverage buys more CE than the entire fallback lever' -- in absolute NATS, for a question explicitly about how to spend a parameter BUDGET. It passes 2/3 and the correct answer is the reverse once divided by cost. LESSON 91 said to state a bar in the units of the decision, and this is the second wrong-unit bar in five sections. LESSON 93.",
+  "open": "Coverage and the fallback are substitutes and have now been priced against each other at two points. Neither has been priced against the third structural choice -- the 36-site substitution itself (S1765), the premise all of S1746 onward rests on and the only one never given a number.",
+  "proportion": "S1958 measured the marginal levers at 9-15 milli-nats per 100M. Coverage runs at 29-39 and the fallback at 149-157. The arc tuned parameters worth an order of magnitude less than the two structural choices it inherited without examining.",
+  "section": "S1976",
+  "status": "CERTIFIED. The decisive number is the one the predicates did NOT ask for.",
+  "substitutes": "pred_b: the fallback lever is worth less than half as much at 16,110 (33.1/34.8/33.1 milli-nats) as at 5,419 (71.4/75.3/71.9) -- S1936's arithmetic. The two levers are SUBSTITUTES: buying coverage devalues the fallback, which is why they must be priced together and never were."
+ },
  "FALLBACK_CARRIES_THE_WIN_AT_BOTH_COVERAGES_S1954": {
   "bad_instrument": "pred_b FAILED 1/3 and the honest reading is that the concentration RATIO is not a measurable quantity: 44.4x/39.2x/-22.6x here against S1953's 44.4x/12.9x/29.3x, the denominator straddling zero. A ratio of two small differences should not be quoted to two significant figures.",
   "builds_on": "CONVERGED_BUILD_IS_A_REDISTRIBUTION_S1953",
