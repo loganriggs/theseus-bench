@@ -754,6 +754,18 @@
   "section": "S1958",
   "status": "CERTIFIED. pred_c's failure is the vindication -- I asked whether 0.010 was far from the natural rate and it is not."
  },
+ "TILT_AXIS_SETTLED_S1967": {
+  "builds_on": "NO_COVERAGE_DIVERGENCE_MID_TILT_WINS_S1966",
+  "claim": "The per-token tilt optimum is a 25->35 tilt, interior to the grid at both coverages and at the same point within one grid step, and the curve is FLAT near it -- the three points around the optimum span under 0.5 milli-nats at both coverages. The whole axis is worth 0.1 to 0.5 milli-nats: the best point recovers -0.17/-0.49/-0.10 at 5,419 and -0.01/-0.04/-0.07 at 16,110 against the flat blend.",
+  "consistency": "The wide tilts are actively bad (+0.95 to +1.92 milli-nats at 10->50), so S1963/S1964's 'the widest tilt is the strongest' was true of the UNSEEN BUCKET and pointed the wrong way for the build -- exactly what S1963's pred_b measured, not a contradiction.",
+  "controls": "Derived: coverages exact; same-spec pairs inert at covered inputs and differing-spec pairs not; buckets partition; live per-cell identical; S1966's published spec_5419 CE reproduced to 0.000000 via B.ref(). Fifty-first clean reading.",
+  "evidence": "ops/tilt_axis_settled.py, 229.4s, declarative (run()'s fourth). Eight builds x three roles x two coverages. All three predicates TRUE, derived controls TRUE, reference deviation 0.000000.",
+  "open": "Four of five parameters are now settled with explicit stopping criteria -- table rank (S1947/S1950), attention share (S1948/S1952), map rank (S1959), tilt (S1967). ALPHA was settled by S1961 WITHOUT one: declared 'flat and effectively optimal' from a six-point sweep that never checked whether the three points around its optimum span less than a marginal purchase. Applying S1967's rule to S1961's data is arithmetic on an artifact already on disk.",
+  "proportion": "For comparison the converged build beats S1789's deployed design by 64,000 milli-nats at 5,419. Three sections (S1964-S1966) moved this parameter and the entire axis is worth about a two-hundredth of one of S1957-S1959's marginal purchases. S1963-S1967 established a real effect that does not matter; the stopping rule is what stops that continuing.",
+  "recommended": "a 25->35 per-token tilt on a rank-640 map at {mlp 768, attn 384}: 189.7M at 5,419, 411.3M at 16,110.",
+  "section": "S1967",
+  "status": "CERTIFIED, and the STOPPING RULE fired: no further section on the tilt axis is worth running."
+ },
  "TILT_CONFIRMED_ON_THE_SHIPPED_BUILD_S1964": {
   "claim": "S1963's finding reproduces on the build actually arrived at ({mlp 768, attn 384}, rank-640 map, 5,419): the per-token alpha raises the unseen bucket (+0.26/+0.29/+0.25pp for the widest tilt), the widest tilt beats the narrowest on 3/3, and it still costs +1.45 to +2.94 milli-nats, above the 0.002-nat bar on 2 of 3 roles. S1963's negative was not an artefact of the compromise allocation.",
   "confirms": "PER_TOKEN_ALPHA_WORKS_AND_STILL_PAYS_S1963",
