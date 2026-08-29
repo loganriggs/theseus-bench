@@ -70,6 +70,15 @@
   "section": "S1972",
   "status": "CERTIFIED for pred_a and pred_c. pred_b FAILED and the fault is in my predicate."
  },
+ "ATTENTION_5_IS_PRESENCE_ATTENTION_6_IS_CONTENT_S1998": {
+  "builds_on": "THE_TWO_LAYERS_DO_DIFFERENT_JOBS_S1997",
+  "claim": "Under the meanrow null -- every token the same row, zero information, only context-freeness -- the threshold's two attention layers separate by an order of magnitude and in opposite directions. A mean row at ATTENTION 5 is BETTER than its compiled table: 1.940/2.047/1.881 against 1.971/2.090/1.952, pooled -0.044 at t = -23.0. A mean row at ATTENTION 6 costs +0.209 at pooled t = +157.2. Mean rows at both cost no more than a mean row at attention 6 alone (2.180 vs 2.183).",
+  "evidence": "ops/presence_or_content_at_attention_five.py, 53.8s, nine arms x three roles at 5,419, using composite arms. pred_a/b/c all True 3/3, derived controls True, both reference deviations 0.000000.",
+  "open": "Everything from S1996 to S1998 used mlp2 as the compiled MLP. S1990's minimal path used mlp4, whose lone-site damage is 2.2x larger. The presence/content split has never been checked at a second MLP -- a rung-2 second-class confirm, run as S1999.",
+  "section": "S1998",
+  "status": "CERTIFIED",
+  "the_three_roles": "mlp2 / mlp4 -- must be compiled, content IRRELEVANT (S1983: a mean row costs the same 10.67). attention 5 -- must be PRESENT, content slightly NEGATIVE (-0.044 nats). attention 6 -- must be present AND carries content worth +0.209 nats, low-dimensional: rank 16 recovers 72% of it (S1996). Removing all of attention 6's content costs about what removing 24/25ths of its rank did, which is what a low-dimensional signal looks like."
+ },
  "ATTENTION_6_NEEDS_ALMOST_NO_CAPACITY_S1996": {
   "builds_on": "THE_FREQUENCY_GRADIENT_IS_GENERIC_S1995",
   "claim": "Attention 6's table needs almost no capacity. With mlp2 + attention 5 + attention 6 compiled, sweeping attention 6's table rank gives 2.137 (r16) / 2.109 (r32) / 2.060 (r64) / 2.011 (r128) / 1.971 (r384) at skip7000, against 2.556 for the same arm with attention 6 removed. A 24-fold capacity cut costs 0.166 nats where removing the site costs 0.611: rank 16 captures 72% of attention 6's whole contribution, rank 128 captures 93%. Smooth and roughly linear in log-rank, not a cliff.",
