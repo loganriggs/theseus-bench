@@ -3828,15 +3828,17 @@
     "quantitative_match": "attn17's onset at 149.3x against attn5's natural 144.0x \u2014 within 4%.",
     "natural_cases": "attn5 (144.0x, cos +0.9992) -> 1.06x and attn6 (77.1x, +0.9866) -> 1.32x are the only two sites in the model that naturally satisfy both properties.",
     "mechanism_reading": "A site parallel to its table row contributes more of what the program already has; amplifying it overwhelms the residual stream along a direction every downstream table was calibrated against. A site at cosine +0.70 adds a largely NEW direction, which acts like restoring genuine context \u2014 which is why attn3 gets BETTER.",
-    "scope": "SUFFICIENCY is demonstrated \u2014 the conjunction was built and the program collapsed on all three roles. NECESSITY is supported by the 18-site survey (\u00a71905, \u00a71907) but not proved.",
+    "scope": "SUFFICIENCY is demonstrated \u2014 the conjunction was built and the program collapsed on all three roles. NECESSITY is supported by the 18-site survey (\u00a71905, \u00a71907) but not proved. BOUNDED TO ATTENTION at \u00a71909: the 18 MLP sites carry uncovered live/table norm ratios of only 1.18x-1.76x against the attention collapsers' 77x-144x, so they have the alignment (median cosine +0.9587 uncovered, +1.000000 covered) and not the magnitude. \u00a71908 therefore predicts no MLP collapse and \u00a71903 measured none \u2014 consistent, with the law simply having nothing to act on.",
     "sections": [
       "\u00a71891",
       "\u00a71892",
       "\u00a71905",
       "\u00a71906",
       "\u00a71907",
-      "\u00a71908"
+      "\u00a71908",
+      "\u00a71909"
     ],
-    "open": "whether the same conjunction governs the MLP sites; their cosine has never been measured"
+    "open": "none in the attention line",
+    "mlp_profile_is_depth_ordered": "\u00a71898's per-MLP change-rate profile is best ordered by DEPTH (Spearman +0.785), then cosine (+0.637), then norm ratio (-0.610), then the conjunction (-0.389). Depth and cosine are not independent here, so depth is reported as the better ORDERING, not as the mechanism."
   }
 }
