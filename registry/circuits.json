@@ -250,6 +250,16 @@
   ],
   "status": "CERTIFIED \u2014 dominated on BOTH axes at 5,419 types (\u00a71881) AND at 16,110 types (\u00a71882)"
  },
+ "DEPLOYED_COVERAGE_BUILD_IS_768_384_S1957": {
+  "builds_on": "ATTENTION_WORTH_MORE_AT_DEPLOYED_COVERAGE_S1952",
+  "claim": "At 5,419 the build wants {mlp 768, attn 384}, not S1947's {768, 256}. blend_768_384 (178.896M) lowers CE against blend_768_256 (163.757M) with paired t = -9.94/-11.86/-5.53 on 3/3 roles, at a rate of 0.0113/0.0135/0.0091 nats per 100M -- clearing S1947's 0.010 threshold on 2 of 3 -- without deepening the unseen-bucket deficit (0-0 .0342->.0351, .0588->.0595, .0334->.0334).",
+  "control_caveat": "B.inertness_pairs derives the covered-input control from the plan (LESSON 86). This plan has three arms at THREE DIFFERENT table ranks, so there were NO same-spec pairs: it reported '0 same-spec pairs inert and 3 differing-spec pairs not' and passed. The differing half is real and checked; the inertness half had nothing to check and said True anyway -- PRE-FLIGHT D's second direction inside the helper written to prevent a control error. B.inertness_pairs now prints a warning when either side is empty.",
+  "evidence": "ops/coverage_specific_build.py, 4.3s warm. Three builds x three roles at 5,419, per-position top-1 and CE with a paired t. All four predicates TRUE. Reference triples read via B.ref() from the publishing artifact.",
+  "open": "The build now differs by coverage -- {768,384} at 5,419, {768,256} at 16,110 -- and both were found by the same 0.010 nats/100M rule. THAT THRESHOLD IS INHERITED FROM S1947 AND HAS NEVER BEEN JUSTIFIED; it was a round number chosen when the table curve was first swept. Every allocation conclusion in S1947-S1957 is conditional on it.",
+  "section": "S1957",
+  "size": "The improvement is 0.0017/0.0021/0.0014 nats for +15.1M, on a build whose margin over the deployed design is 0.064 nats for -66.3M. Real, significant, marginally above the spending threshold on 2 of 3 roles, and SMALL. The deployed-coverage build is {768,384} at 178.896M -- still 22% cheaper than S1789's deployed design and better on both instruments.",
+  "status": "CERTIFIED, with one half of pred_d honestly downgraded (below)."
+ },
  "DEPLOYED_FALLBACK_IS_DOMINATED_S1939": {
   "builds_on": [
    "NEIGHBOUR_BEATS_MAP_ON_TOP1_S1937",
