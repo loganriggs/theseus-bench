@@ -301,6 +301,7 @@
   "uncovered_arm_S1918": "The signal orders agreement at uncovered positions at +3.90/+4.10/+2.06x, against +9.50/+9.79/+9.28 on the covered arm \u2014 41%/42%/22% of the strength, consistent with \u00a71887 (the fallback tracks the model at 2.3x less than the tables). Caveats: quartiles hold only 349-1220 positions so the null noise is larger than \u00a71916's +-0.08, and skip1200 is effectively binary (q0-q2 flat at 2.82/2.85/2.75, only q3 rises)."
  },
  "CONTEXT_FREENESS_NOT_CONTENT_S1983": {
+  "SCOPED_BY_S2012": "The measurement stands and the conclusion holds in the UNREPAIRED configuration only, where the damage sits at the 10.7-nat ceiling and nothing the MLP writes can matter. Repair the interface -- compile attention 5 and 6 -- and the same table's content is worth 1.408/1.469/1.436 nats, the largest single term in that arm, against 0.006 here. 'Content is irrelevant' is a statement about the ceiling, not about the site.",
   "builds_on": "ONE_MLP_LAYER_4_S1982",
   "claim": "The mlp4 catastrophe is CONTEXT-FREENESS ITSELF, not the compiled table's content. A single constant row (the mean of the covered table) at mlp4 costs 10.675/10.942/10.586 nats against the compiled table's 10.669/10.937/10.580 -- a difference of 0.006. And it is not a fragile-site artefact: layer 5 under the identical substitution costs 2.049/2.178/2.032, a fifth of layer 4's.",
   "confirms": "ONE_MLP_LAYER_4_S1982",
@@ -551,6 +552,16 @@
   ],
   "status": "MEASURED with a NAMED COST (\u00a71883) \u2014 not certified as a program",
   "why_it_exists": "a direct consequence of the \u00a71880/\u00a71881 law: once the map rank is chosen correctly (map_rank >= table_rank + 1), the table can be truncated far harder than the deployed build assumed"
+ },
+ "HIGH_DIMENSIONAL_CONTENT_IS_SPECIFIC_AND_MLP_CONTENT_IS_LARGE_S2012": {
+  "builds_on": "ATTENTION_6_CONTENT_IS_HIGH_DIMENSIONAL_S2011",
+  "claim": "Two findings. (1) The high-dimensionality of attention 6's content is NOT generic: a compiled mlp2's content curve is far steeper at every rank -- r1 8.1/8.4/8.1% where attention 6 buys -12.7/-15.4/-21.5%, r16 44.0/45.1/43.7% where attention 6 buys 21.9/20.8/17.0%, differing by 22.1/24.3/26.7 points. Attention 6's content is harder to compress and its low ranks are actively harmful where the MLP's are merely weak. (2) mlp2's content inside the REPAIRED arm is 1.408/1.469/1.436 nats -- 6.6x attention 6's 0.212 and 200x the 0.006 S1983 measured for a lone compiled mlp4.",
+  "evidence": "ops/is_high_dimensional_content_generic.py, 240.5s, nine arms x three roles at 5,419, measured from each site's own mean row. pred_a/b/c all True 3/3, derived controls True, reference deviation 0.000000.",
+  "open": "mlp2's content is 1.4 nats and its rank curve reaches 86% at rank 128 -- the first quantity in this line large enough to be worth BUYING rather than explaining. S1947's price rule is 0.010 nats per 100M parameters and a rank-128 MLP table is a different price from a rank-768 one. Whether the repaired configuration changes the shipped build's allocation is a costing question the ledger has not asked since S1959.",
+  "scopes": "S1983. Its 'content is irrelevant' conclusion holds only at the ceiling.",
+  "section": "S2012",
+  "status": "CERTIFIED. The S1995 generic control PASSES: the high-dimensionality is specific to attention 6.",
+  "the_account_restated": "A compiled MLP below attention 6 does two separable things. BROKEN (no attention 5 or 6): costs up to the 10.7-nat ceiling, content irrelevant, the interface swamps everything. REPAIRED (attention 5 and 6 compiled): costs 1.5-2.2 nats, of which content is the dominant term at 1.4, with attention 6 contributing 0.2 more."
  },
  "INSTRUMENTS_RANK_FALLBACKS_OPPOSITELY_S1938": {
   "cause": "The disagreement is one bucket. On uncovered inputs with an UNSEEN target the neighbour's CE exceeds map512's by +1.124/+1.162/+1.059 nats (bar was 0.05): the neighbour emits a real covered token's distribution, which puts near-zero mass on a token no fit row contains, and CE charges the log of that. Top-1 charges at most one position for the same failure and the neighbour still scores 7.7/6.9/5.6% there. That bucket is ~5-7% of scored positions and it reverses the entire pooled CE ranking while leaving the top-1 ranking untouched.",
