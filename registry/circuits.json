@@ -70,6 +70,16 @@
   "section": "S1972",
   "status": "CERTIFIED for pred_a and pred_c. pred_b FAILED and the fault is in my predicate."
  },
+ "ATTENTION_6_NEEDS_ALMOST_NO_CAPACITY_S1996": {
+  "builds_on": "THE_FREQUENCY_GRADIENT_IS_GENERIC_S1995",
+  "claim": "Attention 6's table needs almost no capacity. With mlp2 + attention 5 + attention 6 compiled, sweeping attention 6's table rank gives 2.137 (r16) / 2.109 (r32) / 2.060 (r64) / 2.011 (r128) / 1.971 (r384) at skip7000, against 2.556 for the same arm with attention 6 removed. A 24-fold capacity cut costs 0.166 nats where removing the site costs 0.611: rank 16 captures 72% of attention 6's whole contribution, rank 128 captures 93%. Smooth and roughly linear in log-rank, not a cliff.",
+  "evidence": "ops/how_much_of_attention_six.py, 4.8s warm (289.2s cold), nine arms x three roles at 5,419, using per-site table ranks added to bqlib for this. pred_a/b/c all True 3/3, derived controls True on the third plan, reference deviation 0.000000. r16 vs r384 is +0.166 at pooled t = +184.8.",
+  "interpretation": "It is NOT enough that attention 6 merely stop varying with context -- capacity buys real CE monotonically at every rank tested. But the amount needed is tiny, so whatever attention 6 must supply to the layers above it is low-dimensional.",
+  "library_bug_found": "Three plans before a clean control. Run 1 had no same-spec pair (control_is_two_sided FAILED). Run 2 put the fallback partner at the same THREE sites and it was NOT inert -- correctly: the S1765/S1936 covered-input guarantee rests on attention being DELETED, true only at all 36 sites. bqlib now refuses to call a partial-site pair inert, with a test. Every partial-substitution run since S1977 passed that control because it happened to carry an all-36 pair; they were right by luck and are now right by construction. LESSON 98.",
+  "open": "Attention 5 has never been swept, and the threshold names both. If attention 5 is equally shallow the requirement is about presence, not capacity; if it is steep, the two layers are doing different jobs and the asymmetry is the first mechanical handle this line has offered.",
+  "section": "S1996",
+  "status": "CERTIFIED"
+ },
  "ATTENTION_SHARE_IS_MONOTONE_S1948": {
   "builds_on": "TABLE_CURVE_KNEE_AT_768_256_S1947",
   "claim": "At 16,110 with mlp fixed at 768 and the S1944 blend fallback, pooled CE is STRICTLY MONOTONE DECREASING in the attention rank across 64/128/192/256/384/576 on all three roles (18/18 points). There is no interior optimum: the CE argmin is 576 -- 75% of the MLP rank -- on every role, three times the top of S1928's 12.5-25% band.",
