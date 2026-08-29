@@ -3655,7 +3655,7 @@
     "practical_rule": "Use the matched rank anyway: buying map 512 over map 256 at table rank 256 costs 21.234M for 0.00013 nats = 163,338 M/nat."
   },
   "DEPLOYED_BUILD_STRICTLY_DOMINATED_S1881": {
-    "status": "CERTIFIED \u2014 dominated on BOTH axes, all three roles",
+    "status": "CERTIFIED \u2014 dominated on BOTH axes at 5,419 types (\u00a71881) AND at 16,110 types (\u00a71882)",
     "claim": "\u00a71789's deployed program (full-rank tables, 5,419 types, rank-64 map; 230.087M; all-position CE 6.01167/5.98477/6.00165) is beaten by table rank 768 with a rank-512 map: 5.97061/5.93956/5.96287 at 224.225M \u2014 better by 0.04106/0.04521/0.03878 AND 5.862M cheaper.",
     "frontier": "m256_256@81.87M/6.0244  m512_256@103.11M/6.0242  m384_384@122.77M/5.9957  m512_384@133.39M/5.9957  m512_512@163.67M/5.9810  m512_768@224.23M/5.9706  m512_full@267.25M/5.9670 \u2014 identical ordering on all three roles",
     "sections": [
@@ -3665,6 +3665,21 @@
     ],
     "relation": "the sharpest instance of the \u00a71853-\u00a71865 result that the deployed build is off the frontier",
     "open": "coverage \u2014 \u00a71880 and \u00a71881 both held it at 5,419; whether this margin survives higher coverage is the last unmeasured cell of the cost model",
-    "known_answer_control": "covered CE spread 0.00e+00 for a twelfth time"
+    "known_answer_control": "covered CE spread 0.00e+00 for a twelfth time",
+    "at_16110_types": "m64_full (the deployed DESIGN scaled up) 5.90522/5.85230/5.88575 @ 673.464M; m512_768 5.89111/5.83775/5.86626 @ 519.810M \u2014 better on all three roles AND 153.654M cheaper. The cost gap grows 26x from 5.862M because the table cost scales with coverage while the map cost does not.",
+    "margin_is_a_fallback_advantage": "\u00a71882: the CE margin falls from 0.04106/0.04521/0.03878 at 5,419 types to 0.01411/0.01455/0.01949 at 16,110 \u2014 to about a third on a 2.97x coverage increase. The rank-512 map acts only on uncovered positions, which higher coverage reduces. pred_b registered this and it held."
+  },
+  "HALF_COST_BUILD_S1882": {
+    "status": "MEASURED \u2014 the largest cost result in the arc; NOT yet certified as a program",
+    "claim": "At 16,110 covered types, table rank 512 with a rank-512 map costs 360.724M against the deployed design's 673.464M \u2014 a 46% cut \u2014 for +0.00502/+0.00408 all-position nats on two roles and -0.00352 (BETTER) on the third.",
+    "why_it_exists": "a direct consequence of the \u00a71880/\u00a71881 law: once the map rank is chosen correctly (map_rank >= table_rank + 1), the table can be truncated far harder than the deployed build assumed",
+    "frontier_at_16110": "m512_512@360.72M/5.9102  m512_768@519.81M/5.8911  m512_full@710.62M/5.8834 \u2014 identical ordering on all three roles; neither map-64 build survives it",
+    "sections": [
+      "\u00a71880",
+      "\u00a71881",
+      "\u00a71882"
+    ],
+    "open": "whether it holds up as a PROGRAM under the \u00a71789 checks the deployed build passed, rather than only as a point on a CE/cost curve \u2014 a certification, not a sweep",
+    "known_answer_control": "covered CE spread 0.00e+00 for a thirteenth time"
   }
 }
