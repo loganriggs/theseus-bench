@@ -653,6 +653,18 @@
   "section": "S1960",
   "status": "CERTIFIED."
  },
+ "PARTIAL_COMPILATION_IS_WORSE_THAN_FULL_S1978": {
+  "attention_carries_it": "attn_only costs 96% of the full price on 3/3 roles -- substituting attention alone buys essentially the entire penalty, which is S1977's 'attention is worth ~2.7 nats' measured directly. pred_a failed only because it compared attn_only against the INCONSISTENT mlp_only arm, two things differing in two ways.",
+  "builds_on": "THE_PREMISE_COSTS_2P7_NATS_S1977",
+  "claim": "Substituting only the 18 MLP sites costs 10.2-10.6 nats against the live model -- 3.6x the price of substituting all 36 (2.70-2.98) -- on 3/3 roles at 355-378%. A partially compiled program is far worse than a fully compiled one: context-free MLP rows feed into LIVE attention which mixes them across positions, and the result is worse than either the live model or the program. S1765's object is internally consistent, and the consistency is load-bearing.",
+  "controls": "Derived: coverage exact; same-spec pairs inert at covered inputs and differing-spec pairs not, with the SITE SUBSET now part of 'same spec'; buckets partition; live per-cell identical; S1975's published converged CE reproduced to 0.000000 via B.ref(). Fifty-seventh clean reading.",
+  "early_beats_late": "pred_c FAILED and reverses the expectation: the EARLY half costs more (80-81%) than the late half (66-67%). S1891/S1908 asked which site's ablation destroys the PROGRAM's behaviour; this asks which substitution costs most CE against the LIVE model. Compiling early layers starves everything downstream of context; late layers still receive contextualised input. Two different questions about the same sites.",
+  "evidence": "ops/what_the_program_gives_up.py, 125.3s, declarative, using bqlib's new per-site substitution subsets. Six arms x three roles at 5,419. All three predicates FALSE, derived controls TRUE.",
+  "open": "The 3.6x penalty says compiled and live components interact badly but not where. attn_only at 96% and mlp_only at 368% are the two halves of one partition and differ by a factor of four, so the damage is not symmetric 'mixing' -- it is specifically LIVE ATTENTION READING CONTEXT-FREE ROWS. Which layer's live attention does the damage is one sweep away and would say whether the consistency requirement is global or local.",
+  "section": "S1978",
+  "status": "CERTIFIED. S1884 asked whether the program is 'a degraded copy' and answered no on other evidence; this is that claim with a number, and the number is 3.6x.",
+  "sublinearity": "pred_b FAILED in the opposite direction to the one tested: every consistent partial costs two-thirds to four-fifths of the full price, not under half. The substitution is strongly sublinear -- the first sites compiled cost most of the price -- which is why S1946-S1976's parameter tuning, all downstream of a fully compiled program, was working in the flat tail."
+ },
  "PER_TOKEN_ALPHA_WORKS_AND_STILL_PAYS_S1963": {
   "builds_on": "CE_PURCHASES_DRIFTED_THE_PROFILE_FAVOURABLY_S1962",
   "claim": "Varying the blend weight PER TOKEN by unc_mass quantile does raise the unseen (0-0) bucket -- +0.40/+0.32/+0.09pp at 5,419 for the widest tilt, 3/3 roles there and 2/3 at 16,110 -- and it acts through the intended mechanism (the WIDEST tilt is best on 3/3 roles at 5,419). But it costs +1.50 to +3.04 milli-nats of pooled CE at 5,419, above the 0.002-nat bar on 2 of 3 roles. It buys the bucket by paying CE: the same trade S1955/S1956 rejected as routing, in a new form.",
