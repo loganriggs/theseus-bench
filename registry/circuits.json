@@ -30,6 +30,14 @@
   "section": "S1948",
   "status": "CERTIFIED for pred_b (3/3) and pred_d; pred_a and pred_c both FALSE 0/3, and together they correct S1928."
  },
+ "ATTENTION_WORTH_MORE_AT_DEPLOYED_COVERAGE_S1952": {
+  "builds_on": "CONVERGED_BUILD_AT_DEPLOYED_COVERAGE_S1951",
+  "claim": "At 5,419 with mlp 768 and the S1949 fallback, pooled CE is strictly monotone decreasing in the attention rank (S1948's shape claim generalises to both coverages), and the EFFICIENT attention rank by the 0.010 nats/100M rule is 384 on skip7000 and skip11000 and 256 on skip1200 -- above S1947's {768,256} on 2 of 3 roles. At 16,110 it is 256 on all three. At the deployed coverage the attention sites are worth one more doubling.",
+  "confirms": "ATTENTION_SHARE_IS_MONOTONE_S1948",
+  "evidence": "ops/attention_sweep_at_5419.py, 4.5s warm. Six attention ranks x three roles at 5,419, per-position top-1 and CE with a paired t vs the {768,256} build. All four predicates TRUE on the second scoring.",
+  "section": "S1952",
+  "status": "CERTIFIED. NOTE: the FIRST scoring reported pred_b and pred_c FALSE 0/3 and was wrong -- the eff_rank helper was registered as 'the LARGEST rank still reached by a qualifying step' and implemented as the FIRST such step, returning 128. Corrected and re-run; nothing was published from the first scoring. LESSON 84."
+ },
  "BEST_KNOWN_BUILD_S1931": {
   "at_deployed_coverage_S1932": "At 5,419 the same design costs 163.667M against the deployed 230.087M (29% cheaper, not 46%). Overall top-1 is better on all three roles (13.74/14.45/13.75% vs 13.55/14.25/13.64%) and the UNSEEN-target kept-fraction is better on all three (4.1/6.6/3.8% vs 2.7/6.2/3.6%), but the 125+ kept-fraction is WORSE on all three by 1.20/0.93/0.65pp. It moves accuracy off frequent targets and onto rare ones.",
   "bar_note": "\u00a71931 pred_b passed a 1.5pp bar deliberately set looser than \u00a71883's 1.0pp, which \u00a71883 had already failed at 1.10pp. skip1200 comes in at exactly 1.10pp again \u2014 the predicate passes on a widened bar and the honest reading is that skip1200 is unchanged, not improved.",
@@ -178,6 +186,7 @@
   "controls": "Third control-polarity correction of the session (LESSON 81): the reference is S1789's deployed design and both it and blend_full are at FULL table rank, differing only in the fallback, so they are exactly inert at covered inputs -- the inherited clause asserted the opposite. Corrected: rank-differing arms DO move covered inputs, the fallback-only anchor is exactly inert, buckets partition, live per-cell top-1 and CE identical at 0.00e+00, S1932's published deployed top-1 reproduced to 0.005pp (thirty-seventh clean reading).",
   "evidence": "ops/converged_at_deployed_coverage.py, 4.4s warm. Seven builds x three roles at 5,419, per-position top-1 and CE with a paired t on every CE margin vs the deployed design.",
   "open": "S1948's monotone attention sweep was run only at 16,110. Since the attention share's worth moves with coverage by 2-3x, the sweep that established 'CE is monotone in the attention share, so the band is an efficiency rule' has not been repeated where attention is worth more -- exactly where a genuine interior optimum could exist.",
+  "scoped_by": "S1953: the pooled win is a REDISTRIBUTION toward mid-frequency targets -- the unseen bucket LOSES on 3/3 and 125+ is flat, while 5-24 and 25-124 gain 2-5pp. And it is overwhelmingly the FALLBACK, not the tables: the uncovered-input arm carries 13-44x the covered arm's gain.",
   "scopes": [
    "ATTENTION_SHARE_IS_MONOTONE_S1948",
    "COST_ARC_FIXED_POINT_S1950"
@@ -185,6 +194,17 @@
   "section": "S1951",
   "status": "CERTIFIED for pred_a (3/3) and pred_d; pred_b and pred_c both FALSE 1/3 -- and BOTH of my transfer predictions were backwards.",
   "table_axis_transfers": "pred_b FAILED: I predicted the table knee would MOVE at 5,419 and it essentially does not. The crossing sits between {768,256} and {640,160} on skip1200 exactly as at 16,110; skip11000's 1024->768 step lands at 0.0100, on the threshold; only skip7000 moves it one grid step. The MLP/table tradeoff is approximately coverage-invariant to within one grid step."
+ },
+ "CONVERGED_BUILD_IS_A_REDISTRIBUTION_S1953": {
+  "builds_on": "CONVERGED_BUILD_AT_DEPLOYED_COVERAGE_S1951",
+  "claim": "S1951's pooled win for the converged build over S1789's deployed design at 5,419 is a REDISTRIBUTION toward mid-frequency targets, not a uniform improvement. It LOSES the unseen (0-0) bucket on 3/3 roles (-0.36/-0.26/-0.36pp) and is flat to slightly down on 125+ (-0.34/+0.03/-0.34pp), while winning the middle hugely: 5-24 by +4.56/+3.47/+4.55pp and 25-124 by +2.24/+2.47/+2.24pp.",
+  "control_failure": "pred_d FAILED as written. It required S1932's published 125+ kept-fraction (63.5/62.9/63.4%, published to 0.1pp) to reproduce within 0.02pp -- rounding alone permits 0.05pp, so the bar was unmeetable by construction. Observed max deviation 0.047pp: inside the rounding envelope, outside my bar. Every other control leg passed (coverage 5,419, buckets partition, rank-differing arms move covered inputs, live per-cell top-1 and CE identical at 0.00e+00). LESSON 84.",
+  "evidence": "ops/converged_build_structure.py, 4.0s. Two builds x three roles at 5,419 on S1789's target-frequency buckets crossed with S1936's input-coverage axis.",
+  "scopes": "S1951's pooled headline is correct and is now scoped as a redistribution, exactly as S1932 was.",
+  "section": "S1953",
+  "status": "pred_a FALSE 0/3 (the finding); pred_b and pred_c TRUE 3/3; pred_d FAILED on a mis-specified bar (below).",
+  "truncation_cost": "pred_c, 3/3: on COVERED inputs the 125+ bucket falls -1.01/-0.68/-0.17pp -- rank 768 against full rank, paid on the most-frequent targets at the positions the tables serve directly. Real and small.",
+  "which_lever_carries_it": "pred_b, 3/3: the win is overwhelmingly on UNCOVERED inputs -- overall top-1 gain +1.59/+1.08/+1.26pp there against +0.04/+0.08/+0.04pp at covered inputs, a ratio of 44.4x/12.9x/29.3x. The fallback change touches only uncovered inputs (S1936); the table truncation touches everything. Almost all of S1951's margin is the FALLBACK, and the 51%-cheaper tables are very nearly free rather than beneficial."
  },
  "COST_ARC_FIXED_POINT_S1950": {
   "arc_summary": "S1937 found the fallback's form had been chosen on one instrument; S1938 showed the instruments disagreed; S1942 found the two forms orthogonal in row space and closed that fork by blending; S1944-S1945 made the blend cheaper than the map it replaced; S1946 composed it with S1928's allocation and superseded the best-known build; S1947-S1950 located both knees and proved them stable. THE LARGEST SINGLE GAIN IN THE ARC WAS S1946's REPRICING -- truncating the tables, which was never a fallback question -- and the fallback work of S1937-S1945 bought roughly a tenth as much. Both are in the final build.",
