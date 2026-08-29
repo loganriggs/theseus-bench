@@ -1023,6 +1023,16 @@
   "signal_orders_agreement": "quartiles give 4.22->5.29, 3.98->5.92, 4.67->5.73x (+1.07/+1.94/+1.06x)",
   "status": "CERTIFIED \u2014 all four predictions TRUE"
  },
+ "SHIPPED_PROGRAM_DEPTH_PROFILE_S2015": {
+  "builds_on": "THE_SHIPPED_PROGRAM_IS_SUPERADDITIVE_IN_LOSS_S2014",
+  "claim": "In the shipped 36-site program, table content lives almost entirely in the last two MLPs. Replacing one site's table with a mean row costs: mlp0 -0.00005, mlp2 -0.00012, mlp4 +0.00392, mlp6 +0.00012, mlp8 +0.00138, mlp10 +0.01065, mlp12 +0.02692, mlp14 +0.01258, mlp16 +0.35449, mlp17 +0.81517 (skip7000). The eight sampled sites at layers 0-14 sum to 0.055 nats; mlp16 and mlp17 alone are 0.354 and 0.815, carrying 96% of the sampled total. mlp17's content is 6,800 times mlp2's.",
+  "evidence": "ops/the_shipped_programs_depth_profile.py, 133.8s, thirteen arms x three roles at 5,419, each a composite meanrow at one site with the shipped tables everywhere else. pred_a True 3/3 (S2014's mlp2 and mlp12 anchors rebuild within 0.0005), pred_b True 3/3, pred_c FALSE. Derived controls True, reference deviation 0.000000.",
+  "open": "S2013 priced rank 128 against rank 768 at mlp2, where the whole content is 0.0001 nats -- the least informative site in the program. The same question at mlp16 and mlp17, where the content is 0.354 and 0.815, is where a rank decision actually moves the program and has never been asked. S2016 runs it.",
+  "pred_c_failed_at_one_site": "The bar was that mlp0, mlp2 and mlp4 are each worth under 0.002 nats. mlp0 and mlp2 are worth -0.0001 to +0.0000; mlp4 is worth +0.00392/+0.00436/+0.00493, missing by 0.0019/0.0024/0.0029. The shallow sites are not uniformly free.",
+  "section": "S2015",
+  "status": "CERTIFIED",
+  "what_it_does_NOT_say": "It does not say to cut the shallow tables. Setting the eight sampled shallow sites to mean rows costs 0.055 nats and would save about 40M values, worth 0.004 nats at S1947's 0.010-per-100M price -- the cost exceeds the saving more than tenfold. S2013's corollary (rank 128 at mlp2 marginally justified) was about TRUNCATION, which keeps most of the content, and does not extrapolate to removal; S2014's 22% super-additivity means the eight together cost more than their sum in any case."
+ },
  "STREAM_INPUT_LINE_CLOSED_S1879": {
   "caveat": "\u00a71879 pred_d convergence clause passed vacuously (deltas 22.63370/5.43549/1.85551, all >1). The STREAMITER row is iterate 3 of a NON-converging sequence, not a fixed point.",
   "claim": "The length-1 residual stream entering a site predicts that site output far better than the token embedding (+0.17427/+0.21358/+0.21419 vs +0.59560/+0.67209/+0.67172 at map rank 512), but a fully compiled program cannot reproduce the stream. Regenerating it from the program's own prefix gives +1.08978/+1.27276/+1.26133 (\u00a71878); refitting the map on program-generated streams and iterating gives +5.49867/+5.61939/+5.59476 (\u00a71879), an uncovered CE near 10.66 against ln(50257)=10.82.",
