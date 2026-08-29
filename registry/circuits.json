@@ -505,6 +505,16 @@
   "section": "S1938",
   "status": "CERTIFIED -- rung 2, second-class confirmation of S1937 with a different instrument"
  },
+ "LAYER6_BOUNDARY_AND_THE_MLP4_SPIKE_S1987": {
+  "builds_on": "OFF_PATH_COMPILATION_IS_HARMFUL_S1986",
+  "claim": "The boundary is layer 6 for EVERY MLP, not a per-site one: lone compiled mlp8 costs 0.051/0.053/0.057 nats and mlp12 0.034, while mlp2 costs 4.813/5.291/4.958 and mlp4 10.669. A HALF-CLOSED PATH IS WORSE THAN NONE: mlp2 + attention 2-3 costs 6.893/7.053/6.817, worse than mlp2 alone by 2.08 nats; closing the path through layer 6 drops it to 1.977/2.117/1.906 (step of 4.923 at pooled t = -343.8).",
+  "depth_profile": "mlp2 4.81, mlp4 10.67, mlp5 2.02 (S1982), mlp8 0.05, mlp12 0.03. Layer 4 is a SPIKE, not a plateau edge: its neighbour one layer closer to the boundary costs a fifth as much, and a site two layers further away costs less than half. Distance to the boundary does not order the rest.",
+  "evidence": "ops/is_layer_six_the_boundary_for_all.py, 56.9s, seven arms x three roles at 5,419. pred_b True 3/3 on both halves, pred_c True 3/3, pred_a FALSE. Derived controls True, both reference deviations 0.000000.",
+  "open": "S1983 showed mlp4's content is irrelevant (a mean row costs the same 10.67), so the spike is not about what mlp4 writes but about attention 6 needing that position's activation to vary. Next: compile mlp3 and mlp6 to see whether the spike is one site wide.",
+  "pred_a_failed_narrowly": "The bar was 'a lone compiled mlp2 costs more than 5 nats on >=2 roles'. It clears 5 on ONE role (5.291) and misses on the other two, 4.813 and 4.958 -- short by 0.187 and 0.042 nats. A miss is a miss. The reason it missed is the finding: mlp2's damage is under half mlp4's, so severity below layer 6 is not uniform.",
+  "section": "S1987",
+  "status": "CERTIFIED"
+ },
  "LAYER6_FIX_DOES_NOT_GENERALISE_S1984": {
   "asymmetry_reproduced": "pred_c: with attention 6 compiled, mean row and compiled table at mlp4 differ by 0.006 nats (10.672 vs 10.666) -- the same 0.006 S1983 found without it. mlp4's content is irrelevant in two different surrounds.",
   "builds_on": "CONTEXT_FREENESS_NOT_CONTENT_S1983",
