@@ -3725,7 +3725,7 @@
   },
   "TRACKING_IS_LATE_ATTENTION_S1891": {
     "status": "MEASURED \u2014 first per-site localisation in the arc; three findings, two from FAILED predictions",
-    "mlp_restorations_are_a_provable_noop": "All 18 MLP leave-one-out restorations give EXACTLY +0.00 on all three roles. Derivable from \u00a71765: with the other 35 sites compiled the residual stream is a function of the current token alone, and an MLP is position-wise, so a live MLP on a context-free stream returns precisely its own table value. Only the 18 ATTENTION sites can carry any of the program's behavioural fidelity.",
+    "mlp_restorations_are_a_provable_noop": "RESTORED AND SCOPED (\u00a71903). The no-op holds at COVERED current tokens \u2014 verified at the stream (1.2e-07, \u00a71899), the output (3.232e-07, \u00a71901) and the logits (7.629e-06 median, \u00a71903) \u2014 and FAILS BY CONSTRUCTION at uncovered ones, where the substituted row is \u00a71870's fallback map output rather than the model's length-1 output. 99.24/99.41/100% of \u00a71898's 1321/1350/650 prediction changes are at uncovered current tokens. \u00a71891's derivation was right; its scope was never stated.",
     "tracking_is_late_attention": "Best restoring sites are attn13/attn13/attn16 (+0.91/+0.96/+0.69), top five drawn from attn8 and attn13-attn17, best site = 28.5/25.7/26.4% of the summed positive gain (3.17/3.74/2.61x). \u00a71891 pred_b FAILED: \u00a71829 put 73.3% of the bottom-up CE fall at layer 1, so the CE instrument and the agreement instrument DISAGREE about where the program is weakest.",
     "not_a_sum_of_independent_substitutions": "Restoring attn5 alone drops enrichment from the 7.19/7.29/7.64x baseline to 1.07/1.04/1.08x \u2014 a permutation-matched pair sits at 1.0x, so one true attention head at layer 5 drives the program to CHANCE. attn6 gives 1.37/1.44/1.38x; attn10 costs 1.0x. Neighbours attn3/attn4/attn7 are harmless. This is \u00a71804/\u00a71806's norm mismatch (substituted rows 2.71-152.62x smaller than live emissions) surfacing behaviourally. \u00a71891 pred_c FAILED and was registered as the more valuable outcome.",
     "baseline_control": "the all-compiled baseline reproduced \u00a71888 to three digits for a third consecutive run",
@@ -3735,12 +3735,23 @@
       "\u00a71806",
       "\u00a71887",
       "\u00a71888",
-      "\u00a71891"
+      "\u00a71891",
+      "\u00a71897",
+      "\u00a71898",
+      "\u00a71899",
+      "\u00a71900",
+      "\u00a71901",
+      "\u00a71902",
+      "\u00a71903"
     ],
     "open": [
       "why attn5/attn6 specifically when attn3/attn4/attn7 are harmless",
       "whether TABLE rank should be spent unevenly ACROSS sites, now that the 18 behaviourally relevant ones are identified"
-    ]
+    ],
+    "what_survives": "The BEHAVIOURAL localisation, which was measured not derived: the tracking is late attention (attn13 best on all three roles at both coverages), and attention restorations change up to 96.6% of positions against the MLP maximum of 3.7% \u2014 27x. \u00a71898 sharpens this rather than weakening it.",
+    "open_hypothesis": "UNTESTED: bilin18 threads a value residual v1 and the initial embedding x0 through blk(x, v1, x0), and v1 is computed from live attention internals rather than from the substituted output \u2014 so the compiled stream need not equal the length-1 stream. One run to check; explicitly not a finding (\u00a71888/\u00a71890 are why it is labelled).",
+    "the_S1898_S1903_loop": "Six sections went round a loop because \u00a71898 counted all scored positions while \u00a71899/\u00a71901 measured covered ones only. Every measurement was correct; they scored different populations. Four hypotheses were raised and refuted by runs (v1/x0 residual, float argmax flips, bfloat16, non-determinism) before the scope mismatch was found. DIAGNOSIS CREDIT: Codex, 2026-08-29T08:22Z, from the source. LESSON 71.",
+    "what_never_moved": "The BEHAVIOURAL localisation: the tracking is late attention (attn13 best at both coverages), attention restorations change up to 96.6% of positions against the MLP maximum of 3.7%, and MLP restorations move the agreement enrichment by at most 0.0042. Measured, not derived, and untouched by the entire \u00a71898-\u00a71903 episode."
   },
   "NORM_RATIO_PREDICTS_COLLAPSE_S1892": {
     "status": "MEASURED \u2014 answers both of \u00a71891's open questions; pred_b failed as its own control intended",
