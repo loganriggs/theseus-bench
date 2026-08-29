@@ -653,6 +653,17 @@
   "section": "S1963",
   "status": "CERTIFIED. The deployable conclusion is a NEGATIVE and it closes the line."
  },
+ "POOLING_AUDIT_CLEARS_THE_ARC_S1974": {
+  "builds_on": "TILT_LINE_CLOSES_AT_A_NUMBER_S1973",
+  "claim": "Auditing every result artifact in the tree under pooled paired statistics (190 comparisons carrying three roles): only 6 show the 2-of-3 sign vote disagreeing with the pooled sign, all at |t| <= 0.51 on differences of 0.016-0.116 milli-nats; 41 are 'at risk' (skip1200 supported the majority and pooled |t| < 2); and 40 are unambiguous at pooled |t| >= 10. NOT ONE of the 47 problematic comparisons involves a build-level arm.",
+  "contrast_with_S1965": "The six genuine vote-vs-pooling disagreements are all inside the noise -- a vote over unequal roles disagrees with the evidence exactly where there is no evidence. S1965 was a different failure: its vote passed a CHEAPNESS bar while the pooled evidence said 'worse', and that is the one that cost a published claim.",
+  "evidence": "ops/pooling_audit.py, no GPU. A paired difference pools exactly from per-role mean/se/n, so the arc is re-readable from disk.",
+  "method_note": "The audit reads 190 comparisons out of artifacts written across S1935-S1973 by both the hand-forked and declarative forms, only possible because every one recorded per-role mean, se and n rather than a bare verdict. Recording the MARGIN rather than the boolean made a retrospective re-analysis possible at zero cost.",
+  "open": "ops/pooling_audit.py runs over the whole tree in seconds and is wired to nothing. The same arithmetic could gate a section at write-up time -- refusing a 2-of-3 without its pooled t alongside -- turning S1972's lesson (significance to believe, magnitude to buy) into a mechanism rather than a resolution.",
+  "section": "S1974",
+  "status": "CERTIFIED. The arc's structural conclusions stand as published.",
+  "where_the_risk_lives": "All 47 live inside the alpha sweep (14), the tilt sweep (3+3) or the tilt-compromise run (1) -- the axes S1972 and S1973 already priced at 0.4% of the build's margin and nothing respectively. The comparisons that decide the build (deployed vs converged, map ranks, allocations) are among the 40 at pooled |t| >= 10, where a half-sized role cannot change the answer."
+ },
  "PROGRAM_IS_NOT_A_DEGRADED_COPY_S1884": {
   "S1884_inversion_resolved": "\u00a71884's struck pred_c was directionally right (rare imitates slightly more) but 40x overstated: 1.17x, not 45x. The strike remains correct \u2014 its null was 5-16x too low and its 97x enrichment is 15x the true 6.3x. \u00a71885 pred_c FAILED its own 10x bar on skip11000 (5x), so the claim \"the old baseline was badly wrong on every role\" does not hold; \"badly wrong\" does.",
   "claim": "On its strongest bucket (targets seen 125+ times) \u00a71882's half-cost build gets 81.4/82.5/80.7% of its correct top-1 predictions on positions the LIVE MODEL also gets right. About one in five of its correct answers are positions where the model itself is wrong, so the program is not simply a degraded copy of the model \u2014 it is a different predictor overlapping it.",
