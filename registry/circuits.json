@@ -86,6 +86,17 @@
   "section": "S1944",
   "status": "CERTIFIED for pred_b and pred_c (3/3 each); pred_a FALSE 0/3."
  },
+ "CHEAPER_FRONTIER_HOLDS_AT_16110_S1945": {
+  "claim": "At 16,110 coverage the blend mix25m256 (689.457M) still beats map512 (710.623M) on BOTH instruments on 3/3 roles -- top-1 +0.12/+0.11/+0.04pp and CE -0.0077/-0.0082/-0.0038 nats at paired t = -6.30/-6.57/-2.13 -- for 21.2M less. The frontier order CE(mix25m512) < CE(mix25m256) < CE(map512) also holds 3/3.",
+  "confirms": "CHEAPER_BLEND_BEATS_MAP512_S1944",
+  "controls": "coverage exactly 16,110; every arm inert at covered inputs; buckets partition; live per-cell top-1 and CE identical across all six arms at 0.00e+00; map512/map64/mix25m512 reproduced S1943's published 16,110 pooled CE to 0.000004 nats (thirty-first clean reading).",
+  "cost_note": "At 16,110 the 36 full-rank tables cost 667.9M, so the fallback is 1.5-6% of the build and mix25m256's relative saving over map512 is 3.0% against 7.9% at 5,419. The blend's advantage is in nats and points, not in a cost ratio, once coverage is high -- the fallback touches ~10% of positions here against ~24% at 5,419 (S1936).",
+  "evidence": "ops/frontier_at_high_coverage.py, 52.1s, six arms x three roles at 16,110, per-position top-1 and CE with a paired t on every CE margin vs map512.",
+  "open": "Everything from S1937 onward holds the 36 tables at FULL rank. S1928-S1935 established per-site rank allocation is worth ~0.015-0.019 nats on its own, with attention sites wanting 12.5-25% of the per-site budget. The blend and the allocation lever have never been combined, and at 16,110 the tables are 94% of the build.",
+  "scaling_caveat": "pred_b (the 16,110 CE margin is 30-80% of its 5,419 value) passed 2/3. Ratios were 45%/46%/18%: two roles near the middle, matching S1943's 'a little over half', but skip1200 shrank to 18% -- its margin is -0.0038 nats at t=-2.13, the weakest cell. THE SCALING IS NOT UNIFORM ACROSS ROLES; extrapolating a fallback margin to a new coverage from one role would have been wrong by 2.5x.",
+  "section": "S1945",
+  "status": "CERTIFIED -- all four registered predicates TRUE. Rung 2, second-class confirmation of S1944 at the other coverage."
+ },
  "CONFIDENCE_MODULATES_TRACKING_S1911": {
   "claim": "The compiled program's top-1 agreement with the live model roughly DOUBLES with the model's own confidence: 5.36/5.06/5.80x on the least-decided quartile of live top-2 logit margin, 10.11/10.34/10.87x on the most-decided. Gain +4.75/+5.27/+5.07x.",
   "confirmed_at_deployed_coverage_S1922": "At 5,419 types the within-token spread is EXACTLY 0.00e+00 on all three roles, both arms order agreement (covered +9.69/+10.46/+10.17, uncovered +3.28/+3.11/+2.10), and covered still exceeds uncovered. The uncovered arm holds 24.1/25.4/24.2% of positions against ~10% at 16,110 \u2014 2.4x the sample \u2014 so \u00a71922 uncovered gradients (+3.28/+3.11/+2.10) are better estimated than \u00a71918 and are the ones to quote. The signal is a property of the PROGRAM, not of the high-coverage build.",
