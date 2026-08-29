@@ -23,6 +23,7 @@
   "builds_on": "TILT_AXIS_SETTLED_S1967",
   "claim": "Applying S1967's stopping rule to S1961's own artifact (no GPU): alpha FAILS on 6 of 6 role-coverage cells -- the three grid points around its optimum span 2.10/3.48/1.19 milli-nats at 5,419 and 0.57/1.08/0.51 at 16,110, against a 0.50 bar and up to seven times the tilt's span. It is not a grid-density artefact: the two grids have comparable spacing.",
   "consequence": "Alpha is worth pinning to +-5 points and the tilt is not. S1961 swept 10/20/25/30/40/50 and never looked between 0.25 and 0.35, where the optimum sits on 5 of 6 cells.",
+  "corrected_by": "S1970: the failure WAS resolution. At 24/26/28/30/32/34/36 the three-point span is 0.06-0.15 milli-nats. S1968's argument that the grids had comparable spacing confused alpha POINTS with what a point costs -- S1961's grid straddled the steep 0.30->0.40 step. S1968's correction of S1961's characterisation stands.",
   "corrects": "ALPHA_IS_FLAT_AND_EFFECTIVELY_OPTIMAL_S1961",
   "corrects_S1961": "S1961 called alpha 'flat and effectively optimal' by noting alpha=0.10 costs +10 to +12 milli-nats -- flat RELATIVE TO THE FAR ENDS of the grid. S1967's rule asks what being ONE GRID STEP off costs: for alpha up to 3.48 milli-nats (alpha=0.40 is expensive), for the tilt under 0.5. 'Flat compared to a bad value' is not 'flat near the optimum'. S1961's operational advice (0.25 and 0.30 interchangeable, worth 0.08-1.19 milli-nats) survives; the characterisation does not.",
   "evidence": "Arithmetic on ops/alpha_reoptimised_results.json. No run.",
@@ -43,6 +44,19 @@
   "section": "S1961",
   "shape": "The curve is FLAT near the optimum and falls away sharply: alpha=0.10 costs +10 to +12 milli-nats at 5,419, ten to twenty times what the 0.25->0.30 move recovers. S1943 chose well and the value survived three changes of operating point.",
   "status": "CERTIFIED. The actionable conclusion is a NEGATIVE: leave alpha alone."
+ },
+ "ALPHA_SETTLES_AT_FINER_RESOLUTION_S1970": {
+  "all_axes_closed": "table rank -- monotone, price criterion, mlp 768 (S1947/S1950, threshold vindicated S1958); attention share -- monotone, price, 384 at 5,419 and 256 at 16,110 (S1948/S1952); map rank -- monotone, price, 640 (S1959); per-token tilt -- interior optimum, one-step-error span, 25->35 (S1967); alpha -- interior optimum, span, 0.30 +-2 (S1970).",
+  "builds_on": "TWO_KINDS_OF_AXIS_TWO_STOPPING_RULES_S1969",
+  "claim": "Swept at 24/26/28/30/32/34/36 -- four times finer than S1961's grid -- alpha SETTLES under S1967's stopping rule: the three points around the optimum span 0.06 to 0.15 milli-nats at both coverages, against 2.10-3.48 on the coarse grid. Alpha is settled at 0.30 +-2 points and the whole 0.24-0.36 window is worth at most 1.6 milli-nats.",
+  "controls": "Derived: coverages exact; same-spec pairs inert at covered inputs and differing-spec pairs not; buckets partition; live per-cell identical; S1967's published flat CE reproduced to 0.000000 via B.ref(). Fifty-second clean reading.",
+  "corrects": "ALPHA_FAILS_THE_STOPPING_RULE_S1968 (its 'not a grid artefact' argument)",
+  "corrects_S1968": "S1968 argued alpha's failure was NOT a grid artefact because the alpha and tilt grids had comparable spacing. That was wrong. The gaps are comparable in alpha POINTS but not in what a point costs: S1961's grid straddled 0.30->0.40, across which CE rises steeply, while the dense grid steps 0.30->0.32->0.34. Both outcomes were registered and this is the one I argued against. S1968's correction of S1961's CHARACTERISATION stands; its claim that the failure was intrinsic does not.",
+  "dissenting_role": "pred_a and pred_c both passed 2/3 with the same dissenter: at 16,110/skip1200 the argmin sits at a24, the low EDGE, falling monotonically across the window (-0.60 at a24), so for that cell 0.24-0.36 is still the wrong window. It is the same role that dissented in S1963, S1966 and S1967.",
+  "evidence": "ops/alpha_dense.py, 249.4s, declarative (run()'s fifth). Eight builds x three roles x two coverages. All three predicates TRUE, derived controls TRUE, reference deviation 0.000000.",
+  "open": "Five axes, five stopping criteria, and ONE ROLE dissenting on two of them: 16,110/skip1200 wants less neighbour (S1970) and had the only unseen-bucket regression under five CE purchases (S1962). Every conclusion in S1946-S1970 is a 2-of-3 or 3-of-3 vote across three held-out roles, and one role has disagreed often enough to be worth characterising rather than outvoted.",
+  "section": "S1970",
+  "status": "CERTIFIED, and it CORRECTS S1968's reasoning."
  },
  "ATTENTION_SHARE_IS_MONOTONE_S1948": {
   "builds_on": "TABLE_CURVE_KNEE_AT_768_256_S1947",
