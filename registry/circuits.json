@@ -171,6 +171,19 @@
   "threshold_not_ranking": "The CE ordering is NOT monotone: q1 sits BELOW q2 on all six arm-role pairs. The extremes order as the agreement result predicts and the middle two invert, so the signal separates best-from-worst well and ranks poorly. Anything thresholding on it will behave; anything treating it as a graded score will not. Unexplained and deliberately not guessed at. \u00a71926 measured two confounds and refuted both: q1 holds the RAREST tokens (93.6/99.0/87.1 vs 234-282 elsewhere) so the frequency mixture is inverted the OPPOSITE way to the CE; and holding target frequency fixed at \u00a71789's 125+ bucket leaves the ordering non-monotone on 3 of 3 roles. The inversion is a documented property, not an artifact.",
   "uncovered_arm_S1918": "The signal orders agreement at uncovered positions at +3.90/+4.10/+2.06x, against +9.50/+9.79/+9.28 on the covered arm \u2014 41%/42%/22% of the strength, consistent with \u00a71887 (the fallback tracks the model at 2.3x less than the tables). Caveats: quartiles hold only 349-1220 positions so the null noise is larger than \u00a71916's +-0.08, and skip1200 is effectively binary (q0-q2 flat at 2.82/2.85/2.75, only q3 rises)."
  },
+ "COST_ARC_FIXED_POINT_S1950": {
+  "arc_summary": "S1937 found the fallback's form had been chosen on one instrument; S1938 showed the instruments disagreed; S1942 found the two forms orthogonal in row space and closed that fork by blending; S1944-S1945 made the blend cheaper than the map it replaced; S1946 composed it with S1928's allocation and superseded the best-known build; S1947-S1950 located both knees and proved them stable. THE LARGEST SINGLE GAIN IN THE ARC WAS S1946's REPRICING -- truncating the tables, which was never a fallback question -- and the fallback work of S1937-S1945 bought roughly a tenth as much. Both are in the final build.",
+  "builds_on": [
+   "FALLBACK_OPTIMUM_MOVES_AT_THE_KNEE_S1949",
+   "TABLE_CURVE_KNEE_AT_768_256_S1947"
+  ],
+  "claim": "(36 tables at mlp rank 768 / attention rank 256, fallback = 25% output-NN neighbour + 75% rank-512 embedding->row map) is a FIXED POINT of the alternation between the table axis and the fallback axis at 16,110 coverage. Re-opening the table axis with the rank-512 fallback in place leaves both knees exactly where they were: the 0.010 nats/100M threshold is still crossed between {768,256} (0.0093/0.0090/0.0073) and {640,160} (0.0169/0.0175/0.0130), and attention 384 -> 256 still costs only 0.0047/0.0051/0.0034. Neither axis wants to move again.",
+  "controls": "polarity checked for this lineage: a rank-differing arm DOES move covered-input predictions, an identical-spec arm does NOT; buckets partition; live per-cell top-1 and CE identical at 0.00e+00; the {768,256} arm reproduced S1949's published CE to 0.000004 nats (thirty-sixth clean reading).",
+  "converged_build": "fb_mix25m512 at 360.792M: 36 context-free tables at mlp 768 / attn 256; uncovered rows = 25% output-NN neighbour + 75% rank-512 map. Against S1931's superseded best-known at the same 360.723M budget it is ~0.011 nats better on all three roles; against the full-rank 689.457M build it is 46% cheaper for ~0.007 nats; and no cheaper build in the S1947 sweep beats S1931's on either instrument.",
+  "evidence": "ops/fixed_point_check.py, 5.8s. Six builds x three roles at 16,110, per-position top-1 and CE with a paired t on every CE margin. All four registered predicates TRUE.",
+  "section": "S1950",
+  "status": "CERTIFIED -- rung 2 convergence check."
+ },
  "DEPLOYABLE_FALLBACK_SOTA_S1870": {
   "claim": "A covered-fit linear map from the TOKEN EMBEDDING at map rank 512 cuts the deployed fallback loss from +0.78075/+0.86225/+0.83997 to +0.59560/+0.67209/+0.67172 against the uncovered-token ceiling \u2014 23.7/22.1/20.0% of it \u2014 for +37.159M reals (833/811/916 M/nat all-position).",
   "confirmed_by": "\u00a71878 and \u00a71879, by the failure of both stream rescues",
