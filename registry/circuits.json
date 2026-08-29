@@ -705,6 +705,17 @@
   ],
   "status": "CERTIFIED at two coverages (\u00a71934)"
  },
+ "ROLES_ARE_NOT_INTERCHANGEABLE_S1971": {
+  "alpha_significance": "On the alpha axis almost nothing is significant: a24-vs-a30 paired t across all six cells is +2.02, +0.54, +2.45, +1.83, +1.32, -1.59 -- only two clear 2-sigma. Consistent with S1970's finding that the whole 0.24-0.36 window is worth at most 1.6 milli-nats.",
+  "builds_on": "ALPHA_SETTLES_AT_FINER_RESOLUTION_S1970",
+  "claim": "skip1200 carries exactly HALF the scored positions of skip7000 and skip11000 (18,432 vs 36,864, the n96 rowcache against their n192), so its standard errors run about sqrt(2) larger (0.618 vs 0.379/0.434 milli-nats at 5,419; 0.379 vs 0.258/0.270 at 16,110). Its repeated dissent on the alpha axis is NOT significant: the a24-vs-a30 difference that made it prefer the window edge is -0.601 milli-nats at t = -1.59.",
+  "consequence": "Every conclusion in S1946-S1971 is a 2-of-3 or 3-of-3 vote across three held-out roles, and the vote has counted a HALF-SIZED role as an equal voter. A 2-of-3 where skip1200 DISSENTS is stronger than it reads (the two agreeing roles carry three-quarters of the data); a 2-of-3 where skip1200 SUPPORTS is weaker (one supporting vote has half the evidence). The write-ups quote '2/3' as if the three were interchangeable.",
+  "evidence": "Arithmetic on ops/alpha_dense_results.json. No run.",
+  "open": "The three roles are not interchangeable and the ledger has treated them as such since S1946. A weighted or POOLED-ACROSS-ROLES paired test would settle a 2-of-3 without a vote at all, and the per-position data for every arm is already cached -- arithmetic on disk rather than a run. That is the instrument this arc should have had.",
+  "section": "S1971",
+  "status": "CERTIFIED as a methodological finding about the whole arc.",
+  "what_it_does_not_change": "No result is overturned: the 3-of-3 findings are untouched and per-role margins have been quoted throughout, so the numbers needed to re-weight are already in the ledger and artifacts. What changes is how a 2-of-3 should be READ. S1965's boundary claim is first to re-examine: it rested on 16,110/skip1200 being the role where the tilt was free (-0.49 milli-nats), and that is the half-sized role -- a point S1966 corrected on other grounds without noticing this one."
+ },
  "ROUTED_HYBRID_IS_TOP1_ONLY_S1940": {
   "claim": "The cosine-routed nn75 fallback beats bilin18's deployed rank-64 map on POOLED TOP-1 at both 5,419 and 16,110 coverage, all six role-coverage cells (+0.47/+0.44/+0.47pp and +0.25/+0.11/+0.17pp), and the margin SHRINKS with coverage on 3/3 roles as the uncovered arm falls from ~24% to ~10% of scored positions. On CE it is NEUTRAL, not better.",
   "consequence": "The S1937/S1938 objective fork is NOT closed. Under a top-1 objective nn75 should replace S1789's fallback; under the M/nat objective the cost arc has used since S1747, S1938's ordering stands and map512 remains the CE choice.",
