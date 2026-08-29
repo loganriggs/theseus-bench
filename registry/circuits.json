@@ -58,6 +58,18 @@
   "section": "S1970",
   "status": "CERTIFIED, and it CORRECTS S1968's reasoning."
  },
+ "ARC_HEADLINE_POOLED_S1972": {
+  "builds_on": "ROLES_ARE_NOT_INTERCHANGEABLE_S1971",
+  "claim": "Pooled across all three roles on 92,160 positions, the converged build beats S1789's deployed design by 69.238 milli-nats at paired t = -42.76 -- no vote, and STRONGER than the best single role (-27.74), because pooling uses every position rather than the best third. Every '3/3 roles' in S1946-S1971 can be restated this way from cached artifacts.",
+  "controls": "Derived: coverage exact; same-spec pairs inert at covered inputs and differing-spec pairs not; buckets partition; live per-cell identical; S1970's published a30 CE reproduced to 0.000000 via B.ref(). Fifty-third clean reading.",
+  "dissenting_role_confirmed": "skip1200's per-role t on the tilt is -0.33 against skip11000's -2.28 -- the half-sized role contributing the weakest evidence, and under a vote it would have counted the same (S1971).",
+  "evidence": "ops/arc_under_pooling.py, 4.3s, declarative (run()'s sixth). Three builds x three roles at 5,419, with S1971's pooled-across-roles paired t. pred_a True, pred_b False, pred_c True, derived controls True.",
+  "general_point": "On 92,160 positions almost anything real becomes detectable. A t-test answers 'is the effect nonzero'; a build decision needs 'is the effect worth its cost'. The arc needs both: significance to believe an effect, magnitude to buy it. Every marginal purchase from S1957 on was decided on magnitude against S1947's 0.010 nats/100M, vindicated by S1958, and none should be re-litigated on a t-value.",
+  "my_predicate_was_wrong": "I registered that S1967's tilt would be 'not significant even pooled', with the consequence that a failure would mean 'the stopping rule fired too early'. It is significant (pooled t = -2.23) and the rule did NOT fire too early: the tilt is worth -0.266 milli-nats, 0.4% of the converged build's 69.238-milli-nat margin. S1967 asked 'is this worth buying' and answered on magnitude, correctly; my predicate asked 'is this detectable' and treated the answers as interchangeable. LESSON 91.",
+  "open": "The pooled instrument has been applied to three comparisons. Every 2-of-3 in S1946-S1971 could be restated with it from cached data, and S1965's boundary claim most needs it -- it rested on 16,110/skip1200, now known to be the half-sized role, and S1966 corrected it on other grounds without ever pooling.",
+  "section": "S1972",
+  "status": "CERTIFIED for pred_a and pred_c. pred_b FAILED and the fault is in my predicate."
+ },
  "ATTENTION_SHARE_IS_MONOTONE_S1948": {
   "builds_on": "TABLE_CURVE_KNEE_AT_768_256_S1947",
   "claim": "At 16,110 with mlp fixed at 768 and the S1944 blend fallback, pooled CE is STRICTLY MONOTONE DECREASING in the attention rank across 64/128/192/256/384/576 on all three roles (18/18 points). There is no interior optimum: the CE argmin is 576 -- 75% of the MLP rank -- on every role, three times the top of S1928's 12.5-25% band.",
