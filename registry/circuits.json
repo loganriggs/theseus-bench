@@ -3701,5 +3701,19 @@
     "S1884_inversion_resolved": "\u00a71884's struck pred_c was directionally right (rare imitates slightly more) but 40x overstated: 1.17x, not 45x. The strike remains correct \u2014 its null was 5-16x too low and its 97x enrichment is 15x the true 6.3x. \u00a71885 pred_c FAILED its own 10x bar on skip11000 (5x), so the claim \"the old baseline was badly wrong on every role\" does not hold; \"badly wrong\" does.",
     "replication_S1886": "The DEPLOYED build (full-rank tables, rank-64 map) tracks the live model at 5.84/5.78/5.77x the permutation null on the 125+ bucket and 6.96/6.86/6.78x on fit-count-0 \u2014 within 0.48/0.21/0.35x of the half-cost build. The tracking is a property of the compiled program, not of the rank-512 SVD truncation, which \u00a71883 had just shown is not neutral. The rare>common ordering holds on both builds at the same ~1.18x margin.",
     "settled_statement": "The compiled 36-site program tracks the live model's top-1 at ~5.8x chance on frequent targets and ~6.9x on targets it has never seen, while being correct on the latter only 2.6-4.9% as often as the model. It reproduces the model's predictions \u2014 errors included \u2014 most faithfully where those predictions are worst. The deployed and 46%-cheaper builds do this to the same degree."
+  },
+  "TRACKING_IS_THE_TABLES_S1887": {
+    "status": "CERTIFIED \u2014 all four predictions TRUE, with the frequency-proxy confound controlled",
+    "claim": "The compiled program's top-1 fidelity to the live model is carried by the TABLE lookups: enrichment over a permutation null is 7.16/7.29/7.49x at covered current tokens (exact length-1 site outputs) against 3.14/3.56/3.11x at uncovered ones (\u00a71870's rank-64 fallback map) \u2014 a 2.28/2.05/2.41x ratio. \u00a71885's aggregate 5.8x was averaging these.",
+    "confound_controlled": "Covered current tokens are commoner tokens, so the raw split risks re-measuring target frequency. Holding the target bucket at 125+, the gap WIDENS to 2.57/2.97/2.71x (6.09/6.33/6.11x vs 2.37/2.13/2.26x).",
+    "fallback_is_not_inert": "3.14/3.56/3.11x \u2014 a rank-64 linear map of the embedding tracks the model three times better than chance, so \u00a71866-\u00a71882's fallback lever moves top-1 behaviour, not only CE.",
+    "against_the_easy_reading": "The live model is MORE accurate at uncovered current tokens (47.0/51.0/47.7%) than at covered ones (38.5/41.4/37.9%), so the fallback's lower enrichment is not because its positions are harder for the model \u2014 they are easier.",
+    "axis": "first split on the CURRENT token's coverage (which mechanism ran) rather than the TARGET's frequency (what the program can produce) \u2014 every split since \u00a71789 used the latter",
+    "sections": [
+      "\u00a71885",
+      "\u00a71886",
+      "\u00a71887"
+    ],
+    "known_answer_control": "the mechanism split partitions all scored positions; buckets partition independently"
   }
 }
