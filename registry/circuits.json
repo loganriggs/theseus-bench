@@ -197,6 +197,20 @@
    "MAP_RANK_TRACKS_TABLE_RANK_S1880"
   ]
  },
+ "MAP_IS_INERT_AT_COVERED_INPUTS_S1936": {
+  "absolute_arithmetic": "In correct tokens on the uncovered arm, 64->512 buys +103/+92/+32 across the four rare buckets and gives back -22/-48/-18 on 125+: the frequent-target loss cancels 21%/52%/56% of the rare-target gain. Net +81/+44/+14 tokens = +0.91/+0.47/+0.31pp on that arm.",
+  "caveat": "pred_c (125+ loss >= 1.5pp on uncovered inputs) passed 2/3 against a 2-of-3 bar; skip7000 missed at -1.20pp. Treated as 'roughly 2-4x the pooled figure', not more.",
+  "claim": "bilin18's compiled-program fallback map (S1870) is EXACTLY inert wherever the current token has a table entry. Raising it from rank 64 to 512 changed the top-1 prediction at 0 of 69,444 covered-input positions and at 6,936 of 22,716 uncovered-input ones. All map effects reported from S1870 onward are statements about the ~24-25% of positions whose INPUT token is uncovered.",
+  "confirms": "S1765",
+  "controls": "coverage exactly 5,419; covered+uncovered counts sum to the scored total in every cell; recombination reproduced S1935's published pooled kept-fractions to a max deviation of 0.05pp across 12 figures; live per-cell accuracy identical across both arms (twenty-second clean reading).",
+  "corrects": "S1935",
+  "evidence": "ops/map_gain_by_input_coverage.py, 88.9s. Every scored position cross-tabulated by (input token covered/uncovered) x (true-target fit-row bucket), map rank 64 vs 512, full table rank, 5,419 coverage, 3 held-out roles. Covered-input kept-fraction delta +0.00pp in all 15 cells on all 3 roles.",
+  "open_lever": "On uncovered inputs the LIVE model scores 45.4/49.3/46.1% (a HIGHER baseline than at covered inputs, 37.4/40.0/36.6%) yet the rank-512 program scores 13.1/13.1/11.8% vs 14.0/14.8/14.4% at covered inputs -- kept-fraction 28.7% vs 37.5% at skip7000. A quarter of positions served at three-quarters of the covered arm's efficiency, on easier material.",
+  "resolves": "Restricted to uncovered inputs the 64->512 gain is 3-5x the pooled figure in all four rarer buckets on 3/3 roles (e.g. 25-124: +6.73/+5.05/+5.81pp vs +1.31/+1.06/+1.12 pooled), and the 125+ loss is -1.20/-2.48/-2.16pp vs -0.34/-0.71/-0.56 pooled. S1935's pooled 'breadth' is the uncovered arm diluted by its share; S1935's inference of a covered-target contribution is CORRECTED.",
+  "scope": "5,419 coverage, full table rank. Verifies S1765 (the compiled program is a pure function of the current token) at a seventh place.",
+  "section": "S1936",
+  "status": "CERTIFIED -- all four registered predicates TRUE; pred_a on an exact-zero bar"
+ },
  "MAP_RANK_TRACKS_TABLE_RANK_S1880": {
   "caveat": "m512_64 IS Pareto-nondominated (57.69M/6.1731 vs 20.53M/6.1733) and is still a 185,795 M/nat purchase. Frontier membership is not the same as being worth buying; use \u00a71861 iso-cost there.",
   "corrected_by_S1881": "\u00a71880 called the table-64 residual (+0.00020/+0.00044/+0.00028 at map 64) \"a rounding artifact\". It is the one-dimension shortfall: 64 < 65. \u00a71881 reproduced the same residual at table 256 with map 256 (+0.00013/+0.00022/+0.00020) and table 384 with map 384 (+0.00005/+0.00007/+0.00013) \u2014 three ranks, one mechanism. \u00a71881 pred_a FAILED its 1e-5 bar at 2.20e-04 as a result.",
