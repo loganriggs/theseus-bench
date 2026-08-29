@@ -42,6 +42,22 @@
   "status": "CERTIFIED at 16,110; SCOPED at \u00a71932 \u2014 at the deployed 5,419 coverage it is a redistribution, not a strict improvement",
   "vs_deployed_design": "\u00a71789 scaled up (full-rank table + rank-64 map) costs 673.464M. The combined build is 46% cheaper and better on: all-position CE 5.89446/5.84120/5.86873 vs 5.90522/5.85230/5.88575; overall top-1 14.01/14.75/14.02% vs 13.93/14.71/14.01%; kept-fraction in the 125+ bucket 53.7/54.4/54.4% vs 53.6/54.1/53.9%."
  },
+ "BLENDING_CLOSES_THE_FORK_S1942": {
+  "builds_on": [
+   "NN75M512_DOMINATES_DEPLOYED_S1941",
+   "INSTRUMENTS_RANK_FALLBACKS_OPPOSITELY_S1938"
+  ],
+  "claim": "At 5,419 coverage, filling each uncovered row with a CONVEX BLEND of the output-NN neighbour row and a rank-512 map row (mix50m512: 50/50) strictly beats map512 -- the build the CE objective preferred since S1938 -- on BOTH instruments with significance: top-1 +0.30/+0.33/+0.41pp AND CE -0.0174/-0.0147/-0.0225 nats at paired t = -5.69/-4.34/-4.64, on 3/3 roles, at 0.03% higher cost (267.335M vs 267.246M). This closes the S1937/S1938 objective fork.",
+  "closes": "the S1937/S1938 objective fork",
+  "controls": "coverage exactly 5,419; every arm inert at covered inputs; buckets partition; live per-cell top-1 and CE identical across all seven arms at 0.00e+00; the nn75m512/map512/map64 anchors reproduced S1940/S1941's published pooled top-1 to 0.005pp (twenty-eighth clean reading).",
+  "evidence": "ops/route_or_blend.py, 57.0s, seven arms x three roles, per-position top-1 and CE with a paired t on every CE margin. Written against ops/bqlib.py.",
+  "frontier": "mix50m512 (267.335M) dominates map512 and levels nn75m512; mix25m512 is CE-optimal; the 230.087M deployed design is dominated by all of them.",
+  "mechanism": "The blend is strongly SUPERADDITIVE: every blended arm beats the LINEAR INTERPOLATION of the nn and map512 endpoint CEs at its own alpha -- 9/9 cells, by -0.030 to -0.047 nats. A convex combination can only beat its endpoints' interpolation if the two ingredients contribute along DIFFERENT DIRECTIONS in row space. The neighbour's top-1 contribution and the map's CE contribution are largely orthogonal, which is why no router could take both: routing forces a per-token choice between two things that were never competing. S1939 found the same shape for routing but an order of magnitude weaker.",
+  "open": "alpha was swept at three points and 50% is a CORNER of the grid, not a measured optimum; the map rank is fixed at 512; every figure is at 5,419. S1940 is the precedent for 16,110 -- the fallback arm falls from ~24% to ~10% of positions and margins roughly halve.",
+  "section": "S1942",
+  "status": "CERTIFIED -- all four registered predicates TRUE (3/3 each).",
+  "vs_other_champion": "mix50m512 against S1941's nn75m512: top-1 -0.04/-0.04/+0.01pp (~15 tokens of 36,864 -- a tie, and NO significance test on a top-1 difference was registered) while CE improves by -0.0417/-0.0422/-0.0389 nats. Level on top-1, decisively better on CE. mix25m512 is the CE-optimal blend (CE -0.0254/-0.0262/-0.0282 vs map512 at t = -15.03/-14.13/-10.46) for less top-1."
+ },
  "CONFIDENCE_MODULATES_TRACKING_S1911": {
   "claim": "The compiled program's top-1 agreement with the live model roughly DOUBLES with the model's own confidence: 5.36/5.06/5.80x on the least-decided quartile of live top-2 logit margin, 10.11/10.34/10.87x on the most-decided. Gain +4.75/+5.27/+5.07x.",
   "confirmed_at_deployed_coverage_S1922": "At 5,419 types the within-token spread is EXACTLY 0.00e+00 on all three roles, both arms order agreement (covered +9.69/+10.46/+10.17, uncovered +3.28/+3.11/+2.10), and covered still exceeds uncovered. The uncovered arm holds 24.1/25.4/24.2% of positions against ~10% at 16,110 \u2014 2.4x the sample \u2014 so \u00a71922 uncovered gradients (+3.28/+3.11/+2.10) are better estimated than \u00a71918 and are the ones to quote. The signal is a property of the PROGRAM, not of the high-coverage build.",
