@@ -991,6 +991,16 @@
   "the_shadow": "The attention profile DOES peak at layer 4 -- attn4 beats attn5 by 0.044 at pooled t = +24.9 and attn2 by 0.097 at t = +46.6 -- but the whole attention profile is 37x smaller than the MLP one. The same shape, a faint shadow.",
   "where_the_line_ends": "Eight sections narrowed S1978's 3.6x partial-compilation penalty from 36 sites to ONE: mlp4, read by attention 6. Any attention layer alone costs 0.05-0.31; any MLP above attention 6 costs 0.03-0.20; mlp5 costs 2.02; mlp4 costs 10.67, and S1983 showed the row's content is irrelevant."
  },
+ "THRESHOLD_GAP_IS_NOT_A_FALLBACK_ARTEFACT_S1994": {
+  "builds_on": "THRESHOLD_REPLICATES_AT_16110_S1993",
+  "claim": "The S1992/S1993 threshold's gap sits at COVERED inputs: omitting attention 6 from a compiled mlp2 costs 0.585/0.640/0.606 nats pooled, of which 0.558/0.600/0.548 -- 90-95% -- is at covered inputs, against a registered bar of 50%. The gap is strictly positive in all five target-frequency buckets, and the most frequent bucket carries 0.27-0.32 of the unseen bucket's gap against a bar of 0.25.",
+  "evidence": "ops/where_the_threshold_gap_lives.py, 4.4s warm, five arms x three roles at 5,419, comparing mlp2+attention 5 against mlp2+attention 5,6 -- the same compiled MLP differing by exactly one attention layer. pred_a/b/c all True 3/3, derived controls True, all three reference deviations 0.000000.",
+  "open": "A 3:1 frequency gradient looks like a mechanism, and after S1986, S1990 and S1992 that is exactly when to suspect it is generic. S1995 gives the full 36-site program's damage and both lone compiled MLPs the same bucket decomposition. If all compilation damage has this shape, the gradient says nothing about attention 6.",
+  "section": "S1994",
+  "status": "CERTIFIED",
+  "unregistered_observation": "The gap is graded by target frequency, monotone on all three roles: 0.93 -> 0.75 -> 0.55 -> 0.42 -> 0.30. Omitting attention 6 costs three times as much on an unseen target as on a frequent one. Nothing was registered about the gradient; it is an observation.",
+  "why_it_matters": "The uncovered arm is where the program guesses. If the threshold lived there it would be a fact about S1870's map rather than about the computation. The uncovered gap is larger (0.669/0.759/0.788) but carries about a quarter of the mass."
+ },
  "THRESHOLD_IS_DEFENSIBLE_LEVERS_ARE_NOT_EQUALISED_S1958": {
   "alpha_is_not_a_spending_lever": "mix10m512 and mix40m512 store the same rank-512 map and index -- identical cost, 178.9M both -- so the blend's alpha has no nats-per-100M at all (0/0). Alpha is a FREE parameter to be set at its optimum (S1943: 0.25), never traded against money. The first scoring left the resulting nan in the set and computed a median and max/min over it; both came out right only because Python's sorted() and max() do not propagate nan. Cost-neutral levers are now excluded explicitly and the exclusion is printed.",
   "builds_on": "DEPLOYED_COVERAGE_BUILD_IS_768_384_S1957",
