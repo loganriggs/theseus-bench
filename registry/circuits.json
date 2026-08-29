@@ -71,6 +71,21 @@
   "shape": "CE is U-SHAPED in alpha with its minimum at 25; top-1 rises MONOTONICALLY in alpha to the pure neighbour. The objectives disagree about alpha but overlap widely: every alpha from 10 to 50 beats map512 on BOTH instruments at 5,419, and 10 to 40 at 16,110. S1942's closed fork is a BAND, not a knife-edge.",
   "status": "CERTIFIED -- all four registered predicates TRUE (3/3 each)."
  },
+ "CHEAPER_BLEND_BEATS_MAP512_S1944": {
+  "builds_on": [
+   "BLEND_OPTIMUM_IS_ALPHA_25_S1943",
+   "BLENDING_CLOSES_THE_FORK_S1942"
+  ],
+  "claim": "At 5,419 coverage the blend mix25m256 (25% output-NN neighbour + 75% rank-256 map) costs 246.102M -- 21.1M LESS than map512's 267.246M -- and beats it on BOTH instruments on 3/3 roles: top-1 +0.20/+0.16/+0.21pp and CE -0.0171/-0.0176/-0.0210 nats at paired t = -9.13/-8.55/-7.02. Every prior improvement over map512 cost at least as much as map512 did.",
+  "controls": "coverage exactly 5,419; every arm inert at covered inputs; buckets partition; live per-cell top-1 and CE identical across all nineteen arms at 0.00e+00; the alpha=25 rank=512 pair reproduced S1943's published pooled CE to 0.000005 nats (thirtieth clean reading).",
+  "evidence": "ops/alpha_rank_grid.py, 110.6s. 4 alphas x 4 map ranks x 3 roles, per-position top-1 and CE with a paired t on every CE margin vs map512.",
+  "frontier": "At 5,419, all beating the 230.087M deployed design on both instruments: mix40m128 235.485M (2/3 vs map512) -> mix25m256 246.102M (3/3 vs map512, 21.1M cheaper) -> mix25m512 267.335M (best CE anywhere). map512 is no longer on the frontier.",
+  "interaction": "pred_b, 3/3: the CE-optimal alpha RISES as the map weakens -- alpha=40 at rank 64 on all three roles against alpha=25 at rank 512 on all three (128 and 256 in between). A weaker map is leaned on less and the blend shifts toward the neighbour. This is S1942's orthogonality picture making a correct prediction about something it was not fitted to; it is not what would be seen if alpha were a property of the neighbour alone.",
+  "negative_result": "pred_a FAILED 0/3 by 0.0033 nats. The bar asked whether some rank <= 256 pair comes within 0.005 nats of the best rank-512 blend; the best (mix25m256, -0.0171) misses mix25m512's -0.0254 by 0.0083 on every role. Scored as written this is a FAIL: the CE genuinely wants map capacity and blending does not substitute for it. The honest reading is that rank 256 buys 67% of rank 512's CE gain for 21.1M less.",
+  "open": "mix25m256 has not been checked at 16,110. S1943's precedent puts margins there at a little over half, which would give a CE edge over map512 of roughly -0.008 nats -- still several standard errors by S1943's arithmetic, but an extrapolation.",
+  "section": "S1944",
+  "status": "CERTIFIED for pred_b and pred_c (3/3 each); pred_a FALSE 0/3."
+ },
  "CONFIDENCE_MODULATES_TRACKING_S1911": {
   "claim": "The compiled program's top-1 agreement with the live model roughly DOUBLES with the model's own confidence: 5.36/5.06/5.80x on the least-decided quartile of live top-2 logit margin, 10.11/10.34/10.87x on the most-decided. Gain +4.75/+5.27/+5.07x.",
   "confirmed_at_deployed_coverage_S1922": "At 5,419 types the within-token spread is EXACTLY 0.00e+00 on all three roles, both arms order agreement (covered +9.69/+10.46/+10.17, uncovered +3.28/+3.11/+2.10), and covered still exceeds uncovered. The uncovered arm holds 24.1/25.4/24.2% of positions against ~10% at 16,110 \u2014 2.4x the sample \u2014 so \u00a71922 uncovered gradients (+3.28/+3.11/+2.10) are better estimated than \u00a71918 and are the ones to quote. The signal is a property of the PROGRAM, not of the high-coverage build.",
