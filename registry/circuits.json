@@ -282,6 +282,17 @@
   "section": "S1950",
   "status": "CERTIFIED -- rung 2 convergence check."
  },
+ "COST_IS_NOT_ADDITIVE_OVER_SITES_S1981": {
+  "builds_on": "LAYER_6_ATTENTION_IS_THE_WHOLE_PENALTY_S1980",
+  "claim": "With attention at layer 6 LIVE, compiling only the six MLPs at layers 0-5 costs 10.60-10.96 nats -- 3.9x the price of compiling all thirty-six sites (2.70-2.98) -- while compiling twenty-two sites ABOVE layer 6 costs 2.42-2.67, LESS than the full program. The cost is not additive over sites and not monotone in them: a subset can be catastrophic while its superset is fine.",
+  "controls": "Derived: coverage exact; same-spec pairs exactly inert at covered inputs; at least one differing-spec pair moves; buckets partition; live per-cell identical; S1975's published converged CE reproduced to 0.000000 via B.ref(). Sixtieth clean reading.",
+  "evidence": "ops/what_layer6_reads.py, 104.3s, declarative. Six arms x three roles at 5,419. All three predicates TRUE, derived controls TRUE.",
+  "mechanism": "There is ONE forbidden configuration -- context-free rows arriving at a LIVE attention layer 6 -- and every other combination measured is within 0.4 nats of the program. This closes the line S1978 opened: S1978 found partial compilation 3.6x worse than full and called the program 'internally consistent'; S1979 localised it to three layers, S1980 to one, and the consistency the program needs is a SINGLE INTERFACE, not a global property. Thirty-five sites do not care what their inputs are made of; layer 6's attention does.",
+  "open": "Every arm substitutes layer 6's inputs or leaves them live wholesale; nothing separates what layer 6 READS from what it WRITES, and the six MLPs below it are compiled together. Which of the six, and whether the damage is in layer 6's attention PATTERN or its output MAGNITUDE, are the two questions S1908's alignment x magnitude instrument was built for.",
+  "section": "S1981",
+  "status": "CERTIFIED.",
+  "the_0p3_nats_again": "above_only beats the full program by 0.30/0.31/0.28 nats -- the same ~0.3 nats S1979 found at k=12 and k=15, reached by a third route. It is the number in the architectural question standing with Logan."
+ },
  "DEPLOYABLE_FALLBACK_SOTA_S1870": {
   "claim": "A covered-fit linear map from the TOKEN EMBEDDING at map rank 512 cuts the deployed fallback loss from +0.78075/+0.86225/+0.83997 to +0.59560/+0.67209/+0.67172 against the uncovered-token ceiling \u2014 23.7/22.1/20.0% of it \u2014 for +37.159M reals (833/811/916 M/nat all-position).",
   "confirmed_by": "\u00a71878 and \u00a71879, by the failure of both stream rescues",
