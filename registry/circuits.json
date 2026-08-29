@@ -3757,7 +3757,7 @@
     "the_asymmetry": "Attention restorations change covered and uncovered positions at nearly the same rate (attn5: 96.37 vs 96.03%); MLP restorations differ by 1,200x between them (mlp16: 0.03 vs 35.70%). An attention restoration changes the program everywhere because it restores context; an MLP restoration changes it only where the substituted row was never the model's output to begin with."
   },
   "NORM_RATIO_PREDICTS_COLLAPSE_S1892": {
-    "status": "CERTIFIED AS A THRESHOLD (\u00a71905), not as an ordering \u2014 the stronger \u00a71892 claim is corrected",
+    "status": "SUPERSEDED BY ALIGNMENT_TIMES_MAGNITUDE_S1908 \u2014 the magnitude account was wrong in three steps",
     "claim": "\u00a71891's collapse (restoring one live attention site drives the compiled program's agreement with the model to chance) is a MAGNITUDE effect. Rescaling attn5's live output to its table's mean row norm restores 1.07/1.04/1.08x to 7.26/7.37/7.74x against a 7.19/7.29/7.64x baseline.",
     "norm_ratio_orders_the_sites": "CORRECTED at \u00a71905. Across ALL EIGHTEEN attention sites at 16,110 types the ratio is a THRESHOLD, not an ordering: only attn5 (144.0x) and attn6 (77.1x) exceed 50x and both collapse (1.06/1.32x); all 15 sites at or below 20x stay above 5.0x. But Spearman over the full set is only -0.158/-0.212/-0.249, and attn4 at 35.4x \u2014 inside the band \u00a71892's six sites left empty \u2014 is completely harmless at 7.16/7.28/7.39. The cliff sits between 35x and 77x; on either side the ratio predicts nothing.",
     "the_rescale_is_a_mute_not_a_repair": "\u00a71892 pred_b FAILED exactly as registered: all six rescaled arms land within 0.11x of the baseline, including attn13 which loses its entire +0.91 gain. At factors of 0.0064-0.094 the restored site contributes at the table's magnitude and the program behaves as if it were still compiled. So at the compiled scale the restored site's DIRECTION barely matters \u2014 magnitude alone decides whether restoring a live site helps, does nothing, or destroys the program.",
@@ -3772,7 +3772,8 @@
     "open": "whether the DEPLOYED program's own per-site magnitudes are correct. The tables store length-1 norms; \u00a71804 measured live norms 2.71-152.62x larger. The entire cost arc (\u00a71866-\u00a71883) assumed this away.",
     "control": "the all-compiled baseline reproduced \u00a71888 for a fourth consecutive run; unscaled arm reproduced \u00a71891 to two decimals on all four sites",
     "answer_to_S1891_survives": "attn5 and attn6 are the only two sites past the cliff, which is why they and not their neighbours.",
-    "ratios_are_coverage_dependent": "attn5 is 156.4x at 5,419 types and 144.0x at 16,110; attn3 14.9x -> 13.0x. Any quantitative use of a ratio must state its coverage."
+    "ratios_are_coverage_dependent": "attn5 is 156.4x at 5,419 types and 144.0x at 16,110; attn3 14.9x -> 13.0x. Any quantitative use of a ratio must state its coverage.",
+    "history": "\u00a71892 claimed the live/table norm ratio CAUSES the collapse and orders the sites. \u00a71905 downgraded the ordering to a threshold (Spearman -0.158/-0.212/-0.249 over all 18 sites; attn4 at 35.4x harmless). \u00a71906 removed the causation (amplifying attn3 to an effective 156x gives 9.04x, the best figure measured). \u00a71907 found the separating variable is DIRECTION, at Spearman -0.742. \u00a71908 confirmed the conjunction. Three corrections, all mine, all in place."
   },
   "DEPLOYED_MAGNITUDES_S1893": {
     "status": "CERTIFIED \u2014 settled in BOTH instruments (\u00a71893 top-1, \u00a71894 nats)",
@@ -3820,5 +3821,22 @@
     "control": "cells partition exactly; \u00a71888 enrichment AND \u00a71858 CE both reproduced in the same run",
     "replication_S1896": "At 16,110 types the both-wrong enrichment is 6.23/6.18/6.49x against \u00a71895's 6.10/6.24/6.50x \u2014 a difference of 0.13/0.06/0.01x, two roles agreeing to within a hundredth, on 19618/18650/9847 positions. Tripling coverage changes the covered population (model-only grows from 25.7/27.5/24.9% to 26.9/29.1/26.4%) and the effect does not move.",
     "line_summary": "The compiled 36-site program is neither a subset of the live model nor an independent predictor. It reproduces the model's specific outputs \u2014 correct and incorrect alike \u2014 at 6-8x a marginal-matched null, on two builds, two coverages, and restricted to both-wrong positions. Carried by the table lookups at 2.3x the fallback's rate and by late attention (all 18 MLP restorations are provable no-ops). Simultaneously right on a set the model misses one time in six."
+  },
+  "ALIGNMENT_TIMES_MAGNITUDE_S1908": {
+    "status": "CERTIFIED \u2014 all four predictions TRUE on a designed falsification test",
+    "claim": "The compiled program is destroyed by a restored attention site that is SIMULTANEOUSLY near-parallel to its own table row and far larger than it, and by neither property alone. attn17 (cosine +0.9472) amplified collapses 7.53 -> 2.74x at an effective ratio of 149.3x; attn3 (cosine +0.7001) amplified to an effective 415.9x climbs to 12.17x, well ABOVE the 7.16/7.29/7.49 baseline. Same multipliers, opposite outcomes, cosine the only difference.",
+    "quantitative_match": "attn17's onset at 149.3x against attn5's natural 144.0x \u2014 within 4%.",
+    "natural_cases": "attn5 (144.0x, cos +0.9992) -> 1.06x and attn6 (77.1x, +0.9866) -> 1.32x are the only two sites in the model that naturally satisfy both properties.",
+    "mechanism_reading": "A site parallel to its table row contributes more of what the program already has; amplifying it overwhelms the residual stream along a direction every downstream table was calibrated against. A site at cosine +0.70 adds a largely NEW direction, which acts like restoring genuine context \u2014 which is why attn3 gets BETTER.",
+    "scope": "SUFFICIENCY is demonstrated \u2014 the conjunction was built and the program collapsed on all three roles. NECESSITY is supported by the 18-site survey (\u00a71905, \u00a71907) but not proved.",
+    "sections": [
+      "\u00a71891",
+      "\u00a71892",
+      "\u00a71905",
+      "\u00a71906",
+      "\u00a71907",
+      "\u00a71908"
+    ],
+    "open": "whether the same conjunction governs the MLP sites; their cosine has never been measured"
   }
 }
