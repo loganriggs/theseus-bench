@@ -3713,11 +3713,14 @@
       "\u00a71885",
       "\u00a71886",
       "\u00a71887",
-      "\u00a71888"
+      "\u00a71888",
+      "\u00a71889",
+      "\u00a71890"
     ],
     "known_answer_control": "the mechanism split partitions all scored positions; buckets partition independently",
     "replication_S1888": "At the DEPLOYED 5,419 coverage, where the uncovered arm carries 24.1/25.4/24.2% of scored positions (8890/9367/4459) against \u00a71887's ~10% (3672/3668/1835): covered 7.19/7.29/7.64x, uncovered 2.91/2.97/2.70x, ratio 2.48/2.46/2.83x; within the 125+ bucket 2.58/2.84/3.24x. The covered arm is essentially identical across a 3x coverage change and the weaker fallback arm was not a small-sample artifact.",
     "settled": "Table lookups track the model at ~7.2-7.6x chance, \u00a71870's fallback map at ~2.7-3.0x \u2014 a ratio near 2.5x that survives holding the target bucket fixed and does not depend on coverage.",
-    "loose_thread": "Every \u00a71888 fallback figure is slightly below \u00a71887's (2.91 vs 3.14, 2.97 vs 3.56, 2.70 vs 3.11) \u2014 inside the 1.0x bar but consistent in sign on all three roles. At lower coverage the uncovered set includes commoner tokens and the rank-64 map may serve them marginally worse. Unmeasured."
+    "loose_thread": "\u00a71888's consistent fallback sign (2.91/2.97/2.70 vs \u00a71887's 3.14/3.56/3.11) is UNEXPLAINED. \u00a71890 tested the compositional account on GPT-2 vocab-id quartiles (a tokenizer-fixed rarity axis, not collinear with coverage) and it FAILED: skip7000 reverses the required direction (2.85 commonest vs 2.61 rarest) and the within-arm spread is inconsistent (0.34/1.82/0.84x). Noise is back on the table. Nothing in the arc depends on it.",
+    "fallback_uniform_across_rarity_S1890": "\u00a71870's rank-64 map beats chance in EVERY vocab-id quartile on every role, 2.57-4.52x. \"The fallback is not inert\" holds uniformly across the vocabulary-rarity range, not merely in aggregate."
   }
 }
