@@ -3670,7 +3670,7 @@
     "margin_is_a_fallback_advantage": "\u00a71882: the CE margin falls from 0.04106/0.04521/0.03878 at 5,419 types to 0.01411/0.01455/0.01949 at 16,110 \u2014 to about a third on a 2.97x coverage increase. The rank-512 map acts only on uncovered positions, which higher coverage reduces. pred_b registered this and it held."
   },
   "HALF_COST_BUILD_S1882": {
-    "status": "MEASURED \u2014 the largest cost result in the arc; NOT yet certified as a program",
+    "status": "MEASURED with a NAMED COST (\u00a71883) \u2014 not certified as a program",
     "claim": "At 16,110 covered types, table rank 512 with a rank-512 map costs 360.724M against the deployed design's 673.464M \u2014 a 46% cut \u2014 for +0.00502/+0.00408 all-position nats on two roles and -0.00352 (BETTER) on the third.",
     "why_it_exists": "a direct consequence of the \u00a71880/\u00a71881 law: once the map rank is chosen correctly (map_rank >= table_rank + 1), the table can be truncated far harder than the deployed build assumed",
     "frontier_at_16110": "m512_512@360.72M/5.9102  m512_768@519.81M/5.8911  m512_full@710.62M/5.8834 \u2014 identical ordering on all three roles; neither map-64 build survives it",
@@ -3679,7 +3679,9 @@
       "\u00a71881",
       "\u00a71882"
     ],
-    "open": "whether it holds up as a PROGRAM under the \u00a71789 checks the deployed build passed, rather than only as a point on a CE/cost curve \u2014 a certification, not a sweep",
-    "known_answer_control": "covered CE spread 0.00e+00 for a thirteenth time"
+    "open": "What the remaining 46% buys: the 125+ bucket keeps ~54% of the live model and every other bucket keeps under 10%, and no section has asked what the program is DOING on the bucket it does keep.",
+    "known_answer_control": "covered CE spread 0.00e+00 for a thirteenth time",
+    "accuracy_structure_S1883": "The 46% saving is paid at the RARE end. Kept-fraction (program top-1 / live top-1) at 16,110 types: 125+ bucket 53.6/54.1/53.9 -> 52.7/53.7/53.1 (0.89/0.36/0.83 pp); fit-count-0 bucket 2.6/4.9/3.5 -> 2.4/4.6/2.4 (0.23/0.28/1.10 pp = 7.7/6.1/31.4% relative); overall top-1 13.93/14.71/14.01 -> 13.74/14.58/13.75. Worse at the rare end on all three roles, better on none \u2014 an SVD truncation drops rare tokens first because they carry least of the covered block's variance. \u00a71883 pred_b FAILED at 1.10pp against a 1.00pp bar.",
+    "how_to_quote": "The cost cut and the aggregate are real; what it costs is ~a third of the accuracy in the smallest and weakest bucket, where the program already kept only 2-5% of the live model. If rare-target behaviour is what the program is for, the full-rank table is worth its 312.740M; if not, \u00a71882 stands unqualified."
   }
 }
