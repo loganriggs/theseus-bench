@@ -3757,7 +3757,7 @@
     "control": "the all-compiled baseline reproduced \u00a71888 for a fourth consecutive run; unscaled arm reproduced \u00a71891 to two decimals on all four sites"
   },
   "DEPLOYED_MAGNITUDES_S1893": {
-    "status": "MEASURED \u2014 answers \u00a71892's open question; the cost arc needs NO qualification",
+    "status": "CERTIFIED \u2014 settled in BOTH instruments (\u00a71893 top-1, \u00a71894 nats)",
     "headline": "The deployed program's per-site magnitudes (length-1 table norms) are NEAR-OPTIMAL in the instrument the cost arc used and NOT optimal in agreement. Best top-1 arm is a global x0.80, beating the deployed x1.00 by only +0.09/+0.07/+0.08 percentage points. Best agreement arm is x0.50, beating it by +1.07/+1.12/+1.27x enrichment while being WORSE at top-1 (13.47% vs 13.55%).",
     "consequence_for_the_cost_arc": "\u00a71866-\u00a71883 \u2014 the frontier, the map-rank law, the 46% build \u2014 are all in nats and top-1, and on that instrument the deployed object is near-optimally scaled. \u00a71892 raised the worry that they measured a mis-scaled object; the answer is no.",
     "live_norm_scaling_is_catastrophic": "Scaling every site to its own live norm (ratios 1.3x-156.4x) gives enrichment 1.89/1.84/1.76x and top-1 1.98/1.98/1.78% against 13.55/14.25/13.64%. \u00a71804's ratio is a DIAGNOSIS, not a correction.",
@@ -3767,8 +3767,12 @@
       "\u00a71804",
       "\u00a71806",
       "\u00a71892",
-      "\u00a71893"
+      "\u00a71893",
+      "\u00a71894"
     ],
-    "control": "the x1.00 arm reproduced \u00a71888 for a fifth consecutive run"
+    "control": "the x1.00 arm reproduced \u00a71888 for a fifth consecutive run",
+    "in_nats_S1894": "All-position CE: best global scale is x0.80 (6.00760/5.97485/5.99718) and the deployed x1.00 sits +0.00407/+0.00992/+0.00447 from it. The \u00a71866-\u00a71883 cost arc was priced on an object within one hundredth of a nat of the best available magnitude, in its own unit. No result needs qualifying. The x1.00 arm reproduced \u00a71858 to five decimals.",
+    "divergence_is_larger_in_nats": "\u00a71894 pred_b FAILED: CE puts the agreement-optimal x0.50 FIFTH of six (6.18268, behind g2.00's 6.12890) while top-1 put it fourth. The scale maximising agreement with the model is fifth-best by CE \u2014 so \u00a71893's agreement/accuracy divergence is not a top-1 artifact and is worth 0.17 nats.",
+    "live_norm_scaling_is_worse_than_uniform": "PERSITE all-position CE 12.88/12.94/12.81 against ln(50257)=10.82. Not merely destroyed \u2014 confidently wrong. \u00a71804's ratio applied as a correction is worse than predicting at random."
   }
 }
