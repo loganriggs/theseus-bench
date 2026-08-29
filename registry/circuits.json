@@ -3774,5 +3774,28 @@
     "in_nats_S1894": "All-position CE: best global scale is x0.80 (6.00760/5.97485/5.99718) and the deployed x1.00 sits +0.00407/+0.00992/+0.00447 from it. The \u00a71866-\u00a71883 cost arc was priced on an object within one hundredth of a nat of the best available magnitude, in its own unit. No result needs qualifying. The x1.00 arm reproduced \u00a71858 to five decimals.",
     "divergence_is_larger_in_nats": "\u00a71894 pred_b FAILED: CE puts the agreement-optimal x0.50 FIFTH of six (6.18268, behind g2.00's 6.12890) while top-1 put it fourth. The scale maximising agreement with the model is fifth-best by CE \u2014 so \u00a71893's agreement/accuracy divergence is not a top-1 artifact and is worth 0.17 nats.",
     "live_norm_scaling_is_worse_than_uniform": "PERSITE all-position CE 12.88/12.94/12.81 against ln(50257)=10.82. Not merely destroyed \u2014 confidently wrong. \u00a71804's ratio applied as a correction is worse than predicting at random."
+  },
+  "PROGRAM_REPRODUCES_THE_MODELS_MISTAKES_S1895": {
+    "status": "CERTIFIED \u2014 all four predictions TRUE, both anchors reproduced in one run",
+    "claim": "Restricted to the ~60% of covered scored positions where BOTH the program and the live model are WRONG, the program's top-1 matches the model's at 22.76/20.75/24.06% against a permutation null of 3.73/3.33/3.70% \u2014 6.10/6.24/6.50x, on 16856/15857/8487 positions. The program makes the model's specific mistakes, not merely mistakes in the same places.",
+    "excludes": "the alternative \u00a71885 could not rule out and \u00a71893/\u00a71894 revived \u2014 that the 5-8x aggregate tracking is carried by easy positions any two competent predictors share. The both-wrong cell contains no easy positions by construction and reproduces the aggregate (6.1-6.5x vs 7.19/7.29/7.64x).",
+    "two_by_two": {
+      "both_right": "11.6/12.5/11.7%",
+      "program_only": "2.4/2.3/2.7%",
+      "model_only": "25.7/27.5/24.9%",
+      "both_wrong": "60.3/57.7/60.7%"
+    },
+    "program_only_right": "16.9/15.8/18.7% of the program's correct predictions \u2014 one in six are positions the model gets wrong, confirming \u00a71884's 19% on the whole covered arm",
+    "reconciles_S1893_S1894": "scaling tables to x0.50 buys agreement (8.27x) while costing accuracy (CE 6.18 vs 6.01) because more agreement means more faithfully reproduced MISTAKES. The instruments were never in conflict: agreement measures fidelity to a model that is wrong 62-75% of the time here.",
+    "sections": [
+      "\u00a71884",
+      "\u00a71885",
+      "\u00a71887",
+      "\u00a71891",
+      "\u00a71893",
+      "\u00a71894",
+      "\u00a71895"
+    ],
+    "control": "cells partition exactly; \u00a71888 enrichment AND \u00a71858 CE both reproduced in the same run"
   }
 }
