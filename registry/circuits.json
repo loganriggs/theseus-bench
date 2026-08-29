@@ -3842,7 +3842,7 @@
     "mlp_profile_is_depth_ordered": "\u00a71898's per-MLP change-rate profile is best ordered by DEPTH (Spearman +0.785), then cosine (+0.637), then norm ratio (-0.610), then the conjunction (-0.389). Depth and cosine are not independent here, so depth is reported as the better ORDERING, not as the mechanism."
   },
   "CONFIDENCE_MODULATES_TRACKING_S1911": {
-    "status": "CERTIFIED \u2014 all four predictions TRUE",
+    "status": "CERTIFIED, but the two signals were RANKED WRONG until \u00a71914 \u2014 see ranking_corrected_S1914",
     "claim": "The compiled program's top-1 agreement with the live model roughly DOUBLES with the model's own confidence: 5.36/5.06/5.80x on the least-decided quartile of live top-2 logit margin, 10.11/10.34/10.87x on the most-decided. Gain +4.75/+5.27/+5.07x.",
     "three_axes": "correctness is NOT a modulator (\u00a71895: both-wrong positions track at 6.10/6.24/6.50x); sequence position is NOT (\u00a71910: -0.36/-0.25/+0.59x, inconsistent in sign, while the live model's accuracy climbs on all three roles); model confidence IS (\u00a71911).",
     "reading": "The program follows the model where the model is DECIDED, not where it is right and not where it has little context. A token-keyed table can reach a prediction the model holds firmly; it cannot reach one the model is still weighing.",
@@ -3857,14 +3857,15 @@
     "open": "whether the program's confidence is predictable from the token alone \u2014 it must be, since the program is a pure function of the current token (\u00a71765), which would turn the program-margin axis into a precomputable TOKEN property rather than a per-position measurement",
     "not_inheritance_S1912": "The program does NOT inherit the model's decidedness: Spearman between the live and program top-2 margins is only +0.109/+0.111/+0.120. Yet within the model's highest-confidence quartile, splitting on the PROGRAM's own margin moves agreement from 5.77 to 9.84x (+4.07/+5.74/+4.84x) \u2014 as large as \u00a71911's whole effect. Two near-independent signals, each roughly doubling the tracking.",
     "the_corner": "Within the model's most-decided quartile, positions where the PROGRAM is unsure track at 5.77/4.95/5.82x \u2014 indistinguishable from the overall least-decided quartile (5.36/5.06/5.80x). The model being sure buys nothing where the program is not; agreement needs both.",
-    "four_axes": "correctness NOT (\u00a71895); sequence position NOT (\u00a71910); model confidence YES (\u00a71911); program confidence YES and near-independent of the model's (\u00a71912)."
+    "four_axes": "correctness NOT (\u00a71895); sequence position NOT (\u00a71910); model confidence YES (\u00a71911); program confidence YES and near-independent of the model's (\u00a71912).",
+    "ranking_corrected_S1914": "\u00a71911 (+4.75/+5.27/+5.07x) and \u00a71913 (+1.07/+1.94/+1.06x) were measured against DIFFERENT permutation nulls and are not comparable. Under a COMMON global null the ranking REVERSES: the precomputable per-token program margin gives +9.50/+9.79/+9.28x against the live model margin's +6.03/+6.36/+6.02x. The program's own confidence orders its agreement with the model BETTER than the model's does, and it is a build-time token property (\u00a71913)."
   },
   "S1765_VERIFIED_AT_THE_LOGITS_S1913": {
     "status": "CERTIFIED \u2014 all four predictions TRUE",
     "claim": "The compiled program's top-2 logit margin is a property of the CURRENT TOKEN: it varies by at most 2.86e-05 / 3.81e-05 / 1.91e-05 across all positions sharing a token, and sits within 1.43e-05 of the value a single length-1 forward pass gives. \u00a71899 verified \u00a71765 at the residual stream (1.2e-07) and \u00a71901 at the site outputs (3.232e-07); this is the first verification at the LOGITS.",
     "deployable_object": "program confidence is therefore a precomputable per-token RELIABILITY SIGNAL \u2014 16,110 length-1 forward passes, once, at build time \u2014 rather than a per-position statistic.",
     "signal_orders_agreement": "quartiles give 4.22->5.29, 3.98->5.92, 4.67->5.73x (+1.07/+1.94/+1.06x)",
-    "magnitude_caveat": "NOT comparable to \u00a71911's +4.75 or \u00a71912's +4.07. All twelve quartile enrichments (3.98-5.92x) sit BELOW the pooled baseline (7.16/7.29/7.49x), because enrichment uses a permutation null computed WITHIN the stratum and stratifying on a token property groups positions sharing tokens, raising that null. A common-null comparison is needed before ranking the two signals.",
+    "magnitude_caveat": "RESOLVED at \u00a71914. The within-stratum null deflated the token split badly: top quartile 5.29x local vs 12.57x global. Under a common null the token signal is the STRONGER of the two.",
     "sections": [
       "\u00a71765",
       "\u00a71899",
@@ -3874,5 +3875,16 @@
       "\u00a71913"
     ],
     "process_note": "the first run was INVALID \u2014 an inherited live-margin split overwrote the token-margin one seven lines later, so it re-measured \u00a71911. Caught because its quartiles matched \u00a71911 to 2dp across all twelve cells, which Spearman +0.11 makes impossible."
+  },
+  "ENRICHMENT_RNG_PRECISION_S1914": {
+    "status": "MEASURED \u2014 a precision bound on every enrichment quoted since \u00a71885",
+    "claim": "At NPERM = 8 the permutation-null estimate carries roughly +-0.2 of enrichment. \u00a71914 re-ran \u00a71913's within-stratum arm on identical data and code and got 4.25/5.19/5.25/5.30 against 4.22/5.02/5.29/5.29 \u2014 a 0.17 shift at q1 \u2014 because additional global-null draws left the shared torch.Generator at a different state.",
+    "consequence": "Anchor \"reproductions\" of the size reported across \u00a71885-\u00a71913 (7.16 vs 7.19, 7.49 vs 7.64) are CONSISTENT rather than exact, and several were called exact or \"to three digits\". Large effects are unaffected \u2014 \u00a71908 7.53->2.74, \u00a71911 5.36->10.11, \u00a71914 5.29->12.57 are an order above the noise.",
+    "fix": "raise NPERM; no result requires it, the claims need softening",
+    "sections": [
+      "\u00a71885",
+      "\u00a71913",
+      "\u00a71914"
+    ]
   }
 }
