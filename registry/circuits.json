@@ -947,6 +947,18 @@
    "program_only": "2.4/2.3/2.7%"
   }
  },
+ "RANK_768_IS_CORRECTLY_BOUGHT_AT_MLP16_AND_MLP17_S2016": {
+  "S2013_does_not_generalise": "At mlp2, whose entire table content is 0.0001 nats, rank 128 is marginally justified (costs 0.00025 against 0.00042 of parameters). At mlp17 the same truncation costs 0.0084-0.0101. A uniform rank read off mlp2 would be a 20-fold error at mlp17.",
+  "builds_on": "SHIPPED_PROGRAM_DEPTH_PROFILE_S2015",
+  "claim": "Every truncation below rank 768 loses money at the two sites that carry the shipped program. Rank 128 costs +0.00565/+0.00608/+0.00503 at mlp16 and +0.01006/+0.00857/+0.00844 at mlp17 -- 12x to 24x the 0.00042 nats its 4.205M saved values are worth. Rank 384 costs +0.00259/+0.00199/+0.00125 and +0.00285/+0.00288/+0.00193, 5x to 12x its own 0.00025 price. S1959's uniform rank 768 is correctly bought where the program actually lives.",
+  "evidence": "ops/rank_at_the_two_sites_that_matter.py, 445.4s, eight arms x three roles at 5,419. pred_a/b/c/d all True 3/3, derived controls True, reference deviation 0.000000.",
+  "independent_replication_of_S2014": "Truncating both sites costs +0.01941/+0.01851/+0.01727 against a sum of +0.01571/+0.01465/+0.01347 -- super-additive by 24%, where S2014 measured 22% on entirely different arms (mean rows at mlp2, mlp3 and mlp12). Two measurements of the same nonlinearity from different interventions, agreeing to two points.",
+  "open": "Every rank tested is BELOW 768, and 768 is itself a truncation -- the untruncated table at 5,419 coverage has rank 1152. Whether mlp16 and mlp17 are leaving content on the table above 768 has never been asked, and it is the one direction in which the allocation could still be wrong. S2017 runs it.",
+  "section": "S2016",
+  "status": "CERTIFIED",
+  "the_curve_is_convex": "Rank 384 costs 0.23 to 0.46 of what rank 128 costs, for 60% of the saving -- a middle rank is the better buy IF one were buying, but at 5-12x the price none of them is.",
+  "where_the_build_stands": "Table content concentrated in mlp16 and mlp17 (S2015); rank correctly bought there by 5-24x (S2016); shallow tables nearly free to degrade but their parameters worth ten times less than degrading them costs (S2015); the whole program super-additive in loss by 22-24% so per-site decisions do not add (S2014, S2016). NO ALLOCATION CHANGE IS INDICATED, and that is a result rather than an absence of one."
+ },
  "RANK_ONE_IS_PRESENCE_NOT_CONTENT_S2010": {
   "builds_on": "ONE_DIRECTION_CARRIES_60_PERCENT_OF_ATTENTION_6_S2009",
   "claim": "Attention 6's rank-1 share of its whole contribution is 59-62% at a compiled mlp2 and 98.1-98.3% at a compiled mlp4 -- it does not transfer, failing a 10-point bar by 36.5 to 39.0 points. The reason is that the rank-1 fraction tracks the PRESENCE share (63.8/66.3/68.6% at mlp2, 98.5/98.5/98.8% at mlp4) and sits slightly BELOW it on all six cells. Rank 1 at attention 6 is very slightly worse than a constant row: it delivers presence and none of the content.",
