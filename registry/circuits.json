@@ -80,6 +80,15 @@
   "status": "CERTIFIED",
   "the_three_roles": "mlp2 / mlp4 -- must be compiled, content IRRELEVANT (S1983: a mean row costs the same 10.67). attention 5 -- must be PRESENT, content slightly NEGATIVE (-0.044 nats). attention 6 -- must be present AND carries content worth +0.209 nats, low-dimensional: rank 16 recovers 72% of it (S1996). Removing all of attention 6's content costs about what removing 24/25ths of its rank did, which is what a low-dimensional signal looks like."
  },
+ "ATTENTION_5_IS_UNIQUELY_THE_LEVER_S2006": {
+  "builds_on": "THE_CEILING_HOLDS_BUT_NOT_VIA_ATTENTION_0_3_S2005",
+  "claim": "Attention 5 is the only layer below attention 6 that moves anything. Compiling ATTENTION 4 beneath a compiled mlp4 costs 10.669/10.938/10.579 against mlp4 alone's 10.669/10.937/10.580 -- identical to three decimals, plus or minus 0.001. Attention 0-3 give 0.018 (S2005). Attention 5 gives 2.65 nats off the ceiling with attention 6 still live. And adding attention 4 on top of attention 5 makes it WORSE, 8.199 against 8.021, +0.178 for a site whose standalone contribution is exactly zero.",
+  "evidence": "ops/is_attention_five_uniquely_the_lever.py, 47.8s, ten arms x three roles at 5,419. pred_a/b/c all True 3/3, derived controls True, all three reference deviations 0.000000.",
+  "open": "Role 3 is the one not yet tested for content. S1998 showed attention 5's content is worthless when attention 6 is COMPILED; whether its 2.65-nat lever action with attention 6 still LIVE is also presence-only has never been measured. S2007 runs it with the same meanrow instrument one configuration over.",
+  "section": "S2006",
+  "status": "CERTIFIED",
+  "the_four_roles_of_attention_5": "1. REQUIRED for the threshold's fix to work at all (S1992: without it mlp2 sits at 4.876). 2. Its CONTENT is worthless or harmful -- a mean row beats its compiled table by 0.044 nats (S1998), rank 16 costs 0.010 against rank 384 (S1997). 3. The ONLY site that reduces damage without repairing it -- 2.65 nats off the ceiling with attention 6 live, where attention 4 gives 0.000 and attention 0-3 give 0.018. 4. It explains S1981's below_all = 9.266 entirely, which S2005 showed attention 0-3 cannot."
+ },
  "ATTENTION_6_CONTENT_HAS_NO_SIMPLE_FORM_S2000": {
   "builds_on": "THE_SPLIT_TRANSFERS_IN_SIGN_NOT_SIZE_S1999",
   "claim": "Attention 6's content value is pair-specific with no statable form. Across four compiled MLPs, a mean row at attention 6 costs +0.137 (mlp5), +0.212 (mlp2), +0.099 (mlp3), +0.095 (mlp4) at skip7000. Ordered by the site's lone damage the sequence RISES THEN FALLS; ordered by layer it FALLS THEN RISES. Neither ordering works. It is strictly positive at all four sites on all three roles (0.080-0.216), so attention 6 is always a content site; only the amount is pair-specific.",
