@@ -3683,5 +3683,16 @@
     "known_answer_control": "covered CE spread 0.00e+00 for a thirteenth time",
     "accuracy_structure_S1883": "The 46% saving is paid at the RARE end. Kept-fraction (program top-1 / live top-1) at 16,110 types: 125+ bucket 53.6/54.1/53.9 -> 52.7/53.7/53.1 (0.89/0.36/0.83 pp); fit-count-0 bucket 2.6/4.9/3.5 -> 2.4/4.6/2.4 (0.23/0.28/1.10 pp = 7.7/6.1/31.4% relative); overall top-1 13.93/14.71/14.01 -> 13.74/14.58/13.75. Worse at the rare end on all three roles, better on none \u2014 an SVD truncation drops rare tokens first because they carry least of the covered block's variance. \u00a71883 pred_b FAILED at 1.10pp against a 1.00pp bar.",
     "how_to_quote": "The cost cut and the aggregate are real; what it costs is ~a third of the accuracy in the smallest and weakest bucket, where the program already kept only 2-5% of the live model. If rare-target behaviour is what the program is for, the full-rank table is worth its 312.740M; if not, \u00a71882 stands unqualified."
+  },
+  "PROGRAM_IS_NOT_A_DEGRADED_COPY_S1884": {
+    "status": "MEASURED \u2014 one clean figure; two companion predicates STRUCK for a broken baseline",
+    "claim": "On its strongest bucket (targets seen 125+ times) \u00a71882's half-cost build gets 81.4/82.5/80.7% of its correct top-1 predictions on positions the LIVE MODEL also gets right. About one in five of its correct answers are positions where the model itself is wrong, so the program is not simply a degraded copy of the model \u2014 it is a different predictor overlapping it.",
+    "raw_agreement": "top-1 agreement with the live model on the 125+ bucket: 34.6/35.1/34.7%, against the program's own accuracy of 29.0-30.9% and the model's 54.6-57.6%.",
+    "struck": "\u00a71884 pred_a and pred_c used acc_live*acc_prog as the chance baseline for AGREEMENT. That is the both-right probability, not chance agreement; it assumes wrong answers scatter uniformly over 50,257 tokens when both predictors concentrate on frequent ones. The resulting \"97x enrichment\" on the rare bucket is an artifact of the denominator collapsing where accuracy is low. Neither ratio should be cited. Correct null = permutation control (\u00a71885).",
+    "sections": [
+      "\u00a71883",
+      "\u00a71884"
+    ],
+    "open": "\u00a71885 \u2014 agreement against a permutation null that preserves each predictor's token marginals"
   }
 }
