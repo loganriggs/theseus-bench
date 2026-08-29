@@ -549,6 +549,18 @@
   "status": "CERTIFIED NEGATIVE \u2014 the fallback input question is closed",
   "structural_reading": "\u00a71765 from the other side \u2014 a fully compiled program is a pure function of the current token, so any input richer than the token is exactly what compilation deletes."
  },
+ "TABLE_CURVE_KNEE_AT_768_256_S1947": {
+  "builds_on": "BLEND_MLPHEAVY_SUPERSEDES_BEST_KNOWN_S1946",
+  "claim": "At 16,110 coverage with the S1944 blend fallback fixed, the table-rank cost curve is strictly convex -- the marginal cost in nats per 100M saved rises at every one of six steps on all three roles (18/18) and roughly DOUBLES per step (0.001 -> 0.009 -> 0.017 -> 0.031 -> 0.052 -> 0.089 at skip7000). The knee is between {mlp 768, attn 256} and {640,160}: {768,256} costs 0.0072-0.0094 nats/100M and is the last efficient step; {640,160} costs 0.0132-0.0177.",
+  "controls": "S1946's corrected TWO-SIDED form: coverage exactly 16,110; a rank-differing arm DOES move covered-input predictions while an identical-spec arm does NOT; buckets partition; live per-cell top-1 and CE identical at 0.00e+00; S1946's published CE reproduced to 0.000005 nats (thirty-third clean reading).",
+  "efficient_set": "Two points at 16,110. blend_768_256 at 339.558M is the cheapest build still beating S1931's best-known on both instruments. blend_1024_256 at 419.101M buys a further 0.0074 nats for 79.5M (0.0093 nats/100M, right at the threshold). Everything below 339.558M is dominated by S1931's build; everything above 419.101M pays more than 0.010 nats/100M. From full rank at 689.457M, S1946-S1947 removed 349.9M -- 51% of the build -- for 0.007-0.011 nats while remaining strictly better than the previous best-known on both instruments.",
+  "evidence": "ops/table_curve_knee.py, 374.6s. Seven builds x three roles at 16,110, per-position top-1 and CE with a paired t on every CE margin vs S1931's best-known build.",
+  "floor": "pred_c, 0/3: NO build under 300M beats S1931's 360.723M on top-1. {640,160} at 269.958M is already -0.19/-0.22/-0.15pp AND worse on CE (+0.0034, t=+2.56). Below the knee the blend's entire advantage is spent; every sub-300M arm loses to S1931's build on both instruments.",
+  "knee_is_where_S1946_already_was": "pred_b predicted the step to {640,160} would still cost under 0.010 nats/100M. It does not. S1946's blend_mlpheavy build is not NEAR the knee, it is ON it -- established by predicting otherwise and being wrong.",
+  "open": "The sweep moves along S1928's ray with attention pinned at 25% of the MLP rank. S1928-S1935 bounded the good region at 12.5-25% and every point here sits at the TOP of it. Whether the ray itself is optimal AT THE KNEE -- where the tables are 78% of the build rather than 97% -- is unmeasured.",
+  "section": "S1947",
+  "status": "CERTIFIED for pred_a (3/3) and pred_d; pred_b and pred_c both FALSE 0/3, and both failures sharpen the answer."
+ },
  "TRACKING_IS_LATE_ATTENTION_S1891": {
   "attention_counts_verified_S1904": "On COVERED positions alone \u2014 where the substituted row is the model's own length-1 output \u2014 attn5 changes 96.37/96.04/96.81% of predictions and mlp16 changes 0.03/0.02/0.00%, a ratio of 3,200x against the 27x visible in the all-position figures. \u00a71891's \"attention, not MLPs\" survives the check that scoped the MLP no-op, and survives it more strongly.",
   "baseline_control": "the all-compiled baseline reproduced \u00a71888 to three digits for a third consecutive run",
