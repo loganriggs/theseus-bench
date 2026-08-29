@@ -669,6 +669,18 @@
   "section": "S1947",
   "status": "CERTIFIED for pred_a (3/3) and pred_d; pred_b and pred_c both FALSE 0/3, and both failures sharpen the answer."
  },
+ "THRESHOLD_IS_DEFENSIBLE_LEVERS_ARE_NOT_EQUALISED_S1958": {
+  "alpha_is_not_a_spending_lever": "mix10m512 and mix40m512 store the same rank-512 map and index -- identical cost, 178.9M both -- so the blend's alpha has no nats-per-100M at all (0/0). Alpha is a FREE parameter to be set at its optimum (S1943: 0.25), never traded against money. The first scoring left the resulting nan in the set and computed a median and max/min over it; both came out right only because Python's sorted() and max() do not propagate nan. Cost-neutral levers are now excluded explicitly and the exclusion is printed.",
+  "builds_on": "DEPLOYED_COVERAGE_BUILD_IS_768_384_S1957",
+  "claim": "S1947's 0.010 nats/100M spending threshold, introduced as a round number and load-bearing for every allocation conclusion in S1947-S1957, sits INSIDE the measured exchange rate: the median marginal return across the priceable levers at S1957's operating point is 0.0143/0.0147/0.0090 nats per 100M. But the levers are NOT equalised (max/min 2.40/2.02/2.54x) and the MAP RANK is the richest on 3/3 roles, ahead of mlp; attention is the poorest (0.0061/0.0074/0.0050).",
+  "controls": "Plan built so NEITHER half of the derived control is vacuous (S1957's was): 10 same-spec pairs exactly inert at covered inputs, 26 differing-spec pairs not. Coverage exactly 5,419, buckets partition, live per-cell identical at 0.00e+00, S1957's CE reproduced to 0.000000 via B.ref() (forty-second clean reading).",
+  "does_not_contradict_S1957": "The attention lever is poorest here because it is priced across 256->576, where the 384->576 half returns almost nothing. S1957 priced the single step 256->384 at 0.0113/0.0135/0.0091. The step S1957 bought is worth buying; the next one is not.",
+  "evidence": "ops/lever_exchange_rates.py, 4.8s warm. Nine builds x three roles at 5,419, each lever priced across its two neighbouring points. pred_a True, pred_b True 3/3, pred_c False 0/3, pred_d True.",
+  "justifies": "the 0.010 nats/100M threshold used in S1947-S1957",
+  "open": "map_up at rank 1024 is better on 3/3 and costs 221.4M against base's 178.9M -- a return of ~0.0034/0.0029/0.0038 nats per 100M, BELOW the threshold. The map is where marginal money should go AND the specific next map purchase is not worth its price, so the map's own curve turns over between rank 512 and 1024; where is unmeasured.",
+  "section": "S1958",
+  "status": "CERTIFIED. pred_c's failure is the vindication -- I asked whether 0.010 was far from the natural rate and it is not."
+ },
  "TRACKING_IS_LATE_ATTENTION_S1891": {
   "attention_counts_verified_S1904": "On COVERED positions alone \u2014 where the substituted row is the model's own length-1 output \u2014 attn5 changes 96.37/96.04/96.81% of predictions and mlp16 changes 0.03/0.02/0.00%, a ratio of 3,200x against the 27x visible in the all-position figures. \u00a71891's \"attention, not MLPs\" survives the check that scoped the MLP no-op, and survives it more strongly.",
   "baseline_control": "the all-compiled baseline reproduced \u00a71888 to three digits for a third consecutive run",
