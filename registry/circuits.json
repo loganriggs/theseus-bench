@@ -1152,6 +1152,17 @@
   "status": "CERTIFIED as a statement of proportion.",
   "where_the_price_is": "NOT the fallback. The COVERED arm -- positions where the program has an exact per-token table for the current token -- costs +2.57 to +2.89 nats, within 0.2 nats of the uncovered arm's +2.93 to +3.25. Having the right table is worth about 0.3 nats; having ATTENTION is worth about 2.7. S1936's covered/uncovered gap, which S1975 closed 40% of, is a tenth the size of the gap both arms share."
  },
+ "THE_SHIPPED_PROGRAM_IS_SUPERADDITIVE_IN_LOSS_S2014": {
+  "builds_on": "THE_LOCALISATION_LINE_DOES_NOT_REACH_THE_SHIPPED_PROGRAM_S2013",
+  "claim": "Two findings. (1) Site relevance in the shipped 36-site program is NOT uniform: replacing a site's table with a mean row costs -0.00012/+0.00002/-0.00028 at mlp2 and -0.00020/-0.00016/-0.00075 at mlp3, but +0.02692/+0.02912/+0.02687 at mlp12 -- more than a hundred times either. (2) The program is NOT additive: degrading all three costs +0.03249/+0.03522/+0.03198 against a sum of +0.02661/+0.02898/+0.02584, super-additive by 22%.",
+  "corrects_my_own_prediction": "S2013 argued each site contributes an INDEPENDENT ADDITIVE TERM to the residual stream, and I predicted additive CE from it. That does not follow: the loss is a softmax cross-entropy of their sum, which is nonlinear, so independent perturbations compound. S2013's structural claim stands exactly as stated; the prediction I drew from it confused additivity of the computation with additivity of the objective. LESSON 100.",
+  "evidence": "ops/is_the_shipped_program_additive.py, 4.7s warm, seven arms x three roles at 5,419, on the second plan (the first paired two different composite arms as same-spec and inert_pairs_are_inert FAILED). pred_a True 3/3; pred_b FALSE by 0.022 on mlp12; pred_c FALSE by 0.0039/0.0042/0.0041. Derived controls True, reference deviation 0.000000.",
+  "library_bug_found": "Two DIFFERENT composite arms (meanrow@mlp2+... and meanrow@mlp3+...) shared rank, site set and whole-table flag, so inertness_pairs called them same-spec and asserted inertness between entirely different interventions. It failed, correctly. Only PLAIN arms, which differ solely in the fallback, may now be paired as inert; a test locks it.",
+  "open": "mlp12 is a hundred times more relevant than mlp2 in the shipped program, and no depth profile of that quantity exists. Every profile in this line (S1988, S2002) measured lone-compilation damage with attention LIVE, which S2013 showed is a different regime. The shipped program has its own depth profile and it has never been measured.",
+  "scopes_S2013": "S2013 measured mlp2 and generalised to 'a compiled site's content'. That was one site and the wrong one: mlp12 is worth 0.027 nats. The boundary S2013 drew -- that the S1983-S2012 arc is about live attention -- is unaffected.",
+  "section": "S2014",
+  "status": "CERTIFIED"
+ },
  "THE_SPIKE_IS_MLP4_NOT_LAYER_4_S1989": {
   "builds_on": "THE_CUT_IS_ATTENTION_6_AND_THE_SPIKE_IS_A_PEAK_S1988",
   "claim": "The spike belongs to mlp4, not to the residual stream at layer 4. A lone compiled attention 4 costs 0.288/0.279/0.308 nats against mlp4's 10.669/10.937/10.580 at the same depth -- pooled difference -10.471 at t = -396.4. Every lone attention layer below the boundary is cheap: attn2 0.179, attn3 0.113, attn4 0.288, attn5 0.241; attn7 above it 0.054.",
