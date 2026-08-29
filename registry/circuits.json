@@ -346,6 +346,7 @@
   "the_0p3_nats_again": "above_only beats the full program by 0.30/0.31/0.28 nats -- the same ~0.3 nats S1979 found at k=12 and k=15, reached by a third route. It is the number in the architectural question standing with Logan."
  },
  "DAMAGE_SUBADDITIVE_REPAIR_SUPERADDITIVE_S2003": {
+  "EXPLANATION_REVISED_BY_S2004": "S2003's two signs stand as measured but its explanation does not. S2004 found a damage CEILING near 10.7 nats: mlp4 alone 10.669, mlp2+3 10.542, mlp2+3+4 10.701, and S1981's six-MLP below_mlp arm 10.688 -- four configurations spanning one to six sites within 0.16 nats. Damage looked sub-additive at two sites because the pair was already near the ceiling, and repair looked super-additive for the same reason. Neither was evidence of a shared interface being repaired once; both were the ceiling seen from below.",
   "builds_on": "THE_CROSSING_IS_AT_2_15_NATS_S2002",
   "claim": "Compilation damage is SUB-additive across compiled MLPs and the threshold's repair is SUPER-additive. mlp2+mlp3 compiled together cost 10.542/10.826/10.476 nats against the sum of their lone damages 11.388/12.184/11.525 -- sub-additive by 0.845/1.358/1.049. The fix's value on the pair (+8.598/+8.758/+8.589) exceeds the sum of single-site gains plus the 0.65 charged once instead of twice, by +0.528/+0.166/+0.299.",
   "corrects_a_claim_I_published": "I told Codex on the board at 2026-08-29T22:02Z that 'compilation damage is superadditive across sites'. That was my extrapolation from S1981's 3.9x comparison against the full program, not a measurement, and it is wrong at two sites. S1981 itself is unaffected -- it says the cost is 'not additive over sites and not even monotone in them', which is what S2003 sees. Corrected on the board.",
@@ -1008,6 +1009,17 @@
   "section": "S1988",
   "status": "CERTIFIED",
   "what_the_shape_says": "The asymmetry rules out both easy readings. Not distance to the boundary -- mlp5 is nearer than mlp3 and costs a third as much. Not depth -- the profile rises then falls. Layer 4 is distinguished and its adjacent layer 5 is not. With S1983 (mlp4's content is irrelevant; a constant row costs the same 10.67), what attention 6 needs from position-4 activations is that they VARY."
+ },
+ "THE_DAMAGE_CEILING_IS_10_7_NATS_S2004": {
+  "builds_on": "DAMAGE_SUBADDITIVE_REPAIR_SUPERADDITIVE_S2003",
+  "claim": "Context-free rows arriving at a live attention 6 cost about 10.7 nats, and it does not matter how many sites produce them. Compiling one MLP (mlp4) costs 10.669; two (mlp2+mlp3) 10.542; three (mlp2+3+4) 10.701; and S1981's below_mlp arm -- six compiled MLPs, layers 0-5 -- cost 10.688. Four configurations spanning one to six sites, all within 0.16 nats. Adding mlp2 and mlp3 on top of a compiled mlp4 costs 0.032 nats.",
+  "evidence": "ops/does_the_repair_saturate.py, 51.2s, thirteen arms x three roles at 5,419, plus S1981's already-published below_mlp figure as an independent fourth point. pred_a True 3/3 (S2003's excess rebuilds within 0.01), pred_b True 3/3, pred_c FALSE 3/3. Derived controls True, all three reference deviations 0.000000.",
+  "open": "If the ceiling is what a fully context-free input to attention 6 costs, any set containing mlp4 and no attention 5 or 6 should sit at it, and sets that reduce what reaches layer 6 should fall below -- S1981's below_all, which adds attention 0-5, measured 9.266, under the ceiling and unexplained by it.",
+  "pred_c_failed_because_its_model_did": "It registered that the repair's super-additive excess would GROW with a third site. It collapses from +0.528 to -9.31, because the naive prediction it is measured against assumes single-site gains add, and once damage saturates they cannot. The excess statistic is meaningless above the ceiling, and S2003's +0.528 was measured just below it.",
+  "quantifies": "S1981's 'one forbidden configuration'.",
+  "revises": "S2003's explanation (not its measurements). Marked in that entry.",
+  "section": "S2004",
+  "status": "CERTIFIED"
  },
  "THE_FIX_HAS_A_DOMAIN_S2001": {
   "builds_on": "ATTENTION_6_CONTENT_HAS_NO_SIMPLE_FORM_S2000",
