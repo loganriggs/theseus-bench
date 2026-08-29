@@ -989,6 +989,17 @@
   "status": "CERTIFIED",
   "what_the_shape_says": "The asymmetry rules out both easy readings. Not distance to the boundary -- mlp5 is nearer than mlp3 and costs a third as much. Not depth -- the profile rises then falls. Layer 4 is distinguished and its adjacent layer 5 is not. With S1983 (mlp4's content is irrelevant; a constant row costs the same 10.67), what attention 6 needs from position-4 activations is that they VARY."
  },
+ "THE_FIX_HAS_A_DOMAIN_S2001": {
+  "builds_on": "ATTENTION_6_CONTENT_HAS_NO_SIMPLE_FORM_S2000",
+  "claim": "Compiling attention 5 and 6 costs a FLAT ~0.65 nats and buys back an amount that grows with the compiled MLP's lone damage. It is worth +2.842 at mlp2 (lone 4.813) and +4.578 at mlp3 (lone 6.574), and a strict LOSS of 0.636 at mlp7 (lone 0.072), 0.657 at mlp6 (lone 0.202) and 0.241 at mlp5 (lone 2.022). The crossing lies between a lone damage of 2.02 and one of 4.81.",
+  "evidence": "ops/where_the_fix_stops_paying.py, 49.6s, thirteen arms x three roles at 5,419. pred_a True 3/3, pred_b True 3/3, pred_c FALSE on two of three roles. Derived controls True, all three reference deviations 0.000000.",
+  "mlp5_is_on_the_crossing": "Its loss is 0.241, well under the 0.65 plateau, so the pair IS partially rescuing mlp5 -- recovering about 0.4 of the 0.65 it costs, and simply not enough.",
+  "open": "No measured MLP lies between 2.02 and 4.81 nats of lone damage, so the crossing is bracketed but not located. mlp0 and mlp1 have never been measured at all -- the two remaining sites below the boundary. S2002 runs them.",
+  "pred_c_failed_and_the_failure_is_the_result": "The bar was that the loss deepens as the site gets cheaper: gain(mlp7) < gain(mlp6) < gain(mlp5) < 0. It does not -- it SATURATES. mlp7 loses 0.636 and mlp6 loses 0.657, so the cheaper site loses slightly LESS, by 0.021 and 0.030 nats (skip1200 satisfies the ordering by 0.002 and is the one role that passes). For a site the pair cannot help, the loss is just the standalone cost of compiling attention 5 and 6 -- 0.62 to 0.70 nats -- a constant, not a function of the site.",
+  "scopes": "S1985's framing 'a compiled site is safe when...' was describing the upper half of this curve and quietly assuming every site was in it.",
+  "section": "S2001",
+  "status": "CERTIFIED"
+ },
  "THE_FREQUENCY_GRADIENT_IS_GENERIC_S1995": {
   "builds_on": "THRESHOLD_GAP_IS_NOT_A_FALLBACK_ARTEFACT_S1994",
   "claim": "S1994's 3:1 target-frequency gradient is a property of compiling ANYTHING, not of attention 6. The ratio of damage in the most frequent bucket to damage in the unseen bucket is 0.41-0.45 for mlp2+attention 5,6; 0.39 for mlp2+attention 5; 0.29 for a lone mlp2; 0.21-0.23 for a lone mlp4; 0.27 for the full 36-site program -- all clustered around the threshold gap's 0.29, though total damage across those arms differs by a factor of 2.2.",
