@@ -820,6 +820,15 @@
   "section": "S1960",
   "status": "CERTIFIED."
  },
+ "ONE_DIRECTION_CARRIES_60_PERCENT_OF_ATTENTION_6_S2009": {
+  "builds_on": "THE_CEILING_IS_COVERAGE_INVARIANT_S2008",
+  "claim": "A SINGLE DIRECTION recovers 59.2%/61.1%/61.8% of attention 6's entire contribution. Sweeping its table rank inside mlp2 + attention 5,6: rank 1 recovers 59-62%, rank 2 62-65%, rank 4 65-68%, rank 8 67-70%, rank 16 72-74%, rank 384 100%. The curve climbs only 59%->72% from rank 1 to rank 16, so the last 28% needs all 368 remaining dimensions: attention 6's content is one strong direction plus a long flat tail, not 'low-dimensional' in the ordinary sense.",
+  "evidence": "ops/the_bottom_of_attention_sixs_curve.py, 201.8s, eleven arms x three roles at 5,419, using per-site table ranks. pred_a True 3/3, pred_b True 3/3, pred_c FALSE 3/3. Derived controls True, both reference deviations 0.000000.",
+  "open": "S2000 measured attention 6's content at 0.212 for a compiled mlp2 and 0.095 for mlp4, a factor of 2.2, and S1999 showed the SIZE is a fact about the pair. Whether the rank-1 FRACTION transfers to mlp4 has not been checked; a fraction that transfers would mean the direction is a property of attention 6 rather than the pair. S2010 runs it.",
+  "pred_c_missed_by_0_003": "The bar was that attention 5 at RANK 1 sits within 0.02 nats of the full-rank arm; it sits at 0.022/0.023/0.023, short by 0.002/0.003/0.003. The bar came from S2007's +0.001 at rank 16. The substance is unchanged -- rank 1 at attention 5 costs 0.022 where REMOVING attention 5 costs 2.905, so one direction buys 99.2% of the site -- but S2007's 'pure presence' now has a measured floor of about 0.02 nats rather than 0.001.",
+  "section": "S2009",
+  "status": "CERTIFIED"
+ },
  "ONE_MLP_LAYER_4_S1982": {
   "builds_on": "COST_IS_NOT_ADDITIVE_OVER_SITES_S1981",
   "claim": "Compiling the MLP at layer 4 ALONE -- with all thirty-five other sites live and attention 6 live -- costs 10.58-10.94 nats, the whole of S1981's six-site figure (10.60-10.96) and 3.9x the complete thirty-six-site program (2.70-2.98). One site out of thirty-six, worse than all of them together.",
