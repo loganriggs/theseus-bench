@@ -579,6 +579,17 @@
   ],
   "status": "CERTIFIED \u2014 all four predictions TRUE, 18 anchor figures reproduced"
  },
+ "MIXING_DAMAGE_IS_LAYERS_6_TO_8_S1979": {
+  "builds_on": "PARTIAL_COMPILATION_IS_WORSE_THAN_FULL_S1978",
+  "claim": "S1978's 3.6x partial-compilation penalty is local to three layers: with all 18 MLPs substituted, compiling attention at layers 6, 7 and 8 (the k=6->9 step) recovers 6.61-6.77 nats, 88-89% of the entire fall, on 3/3 roles. S1765's consistency requirement is LOCAL -- specifically live attention in the middle third reading context-free rows -- and the other fifteen attention layers reading the same rows cost almost nothing.",
+  "control_repairs": "Two, both my errors and one a real bug. (1) The control asserted 'different spec => must move covered-input top-1', which holds for a table-rank difference but not for a SITE-SUBSET one that shifts CE without flipping any covered argmax. The differing side now requires only that ONE such pair moves and reports the quiet ones; the inert side stays exact. (2) _sites_key hashed an explicit list of all 36 sites differently from None -- two cache entries and two fingerprints for one object, and the reason this plan had no same-spec pair. Normalised, with tests for the full list, ordering and duplicates.",
+  "evidence": "ops/where_the_mixing_hurts.py, 4.6s warm. Eight arms x three roles at 5,419 using bqlib's per-site substitution. pred_a False, pred_b True, pred_c True, derived controls True.",
+  "open": "The best point on this curve is not the one S1765 defines. A program leaving three attention layers live is not a pure function of the current token, so every S1765-derived result -- the exact zero cross-position Jacobians, the covered-input inertness the controls rest on -- would not hold for it. Whether 0.3 nats is worth the analytical frame is the first genuinely architectural question since S1765 itself, and it is a decision rather than an experiment.",
+  "relation_to_prior_work": "S1891/S1908 found the tracking the program destroys is LATE attention; S1978 found EARLY layers cost more to compile. Both are consistent with this and neither predicted it: the damage from MIXING is in the MIDDLE, layers 6-8.",
+  "section": "S1979",
+  "status": "CERTIFIED.",
+  "the_program_is_not_the_best_point": "pred_a FAILED: the fall is not monotone. Compiling attention layers 0-2 is very slightly worse (-0.017 on 3/3) and compiling the LAST THREE (k=15->18) is worse by 0.28-0.32 nats. k=12 and k=15 beat the fully compiled program by ~0.1-0.3 nats on every role. S1765 compiles all 36 sites for DEFINITIONAL reasons -- the program must be a pure function of the current token -- and that definition costs about 0.3 nats against the best partial point, unmeasurable before S1978 because no section could express a partial program."
+ },
  "NEIGHBOUR_BEATS_MAP_ON_TOP1_S1937": {
   "builds_on": "MAP_IS_INERT_AT_COVERED_INPUTS_S1936",
   "caveat": "pred_c (oracle per-bucket hybrid ceiling >= 1.0pp summed) passed 3/3 at 21.22/17.99/32.35pp but is near-vacuous given pred_a's failure -- the ceiling measures the neighbour's dominance, not a mixture's value. Same failure mode as S1933's pred_c.",
