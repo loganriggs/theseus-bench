@@ -472,6 +472,19 @@
   "section": "S1938",
   "status": "CERTIFIED -- rung 2, second-class confirmation of S1937 with a different instrument"
  },
+ "LAYER_6_ATTENTION_IS_THE_WHOLE_PENALTY_S1980": {
+  "boundary_effect_ruled_out": "If the phenomenon were 'whichever live attention layer sits directly above the compiled prefix', compiling layer 6 would move the boundary to layer 7 and buy nothing. Compiling layer 7 next is worth -0.003 to -0.008 nats, slightly NEGATIVE on all three roles. It is layer 6 specifically, not its position relative to the compiled block.",
+  "builds_on": "MIXING_DAMAGE_IS_LAYERS_6_TO_8_S1979",
+  "claim": "S1978's 3.6x partial-compilation penalty is ONE SITE. With all 18 MLPs and attention 0-5 substituted, compiling attention at layer 6 ALONE recovers 6.46-6.64 nats -- 98% of the entire fall -- on 3/3 roles. Live attention at layer 6 reading context-free rows is the whole of the penalty.",
+  "controls": "Derived: coverage exact; same-spec pairs exactly inert at covered inputs; at least one differing-spec pair moves; buckets partition; live per-cell identical; S1975's published converged CE reproduced to 0.000000 via B.ref(). Fifty-ninth clean reading.",
+  "evidence": "ops/which_of_the_three.py, 102.1s, declarative. Six arms x three roles at 5,419. pred_a True, pred_b False, pred_c True, derived controls True.",
+  "open": "Layer 6's attention does something with context-free input that no other layer does, and nothing here says what. S1908's alignment x magnitude decomposition separates a head's contribution into direction and size and has never been pointed at a site identified this way.",
+  "pred_b_failure": "Not every one of S1979's three layers helps: layer 7 is marginally harmful on 3/3. S1979's three-layer step was two layers of nothing and one layer of everything; the sweep's granularity was the only reason it looked like a block.",
+  "reproduction": "pred_c: the n0->n3 fall is 6.61-6.77 nats, reproducing S1979's k=6->9 within 0.15 -- the same two builds by a different route, so neither sweep is mis-specified.",
+  "section": "S1980",
+  "status": "CERTIFIED.",
+  "what_it_says_about_S1765": "The premise costs 2.7 nats (S1977) and is internally consistent in a way that matters (S1978), but the consistency it needs is NOT GLOBAL: 35 of the 36 sites can be compiled or live in any combination without disaster, and one -- attention at layer 6 -- must match its inputs. S1891/S1908 named LATE attention as what the program destroys; S1978 found EARLY layers costliest to compile; neither is layer 6. Three questions about the same stack, three different answers."
+ },
  "MAP_CURVE_TURNS_OVER_AT_640_S1959": {
   "builds_on": "THRESHOLD_IS_DEFENSIBLE_LEVERS_ARE_NOT_EQUALISED_S1958",
   "claim": "At 5,419, with {mlp 768, attn 384}, the fallback map's CE curve is strictly convex across ranks 256/384/512/640/768/1024 on 3/3 roles and its 0.010 nats/100M crossing sits at rank 640 on 2 of 3 roles (512 on skip11000). Rank 640 beats S1949's rank 512 significantly, paired t = -7.67/-6.24/-4.81, for +10.6M and 0.0011/0.0010/0.0011 nats. S1949's map rank of 512 was one step short at this coverage.",
