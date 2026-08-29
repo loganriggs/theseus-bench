@@ -3757,18 +3757,22 @@
     "the_asymmetry": "Attention restorations change covered and uncovered positions at nearly the same rate (attn5: 96.37 vs 96.03%); MLP restorations differ by 1,200x between them (mlp16: 0.03 vs 35.70%). An attention restoration changes the program everywhere because it restores context; an MLP restoration changes it only where the substituted row was never the model's output to begin with."
   },
   "NORM_RATIO_PREDICTS_COLLAPSE_S1892": {
-    "status": "MEASURED \u2014 answers both of \u00a71891's open questions; pred_b failed as its own control intended",
+    "status": "CERTIFIED AS A THRESHOLD (\u00a71905), not as an ordering \u2014 the stronger \u00a71892 claim is corrected",
     "claim": "\u00a71891's collapse (restoring one live attention site drives the compiled program's agreement with the model to chance) is a MAGNITUDE effect. Rescaling attn5's live output to its table's mean row norm restores 1.07/1.04/1.08x to 7.26/7.37/7.74x against a 7.19/7.29/7.64x baseline.",
-    "norm_ratio_orders_the_sites": "live/table mean row norm: attn5 156.4x and attn6 82.9x both COLLAPSE the program; attn3 14.9x, attn13 14.0x, attn7 13.5x, attn10 10.6x are all harmless or helpful. No overlap between the groups. attn5's 156.4x is essentially \u00a71804's published attention maximum of 152.62x, measured there in a different instrument and never connected to a behavioural consequence.",
+    "norm_ratio_orders_the_sites": "CORRECTED at \u00a71905. Across ALL EIGHTEEN attention sites at 16,110 types the ratio is a THRESHOLD, not an ordering: only attn5 (144.0x) and attn6 (77.1x) exceed 50x and both collapse (1.06/1.32x); all 15 sites at or below 20x stay above 5.0x. But Spearman over the full set is only -0.158/-0.212/-0.249, and attn4 at 35.4x \u2014 inside the band \u00a71892's six sites left empty \u2014 is completely harmless at 7.16/7.28/7.39. The cliff sits between 35x and 77x; on either side the ratio predicts nothing.",
     "the_rescale_is_a_mute_not_a_repair": "\u00a71892 pred_b FAILED exactly as registered: all six rescaled arms land within 0.11x of the baseline, including attn13 which loses its entire +0.91 gain. At factors of 0.0064-0.094 the restored site contributes at the table's magnitude and the program behaves as if it were still compiled. So at the compiled scale the restored site's DIRECTION barely matters \u2014 magnitude alone decides whether restoring a live site helps, does nothing, or destroys the program.",
     "sections": [
       "\u00a71804",
       "\u00a71806",
       "\u00a71891",
-      "\u00a71892"
+      "\u00a71892",
+      "\u00a71897",
+      "\u00a71905"
     ],
     "open": "whether the DEPLOYED program's own per-site magnitudes are correct. The tables store length-1 norms; \u00a71804 measured live norms 2.71-152.62x larger. The entire cost arc (\u00a71866-\u00a71883) assumed this away.",
-    "control": "the all-compiled baseline reproduced \u00a71888 for a fourth consecutive run; unscaled arm reproduced \u00a71891 to two decimals on all four sites"
+    "control": "the all-compiled baseline reproduced \u00a71888 for a fourth consecutive run; unscaled arm reproduced \u00a71891 to two decimals on all four sites",
+    "answer_to_S1891_survives": "attn5 and attn6 are the only two sites past the cliff, which is why they and not their neighbours.",
+    "ratios_are_coverage_dependent": "attn5 is 156.4x at 5,419 types and 144.0x at 16,110; attn3 14.9x -> 13.0x. Any quantitative use of a ratio must state its coverage."
   },
   "DEPLOYED_MAGNITUDES_S1893": {
     "status": "CERTIFIED \u2014 settled in BOTH instruments (\u00a71893 top-1, \u00a71894 nats)",
