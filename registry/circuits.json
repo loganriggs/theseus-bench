@@ -3703,7 +3703,7 @@
     "settled_statement": "The compiled 36-site program tracks the live model's top-1 at ~5.8x chance on frequent targets and ~6.9x on targets it has never seen, while being correct on the latter only 2.6-4.9% as often as the model. It reproduces the model's predictions \u2014 errors included \u2014 most faithfully where those predictions are worst. The deployed and 46%-cheaper builds do this to the same degree."
   },
   "TRACKING_IS_THE_TABLES_S1887": {
-    "status": "CERTIFIED \u2014 all four predictions TRUE, with the frequency-proxy confound controlled",
+    "status": "CERTIFIED \u2014 confirmed second-class at a second coverage (\u00a71888), all four predictions TRUE",
     "claim": "The compiled program's top-1 fidelity to the live model is carried by the TABLE lookups: enrichment over a permutation null is 7.16/7.29/7.49x at covered current tokens (exact length-1 site outputs) against 3.14/3.56/3.11x at uncovered ones (\u00a71870's rank-64 fallback map) \u2014 a 2.28/2.05/2.41x ratio. \u00a71885's aggregate 5.8x was averaging these.",
     "confound_controlled": "Covered current tokens are commoner tokens, so the raw split risks re-measuring target frequency. Holding the target bucket at 125+, the gap WIDENS to 2.57/2.97/2.71x (6.09/6.33/6.11x vs 2.37/2.13/2.26x).",
     "fallback_is_not_inert": "3.14/3.56/3.11x \u2014 a rank-64 linear map of the embedding tracks the model three times better than chance, so \u00a71866-\u00a71882's fallback lever moves top-1 behaviour, not only CE.",
@@ -3712,8 +3712,12 @@
     "sections": [
       "\u00a71885",
       "\u00a71886",
-      "\u00a71887"
+      "\u00a71887",
+      "\u00a71888"
     ],
-    "known_answer_control": "the mechanism split partitions all scored positions; buckets partition independently"
+    "known_answer_control": "the mechanism split partitions all scored positions; buckets partition independently",
+    "replication_S1888": "At the DEPLOYED 5,419 coverage, where the uncovered arm carries 24.1/25.4/24.2% of scored positions (8890/9367/4459) against \u00a71887's ~10% (3672/3668/1835): covered 7.19/7.29/7.64x, uncovered 2.91/2.97/2.70x, ratio 2.48/2.46/2.83x; within the 125+ bucket 2.58/2.84/3.24x. The covered arm is essentially identical across a 3x coverage change and the weaker fallback arm was not a small-sample artifact.",
+    "settled": "Table lookups track the model at ~7.2-7.6x chance, \u00a71870's fallback map at ~2.7-3.0x \u2014 a ratio near 2.5x that survives holding the target bucket fixed and does not depend on coverage.",
+    "loose_thread": "Every \u00a71888 fallback figure is slightly below \u00a71887's (2.91 vs 3.14, 2.97 vs 3.56, 2.70 vs 3.11) \u2014 inside the 1.0x bar but consistent in sign on all three roles. At lower coverage the uncovered set includes commoner tokens and the rank-64 map may serve them marginally worse. Unmeasured."
   }
 }
