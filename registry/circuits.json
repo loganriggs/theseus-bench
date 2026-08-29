@@ -3776,7 +3776,7 @@
     "live_norm_scaling_is_worse_than_uniform": "PERSITE all-position CE 12.88/12.94/12.81 against ln(50257)=10.82. Not merely destroyed \u2014 confidently wrong. \u00a71804's ratio applied as a correction is worse than predicting at random."
   },
   "PROGRAM_REPRODUCES_THE_MODELS_MISTAKES_S1895": {
-    "status": "CERTIFIED \u2014 all four predictions TRUE, both anchors reproduced in one run",
+    "status": "CERTIFIED \u2014 confirmed second-class at a second coverage (\u00a71896), all four predictions TRUE",
     "claim": "Restricted to the ~60% of covered scored positions where BOTH the program and the live model are WRONG, the program's top-1 matches the model's at 22.76/20.75/24.06% against a permutation null of 3.73/3.33/3.70% \u2014 6.10/6.24/6.50x, on 16856/15857/8487 positions. The program makes the model's specific mistakes, not merely mistakes in the same places.",
     "excludes": "the alternative \u00a71885 could not rule out and \u00a71893/\u00a71894 revived \u2014 that the 5-8x aggregate tracking is carried by easy positions any two competent predictors share. The both-wrong cell contains no easy positions by construction and reproduces the aggregate (6.1-6.5x vs 7.19/7.29/7.64x).",
     "two_by_two": {
@@ -3785,17 +3785,22 @@
       "model_only": "25.7/27.5/24.9%",
       "both_wrong": "60.3/57.7/60.7%"
     },
-    "program_only_right": "16.9/15.8/18.7% of the program's correct predictions \u2014 one in six are positions the model gets wrong, confirming \u00a71884's 19% on the whole covered arm",
+    "program_only_right": "16.9/15.8/18.7% at 5,419 (\u00a71895), 17.3/16.5/19.3% at 16,110 (\u00a71896), 19% on the 125+ bucket (\u00a71884) \u2014 three populations, one claim: about one in six of the program's correct answers are positions the live model gets wrong.",
     "reconciles_S1893_S1894": "scaling tables to x0.50 buys agreement (8.27x) while costing accuracy (CE 6.18 vs 6.01) because more agreement means more faithfully reproduced MISTAKES. The instruments were never in conflict: agreement measures fidelity to a model that is wrong 62-75% of the time here.",
     "sections": [
       "\u00a71884",
       "\u00a71885",
+      "\u00a71886",
       "\u00a71887",
+      "\u00a71888",
       "\u00a71891",
       "\u00a71893",
       "\u00a71894",
-      "\u00a71895"
+      "\u00a71895",
+      "\u00a71896"
     ],
-    "control": "cells partition exactly; \u00a71888 enrichment AND \u00a71858 CE both reproduced in the same run"
+    "control": "cells partition exactly; \u00a71888 enrichment AND \u00a71858 CE both reproduced in the same run",
+    "replication_S1896": "At 16,110 types the both-wrong enrichment is 6.23/6.18/6.49x against \u00a71895's 6.10/6.24/6.50x \u2014 a difference of 0.13/0.06/0.01x, two roles agreeing to within a hundredth, on 19618/18650/9847 positions. Tripling coverage changes the covered population (model-only grows from 25.7/27.5/24.9% to 26.9/29.1/26.4%) and the effect does not move.",
+    "line_summary": "The compiled 36-site program is neither a subset of the live model nor an independent predictor. It reproduces the model's specific outputs \u2014 correct and incorrect alike \u2014 at 6-8x a marginal-matched null, on two builds, two coverages, and restricted to both-wrong positions. Carried by the table lookups at 2.3x the fallback's rate and by late attention (all 18 MLP restorations are provable no-ops). Simultaneously right on a set the model misses one time in six."
   }
 }
