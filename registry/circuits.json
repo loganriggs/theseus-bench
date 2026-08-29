@@ -959,6 +959,16 @@
   "the_curve_is_convex": "Rank 384 costs 0.23 to 0.46 of what rank 128 costs, for 60% of the saving -- a middle rank is the better buy IF one were buying, but at 5-12x the price none of them is.",
   "where_the_build_stands": "Table content concentrated in mlp16 and mlp17 (S2015); rank correctly bought there by 5-24x (S2016); shallow tables nearly free to degrade but their parameters worth ten times less than degrading them costs (S2015); the whole program super-additive in loss by 22-24% so per-site decisions do not add (S2014, S2016). NO ALLOCATION CHANGE IS INDICATED, and that is a result rather than an absence of one."
  },
+ "RANK_768_IS_SLIGHTLY_UNDER_BOUGHT_AT_MLP17_S2017": {
+  "builds_on": "RANK_768_IS_CORRECTLY_BOUGHT_AT_MLP16_AND_MLP17_S2016",
+  "claim": "Untruncating mlp17 from the shipped rank 768 to its own rank 1152 buys 0.00063/0.00030/0.00051 nats against S1947's 0.00025 price -- 1.2x to 2.5x, on 3/3 roles, at pooled t = -3.58. mlp16 does NOT qualify: it buys +0.00102 and +0.00053 on two roles and -0.00008 on skip1200. And raising BOTH buys LESS than the sum of raising each (0.00105 vs 0.00116, 0.00120 vs 0.00131, 0.00031 vs 0.00043) -- improvements are SUB-additive by 10-28%, where S2014 and S2016 both measured degradations as SUPER-additive by 22-24%.",
+  "evidence": "ops/is_768_leaving_content_on_the_table.py, 267.4s, six arms x three roles at 5,419. pred_a True 3/3, pred_c True; pred_b FALSE (mlp16 negative on one role), pred_d FALSE 3/3. Derived controls True, reference deviation 0.000000.",
+  "open": "Every number is at 5,419. S1993 and S2008 found this family stable at 16,110, but S1963 and S1965 reversed 5,419 claims twice, and a 0.0005-nat margin is exactly the size a coverage change could erase.",
+  "section": "S2017",
+  "status": "CERTIFIED as a discovery-run margin. NOT a build change: the house pattern is to score a candidate build end-to-end at both coverages, which S2018 does.",
+  "the_nonlinearity_has_a_sign": "Same loss curvature, opposite sign of perturbation: moving away from the program's optimum compounds, moving toward it saturates. I registered that the nonlinearity should make improvements compound too; it does the opposite, which is a cleaner statement about the loss than the one I expected.",
+  "what_it_recommends": "mlp17 at rank 1152 is justified under S1947's price rule on 3/3 roles, by 1.2-2.5x, for +2.52M values on a 189.5M build -- a 1.3% price rise for 0.0005 nats. That is a real but small margin on a rule whose bar is itself 0.010 per 100M. mlp16 is not justified."
+ },
  "RANK_ONE_IS_PRESENCE_NOT_CONTENT_S2010": {
   "builds_on": "ONE_DIRECTION_CARRIES_60_PERCENT_OF_ATTENTION_6_S2009",
   "claim": "Attention 6's rank-1 share of its whole contribution is 59-62% at a compiled mlp2 and 98.1-98.3% at a compiled mlp4 -- it does not transfer, failing a 10-point bar by 36.5 to 39.0 points. The reason is that the rank-1 fraction tracks the PRESENCE share (63.8/66.3/68.6% at mlp2, 98.5/98.5/98.8% at mlp4) and sits slightly BELOW it on all six cells. Rank 1 at attention 6 is very slightly worse than a constant row: it delivers presence and none of the content.",
