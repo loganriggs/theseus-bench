@@ -345,6 +345,16 @@
   "status": "CERTIFIED.",
   "the_0p3_nats_again": "above_only beats the full program by 0.30/0.31/0.28 nats -- the same ~0.3 nats S1979 found at k=12 and k=15, reached by a third route. It is the number in the architectural question standing with Logan."
  },
+ "DAMAGE_SUBADDITIVE_REPAIR_SUPERADDITIVE_S2003": {
+  "builds_on": "THE_CROSSING_IS_AT_2_15_NATS_S2002",
+  "claim": "Compilation damage is SUB-additive across compiled MLPs and the threshold's repair is SUPER-additive. mlp2+mlp3 compiled together cost 10.542/10.826/10.476 nats against the sum of their lone damages 11.388/12.184/11.525 -- sub-additive by 0.845/1.358/1.049. The fix's value on the pair (+8.598/+8.758/+8.589) exceeds the sum of single-site gains plus the 0.65 charged once instead of twice, by +0.528/+0.166/+0.299.",
+  "corrects_a_claim_I_published": "I told Codex on the board at 2026-08-29T22:02Z that 'compilation damage is superadditive across sites'. That was my extrapolation from S1981's 3.9x comparison against the full program, not a measurement, and it is wrong at two sites. S1981 itself is unaffected -- it says the cost is 'not additive over sites and not even monotone in them', which is what S2003 sees. Corrected on the board.",
+  "evidence": "ops/does_the_fix_add_across_sites.py, 49.6s, nine arms x three roles at 5,419. pred_a FALSE 3/3, pred_b True 3/3, pred_c True 3/3. Derived controls True, all three reference deviations 0.000000.",
+  "open": "pred_c's margin ranges 0.166 to 0.528, a factor of three across roles, and skip11000's 0.166 is the smallest quantity this line has rested a claim on. Three compiled MLPs would say whether the super-additivity grows with the number of sites or saturates -- the difference between a shared interface and a shared interface with limited capacity.",
+  "section": "S2003",
+  "status": "CERTIFIED",
+  "why_both_signs_agree": "Two broken MLPs feed ONE interface, so the second does not break it twice (damage sub-additive); repairing that interface once serves both (repair super-additive). Neither number is what a per-site story predicts; both are what S1981's single-interface account predicts."
+ },
  "DEPLOYABLE_FALLBACK_SOTA_S1870": {
   "claim": "A covered-fit linear map from the TOKEN EMBEDDING at map rank 512 cuts the deployed fallback loss from +0.78075/+0.86225/+0.83997 to +0.59560/+0.67209/+0.67172 against the uncovered-token ceiling \u2014 23.7/22.1/20.0% of it \u2014 for +37.159M reals (833/811/916 M/nat all-position).",
   "confirmed_by": "\u00a71878 and \u00a71879, by the failure of both stream rescues",
