@@ -3589,7 +3589,7 @@
   },
   "MAP_RANK_TRACKS_TABLE_RANK_S1880": {
     "status": "CERTIFIED \u2014 all four predictions TRUE, 18 anchor figures reproduced",
-    "law": "map_rank = min(table_rank, 512). A fallback map of rank above the table rank buys EXACTLY nothing, because the map is fitted against the truncated table rows, so at table rank r the targets span a rank-r subspace and any map of rank >= r is already exact within it.",
+    "law": "map_rank = min(table_rank + 1, 512). \u00a71785 truncates a table as mu + rank-r, so the targets span r+1 dimensions \u2014 r directions plus the mean offset \u2014 and a rank-r map is one short. A map at or above table_rank+1 is exact within the target subspace and buys nothing more.",
     "measured_gain_of_map512_over_map64": {
       "table_full": [
         0.04465,
@@ -3646,9 +3646,25 @@
       "\u00a71870",
       "\u00a71877",
       "\u00a71878",
-      "\u00a71880"
+      "\u00a71880",
+      "\u00a71881"
     ],
     "scopes": "DEPLOYABLE_FALLBACK_SOTA_S1870 \u2014 correct for a FULL-RANK-table build (what \u00a71789 deployed), not at table rank <= 64 where the rank-64 map is equal or better and 37.159M cheaper.",
-    "known_answer_control": "covered CE spread 0.00e+00 for an eleventh time, across 6 table ranks x 2 map ranks"
+    "known_answer_control": "covered CE spread 0.00e+00 for an eleventh time, across 6 table ranks x 2 map ranks",
+    "corrected_by_S1881": "\u00a71880 called the table-64 residual (+0.00020/+0.00044/+0.00028 at map 64) \"a rounding artifact\". It is the one-dimension shortfall: 64 < 65. \u00a71881 reproduced the same residual at table 256 with map 256 (+0.00013/+0.00022/+0.00020) and table 384 with map 384 (+0.00005/+0.00007/+0.00013) \u2014 three ranks, one mechanism. \u00a71881 pred_a FAILED its 1e-5 bar at 2.20e-04 as a result.",
+    "practical_rule": "Use the matched rank anyway: buying map 512 over map 256 at table rank 256 costs 21.234M for 0.00013 nats = 163,338 M/nat."
+  },
+  "DEPLOYED_BUILD_STRICTLY_DOMINATED_S1881": {
+    "status": "CERTIFIED \u2014 dominated on BOTH axes, all three roles",
+    "claim": "\u00a71789's deployed program (full-rank tables, 5,419 types, rank-64 map; 230.087M; all-position CE 6.01167/5.98477/6.00165) is beaten by table rank 768 with a rank-512 map: 5.97061/5.93956/5.96287 at 224.225M \u2014 better by 0.04106/0.04521/0.03878 AND 5.862M cheaper.",
+    "frontier": "m256_256@81.87M/6.0244  m512_256@103.11M/6.0242  m384_384@122.77M/5.9957  m512_384@133.39M/5.9957  m512_512@163.67M/5.9810  m512_768@224.23M/5.9706  m512_full@267.25M/5.9670 \u2014 identical ordering on all three roles",
+    "sections": [
+      "\u00a71858",
+      "\u00a71880",
+      "\u00a71881"
+    ],
+    "relation": "the sharpest instance of the \u00a71853-\u00a71865 result that the deployed build is off the frontier",
+    "open": "coverage \u2014 \u00a71880 and \u00a71881 both held it at 5,419; whether this margin survives higher coverage is the last unmeasured cell of the cost model",
+    "known_answer_control": "covered CE spread 0.00e+00 for a twelfth time"
   }
 }
