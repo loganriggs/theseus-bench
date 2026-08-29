@@ -3840,5 +3840,19 @@
     ],
     "open": "none in the attention line",
     "mlp_profile_is_depth_ordered": "\u00a71898's per-MLP change-rate profile is best ordered by DEPTH (Spearman +0.785), then cosine (+0.637), then norm ratio (-0.610), then the conjunction (-0.389). Depth and cosine are not independent here, so depth is reported as the better ORDERING, not as the mechanism."
+  },
+  "CONFIDENCE_MODULATES_TRACKING_S1911": {
+    "status": "CERTIFIED \u2014 all four predictions TRUE",
+    "claim": "The compiled program's top-1 agreement with the live model roughly DOUBLES with the model's own confidence: 5.36/5.06/5.80x on the least-decided quartile of live top-2 logit margin, 10.11/10.34/10.87x on the most-decided. Gain +4.75/+5.27/+5.07x.",
+    "three_axes": "correctness is NOT a modulator (\u00a71895: both-wrong positions track at 6.10/6.24/6.50x); sequence position is NOT (\u00a71910: -0.36/-0.25/+0.59x, inconsistent in sign, while the live model's accuracy climbs on all three roles); model confidence IS (\u00a71911).",
+    "reading": "The program follows the model where the model is DECIDED, not where it is right and not where it has little context. A token-keyed table can reach a prediction the model holds firmly; it cannot reach one the model is still weighing.",
+    "the_pooled_number_is_a_mixture": "the pooled 7.2x is a mixture of a 5.4x regime and a 10.1x one",
+    "split_soundness": "live top-1 rises 17.2->74.8, 17.8->79.6, 15.9->74.2% across the quartiles (+57.6/+61.8/+58.3pp)",
+    "sections": [
+      "\u00a71895",
+      "\u00a71910",
+      "\u00a71911"
+    ],
+    "open": "whether the confidence gradient and \u00a71908's alignment result are the same fact seen from the logit and residual sides"
   }
 }
