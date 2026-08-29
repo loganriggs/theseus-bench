@@ -738,6 +738,17 @@
   "section": "S1958",
   "status": "CERTIFIED. pred_c's failure is the vindication -- I asked whether 0.010 was far from the natural rate and it is not."
  },
+ "TILT_CONFIRMED_ON_THE_SHIPPED_BUILD_S1964": {
+  "claim": "S1963's finding reproduces on the build actually arrived at ({mlp 768, attn 384}, rank-640 map, 5,419): the per-token alpha raises the unseen bucket (+0.26/+0.29/+0.25pp for the widest tilt), the widest tilt beats the narrowest on 3/3, and it still costs +1.45 to +2.94 milli-nats, above the 0.002-nat bar on 2 of 3 roles. S1963's negative was not an artefact of the compromise allocation.",
+  "confirms": "PER_TOKEN_ALPHA_WORKS_AND_STILL_PAYS_S1963",
+  "evidence": "ops/tilt_shipped_declarative.py, 4.6s. Five builds x three roles at 5,419. All three predicates TRUE, derived controls TRUE, reference deviation 0.000000.",
+  "first_declarative_experiment": "Written against bqlib's new run(): an experiment declares a PLAN, (key, registered text, fn) predicates and its reference anchors, and nothing else -- 66 lines against the hand-forked version's 225. The hand-forked twin died on ncov['c16110'], a two-coverage control clause inherited into a single-coverage fork: the EIGHTH fork-residue failure of the session. In the declarative form the control polarity is derived from the plan, the coverage assertion is generated, the reference is read from the artifact, and a predicate's text and code are one tuple, so none of those clauses exists to be left behind. An empty side of the two-sided control is a FAIL, not a silent pass.",
+  "gate_gaps_fixed": "Three, each locked by a fixture in ops/test_fast.py and each regression-checked to exactly one verdict change: a module-level CLASS name read as undefined (mod collected only FunctionDef); tuple-form predicate keys invisible to the key regex; and a tuple-declared predicate whose second element is not a real registered text is now a FAIL.",
+  "open": "run() has been exercised on ONE experiment. The 1,601 single-use scripts remain, and until a second and third are written against it, 'it removes the fork' is a claim about one data point.",
+  "section": "S1964",
+  "status": "CERTIFIED. The unseen-target deficit stands as the structural price of the blend across five attempts, two coverages and two allocations.",
+  "why": "Measured: GPU is 6% of wall-clock and authoring 94% (15.1x GPU, median 618s between runs); 90% of the 1,773 scripts ever run were run exactly once; a hand-forked experiment is ~224 lines of which ~150 get edited. Every failure this session came out of those edits and none was a thinking error."
+ },
  "TRACKING_IS_LATE_ATTENTION_S1891": {
   "attention_counts_verified_S1904": "On COVERED positions alone \u2014 where the substituted row is the model's own length-1 output \u2014 attn5 changes 96.37/96.04/96.81% of predictions and mlp16 changes 0.03/0.02/0.00%, a ratio of 3,200x against the 27x visible in the all-position figures. \u00a71891's \"attention, not MLPs\" survives the check that scoped the MLP no-op, and survives it more strongly.",
   "baseline_control": "the all-compiled baseline reproduced \u00a71888 to three digits for a third consecutive run",
