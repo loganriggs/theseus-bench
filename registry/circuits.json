@@ -3755,5 +3755,20 @@
     ],
     "open": "whether the DEPLOYED program's own per-site magnitudes are correct. The tables store length-1 norms; \u00a71804 measured live norms 2.71-152.62x larger. The entire cost arc (\u00a71866-\u00a71883) assumed this away.",
     "control": "the all-compiled baseline reproduced \u00a71888 for a fourth consecutive run; unscaled arm reproduced \u00a71891 to two decimals on all four sites"
+  },
+  "DEPLOYED_MAGNITUDES_S1893": {
+    "status": "MEASURED \u2014 answers \u00a71892's open question; the cost arc needs NO qualification",
+    "headline": "The deployed program's per-site magnitudes (length-1 table norms) are NEAR-OPTIMAL in the instrument the cost arc used and NOT optimal in agreement. Best top-1 arm is a global x0.80, beating the deployed x1.00 by only +0.09/+0.07/+0.08 percentage points. Best agreement arm is x0.50, beating it by +1.07/+1.12/+1.27x enrichment while being WORSE at top-1 (13.47% vs 13.55%).",
+    "consequence_for_the_cost_arc": "\u00a71866-\u00a71883 \u2014 the frontier, the map-rank law, the 46% build \u2014 are all in nats and top-1, and on that instrument the deployed object is near-optimally scaled. \u00a71892 raised the worry that they measured a mis-scaled object; the answer is no.",
+    "live_norm_scaling_is_catastrophic": "Scaling every site to its own live norm (ratios 1.3x-156.4x) gives enrichment 1.89/1.84/1.76x and top-1 1.98/1.98/1.78% against 13.55/14.25/13.64%. \u00a71804's ratio is a DIAGNOSIS, not a correction.",
+    "instruments_disagree": "By enrichment g0.50 > g0.80 > g1.00; by top-1 g0.80 > g1.00 > g1.25 > g0.50. A scale that makes the program agree with the model MORE makes it slightly LESS accurate, on all three roles \u2014 so the program's errors and the model's are not aligned the way \u00a71884's 81% overlap suggests.",
+    "predicate_discrepancy": "\u00a71893 pred_c was REGISTERED against all-position CE and IMPLEMENTED against top-1, because the inherited bucket instrument does not compute all-position CE. The disagreement conclusion holds for top-1 vs enrichment, which is what ran. All-position CE was NOT measured.",
+    "sections": [
+      "\u00a71804",
+      "\u00a71806",
+      "\u00a71892",
+      "\u00a71893"
+    ],
+    "control": "the x1.00 arm reproduced \u00a71888 for a fifth consecutive run"
   }
 }
