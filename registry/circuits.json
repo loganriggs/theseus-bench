@@ -337,6 +337,20 @@
   "section": "S1937",
   "status": "DISCOVERY -- registered pred_a predicted the OPPOSITE and failed 0/3. Single instrument (top-1); the CE cross-check is the named next run."
  },
+ "NN75M512_DOMINATES_DEPLOYED_S1941": {
+  "builds_on": [
+   "ROUTED_HYBRID_IS_TOP1_ONLY_S1940",
+   "INSTRUMENTS_RANK_FALLBACKS_OPPOSITELY_S1938"
+  ],
+  "claim": "At 5,419 coverage the cosine-routed hybrid nn75m512 (top 75% of uncovered types by neighbour cosine take the output-NN neighbour row; the rest take a rank-512 map) STRICTLY beats bilin18's deployed fallback on BOTH instruments with significance: top-1 +0.56/+0.49/+0.48pp and CE -0.0204/-0.0209/-0.0244 nats at paired t = -5.17/-4.95/-4.10, on 3/3 roles. Cost 267.335M against the deployed 230.087M.",
+  "controls": "coverage exactly 5,419; every arm inert at covered inputs; buckets partition; live per-cell top-1 and CE identical across arms at 0.00e+00; the nn75/map64/map512 anchors reproduced S1940's published pooled top-1 to 0.005pp (twenty-seventh clean reading, first produced through the shared library).",
+  "evidence": "ops/close_the_fork.py, 45.4s, four arms x three roles, per-position top-1 and CE with a paired t on every CE margin. First experiment written against ops/bqlib.py (110 lines vs S1940's 431).",
+  "fork_stays_open": "pred_b FAILED 0/3: routing a quarter of uncovered types away from the rank-512 map costs real CE, +0.0243/+0.0275/+0.0164 nats at paired t = +5.93/+6.30/+2.67. At ~267M the frontier is exactly two points -- nn75m512 for top-1 (+0.34/+0.37/+0.41pp over map512, at 0.03% higher cost), map512 for CE. What changed is that the 230M deployed design is now dominated by BOTH, so the S1938 objective fork no longer includes it.",
+  "open": "The router is still S1939's cosine, which carries real signal but NOT the unseen-target signal (S1939: recovery proportional to fraction routed). nn75m512 gives up CE in proportion to what it routes away. A router identifying the unseen-target case specifically would take map512's CE and the neighbour's top-1 at once; nothing beyond the cosine has been tried.",
+  "relation_to_S1939": "This is S1939's RETRACTED claim, established for a DIFFERENT build. S1939 claimed strict domination for nn75 at +0.09M and S1940's paired t withdrew it (nn75 is a top-1 win and CE-NEUTRAL). It holds for nn75m512 at +37.2M, with the significance bar attached up front.",
+  "section": "S1941",
+  "status": "CERTIFIED for pred_a and pred_c (3/3 each); pred_b FALSE 0/3."
+ },
  "NORM_RATIO_PREDICTS_COLLAPSE_S1892": {
   "answer_to_S1891_survives": "attn5 and attn6 are the only two sites past the cliff, which is why they and not their neighbours.",
   "claim": "\u00a71891's collapse (restoring one live attention site drives the compiled program's agreement with the model to chance) is a MAGNITUDE effect. Rescaling attn5's live output to its table's mean row norm restores 1.07/1.04/1.08x to 7.26/7.37/7.74x against a 7.19/7.29/7.64x baseline.",
