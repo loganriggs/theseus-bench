@@ -80,6 +80,15 @@
   "status": "CERTIFIED",
   "the_three_roles": "mlp2 / mlp4 -- must be compiled, content IRRELEVANT (S1983: a mean row costs the same 10.67). attention 5 -- must be PRESENT, content slightly NEGATIVE (-0.044 nats). attention 6 -- must be present AND carries content worth +0.209 nats, low-dimensional: rank 16 recovers 72% of it (S1996). Removing all of attention 6's content costs about what removing 24/25ths of its rank did, which is what a low-dimensional signal looks like."
  },
+ "ATTENTION_5_IS_PURE_PRESENCE_IN_EVERY_ROLE_S2007": {
+  "attention_5_closed": "Six sections, four roles, pure presence in every one: required for the fix (S1992), content worthless when repairing (S1998, -0.044), the only lever on the ceiling (S2006, -2.65), content worthless there too (S2007, -0.19). Nothing about what attention 5 WRITES has mattered in any configuration measured -- only that it stops varying with context. The one site whose content does matter is attention 6, worth 0.08-0.22 nats depending on the compiled MLP (S2000), and low-dimensional: rank 16 recovers 72% (S1996).",
+  "builds_on": "ATTENTION_5_IS_UNIQUELY_THE_LEVER_S2006",
+  "claim": "Attention 5's lever action is presence-only, like every other role it plays. With attention 6 LIVE, a mean row at attention 5 -- zero information -- is BETTER than its compiled table by 0.176/0.192/0.241 nats (in the repaired configuration S1998 measured that advantage at 0.044, so as a lever it is four to five times larger). Truncating its table to rank 16 costs +0.001/+0.001/+0.000: the lever is entirely intact at 1/24th of the capacity.",
+  "evidence": "ops/is_the_lever_also_presence_only.py, 79.2s, ten arms x three roles at 5,419. pred_a/b/c all True 3/3, derived controls True, all three reference deviations 0.000000.",
+  "open": "Everything from S2004 to S2007 is measured at 5,419 types. S1993 replicated the THRESHOLD at 16,110 unmoved; the CEILING has never been checked there, and S1963 and S1965 are the standing reminders that the second coverage has reversed 5,419 claims twice. S2008 runs it.",
+  "section": "S2007",
+  "status": "CERTIFIED"
+ },
  "ATTENTION_5_IS_UNIQUELY_THE_LEVER_S2006": {
   "builds_on": "THE_CEILING_HOLDS_BUT_NOT_VIA_ATTENTION_0_3_S2005",
   "claim": "Attention 5 is the only layer below attention 6 that moves anything. Compiling ATTENTION 4 beneath a compiled mlp4 costs 10.669/10.938/10.579 against mlp4 alone's 10.669/10.937/10.580 -- identical to three decimals, plus or minus 0.001. Attention 0-3 give 0.018 (S2005). Attention 5 gives 2.65 nats off the ceiling with attention 6 still live. And adding attention 4 on top of attention 5 makes it WORSE, 8.199 against 8.021, +0.178 for a site whose standalone contribution is exactly zero.",
