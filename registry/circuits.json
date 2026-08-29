@@ -148,6 +148,18 @@
   "section": "S1952",
   "status": "CERTIFIED. NOTE: the FIRST scoring reported pred_b and pred_c FALSE 0/3 and was wrong -- the eff_rank helper was registered as 'the LARGEST rank still reached by a qualifying step' and implemented as the FIRST such step, returning 128. Corrected and re-run; nothing was published from the first scoring. LESSON 84."
  },
+ "BEST_KNOWN_BUILD_MLP17_UNTRUNCATED_S2018": {
+  "builds_on": "RANK_768_IS_SLIGHTLY_UNDER_BOUGHT_AT_MLP17_S2017",
+  "claim": "NEW BEST-KNOWN BUILD, superseding S1959's. 36 tables at {mlp 768, attn 384} with mlp17 at its untruncated rank 1152; uncovered rows 30% output-NN neighbour, 70% rank-640 map. 192.0M values at 5,419 coverage (189.5M + 2.52M, a 1.33% price rise), buying 0.47 milli-nats pooled at 5,419 (t = -3.58) and 1.34 at 16,110 (t = -7.70) against a price rule valuing those parameters at 0.25 milli-nats -- a 1.9x purchase at the deployed coverage and 5.3x at the higher one.",
+  "evidence": "ops/candidate_build_mlp17_untruncated.py, 199.8s, five arms x three roles x two coverages. pred_a/b/c/d all True, derived controls True, reference deviation 0.000000. Per-role gains 5,419: +0.00063/+0.00030/+0.00051; 16,110: +0.00164/+0.00082/+0.00178.",
+  "mlp16_measured_not_adopted": "mlp16 clears the price on 2 of 3 roles at 5,419 (one role -0.00008) against mlp17's 3 of 3, and on 3/3 at 16,110. It is a coverage-dependent purchase; the deployed coverage is 5,419, so it is recorded as measured but not adopted.",
+  "open": "S2017 showed improvements sub-additive (10-28%) where degradations are super-additive (22-24%), so stacking mlp16's coverage-dependent gain on mlp17's would not add -- and at 16,110, where both qualify, the pair has never been scored as a build.",
+  "section": "S2018",
+  "stated_with_its_size": "Half a milli-nat on a build whose S1789 predecessor it already beats by 69 milli-nats (S1970). The smallest supersession this line has recorded, real at t = -3.58 and -7.70, and the ONLY allocation change indicated by S2013-S2018 -- every other rank decision tested came back either correctly bought (mlp16/17 below 768, by 5-24x) or not worth the parameters (the shallow sites, by tenfold).",
+  "status": "CERTIFIED. Recorded as the best-known build.",
+  "supersedes": "the S1959 allocation",
+  "the_margin_triples_with_coverage": "S1963 and S1965 each reversed a 5,419 claim at 16,110; this one strengthens, from 0.30-0.63 milli-nats to 0.82-1.78 and from t = -3.58 to t = -7.70 on 92,160 positions."
+ },
  "BEST_KNOWN_BUILD_S1931": {
   "at_deployed_coverage_S1932": "At 5,419 the same design costs 163.667M against the deployed 230.087M (29% cheaper, not 46%). Overall top-1 is better on all three roles (13.74/14.45/13.75% vs 13.55/14.25/13.64%) and the UNSEEN-target kept-fraction is better on all three (4.1/6.6/3.8% vs 2.7/6.2/3.6%), but the 125+ kept-fraction is WORSE on all three by 1.20/0.93/0.65pp. It moves accuracy off frequent targets and onto rare ones.",
   "bar_note": "\u00a71931 pred_b passed a 1.5pp bar deliberately set looser than \u00a71883's 1.0pp, which \u00a71883 had already failed at 1.10pp. skip1200 comes in at exactly 1.10pp again \u2014 the predicate passes on a widened bar and the honest reading is that skip1200 is unchanged, not improved.",
