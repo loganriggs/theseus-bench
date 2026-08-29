@@ -121,15 +121,16 @@
    "NEIGHBOUR_BEATS_MAP_ON_TOP1_S1937",
    "INSTRUMENTS_RANK_FALLBACKS_OPPOSITELY_S1938"
   ],
-  "claim": "S1789's deployed fallback for bilin18's compiled program (a rank-64 embedding->row map, 5.308M) is STRICTLY DOMINATED at 5,419 coverage by a cosine-routed hybrid 'nn75' -- the top 75% of uncovered types by neighbour cosine take the output-NN neighbour row, the rest take the rank-64 map row. nn75 beats the deployed design on pooled top-1 by +0.47/+0.44/+0.47pp AND on pooled CE by -0.0020/-0.0009/-0.0025 nats, on 3/3 held-out roles, for +0.09M on a 230.087M build (0.04% premium). nn25 also dominates 3/3; nn50 2/3.",
+  "claim": "S1789's deployed fallback (rank-64 embedding->row map, 5.308M) is beaten ON TOP-1 by a cosine-routed hybrid 'nn75' at BOTH coverages and on all six role-coverage cells: +0.47/+0.44/+0.47pp at 5,419 and +0.25/+0.11/+0.17pp at 16,110, for +0.09M on a 230.087M build. It is CE-NEUTRAL, not CE-better: the original 'strictly dominated on both instruments' claim was withdrawn by S1940.",
   "controls": "coverage exactly 5,419; every arm inert at covered inputs; counts partition; routed arms sent the intended fraction to within 0.0006; the nn and map64 arms reproduced S1937's published uncovered top-1 to 0.004pp and S1938's published pooled CE to 0.00000 -- every digit; live per-cell top-1 and CE identical across all six arms (twenty-fifth clean reading).",
   "evidence": "ops/cosine_routed_fallback.py, 215.6s. Six arms (nn, nn75, nn50, nn25, map64, map512), full table rank, per-position top-1 AND CE on the (input covered/uncovered) x (target bucket) axis.",
   "frontier": "nn75 (5.40M) beats map512 (42.47M) on top-1 by +0.25/+0.32/+0.40pp and loses on CE by 0.038-0.047 nats at 7.9x lower cost. The S1938 objective fork survives BETWEEN the two good builds; it no longer includes the deployed one.",
   "margin_caveat": "The CE half of the domination is 0.9-2.5 milli-nats, against the map64->map512 step's 40-48. It replicates 3/3 in sign on deterministic evaluations across three held-out roles, but no paired standard error has been put on it. The top-1 half (+0.44 to +0.47pp, ~160 tokens/role) is comfortable.",
   "negative_results": "pred_a FALSE 1/3 -- routing does not beat pure-neighbour on top-1; uncovered-arm top-1 is essentially monotone decreasing in the map fraction (14.68->14.09->13.44->12.82->12.14 at skip7000). For top-1 ALONE the right answer is still all-neighbour. pred_b FALSE 0/3 -- routing a quarter of types to the map recovers only 21.6/30.8/24.2% of the neighbour's unseen-bucket CE deficit and three quarters recovers 53.4/56.7/46.1%, i.e. recovery is roughly PROPORTIONAL to the fraction routed. The cosine does not detect S1938's unseen-target failure mode.",
   "post_hoc": "The cosine nonetheless carries real signal: every routed arm beats the LINEAR INTERPOLATION of its two endpoints, 12/12 cells, by +0.006 to +0.014 nats, and 11/12 come in BELOW BOTH endpoints. A per-token split can only beat both endpoints if the ranking correlates with which form is better for that token. Flagged post-hoc, not banked.",
+  "retracted_by": "S1940",
   "section": "S1939",
-  "status": "DISCOVERY -- pred_c registered as the LESS likely outcome and passed 3/3. Single coverage (5,419); the 16,110 replication with a paired SE on the CE margin is the named next run.",
+  "status": "RETRACTED IN PART by S1940. The CE half of the domination is NOT distinguishable from zero (paired t -0.54/-0.23/-0.44 at 5,419; at 16,110 one role is SIGNIFICANTLY WORSE at t=+2.59). The top-1 half stands and replicates.",
   "supersedes_component_of": [
    "S1789",
    "BEST_KNOWN_BUILD_S1931"
@@ -418,6 +419,16 @@
    "\u00a71934"
   ],
   "status": "CERTIFIED at two coverages (\u00a71934)"
+ },
+ "ROUTED_HYBRID_IS_TOP1_ONLY_S1940": {
+  "claim": "The cosine-routed nn75 fallback beats bilin18's deployed rank-64 map on POOLED TOP-1 at both 5,419 and 16,110 coverage, all six role-coverage cells (+0.47/+0.44/+0.47pp and +0.25/+0.11/+0.17pp), and the margin SHRINKS with coverage on 3/3 roles as the uncovered arm falls from ~24% to ~10% of scored positions. On CE it is NEUTRAL, not better.",
+  "consequence": "The S1937/S1938 objective fork is NOT closed. Under a top-1 objective nn75 should replace S1789's fallback; under the M/nat objective the cost arc has used since S1747, S1938's ordering stands and map512 remains the CE choice.",
+  "controls": "coverages exactly 5,419 and 16,110; every arm inert at covered inputs at both; counts partition; routed fraction 0.75 within 0.0006; the c5419 half reproduced S1939's published pooled top-1 to 0.005pp and pooled CE to 0.00000 -- every digit (twenty-sixth clean reading).",
+  "evidence": "ops/routed_domination_replication.py, 267.7s. Four arms x two coverages x three roles, per-position top-1 and CE, plus a PAIRED t on every nn75-map64 CE margin.",
+  "retracts": "S1939's headline that the deployed fallback is 'strictly dominated on BOTH instruments'. Paired t on the CE margin: 5,419 -0.54/-0.23/-0.44 (0/3 reach t<=-2); 16,110 -1.90/-2.04/+2.59 (1/3, and skip1200 is significantly WORSE). The published margins of -0.0020/-0.0009/-0.0025 nats were three draws from a near-zero effect.",
+  "section": "S1940",
+  "status": "CERTIFIED for the top-1 claim (pred_a 2/3, pred_c 3/3 on both halves, pred_d TRUE). pred_b FALSE.",
+  "supersedes": "DEPLOYED_FALLBACK_IS_DOMINATED_S1939"
  },
  "S1765_VERIFIED_AT_THE_LOGITS_S1913": {
   "claim": "The compiled program's top-2 logit margin is a property of the CURRENT TOKEN: it varies by at most 2.86e-05 / 3.81e-05 / 1.91e-05 across all positions sharing a token, and sits within 1.43e-05 of the value a single length-1 forward pass gives. \u00a71899 verified \u00a71765 at the residual stream (1.2e-07) and \u00a71901 at the site outputs (3.232e-07); this is the first verification at the LOGITS.",
