@@ -80,6 +80,16 @@
   "status": "CERTIFIED",
   "the_three_roles": "mlp2 / mlp4 -- must be compiled, content IRRELEVANT (S1983: a mean row costs the same 10.67). attention 5 -- must be PRESENT, content slightly NEGATIVE (-0.044 nats). attention 6 -- must be present AND carries content worth +0.209 nats, low-dimensional: rank 16 recovers 72% of it (S1996). Removing all of attention 6's content costs about what removing 24/25ths of its rank did, which is what a low-dimensional signal looks like."
  },
+ "ATTENTION_6_CONTENT_HAS_NO_SIMPLE_FORM_S2000": {
+  "builds_on": "THE_SPLIT_TRANSFERS_IN_SIGN_NOT_SIZE_S1999",
+  "claim": "Attention 6's content value is pair-specific with no statable form. Across four compiled MLPs, a mean row at attention 6 costs +0.137 (mlp5), +0.212 (mlp2), +0.099 (mlp3), +0.095 (mlp4) at skip7000. Ordered by the site's lone damage the sequence RISES THEN FALLS; ordered by layer it FALLS THEN RISES. Neither ordering works. It is strictly positive at all four sites on all three roles (0.080-0.216), so attention 6 is always a content site; only the amount is pair-specific.",
+  "corrects_S1999": "S1999 read an inverse relationship off two points. A third and fourth show it was two points.",
+  "evidence": "ops/is_attention_six_content_monotone.py, 52.6s, eleven arms x three roles at 5,419. pred_a True 3/3 (both anchors rebuild to S1998/S1999 within 0.005 nats), pred_c True 3/3, pred_b FALSE 3/3. Derived controls True, all three reference deviations 0.000000.",
+  "open": "That gives the threshold a domain, never measured. mlp6 and mlp7 sit at lone damages of 0.202 and 0.072, an order of magnitude below mlp5's 2.022, so the fix should be a much larger net loss there. The crossing point -- the lone damage at which compiling attention 5 and 6 starts to pay -- is a number this line has implied since S1985 and never quoted. S2001 runs it.",
+  "section": "S2000",
+  "status": "CERTIFIED as a NEGATIVE on the trend; the positivity is CERTIFIED.",
+  "unregistered_observation": "THE FIRST SITE THE PAIR DOES NOT RESCUE. Compiling mlp5 with attention 5 and 6 costs 2.263 nats where compiling mlp5 alone costs 2.022. The reason is arithmetic: a lone attention 5 costs 0.241 and a lone attention 6 about the same (S1989), so for a site whose own damage is already near 2 nats the fix adds more than it removes. The threshold describes how to rescue a BADLY compiled site, and mlp5 is not badly compiled."
+ },
  "ATTENTION_6_NEEDS_ALMOST_NO_CAPACITY_S1996": {
   "builds_on": "THE_FREQUENCY_GRADIENT_IS_GENERIC_S1995",
   "claim": "Attention 6's table needs almost no capacity. With mlp2 + attention 5 + attention 6 compiled, sweeping attention 6's table rank gives 2.137 (r16) / 2.109 (r32) / 2.060 (r64) / 2.011 (r128) / 1.971 (r384) at skip7000, against 2.556 for the same arm with attention 6 removed. A 24-fold capacity cut costs 0.166 nats where removing the site costs 0.611: rank 16 captures 72% of attention 6's whole contribution, rank 128 captures 93%. Smooth and roughly linear in log-rank, not a cliff.",
