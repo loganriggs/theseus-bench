@@ -278,6 +278,22 @@
   ],
   "status": "CERTIFIED \u2014 all four predictions TRUE, 18 anchor figures reproduced"
  },
+ "NEIGHBOUR_BEATS_MAP_ON_TOP1_S1937": {
+  "builds_on": "MAP_IS_INERT_AT_COVERED_INPUTS_S1936",
+  "caveat": "pred_c (oracle per-bucket hybrid ceiling >= 1.0pp summed) passed 3/3 at 21.22/17.99/32.35pp but is near-vacuous given pred_a's failure -- the ceiling measures the neighbour's dominance, not a mixture's value. Same failure mode as S1933's pred_c.",
+  "claim": "For bilin18's compiled program at 5,419 coverage, S1780/S1781's output-NN neighbour fallback beats S1870's ridge-regressed embedding->row map on TOP-1 on all three held-out roles, while costing ~0.09M against the deployed map's 5.308M. On uncovered-input positions (where fallbacks act) the neighbour scores 14.68/14.25/13.90% against map64's 12.14/12.63/11.44% (+2.54/+1.62/+2.47pp) and map512's 13.05/13.10/11.75% (+1.63/+1.15/+2.15pp). Pooled over ALL positions it beats S1789's DEPLOYED design by +0.61/+0.41/+0.60pp of top-1 at 59x lower fallback cost.",
+  "complementarity": "The neighbour wins 4 of 5 target buckets on 3/3 roles (12/12 cells) and loses ONLY the 0-0 unseen-target bucket, on 3/3 (7.7/6.9/5.6 vs map512's 10.4/14.2/7.7). Mechanism: the neighbour emits what a real covered token emits, so it inherits real-token behaviour but is structurally unable to reach a target no fit row contains; the map is a smooth function of the embedding and can. This SHARPENS S1933-S1936: the map buys UNSEEN-target accuracy specifically and pays for it in all four other buckets.",
+  "controls": "All THREE arms change the top-1 at exactly 0 covered-input positions in all three pairwise comparisons (extending S1936's instrument to the neighbour); 11,101/10,985/6,936 changed at uncovered inputs; counts partition; the map64 arm reproduced S1936's published uncovered-input figures to a max deviation of 0.04pp; live per-cell accuracy identical across all three arms (twenty-third clean reading).",
+  "evidence": "ops/fallback_form_by_input_coverage.py, 92.3s. Three arms (nn, map64, map512), full table rank, 5,419 coverage, scored on (input covered/uncovered) x (target bucket).",
+  "scopes": [
+   "S1870",
+   "S1789",
+   "BEST_KNOWN_BUILD_S1931"
+  ],
+  "scopes_not_retracts": "S1870's CE measurement stands (map beat neighbour by +0.0073/+0.0161/+0.0057 nats). What is corrected is the inference: the fallback FORM was selected on CE alone and that choice propagated unexamined into S1789's deployed design, S1931's best-known build and S1933-S1936. On top-1 it is the wrong choice. No build in this thread has been priced with the neighbour under a top-1 objective.",
+  "section": "S1937",
+  "status": "DISCOVERY -- registered pred_a predicted the OPPOSITE and failed 0/3. Single instrument (top-1); the CE cross-check is the named next run."
+ },
  "NORM_RATIO_PREDICTS_COLLAPSE_S1892": {
   "answer_to_S1891_survives": "attn5 and attn6 are the only two sites past the cliff, which is why they and not their neighbours.",
   "claim": "\u00a71891's collapse (restoring one live attention site drives the compiled program's agreement with the model to chance) is a MAGNITUDE effect. Rescaling attn5's live output to its table's mean row norm restores 1.07/1.04/1.08x to 7.26/7.37/7.74x against a 7.19/7.29/7.64x baseline.",
