@@ -58,6 +58,19 @@
   "status": "CERTIFIED -- all four registered predicates TRUE (3/3 each).",
   "vs_other_champion": "mix50m512 against S1941's nn75m512: top-1 -0.04/-0.04/+0.01pp (~15 tokens of 36,864 -- a tie, and NO significance test on a top-1 difference was registered) while CE improves by -0.0417/-0.0422/-0.0389 nats. Level on top-1, decisively better on CE. mix25m512 is the CE-optimal blend (CE -0.0254/-0.0262/-0.0282 vs map512 at t = -15.03/-14.13/-10.46) for less top-1."
  },
+ "BLEND_OPTIMUM_IS_ALPHA_25_S1943": {
+  "builds_on": "BLENDING_CLOSES_THE_FORK_S1942",
+  "claim": "The CE-optimal blend of the output-NN neighbour row and a rank-512 map row is alpha = 0.25 (25% neighbour), on every role at BOTH 5,419 and 16,110 coverage -- six of six cells. The optimum is INTERIOR: alpha=10 and alpha=40 are both worse on all six cells.",
+  "controls": "coverages exactly 5,419 and 16,110; every arm inert at covered inputs at both; buckets partition; live per-cell top-1 and CE identical across all ten arms at 0.00e+00; the 5,419 half reproduced S1942's published pooled CE to 0.000005 nats (twenty-ninth clean reading).",
+  "corrects_scope_of": "S1938's top-1 ordering map512 > map64 is a 5,419 fact. At 16,110 map512's top-1 edge over the deployed map64 has essentially vanished (-0.04/+0.01/-0.10pp -- level or behind on one role). The CE ordering is unchanged and large (t = +17.21/+16.87/+12.95).",
+  "coverage_scaling": "Margins shrink by a little over half from 5,419 to 16,110, matching the fallback arm's fall from ~24% to ~10% of scored positions (S1936). Still significant on 3/3 roles at the higher coverage. Unlike S1939, this did NOT need retracting when the second coverage arrived, because the paired t was registered before the run (LESSON 78).",
+  "evidence": "ops/blend_alpha_sweep.py, 145.0s. Seven alphas x two coverages x three roles, per-position top-1 and CE with a paired t on every CE margin vs map512.",
+  "margins": "At alpha=25 vs map512: 5,419 CE -0.0254/-0.0262/-0.0282 (paired t -15.03/-14.13/-10.46), top-1 +0.24/+0.16/+0.27pp. 16,110 CE -0.0107/-0.0112/-0.0078 (t -9.27/-9.66/-4.73), top-1 +0.10/+0.12/+0.08pp.",
+  "open": "The map rank is pinned at 512 across S1941-S1943 because S1938 located the CE strength there. alpha and map rank have never been swept together, and S1942's finding is that the two ingredients are ORTHOGONAL -- so the best (alpha, rank) pair need not have rank 512.",
+  "section": "S1943",
+  "shape": "CE is U-SHAPED in alpha with its minimum at 25; top-1 rises MONOTONICALLY in alpha to the pure neighbour. The objectives disagree about alpha but overlap widely: every alpha from 10 to 50 beats map512 on BOTH instruments at 5,419, and 10 to 40 at 16,110. S1942's closed fork is a BAND, not a knife-edge.",
+  "status": "CERTIFIED -- all four registered predicates TRUE (3/3 each)."
+ },
  "CONFIDENCE_MODULATES_TRACKING_S1911": {
   "claim": "The compiled program's top-1 agreement with the live model roughly DOUBLES with the model's own confidence: 5.36/5.06/5.80x on the least-decided quartile of live top-2 logit margin, 10.11/10.34/10.87x on the most-decided. Gain +4.75/+5.27/+5.07x.",
   "confirmed_at_deployed_coverage_S1922": "At 5,419 types the within-token spread is EXACTLY 0.00e+00 on all three roles, both arms order agreement (covered +9.69/+10.46/+10.17, uncovered +3.28/+3.11/+2.10), and covered still exceeds uncovered. The uncovered arm holds 24.1/25.4/24.2% of positions against ~10% at 16,110 \u2014 2.4x the sample \u2014 so \u00a71922 uncovered gradients (+3.28/+3.11/+2.10) are better estimated than \u00a71918 and are the ones to quote. The signal is a property of the PROGRAM, not of the high-coverage build.",
