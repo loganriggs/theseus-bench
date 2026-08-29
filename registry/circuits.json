@@ -3685,18 +3685,21 @@
     "how_to_quote": "The cost cut and the aggregate are real; what it costs is ~a third of the accuracy in the smallest and weakest bucket, where the program already kept only 2-5% of the live model. If rare-target behaviour is what the program is for, the full-rank table is worth its 312.740M; if not, \u00a71882 stands unqualified."
   },
   "PROGRAM_IS_NOT_A_DEGRADED_COPY_S1884": {
-    "status": "MEASURED \u2014 completed by \u00a71885 with a calibrated permutation null",
+    "status": "CERTIFIED \u2014 confirmed second-class on a second build (\u00a71886), all four predictions TRUE",
     "claim": "On its strongest bucket (targets seen 125+ times) \u00a71882's half-cost build gets 81.4/82.5/80.7% of its correct top-1 predictions on positions the LIVE MODEL also gets right. About one in five of its correct answers are positions where the model itself is wrong, so the program is not simply a degraded copy of the model \u2014 it is a different predictor overlapping it.",
     "raw_agreement": "top-1 agreement with the live model on the 125+ bucket: 34.6/35.1/34.7%, against the program's own accuracy of 29.0-30.9% and the model's 54.6-57.6%.",
     "struck": "\u00a71884 pred_a and pred_c used acc_live*acc_prog as the chance baseline for AGREEMENT. That is the both-right probability, not chance agreement; it assumes wrong answers scatter uniformly over 50,257 tokens when both predictors concentrate on frequent ones. The resulting \"97x enrichment\" on the rare bucket is an artifact of the denominator collapsing where accuracy is low. Neither ratio should be cited. Correct null = permutation control (\u00a71885).",
     "sections": [
       "\u00a71883",
       "\u00a71884",
-      "\u00a71885"
+      "\u00a71885",
+      "\u00a71886"
     ],
     "open": "whether the agreement is carried by a few of the 36 sites or spread across all of them \u2014 the first question in this arc about mechanism rather than price",
     "permutation_null_S1885": "Enrichment of top-1 agreement over a permutation null (shuffled within bucket, marginals preserved): 125+ bucket 5.36/5.57/5.42x; fit-count-0 bucket 6.41/6.34/6.31x; middle buckets 7.5-8.2x. A permutation-matched independent pair sits at 1.0x (calibrated: 0.977x on known-independent synthetic draws, 15.6x on a known 40%-copier). The DEFLATIONARY reading \u2014 that the agreement is explained by shared token marginals \u2014 is EXCLUDED.",
     "reading": "The program copies the model's ERRORS most faithfully where the model errs most: on rare targets it is right 0.6-1.3% of the time while tracking the model 6.3x above chance. On frequent targets enrichment is LOWER (5.4x) because both are more often independently correct. Combined with the 81.4/82.5/80.7% overlap, it is a degraded copy that is nonetheless right on a partly different set.",
-    "S1884_inversion_resolved": "\u00a71884's struck pred_c was directionally right (rare imitates slightly more) but 40x overstated: 1.17x, not 45x. The strike remains correct \u2014 its null was 5-16x too low and its 97x enrichment is 15x the true 6.3x. \u00a71885 pred_c FAILED its own 10x bar on skip11000 (5x), so the claim \"the old baseline was badly wrong on every role\" does not hold; \"badly wrong\" does."
+    "S1884_inversion_resolved": "\u00a71884's struck pred_c was directionally right (rare imitates slightly more) but 40x overstated: 1.17x, not 45x. The strike remains correct \u2014 its null was 5-16x too low and its 97x enrichment is 15x the true 6.3x. \u00a71885 pred_c FAILED its own 10x bar on skip11000 (5x), so the claim \"the old baseline was badly wrong on every role\" does not hold; \"badly wrong\" does.",
+    "replication_S1886": "The DEPLOYED build (full-rank tables, rank-64 map) tracks the live model at 5.84/5.78/5.77x the permutation null on the 125+ bucket and 6.96/6.86/6.78x on fit-count-0 \u2014 within 0.48/0.21/0.35x of the half-cost build. The tracking is a property of the compiled program, not of the rank-512 SVD truncation, which \u00a71883 had just shown is not neutral. The rare>common ordering holds on both builds at the same ~1.18x margin.",
+    "settled_statement": "The compiled 36-site program tracks the live model's top-1 at ~5.8x chance on frequent targets and ~6.9x on targets it has never seen, while being correct on the latter only 2.6-4.9% as often as the model. It reproduces the model's predictions \u2014 errors included \u2014 most faithfully where those predictions are worst. The deployed and 46%-cheaper builds do this to the same degree."
   }
 }
