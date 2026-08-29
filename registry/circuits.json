@@ -148,7 +148,19 @@
   "section": "S1952",
   "status": "CERTIFIED. NOTE: the FIRST scoring reported pred_b and pred_c FALSE 0/3 and was wrong -- the eff_rank helper was registered as 'the LARGEST rank still reached by a qualifying step' and implemented as the FIRST such step, returning 128. Corrected and re-run; nothing was published from the first scoring. LESSON 84."
  },
+ "BEST_KNOWN_BUILD_BOTH_LATE_SITES_UNTRUNCATED_S2019": {
+  "builds_on": "BEST_KNOWN_BUILD_MLP17_UNTRUNCATED_S2018",
+  "claim": "NEW BEST-KNOWN BUILD, superseding S2018's. 36 tables at {mlp 768, attn 384} with mlp16 AND mlp17 at their untruncated rank 1152; uncovered rows 30% output-NN neighbour, 70% rank-640 map. 194.5M values at 5,419 (189.5M + 5.05M, +2.66%), buying 0.962 milli-nats pooled at 5,419 (t = -5.48) and 2.340 at 16,110 (t = -9.97) against a 0.50 milli-nat price -- 1.9x at the deployed coverage, 4.7x at the higher one.",
+  "corrects_S2018": "S2018 excluded mlp16 on a 2-of-3 role vote. Pooled, mlp16 alone buys 0.000602 at t = -5.84 against mlp17's 0.000472 at t = -3.58 -- the better purchase per parameter, 2.4x against 1.9x. The dissenting role was skip1200, half-sized since S1971. A per-role vote is a legitimate discovery screen but not the instrument for a shipping decision when the per-position data is cached. LESSON 101.",
+  "evidence": "ops/the_pair_as_a_build.py, 106.0s, six arms x three roles x two coverages. pred_a/b/c True 3/3; pred_d FALSE, and its failure is the correction to S2018. Derived controls True, reference deviation 0.000000.",
+  "open": "Both late sites are now untruncated, closing the rank axis at the top for the two sites that carry the program. The eighteen MLP sites below them have never been tested above 768 either; S2015 showed their content is small, but 'small' was measured AT rank 768, and S2017's sub-additivity means a sixteen-site sweep is not a sixteen-fold extrapolation of one.",
+  "section": "S2019",
+  "status": "CERTIFIED. Recorded as the best-known build.",
+  "subadditivity_confirmed": "The pair buys 0.000962 against a sum of 0.001074 at 5,419 and 0.002340 against 0.002603 at 16,110 -- 10% short of additive, inside the 10-28% band S2017 measured for improvements.",
+  "supersedes": "BEST_KNOWN_BUILD_MLP17_UNTRUNCATED_S2018"
+ },
  "BEST_KNOWN_BUILD_MLP17_UNTRUNCATED_S2018": {
+  "SUPERSEDED_BY_S2019": "The measurements stand and reproduced within 0.0002 inside S2019. The RECOMMENDATION does not. mlp16 was excluded on a 2-of-3 role vote whose dissenting role, skip1200, carries 18,432 scored positions against the others' 36,864 (S1971) -- half the evidence and a third of the vote. Pooled, mlp16 alone buys 0.000602 nats at t = -5.84 against mlp17's 0.000472 at t = -3.58: the site I declined is the better purchase per parameter, 2.4x against 1.9x. LESSON 101.",
   "builds_on": "RANK_768_IS_SLIGHTLY_UNDER_BOUGHT_AT_MLP17_S2017",
   "claim": "NEW BEST-KNOWN BUILD, superseding S1959's. 36 tables at {mlp 768, attn 384} with mlp17 at its untruncated rank 1152; uncovered rows 30% output-NN neighbour, 70% rank-640 map. 192.0M values at 5,419 coverage (189.5M + 2.52M, a 1.33% price rise), buying 0.47 milli-nats pooled at 5,419 (t = -3.58) and 1.34 at 16,110 (t = -7.70) against a price rule valuing those parameters at 0.25 milli-nats -- a 1.9x purchase at the deployed coverage and 5.3x at the higher one.",
   "evidence": "ops/candidate_build_mlp17_untruncated.py, 199.8s, five arms x three roles x two coverages. pred_a/b/c/d all True, derived controls True, reference deviation 0.000000. Per-role gains 5,419: +0.00063/+0.00030/+0.00051; 16,110: +0.00164/+0.00082/+0.00178.",
