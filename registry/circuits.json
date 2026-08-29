@@ -3722,5 +3722,24 @@
     "settled": "Table lookups track the model at ~7.2-7.6x chance, \u00a71870's fallback map at ~2.7-3.0x \u2014 a ratio near 2.5x that survives holding the target bucket fixed and does not depend on coverage.",
     "loose_thread": "\u00a71888's consistent fallback sign (2.91/2.97/2.70 vs \u00a71887's 3.14/3.56/3.11) is UNEXPLAINED. \u00a71890 tested the compositional account on GPT-2 vocab-id quartiles (a tokenizer-fixed rarity axis, not collinear with coverage) and it FAILED: skip7000 reverses the required direction (2.85 commonest vs 2.61 rarest) and the within-arm spread is inconsistent (0.34/1.82/0.84x). Noise is back on the table. Nothing in the arc depends on it.",
     "fallback_uniform_across_rarity_S1890": "\u00a71870's rank-64 map beats chance in EVERY vocab-id quartile on every role, 2.57-4.52x. \"The fallback is not inert\" holds uniformly across the vocabulary-rarity range, not merely in aggregate."
+  },
+  "TRACKING_IS_LATE_ATTENTION_S1891": {
+    "status": "MEASURED \u2014 first per-site localisation in the arc; three findings, two from FAILED predictions",
+    "mlp_restorations_are_a_provable_noop": "All 18 MLP leave-one-out restorations give EXACTLY +0.00 on all three roles. Derivable from \u00a71765: with the other 35 sites compiled the residual stream is a function of the current token alone, and an MLP is position-wise, so a live MLP on a context-free stream returns precisely its own table value. Only the 18 ATTENTION sites can carry any of the program's behavioural fidelity.",
+    "tracking_is_late_attention": "Best restoring sites are attn13/attn13/attn16 (+0.91/+0.96/+0.69), top five drawn from attn8 and attn13-attn17, best site = 28.5/25.7/26.4% of the summed positive gain (3.17/3.74/2.61x). \u00a71891 pred_b FAILED: \u00a71829 put 73.3% of the bottom-up CE fall at layer 1, so the CE instrument and the agreement instrument DISAGREE about where the program is weakest.",
+    "not_a_sum_of_independent_substitutions": "Restoring attn5 alone drops enrichment from the 7.19/7.29/7.64x baseline to 1.07/1.04/1.08x \u2014 a permutation-matched pair sits at 1.0x, so one true attention head at layer 5 drives the program to CHANCE. attn6 gives 1.37/1.44/1.38x; attn10 costs 1.0x. Neighbours attn3/attn4/attn7 are harmless. This is \u00a71804/\u00a71806's norm mismatch (substituted rows 2.71-152.62x smaller than live emissions) surfacing behaviourally. \u00a71891 pred_c FAILED and was registered as the more valuable outcome.",
+    "baseline_control": "the all-compiled baseline reproduced \u00a71888 to three digits for a third consecutive run",
+    "sections": [
+      "\u00a71829",
+      "\u00a71765",
+      "\u00a71806",
+      "\u00a71887",
+      "\u00a71888",
+      "\u00a71891"
+    ],
+    "open": [
+      "why attn5/attn6 specifically when attn3/attn4/attn7 are harmless",
+      "whether TABLE rank should be spent unevenly ACROSS sites, now that the 18 behaviourally relevant ones are identified"
+    ]
   }
 }
