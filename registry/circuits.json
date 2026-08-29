@@ -1018,6 +1018,15 @@
   "status": "CERTIFIED",
   "what_actually_gets_under_the_ceiling": "Attention 5. S1990 measured mlp4 + attention 5 at 8.021, 2.65 nats under the ceiling with attention 6 still live; S1985 measured mlp4 + attention 0-5 at 8.560, WORSE than attention 5 alone, exactly as S1986's off-path costs predict. Attention 5 has now appeared in three distinct roles: it must be present for the fix to work (S1992), its content is worthless or harmful (S1998), and it is the only site that moves the damage without repairing it."
  },
+ "THE_CEILING_IS_COVERAGE_INVARIANT_S2008": {
+  "builds_on": "ATTENTION_5_IS_PURE_PRESENCE_IN_EVERY_ROLE_S2007",
+  "claim": "The S2004 ceiling and the S2006 lever replicate at 16,110 types, and the ceiling is coverage-INVARIANT to 0.001 nats. The three ceiling arms move 10.669->10.670, 10.701->10.700 and 10.669->10.670 when the table's coverage triples, while the full 36-site program moves 0.064 (2.808->2.744), the repaired arm 0.008 and the lever arm 0.038. Attention 5 still takes 2.58-2.61 nats off the ceiling (2.62-2.65 at 5,419) and a mean row there still beats its compiled table (-0.158 to -0.227).",
+  "evidence": "ops/the_ceiling_at_both_coverages.py, 164.9s, nine arms x three roles x two coverages. pred_a/b/c all True 3/3, derived controls True, all three reference deviations 0.000000.",
+  "open": "Attention 6's content is the one thing still unexplained: worth 0.08-0.22 nats, with rank 16 recovering 72% (S1996). The bottom of that curve has never been measured. If rank 4 or rank 2 recovers most of it, the signal is small enough that a head-level account becomes the obvious next instrument rather than a speculation. S2009 runs it.",
+  "section": "S2008",
+  "status": "CERTIFIED",
+  "why_it_matters": "Coverage acts only on the UNCOVERED arm -- S1870's map, the guessing part. A quantity that does not move when coverage triples is not about the fallback. S1994 showed 90-95% of the threshold's gap sits at covered inputs; S2008 shows the ceiling is coverage-invariant to the third decimal. The 10.7 nats are a fact about what a live attention 6 does with context-free input, and nothing about how the program fills in tokens it has not seen."
+ },
  "THE_CROSSING_IS_AT_2_15_NATS_S2002": {
   "builds_on": "THE_FIX_HAS_A_DOMAIN_S2001",
   "claim": "The crossing point of the threshold's fix is at roughly 2.15 nats of lone damage. mlp1, never previously measured, sits on it: lone 2.155/2.240/2.066 and gain +0.002/-0.021/-0.013. mlp0 (lone 1.352) is partially rescued, losing 0.399/0.467/0.389 against the flat 0.65-nat plateau. S2001's one quantitative commitment about unmeasured sites -- that none loses more than the plateau -- held at both.",
