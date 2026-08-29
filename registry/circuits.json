@@ -252,6 +252,17 @@
   "section": "S1983",
   "status": "CERTIFIED for pred_a and pred_b. pred_c is DISCARDED as mis-specified, not falsified."
  },
+ "CONTIGUOUS_PREFIX_THROUGH_ATTN6_S1985": {
+  "builds_on": "LAYER6_FIX_DOES_NOT_GENERALISE_S1984",
+  "claim": "A compiled site is safe when every attention layer between it and attention 6 inclusive is also compiled. A lone compiled mlp4 costs 10.669/10.937/10.580 nats; adding attention 6 alone removes 0.0%; adding attention 0-5 (attn6 live) removes 26.5%; adding attention 0-6 removes 108.9%, reaching 2.105/2.250/2.026. Seventeen MLPs stayed live throughout and it did not matter.",
+  "evidence": "ops/where_the_cliff_is.py, 55.3s, eight arms x three roles at 5,419. pred_a/b/c all True, derived controls True, both reference deviations 0.000000. The mlp4_a05 -> mlp4_a06 step is 6.51 nats at pooled t = -334.2 on 92,160 positions.",
+  "fork_not_taken": "mlp4_a06 compiles SEVEN sites and beats the full 36-site program by 0.703 nats at pooled t = -151.3, and S1980's fix by 0.637 at t = -130.4 -- the cheapest configuration on record. NOT ADOPTED. With attention 7-17 live it is not a pure function of the current token, so every S1765-derived result stops holding. This is the architectural fork raised at S1979/S1981, still with Logan, now worth 0.70 nats rather than 0.30. The shipped frame remains full compilation.",
+  "open": "The rule names attention 6 as the endpoint but not why. The cheap test is a lone compiled site ABOVE 6 -- mlp12, with no attention 6 between it and the interface -- and whether its prefix requirement points at layer 6 or at nothing.",
+  "replicates": "S1980's two published triples rebuilt from scratch under different labels within a 0.05-nat bar: baseline 9.266/9.531/9.141 and fix 2.733/2.889/2.681, 3/3 roles each, to the digit.",
+  "section": "S1985",
+  "status": "CERTIFIED",
+  "subsumes": "S1980 (one site), S1981 (non-additivity), S1983 (context-freeness), S1984 (the failed fix). The program does not need consistency everywhere; it needs an unbroken context-free path to attention 6."
+ },
  "CONVERGED_BUILD_AT_DEPLOYED_COVERAGE_S1951": {
   "attention_axis_does_not": "pred_c FAILED and is the real finding: removing attention capacity (384 -> 256) costs 0.0113/0.0135/0.0091 nats per 100M at 5,419 against 0.0047/0.0051/0.0034 at 16,110 -- TWO TO THREE TIMES MORE. At the deployed coverage attention sites are worth buying past the threshold, so S1948/S1950's 'attention is not worth its cost' is a 16,110 statement and is scoped accordingly.",
   "builds_on": "COST_ARC_FIXED_POINT_S1950",
