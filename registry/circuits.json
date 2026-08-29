@@ -606,6 +606,16 @@
   "status": "CERTIFIED for the top-1 claim (pred_a 2/3, pred_c 3/3 on both halves, pred_d TRUE). pred_b FALSE.",
   "supersedes": "DEPLOYED_FALLBACK_IS_DOMINATED_S1939"
  },
+ "ROUTER_LINE_CLOSED_S1956": {
+  "claim": "Routing on unc_mass is unprofitable at BOTH coverages, and the CE price is roughly TWICE as high at 5,419 (+0.0364/+0.0410/+0.0399 nats) as at 16,110 (+0.0159/+0.0173/+0.0275) -- the coverage where S1955 predicted it might pay. No msk arm gains the 0-0 bucket for under S1947's 0.010-nat threshold on any role, and pure_map again beats every msk arm on that bucket for less CE. The unseen-bucket deficit is the price of the blend at every operating point measured.",
+  "controls": "pred_d passed only after correcting a reference constant I had mistyped -- S1951_CE entered as (5.94788, 5.93606, 5.94788), repeating the first role's value in the third slot; the real triple is (5.94788, 5.91648, 5.93606). The control failed at 0.0196 against a 0.0005 bar, reading as a data discrepancy when it was arithmetic. LESSON 87; B.ref() now reads published triples from the artifact. Otherwise: coverage 5,419, plan-derived control satisfied (15 same-spec pairs inert, 6 differing-spec not), buckets partition, live per-cell identical at 0.00e+00, S1951 reproduced to 0.000003 nats, routed fractions exact (fortieth clean reading).",
+  "corrects": "S1955's closing caveat said the trade 'could come out differently' at 5,419. It comes out WORSE. The fallback touching ~24% of positions instead of ~10% amplifies the COST of routing away from the blend exactly as much as it would have amplified any benefit -- which I did not think through. S1955's negative is general, not a 16,110 statement.",
+  "evidence": "ops/unseen_router_at_5419.py, 4.6s warm. Seven builds x three roles at 5,419 at the converged allocation. pred_a True 3/3; pred_b and pred_c False 0/3; pred_d True.",
+  "scopes": "UNSEEN_TARGET_SIGNAL_IS_REAL_BUT_UNPROFITABLE_S1955",
+  "section": "S1956",
+  "signal_still_real": "pred_a passed 3/3 here too: unc_mass remains a genuine input-side predictor of a TARGET property, the first in this thread. It is the trade that fails, not the signal.",
+  "status": "CERTIFIED as a NEGATIVE. The router line is closed."
+ },
  "S1765_VERIFIED_AT_THE_LOGITS_S1913": {
   "claim": "The compiled program's top-2 logit margin is a property of the CURRENT TOKEN: it varies by at most 2.86e-05 / 3.81e-05 / 1.91e-05 across all positions sharing a token, and sits within 1.43e-05 of the value a single length-1 forward pass gives. \u00a71899 verified \u00a71765 at the residual stream (1.2e-07) and \u00a71901 at the site outputs (3.232e-07); this is the first verification at the LOGITS.",
   "deployable_object": "program confidence is therefore a precomputable per-token RELIABILITY SIGNAL \u2014 16,110 length-1 forward passes, once, at build time \u2014 rather than a per-position statistic.",
