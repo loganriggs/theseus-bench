@@ -3839,10 +3839,11 @@
       "\u00a71909"
     ],
     "open": "none in the attention line",
-    "mlp_profile_is_depth_ordered": "\u00a71898's per-MLP change-rate profile is best ordered by DEPTH (Spearman +0.785), then cosine (+0.637), then norm ratio (-0.610), then the conjunction (-0.389). Depth and cosine are not independent here, so depth is reported as the better ORDERING, not as the mechanism."
+    "mlp_profile_is_depth_ordered": "\u00a71898's per-MLP change-rate profile is best ordered by DEPTH (Spearman +0.785), then cosine (+0.637), then norm ratio (-0.610), then the conjunction (-0.389). Depth and cosine are not independent here, so depth is reported as the better ORDERING, not as the mechanism.",
+    "precision_S1916": "the designed falsification is 50-100 spreads clear of the estimator noise: attn17 amplified 2.743+-0.034 against a 7.097+-0.055 baseline. Nothing in \u00a71908 depended on the estimator's precision."
   },
   "CONFIDENCE_MODULATES_TRACKING_S1911": {
-    "status": "CERTIFIED, but the two signals were RANKED WRONG until \u00a71914 \u2014 see ranking_corrected_S1914",
+    "status": "CERTIFIED \u2014 confirmed second-class at the DEPLOYED 5,419 coverage (\u00a71922)",
     "claim": "The compiled program's top-1 agreement with the live model roughly DOUBLES with the model's own confidence: 5.36/5.06/5.80x on the least-decided quartile of live top-2 logit margin, 10.11/10.34/10.87x on the most-decided. Gain +4.75/+5.27/+5.07x.",
     "three_axes": "correctness is NOT a modulator (\u00a71895: both-wrong positions track at 6.10/6.24/6.50x); sequence position is NOT (\u00a71910: -0.36/-0.25/+0.59x, inconsistent in sign, while the live model's accuracy climbs on all three roles); model confidence IS (\u00a71911).",
     "reading": "The program follows the model where the model is DECIDED, not where it is right and not where it has little context. A token-keyed table can reach a prediction the model holds firmly; it cannot reach one the model is still weighing.",
@@ -3852,14 +3853,26 @@
       "\u00a71895",
       "\u00a71910",
       "\u00a71911",
-      "\u00a71912"
+      "\u00a71912",
+      "\u00a71913",
+      "\u00a71914",
+      "\u00a71915",
+      "\u00a71918",
+      "\u00a71919",
+      "\u00a71920",
+      "\u00a71922"
     ],
-    "open": "whether the program's confidence is predictable from the token alone \u2014 it must be, since the program is a pure function of the current token (\u00a71765), which would turn the program-margin axis into a precomputable TOKEN property rather than a per-position measurement",
+    "open": "the permutation-null spread at n ~ 350-1200 is unmeasured, so \u00a71918/\u00a71919 uncovered figures should not be quoted to two decimals",
     "not_inheritance_S1912": "The program does NOT inherit the model's decidedness: Spearman between the live and program top-2 margins is only +0.109/+0.111/+0.120. Yet within the model's highest-confidence quartile, splitting on the PROGRAM's own margin moves agreement from 5.77 to 9.84x (+4.07/+5.74/+4.84x) \u2014 as large as \u00a71911's whole effect. Two near-independent signals, each roughly doubling the tracking.",
     "the_corner": "Within the model's most-decided quartile, positions where the PROGRAM is unsure track at 5.77/4.95/5.82x \u2014 indistinguishable from the overall least-decided quartile (5.36/5.06/5.80x). The model being sure buys nothing where the program is not; agreement needs both.",
     "four_axes": "correctness NOT (\u00a71895); sequence position NOT (\u00a71910); model confidence YES (\u00a71911); program confidence YES and near-independent of the model's (\u00a71912).",
     "ranking_corrected_S1914": "\u00a71911 (+4.75/+5.27/+5.07x) and \u00a71913 (+1.07/+1.94/+1.06x) were measured against DIFFERENT permutation nulls and are not comparable. Under a COMMON global null the ranking REVERSES: the precomputable per-token program margin gives +9.50/+9.79/+9.28x against the live model margin's +6.03/+6.36/+6.02x. The program's own confidence orders its agreement with the model BETTER than the model's does, and it is a build-time token property (\u00a71913).",
-    "ranking_confirmed_S1915": "At NPERM=64, where the noise is a quarter as large, the token-margin gradient is +9.32/+9.82/+9.40x against the live-margin's +5.91/+6.38/+6.10x \u2014 reproducing \u00a71914. The reversal is not a noise artifact."
+    "ranking_confirmed_S1915": "At NPERM=64, where the noise is a quarter as large, the token-margin gradient is +9.32/+9.82/+9.40x against the live-margin's +5.91/+6.38/+6.10x \u2014 reproducing \u00a71914. The reversal is not a noise artifact.",
+    "uncovered_arm_S1918": "The signal orders agreement at uncovered positions at +3.90/+4.10/+2.06x, against +9.50/+9.79/+9.28 on the covered arm \u2014 41%/42%/22% of the strength, consistent with \u00a71887 (the fallback tracks the model at 2.3x less than the tables). Caveats: quartiles hold only 349-1220 positions so the null noise is larger than \u00a71916's +-0.08, and skip1200 is effectively binary (q0-q2 flat at 2.82/2.85/2.75, only q3 rises).",
+    "fallback_rank_S1919": "Raising \u00a71870's fallback map from rank 64 to 512 lifts the uncovered gradient +3.90/+4.10/+2.06 -> +4.68/+4.73/+2.76 and the top quartile 6.08/6.80/4.88 -> 7.03/7.88/5.78, with the covered arm reproducing \u00a71914 to the digit. In gap terms that is 41/42/22% of the covered gradient rising to 49/48/30% \u2014 closing only 13.9/11.1/9.7% of the deficit. Rank is A limit, not THE limit; ~90% of the gap is structural to an embedding-linear fallback, the same wall \u00a71878/\u00a71879 hit from the CE side.",
+    "cost_arc_connection": "The rank 64->512 purchase costs +37.159M reals, priced by \u00a71870 at 833/811/916 M/nat in CE. \u00a71919 shows it ALSO buys a better reliability signal on the ~24% of positions using the fallback \u2014 the first lever in this program priced outside CE since \u00a71883.",
+    "confirmed_at_deployed_coverage_S1922": "At 5,419 types the within-token spread is EXACTLY 0.00e+00 on all three roles, both arms order agreement (covered +9.69/+10.46/+10.17, uncovered +3.28/+3.11/+2.10), and covered still exceeds uncovered. The uncovered arm holds 24.1/25.4/24.2% of positions against ~10% at 16,110 \u2014 2.4x the sample \u2014 so \u00a71922 uncovered gradients (+3.28/+3.11/+2.10) are better estimated than \u00a71918 and are the ones to quote. The signal is a property of the PROGRAM, not of the high-coverage build.",
+    "covered_gradient_is_higher_at_lower_coverage": "+9.69/+10.46/+10.17 at 5,419 against +9.50/+9.79/+9.28 at 16,110; differences 0.19/0.67/0.89 are at or above \u00a71916 +-0.077 on two roles, so probably real. Unexplained."
   },
   "S1765_VERIFIED_AT_THE_LOGITS_S1913": {
     "status": "CERTIFIED \u2014 all four predictions TRUE",
@@ -3875,7 +3888,8 @@
       "\u00a71912",
       "\u00a71913"
     ],
-    "process_note": "the first run was INVALID \u2014 an inherited live-margin split overwrote the token-margin one seven lines later, so it re-measured \u00a71911. Caught because its quartiles matched \u00a71911 to 2dp across all twelve cells, which Spearman +0.11 makes impossible."
+    "process_note": "the first run was INVALID \u2014 an inherited live-margin split overwrote the token-margin one seven lines later, so it re-measured \u00a71911. Caught because its quartiles matched \u00a71911 to 2dp across all twelve cells, which Spearman +0.11 makes impossible.",
+    "extends_to_uncovered_S1918": "The margin is a pure token property at UNCOVERED positions too \u2014 within-token spread 0.00e+00/0.00e+00/5.72e-06, tighter than the covered side's 2.86e-05 \u2014 even though the row there is produced by \u00a71870's rank-64 map rather than looked up. So the signal is precomputable for the whole 50,257-token vocabulary."
   },
   "ENRICHMENT_RNG_PRECISION_S1914": {
     "status": "CERTIFIED and MEASURED at \u00a71915 \u2014 the estimator is unbiased; the noise is priced",
@@ -3886,9 +3900,12 @@
       "\u00a71885",
       "\u00a71913",
       "\u00a71914",
-      "\u00a71915"
+      "\u00a71915",
+      "\u00a71916"
     ],
     "measured_S1915": "8 independent seeds on the covered-arm baseline: spread 0.218/0.334/0.188 at NPERM=8 and 0.061/0.123/0.096 at NPERM=64 (reductions 3.6/2.7/2.0x against sqrt(8)=2.83). Means differ by only 0.020/0.007/0.008 between the two settings, so the estimator is UNBIASED \u2014 every central value quoted since \u00a71885 is right in expectation; only the tight reproduction claims were overstated.",
-    "baseline_correction": "the covered-arm baseline quoted throughout as 7.16/7.29/7.49x measures 7.102/7.255/7.432 at NPERM=64 over 8 seeds \u2014 inside the NPERM=8 spread, but the better estimate"
+    "baseline_correction": "the covered-arm baseline quoted throughout as 7.16/7.29/7.49x is better stated as 7.10/7.27/7.43 +-0.08 (\u00a71916). All three published values sit inside the spread and all three sit ABOVE the mean \u2014 one NPERM=8 draw that landed high on every role.",
+    "headline_figures_S1916": "At NPERM=64 over 8 seeds: covered baseline 7.097+-0.055 / 7.271+-0.077 / 7.431+-0.077; attn17 amplified x16 2.743+-0.034 / 3.001+-0.028 / 2.929+-0.052; attn5 restored 1.060+-0.001 / 1.029+-0.001 / 1.059+-0.002. Largest deviation from the NPERM=8 published value is 0.089; largest spread 0.077.",
+    "precision_is_best_where_the_effect_is_largest": "collapsed configurations are ~40x tighter than the baseline (attn5 +-0.001 vs baseline +-0.077): where agreement has fallen to the null, numerator and denominator move together and the ratio barely varies."
   }
 }
