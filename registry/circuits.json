@@ -707,6 +707,15 @@
   "status": "SUPERSEDED BY ALIGNMENT_TIMES_MAGNITUDE_S1908 \u2014 the magnitude account was wrong in three steps",
   "the_rescale_is_a_mute_not_a_repair": "\u00a71892 pred_b FAILED exactly as registered: all six rescaled arms land within 0.11x of the baseline, including attn13 which loses its entire +0.91 gain. At factors of 0.0064-0.094 the restored site contributes at the table's magnitude and the program behaves as if it were still compiled. So at the compiled scale the restored site's DIRECTION barely matters \u2014 magnitude alone decides whether restoring a live site helps, does nothing, or destroys the program."
  },
+ "NO_CHAIN_THE_RULE_IS_WITHDRAWN_S1991": {
+  "builds_on": "THE_MINIMAL_PATH_IS_THREE_SITES_S1990",
+  "claim": "There is no chain. A gap in the supposed path costs nothing: mlp2 + attention 4-6, skipping layer 3, costs 1.845/1.959/1.807 nats -- BETTER than the unbroken mlp2 + attention 3-6 at 1.887/2.016/1.817, by 0.042 at pooled t = +18.9. What every working arm shares is attention 5 and attention 6: mlp4+{5,6} 1.555, mlp2+{4,5,6} 1.845, mlp2+{3,4,5,6} 1.887. Sites beyond those two cost a little more each.",
+  "evidence": "ops/the_rule_at_another_site.py, 50.8s, seven arms x three roles at 5,419. pred_a True 3/3 (dropping attention 2, below mlp2, is worth 0.095 at t = -174.9 -- same sign as S1990's 0.198 at mlp4), pred_c True 3/3, pred_b FALSE. Derived controls True, all four reference deviations 0.000000.",
+  "open": "If mlp2 + attention 5 + attention 6 lands near 1.8, the requirement is the two layers beneath the boundary, independent of where the compiled site sits, and both S1986's 'path' and S1990's 'chain' were those same two layers seen through longer prefixes.",
+  "section": "S1991",
+  "status": "CERTIFIED as a falsification. NO RULE IS IN FORCE -- only a table. The narrow form (compile attention 5 and 6 and nothing else) is the obvious reading and is NOT YET MEASURED: no arm here compiles mlp2 with attention 5 and 6 alone. S1992 does exactly that.",
+  "withdraws": "The rule statement in S1990 / THE_MINIMAL_PATH_IS_THREE_SITES_S1990, marked in place in both the ledger and this registry. The measurements are unaffected."
+ },
  "NO_COVERAGE_DIVERGENCE_MID_TILT_WINS_S1966": {
   "builds_on": "TILT_IS_WORTH_SHIPPING_AT_HIGH_COVERAGE_S1965",
   "claim": "The two 'coverage-specific' builds of S1964/S1965 differ by at most +1.29 and +0.49 milli-nats at the other's coverage -- inside the 2.0 milli-nat bar S1960 used -- so there was no coverage divergence to compromise over. And both intermediate tilts beat BOTH of them at BOTH coverages: mid_2535 (alpha 25%->35%) is -0.17/-0.44/-0.10 milli-nats at 5,419 and -0.45/-0.42/+0.42 at 16,110.",
@@ -941,6 +950,7 @@
   "what_the_shape_says": "The asymmetry rules out both easy readings. Not distance to the boundary -- mlp5 is nearer than mlp3 and costs a third as much. Not depth -- the profile rises then falls. Layer 4 is distinguished and its adjacent layer 5 is not. With S1983 (mlp4's content is irrelevant; a constant row costs the same 10.67), what attention 6 needs from position-4 activations is that they VARY."
  },
  "THE_MINIMAL_PATH_IS_THREE_SITES_S1990": {
+  "WITHDRAWN_RULE_NOTE": "S1991 falsifies the RULE'S FORM, not S1990's measurements. The 'every attention layer strictly above the compiled site' statement was derived from one site and cannot distinguish a chain from its endpoint. S1991 removed attention 3 from mlp2's path (mlp2+attn4-6 = 1.845) and it got BETTER than the unbroken version (mlp2+attn3-6 = 1.887) by 0.042 nats at pooled t = +18.9. There is no chain. What every working arm shares is attention 5 and attention 6. S1990's numbers stand and reproduced to 0.000000 in S1991.",
   "builds_on": "THE_SPIKE_IS_MLP4_NOT_LAYER_4_S1989",
   "claim": "The minimal path is THREE SITES: mlp4 + attention 5 + attention 6, at 1.555/1.640/1.498 nats -- 99.6% of the lone-mlp4 penalty (10.669) removed, and 1.25 nats BELOW the full 36-site program. Attention 4 runs before mlp4 in block order and was never in the path: dropping it is worth 0.198 nats at pooled t = -239.5. Neither remaining layer works alone -- attention 5 alone leaves 8.021, attention 6 alone leaves 10.666, the pair gives 1.555 (-6.543 at t = -344.2 and -9.178 at t = -371.9).",
   "evidence": "ops/the_minimal_path.py, 47.5s, seven arms x three roles at 5,419. pred_a/b/c all True, derived controls True, all three reference deviations 0.000000.",
@@ -948,7 +958,7 @@
   "section": "S1990",
   "status": "CERTIFIED",
   "still_probes": "Three compiled sites score better than thirty-six partly because thirty-three more of the live model is present. Evidence about where the penalty lives, not a program. The S1979 architectural fork is unchanged.",
-  "the_rule": "A compiled site is safe when every attention layer STRICTLY ABOVE it, up to and including attention 6, is also compiled -- and nothing else is. Sites below it cost (S1986 -0.372, S1990 -0.198). A path stopped short costs more than no path (S1987 +2.08). Above attention 6 nothing is required (S1988/S1989: 0.03-0.20 nats). The site that matters is mlp4, its content is irrelevant (S1983), and S1978's whole 3.6x partial-compilation penalty is one chain: mlp4 -> attention 5 -> attention 6."
+  "the_rule_WITHDRAWN_BY_S1991": "A compiled site is safe when every attention layer STRICTLY ABOVE it, up to and including attention 6, is also compiled -- and nothing else is. Sites below it cost (S1986 -0.372, S1990 -0.198). A path stopped short costs more than no path (S1987 +2.08). Above attention 6 nothing is required (S1988/S1989: 0.03-0.20 nats). The site that matters is mlp4, its content is irrelevant (S1983), and S1978's whole 3.6x partial-compilation penalty is one chain: mlp4 -> attention 5 -> attention 6."
  },
  "THE_PREMISE_COSTS_2P7_NATS_S1977": {
   "builds_on": "FALLBACK_BEATS_COVERAGE_PER_PARAMETER_S1976",
