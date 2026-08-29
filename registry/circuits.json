@@ -39,7 +39,8 @@
    "\u00a71932"
   ],
   "sign_flips_between_coverages": "At 16,110 the combined build beats the deployed design on the 125+ bucket on 3/3 and loses on the unseen bucket on 1/3; at 5,419 both reverse. \u00a71932 pred_a passed its 2pp bar while the direction flipped underneath it \u2014 the bar measured magnitude, not sign.",
-  "status": "CERTIFIED at 16,110; SCOPED at \u00a71932 \u2014 at the deployed 5,419 coverage it is a redistribution, not a strict improvement",
+  "status": "SUPERSEDED by BLEND_MLPHEAVY_SUPERSEDES_BEST_KNOWN_S1946. Keeping this build's mlp 768 / attn 256 allocation and swapping only its rank-512 fallback map for the S1944 blend gives 339.558M (21.2M less) and wins on BOTH instruments on 3/3 roles.",
+  "superseded_by": "S1946",
   "vs_deployed_design": "\u00a71789 scaled up (full-rank table + rank-64 map) costs 673.464M. The combined build is 46% cheaper and better on: all-position CE 5.89446/5.84120/5.86873 vs 5.90522/5.85230/5.88575; overall top-1 14.01/14.75/14.02% vs 13.93/14.71/14.01%; kept-fraction in the 125+ bucket 53.7/54.4/54.4% vs 53.6/54.1/53.9%."
  },
  "BLENDING_CLOSES_THE_FORK_S1942": {
@@ -57,6 +58,24 @@
   "section": "S1942",
   "status": "CERTIFIED -- all four registered predicates TRUE (3/3 each).",
   "vs_other_champion": "mix50m512 against S1941's nn75m512: top-1 -0.04/-0.04/+0.01pp (~15 tokens of 36,864 -- a tie, and NO significance test on a top-1 difference was registered) while CE improves by -0.0417/-0.0422/-0.0389 nats. Level on top-1, decisively better on CE. mix25m512 is the CE-optimal blend (CE -0.0254/-0.0262/-0.0282 vs map512 at t = -15.03/-14.13/-10.46) for less top-1."
+ },
+ "BLEND_MLPHEAVY_SUPERSEDES_BEST_KNOWN_S1946": {
+  "allocation_rule_confirmed": "pred_b, 3/3 at EXACTLY matched cost (gap 0.0000M): blend_mlpheavy and blend_uniform512 both cost 339.558M and the MLP-heavy split wins CE by 0.0161/0.0155/0.0139 nats and top-1 by 0.27/0.14/0.32pp. S1928's allocation rule is not an artefact of the rank-64-map builds it was found on.",
+  "build_to_beat": "blend_mlpheavy at 16,110: 36 tables at mlp 768 / attn 256, fallback = 25% output-NN neighbour + 75% rank-256 map, 339.558M.",
+  "builds_on": [
+   "CHEAPER_FRONTIER_HOLDS_AT_16110_S1945",
+   "UNEVEN_PER_SITE_RANK_S1928"
+  ],
+  "claim": "At 16,110 coverage, bilin18's best-known compiled build (S1931: 36 tables at mlp 768 / attn 256, rank-512 fallback map, 360.723M) is superseded by keeping its allocation and swapping ONLY the fallback for the S1944 blend (25% output-NN neighbour + 75% rank-256 map). The result, blend_mlpheavy at 339.558M -- 21.2M LESS -- wins on top-1 by +0.10/+0.07/+0.07pp and on CE by -0.0084/-0.0087/-0.0052 nats at paired t = -7.00/-7.28/-2.98, on 3/3 roles.",
+  "control_was_false_by_construction": "pred_d first registered 'every arm inert at covered inputs', inherited from S1936-S1945 where arms differed ONLY in the fallback. Here table RANK varies, so a truncated arm MUST move covered-input predictions; the clause could not hold and pred_d failed while pred_a/b/c passed 3/3. Rewritten TWO-SIDED (fallback-only arms exactly inert; table-rank arms NOT inert) and re-run: both hold. See LESSON 81.",
+  "controls": "coverage exactly 16,110; two-sided inertness both directions; buckets partition; live per-cell top-1 and CE identical at 0.00e+00; matched-cost gap 0.0000M; S1945's published CE reproduced to 0.000003 nats (thirty-second clean reading).",
+  "evidence": "ops/blend_meets_allocation.py, 5.6s fully warm. Six builds x three roles at 16,110, per-position top-1 and CE with a paired t on every CE margin.",
+  "levers_compose": "The fallback advantage found on FULL-RANK builds (S1937-S1945) survives table truncation. S1942's orthogonality result did not guarantee this.",
+  "open": "blend_lean (mlp 512 / attn 128, 220.243M) costs 0.027/0.028/0.022 nats against blend_mlpheavy for a further 119.3M -- a much worse rate than the full -> mlp-heavy step, so the table curve turns over somewhere between. Where it turns is unmeasured and is now the cheapest remaining lever.",
+  "reprices_the_arc": "pred_c, 3/3: truncating from FULL rank to {mlp 768, attn 256} saves 349.9M -- more than half the build -- for +0.0104/+0.0114/+0.0070 nats. The TABLE axis is roughly thirty times cheaper per nat than the FALLBACK axis at this coverage, and S1937-S1945 spent nine sections on the expensive one. The fallback work is correct and was never where the money was.",
+  "section": "S1946",
+  "status": "CERTIFIED -- all four registered predicates TRUE, after pred_d was rewritten mid-section (see below).",
+  "supersedes": "BEST_KNOWN_BUILD_S1931"
  },
  "BLEND_OPTIMUM_IS_ALPHA_25_S1943": {
   "builds_on": "BLENDING_CLOSES_THE_FORK_S1942",
