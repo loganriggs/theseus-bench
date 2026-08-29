@@ -979,6 +979,16 @@
   "section": "S1947",
   "status": "CERTIFIED for pred_a (3/3) and pred_d; pred_b and pred_c both FALSE 0/3, and both failures sharpen the answer."
  },
+ "THE_CROSSING_IS_AT_2_15_NATS_S2002": {
+  "builds_on": "THE_FIX_HAS_A_DOMAIN_S2001",
+  "claim": "The crossing point of the threshold's fix is at roughly 2.15 nats of lone damage. mlp1, never previously measured, sits on it: lone 2.155/2.240/2.066 and gain +0.002/-0.021/-0.013. mlp0 (lone 1.352) is partially rescued, losing 0.399/0.467/0.389 against the flat 0.65-nat plateau. S2001's one quantitative commitment about unmeasured sites -- that none loses more than the plateau -- held at both.",
+  "corrects": "S1988's 'peak with a broad shoulder' description, and S2001's bracket (2.02 to 4.81), whose lower end was nearly the answer.",
+  "depth_profile_complete_below_the_boundary": "mlp0 1.35, mlp1 2.16, mlp2 4.81, mlp3 6.57, mlp4 10.67 | mlp5 2.02, mlp6 0.20, mlp7 0.07, mlp8 0.05, mlp12 0.03. It rises MONOTONICALLY from layer 0 to layer 4 and then collapses. S1988 called the low side a 'broad shoulder' from five points; with mlp0 and mlp1 it is a clean monotone ramp, and the structure is a rise across five layers followed by a fall of 5.3x in one.",
+  "evidence": "ops/the_last_two_sites_below.py, 49.4s, eleven arms x three roles at 5,419. pred_a/b/c all True 3/3, derived controls True, all three reference deviations 0.000000.",
+  "open": "The account is now quantitative -- flat ~0.65 cost, a share of the site's damage recovered, crossing at ~2.15 -- and has never been asked to predict anything. The cheapest test is two compiled MLPs at once: S1981 showed compilation COST is badly non-additive, and whether the fix's VALUE is additive is a separate question. S2003 runs it.",
+  "section": "S2002",
+  "status": "CERTIFIED"
+ },
  "THE_CUT_IS_ATTENTION_6_AND_THE_SPIKE_IS_A_PEAK_S1988": {
   "builds_on": "LAYER6_BOUNDARY_AND_THE_MLP4_SPIKE_S1987",
   "claim": "The boundary is ATTENTION 6 ITSELF, not 'layer 6': mlp6 -- which runs after attn6 in block order -- costs 0.202/0.209/0.214 nats and mlp7 0.072/0.077/0.075, both on the cheap side. And the lone-compiled-MLP profile is a PEAK with a broad shoulder below and a cliff above: mlp2 4.81, mlp3 6.57, mlp4 10.67, mlp5 2.02, mlp6 0.20, mlp7 0.07, mlp8 0.05, mlp12 0.03.",
