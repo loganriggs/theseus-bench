@@ -730,6 +730,16 @@
   "section": "S1966",
   "status": "CERTIFIED. pred_b's failure is the finding and it corrects S1965."
  },
+ "NO_RULE_ONLY_A_THRESHOLD_S1992": {
+  "builds_on": "NO_CHAIN_THE_RULE_IS_WITHDRAWN_S1991",
+  "claim": "Three successive rules for which sites must be compiled together have now been falsified, each within an hour of being written. What the fifteen arms of S1984-S1992 support is a THRESHOLD, not a rule: an arm compiling BOTH attention 5 and attention 6 costs 1.50-2.15 nats; an arm omitting either costs 2.56-10.94. No exceptions in fifteen arms. The fine structure inside the good band is real, small and site-dependent.",
+  "evidence": "ops/is_it_just_attention_five_and_six.py, 55.7s, nine arms x three roles at 5,419. ALL THREE predicates FALSE. Derived controls True, all three reference deviations 0.000000.",
+  "open": "Everything is at 5,419 types. The threshold is the one statement worth replicating before it is built on; the 16,110 coverage has broken claims that held at 5,419 before (S1963, S1965). S1993 runs it.",
+  "section": "S1992",
+  "status": "CERTIFIED as the threshold; NO RULE IS IN FORCE.",
+  "the_three_failures": "pred_a FAILED by 0.090 nats -- attention 5 and 6 alone are NOT enough for mlp2 (1.971 vs attention 3-6's 1.887, t = +27.0); with S1991 the ordering is +a4,5,6 1.845 < +a3,4,5,6 1.887 < +a5,6 1.971, so attention 4 helps mlp2 and attention 3 hurts it. pred_b FAILED -- attention 5 alone gets mlp2 to 2.556 against a 4.0 bar, where the same arm at mlp4 leaves 8.021; the two layers work in different proportions at different sites. pred_c FAILED on ONE role by 0.012 nats -- mlp2/mlp3/mlp4 with attention 5,6 span 0.441/0.512/0.454 against a 0.5 bar required 3/3.",
+  "withdrawn_statements": "S1986 'the path from the site up to layer 6' (killed by S1991's gap arm); S1990 'every attention layer strictly above the site through 6' (same); S1992's own premise 'just attention 5 and 6' (killed by its own pred_a). Each fit every number available when written."
+ },
  "OFF_PATH_COMPILATION_IS_HARMFUL_S1986": {
   "builds_on": "CONTIGUOUS_PREFIX_THROUGH_ATTN6_S1985",
   "claim": "The rule is a PATH, and it is optimal, not merely sufficient. mlp4 + attention 4-6 (four sites) costs 1.745/1.853/1.682 nats, BEATING S1985's mlp4 + attention 0-6 by 0.372 at pooled t = -227.1: the three attention layers below the compiled site cost 0.37 and buy nothing. A lone compiled mlp12, above layer 6, costs 0.034/0.036/0.034 -- a factor of 314 cheaper than the identical substitution at mlp4 (10.669), pooled t = -402.1. Compiling attention 6 behind mlp12 makes it 3.8x worse (0.034 -> 0.129, t = +72.4).",
