@@ -494,7 +494,19 @@
   "section": "S1938",
   "status": "CERTIFIED -- rung 2, second-class confirmation of S1937 with a different instrument"
  },
+ "LAYER6_FIX_DOES_NOT_GENERALISE_S1984": {
+  "asymmetry_reproduced": "pred_c: with attention 6 compiled, mean row and compiled table at mlp4 differ by 0.006 nats (10.672 vs 10.666) -- the same 0.006 S1983 found without it. mlp4's content is irrelevant in two different surrounds.",
+  "builds_on": "CONTEXT_FREENESS_NOT_CONTENT_S1983",
+  "claim": "S1980's 'one site' fix is specific to its prefix-compiled baseline. With only mlp4 compiled, compiling attention 6 as well removes 0.0% of the penalty (10.669 -> 10.666 / 10.937 -> 10.934 / 10.580 -> 10.577) against a bar of 80%, and attention 6's compiled table beats a mean row there by 0.003 nats, not the 5 required. Neither 'attention 6 must stop mixing' nor 'attention 6's table content is what layer 6 needs' survives.",
+  "evidence": "ops/does_the_layer6_fix_generalise.py, 128.8s, seven arms x three roles at 5,419, using the new composite arm meanrow@mlp4+mix30m640@attn6. pred_a False, pred_b False, pred_c True 3/3, derived controls True, both reference deviations 0.000000.",
+  "open": "The variable must be how much of the PREFIX is compiled. S1980's baseline (18 MLPs + attention 0-5) already sits at 9.266, so the fall to 2.81 happens between that and 36 sites. Which sites, added to a lone compiled mlp4, first bring it down -- and is the curve a cliff or a slope?",
+  "scopes": "S1980",
+  "section": "S1984",
+  "status": "CERTIFIED",
+  "what_it_leaves": "A single compiled MLP in an otherwise live model costs 10.67 nats, 3.8x the fully compiled 36-site program's 2.81, and no local repair three layers above touches it. Compiling MORE is what fixes it: the full program is internally consistent in a way partial compilation is not, and that consistency is not assembled one site at a time."
+ },
  "LAYER_6_ATTENTION_IS_THE_WHOLE_PENALTY_S1980": {
+  "SCOPE_S1984": "S1984 SCOPES THIS CLAIM. Every arm in S1980's sweep had all 18 MLPs and attention 0-5 already substituted; its baseline was 9.266 nats and compiling attention 6 took it to 2.733. That step is real inside that family. Stated generally -- 'live attention at layer 6 reading context-free rows is the whole of the partial-compilation penalty' -- it is FALSE: with only mlp4 compiled, live attention 6 reads context-free rows and compiling it is worth -0.003 nats (10.669 -> 10.666), 0.0% of the penalty against a bar of 80%. The measurement stands; its reach does not.",
   "boundary_effect_ruled_out": "If the phenomenon were 'whichever live attention layer sits directly above the compiled prefix', compiling layer 6 would move the boundary to layer 7 and buy nothing. Compiling layer 7 next is worth -0.003 to -0.008 nats, slightly NEGATIVE on all three roles. It is layer 6 specifically, not its position relative to the compiled block.",
   "builds_on": "MIXING_DAMAGE_IS_LAYERS_6_TO_8_S1979",
   "claim": "S1978's 3.6x partial-compilation penalty is ONE SITE. With all 18 MLPs and attention 0-5 substituted, compiling attention at layer 6 ALONE recovers 6.46-6.64 nats -- 98% of the entire fall -- on 3/3 roles. Live attention at layer 6 reading context-free rows is the whole of the penalty.",
