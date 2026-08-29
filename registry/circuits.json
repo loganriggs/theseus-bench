@@ -3843,7 +3843,7 @@
     "precision_S1916": "the designed falsification is 50-100 spreads clear of the estimator noise: attn17 amplified 2.743+-0.034 against a 7.097+-0.055 baseline. Nothing in \u00a71908 depended on the estimator's precision."
   },
   "CONFIDENCE_MODULATES_TRACKING_S1911": {
-    "status": "CERTIFIED \u2014 confirmed second-class at the DEPLOYED 5,419 coverage (\u00a71922)",
+    "status": "CERTIFIED \u2014 every claim measured at two or more coverages (\u00a71922, \u00a71923, \u00a71927)",
     "claim": "The compiled program's top-1 agreement with the live model roughly DOUBLES with the model's own confidence: 5.36/5.06/5.80x on the least-decided quartile of live top-2 logit margin, 10.11/10.34/10.87x on the most-decided. Gain +4.75/+5.27/+5.07x.",
     "three_axes": "correctness is NOT a modulator (\u00a71895: both-wrong positions track at 6.10/6.24/6.50x); sequence position is NOT (\u00a71910: -0.36/-0.25/+0.59x, inconsistent in sign, while the live model's accuracy climbs on all three roles); model confidence IS (\u00a71911).",
     "reading": "The program follows the model where the model is DECIDED, not where it is right and not where it has little context. A token-keyed table can reach a prediction the model holds firmly; it cannot reach one the model is still weighing.",
@@ -3862,7 +3862,10 @@
       "\u00a71920",
       "\u00a71922",
       "\u00a71923",
-      "\u00a71924"
+      "\u00a71924",
+      "\u00a71925",
+      "\u00a71926",
+      "\u00a71927"
     ],
     "open": "the permutation-null spread at n ~ 350-1200 is unmeasured, so \u00a71918/\u00a71919 uncovered figures should not be quoted to two decimals",
     "not_inheritance_S1912": "The program does NOT inherit the model's decidedness: Spearman between the live and program top-2 margins is only +0.109/+0.111/+0.120. Yet within the model's highest-confidence quartile, splitting on the PROGRAM's own margin moves agreement from 5.77 to 9.84x (+4.07/+5.74/+4.84x) \u2014 as large as \u00a71911's whole effect. Two near-independent signals, each roughly doubling the tracking.",
@@ -3876,7 +3879,12 @@
     "confirmed_at_deployed_coverage_S1922": "At 5,419 types the within-token spread is EXACTLY 0.00e+00 on all three roles, both arms order agreement (covered +9.69/+10.46/+10.17, uncovered +3.28/+3.11/+2.10), and covered still exceeds uncovered. The uncovered arm holds 24.1/25.4/24.2% of positions against ~10% at 16,110 \u2014 2.4x the sample \u2014 so \u00a71922 uncovered gradients (+3.28/+3.11/+2.10) are better estimated than \u00a71918 and are the ones to quote. The signal is a property of the PROGRAM, not of the high-coverage build.",
     "covered_gradient_is_higher_at_lower_coverage": "+9.69/+10.46/+10.17 at 5,419 against +9.50/+9.79/+9.28 at 16,110; differences 0.19/0.67/0.89 are at or above \u00a71916 +-0.077 on two roles, so probably real. Unexplained.",
     "coverage_is_not_smooth_S1923": "Three coverages (5,419 / 9,054 / 16,110): the covered gradient declines mildly (+9.69->+9.36->+9.50, +10.46->+10.16->+9.79, +10.17->+9.30->+9.28) while the uncovered one rises on two roles and PEAKS mid-coverage on skip1200 (+2.10->+2.93->+2.06, ~2-3 spreads above both endpoints). A two-point measurement would have called it monotone. This is why \u00a71924 was run and why the rank lever does not transfer.",
-    "s1765_at_four_builds": "within-token margin spread is EXACTLY 0.00e+00 at 5,419 (\u00a71922), 9,054 (\u00a71923) and 5,419-with-a-rank-512-fallback (\u00a71924), and <= 2.86e-05 at 16,110 (\u00a71913/\u00a71918) \u2014 so the margin is a pure token property independent of coverage AND of the fallback map's rank."
+    "s1765_at_four_builds": "within-token margin spread is EXACTLY 0.00e+00 at 5,419 (\u00a71922), 9,054 (\u00a71923) and 5,419-with-a-rank-512-fallback (\u00a71924), and <= 2.86e-05 at 16,110 (\u00a71913/\u00a71918) \u2014 so the margin is a pure token property independent of coverage AND of the fallback map's rank.",
+    "orders_ce_S1925": "The signal orders CE, the arc's native unit: covered q0-q3 gap +1.2107/+1.2329/+1.2553 nats at the deployed 5,419 coverage, uncovered +0.3546/+0.3360/+0.2382 (skip1200 misses a 0.3 bar by 0.062). The pooled all-position CE reproduced \u00a71858 to five decimals (6.01167/5.98477/6.00165) on this lineage's first CE computation since \u00a71885.",
+    "threshold_not_ranking": "The CE ordering is NOT monotone: q1 sits BELOW q2 on all six arm-role pairs. The extremes order as the agreement result predicts and the middle two invert, so the signal separates best-from-worst well and ranks poorly. Anything thresholding on it will behave; anything treating it as a graded score will not. Unexplained and deliberately not guessed at. \u00a71926 measured two confounds and refuted both: q1 holds the RAREST tokens (93.6/99.0/87.1 vs 234-282 elsewhere) so the frequency mixture is inverted the OPPOSITE way to the CE; and holding target frequency fixed at \u00a71789's 125+ bucket leaves the ordering non-monotone on 3 of 3 roles. The inversion is a documented property, not an artifact.",
+    "not_a_frequency_proxy_S1926": "Within a fixed target-frequency bucket the extreme CE gap is +0.9961/+0.9703/+0.9769 nats \u2014 about 80% of the unconditioned +1.21/+1.23/+1.26. Roughly four-fifths of the signal's CE separation survives controlling for the variable \u00a71789 showed governs almost everything else about this program's accuracy.",
+    "frequency_control_confirmed_S1927": "All three \u00a71926 findings replicate at 16,110: the frequency-controlled extreme CE gap is +0.8820/+1.0018/+1.0286 against \u00a71926's +0.9961/+0.9703/+0.9769 (within 0.11 on every role, two of three larger); the q1-below-q2 inversion persists on 3 of 3; and q1 still holds the rarest tokens (408.5 against 977.9-1170.0). Pooled CE reproduced \u00a71880 to five decimals.",
+    "coverage_transfer_is_quantity_specific": "\u00a71924 found \u00a71919's rank lever does NOT transfer between coverages (+0.78/+0.63/+0.70 at 16,110 vs +0.48/+1.14/+0.09 at 5,419) while \u00a71927 finds the frequency-control result transfers on all three predictions with margins under 0.11. So \u00a71923's \"coverage is not a smooth axis\" applies to the UNCOVERED GRADIENT specifically, not to every quantity in this arc."
   },
   "S1765_VERIFIED_AT_THE_LOGITS_S1913": {
     "status": "CERTIFIED \u2014 all four predictions TRUE",
