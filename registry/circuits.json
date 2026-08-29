@@ -108,7 +108,18 @@
   "status": "CERTIFIED as a NEGATIVE on the trend; the positivity is CERTIFIED.",
   "unregistered_observation": "THE FIRST SITE THE PAIR DOES NOT RESCUE. Compiling mlp5 with attention 5 and 6 costs 2.263 nats where compiling mlp5 alone costs 2.022. The reason is arithmetic: a lone attention 5 costs 0.241 and a lone attention 6 about the same (S1989), so for a site whose own damage is already near 2 nats the fix adds more than it removes. The threshold describes how to rescue a BADLY compiled site, and mlp5 is not badly compiled."
  },
+ "ATTENTION_6_CONTENT_IS_HIGH_DIMENSIONAL_S2011": {
+  "builds_on": "RANK_ONE_IS_PRESENCE_NOT_CONTENT_S2010",
+  "claim": "Attention 6's content -- (mean row - table), the part a context-free row cannot supply, worth 0.212/0.216/0.191 nats at a compiled mlp2 -- is genuinely HIGH-dimensional. Share recovered by rank: r1 -12.7/-15.4/-21.5% (a rank-1 table is measurably WORSE than a constant row), r4 +2.6/+0.7/-3.3% (worth exactly a constant row), r16 21.9/20.8/17.0%, r64 58.3/56.6/53.6%, r128 81.1/80.0/78.7%. Roughly linear in log-rank from 16 upward, with nothing below 16 at all.",
+  "closes_the_rank_line": "There is no small set of directions to name. The head-level probe S2008 and S2009 were building toward is NOT motivated by this evidence.",
+  "evidence": "ops/attention_sixs_content_by_rank.py, 4.9s warm, ten arms x three roles at 5,419, measured from the mean-row baseline. pred_a True 3/3, pred_b True 3/3, pred_c FALSE by 3.6/6.6/8.3 points. Derived controls True, both reference deviations 0.000000.",
+  "open": "Three sections used the wrong denominator and two headlines came from it. The corrected instrument has not been asked whether high-dimensionality is specific to attention 6 or generic: the same content-by-rank curve for attention 5 (content negative) and for a compiled mlp2 (content essentially zero, S1983) would say -- the S1995 control, one level up.",
+  "section": "S2011",
+  "status": "CERTIFIED, and it SCOPES S1996's interpretation.",
+  "the_corrected_account": "Attention 6's contribution to a compiled MLP is mostly PRESENCE, which any context-free row supplies. Its CONTENT is small and high-dimensional: half needs 64 directions, four fifths needs 128."
+ },
  "ATTENTION_6_NEEDS_ALMOST_NO_CAPACITY_S1996": {
+  "INTERPRETATION_SCOPED_BY_S2011": "The measurements stand; the 'low-dimensional' reading is WITHDRAWN. The 72% is a share of the arm that OMITS attention 6, which S2010 showed is 64-69% presence -- not a share of its content. Measured against the mean row (the only baseline whose difference is content by construction), rank 16 buys 17-22% and rank 4 buys nothing a constant row does not. Attention 6's content needs 64 directions for half and 128 for four fifths. LESSON 99.",
   "builds_on": "THE_FREQUENCY_GRADIENT_IS_GENERIC_S1995",
   "claim": "Attention 6's table needs almost no capacity. With mlp2 + attention 5 + attention 6 compiled, sweeping attention 6's table rank gives 2.137 (r16) / 2.109 (r32) / 2.060 (r64) / 2.011 (r128) / 1.971 (r384) at skip7000, against 2.556 for the same arm with attention 6 removed. A 24-fold capacity cut costs 0.166 nats where removing the site costs 0.611: rank 16 captures 72% of attention 6's whole contribution, rank 128 captures 93%. Smooth and roughly linear in log-rank, not a cliff.",
   "evidence": "ops/how_much_of_attention_six.py, 4.8s warm (289.2s cold), nine arms x three roles at 5,419, using per-site table ranks added to bqlib for this. pred_a/b/c all True 3/3, derived controls True on the third plan, reference deviation 0.000000. r16 vs r384 is +0.166 at pooled t = +184.8.",
