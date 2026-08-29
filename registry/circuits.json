@@ -3921,7 +3921,7 @@
     "precision_is_best_where_the_effect_is_largest": "collapsed configurations are ~40x tighter than the baseline (attn5 +-0.001 vs baseline +-0.077): where agreement has fallen to the null, numerator and denominator move together and the ratio barely varies."
   },
   "UNEVEN_PER_SITE_RANK_S1928": {
-    "status": "MEASURED \u2014 a free improvement to the frontier, in the direction opposite the hypothesis",
+    "status": "CERTIFIED \u2014 confirmed at a second budget and coverage (\u00a71930); the rule is scale-free",
     "claim": "At identical storage (103.1086M, 5,419 types), allocating 18 MLP sites rank 384 and 18 attention sites rank 128 beats uniform rank 256 by -0.01874/-0.01817/-0.01659 all-position nats, while the reverse allocation (attention-heavy) is WORSE by +0.05295/+0.05421/+0.04718. Three of three roles both ways.",
     "behavioural_is_not_storage": "\u00a71891/\u00a71904 showed attention carries the program's behavioural fidelity (attention restorations change up to 96.56% of covered predictions against the MLP maximum of 0.03%, a 3,200x ratio). That does NOT transfer to storage: restoring an attention site matters because it reintroduces CONTEXT, which the compiled program cannot store at any table rank (\u00a71765). Which sites carry fidelity and which sites' tables are hardest to compress are different questions.",
     "correction_issued": "\u00a71928 corrects advice given to Codex on the board at 07:57Z and restated at 08:06Z, 09:27Z, 12:03Z and 13:31Z, which framed \u00a71891 as identifying what an allocation should follow.",
@@ -3932,8 +3932,38 @@
       "\u00a71891",
       "\u00a71904",
       "\u00a71880",
-      "\u00a71928"
+      "\u00a71882",
+      "\u00a71928",
+      "\u00a71929",
+      "\u00a71930"
     ],
-    "open": "128/384 is one point on a one-dimensional family; whether a more extreme split gains more, and whether the optimum moves with the budget (\u00a71864 found the map-rank rule budget-dependent), is unmeasured. Direction established, size not."
+    "open": "none \u2014 measured at two budgets and two coverages, rule is scale-free",
+    "sized_S1929": "The cost-flat family (a+b=512, all arms 103.1086M) is a clean U on all three roles: 256/256 6.02422, 192/320 6.01093, 128/384 6.00548, 64/448 6.00558, 32/480 6.01068 on skip7000. The optimum lies in 64-128 with a flat floor (a64 vs a128 differs by 0.00010/0.00097/0.00036), so \u00a71928's 128/384 sample was already at it. Best gain +0.01874/+0.01817/+0.01695 vs uniform \u2014 the whole size of the effect.",
+    "scale_in_context": "~0.018 nats free, against \u00a71861 iso-cost +0.056/+0.079/+0.074, \u00a71882 half-cost +0.005 for a 46% cut, and \u00a71880 map rank 0.045 for +37.159M. About a third of the best cost result in the arc, at zero cost. Worth taking; not worth reorganising a program around.",
+    "transfers_S1930": "At \u00a71882's half-cost build (16,110 types, 360.7235M, a+b=1024) the gain is +0.01578/+0.01518/+0.01363 against \u00a71929's +0.01874/+0.01817/+0.01695 at a 3.5x smaller budget and 3x lower coverage. The uniform arm reproduced \u00a71882's 5.91024/5.85638/5.88223 exactly.",
+    "scale_free_rule": "Give the 18 ATTENTION sites 12.5-25% of the per-site table budget and the 18 MLP sites the rest. \u00a71929's flat floor was a64-a128 of 512 (12.5-25%); \u00a71930's optimum is 256/256/128 of 1024 (25/25/12.5%) \u2014 the identical relative band, with skip1200's two candidates differing by 0.00013. Worth ~0.015-0.019 all-position nats, free, at both budgets and both coverages."
+  },
+  "BEST_KNOWN_BUILD_S1931": {
+    "status": "CERTIFIED at 16,110; SCOPED at \u00a71932 \u2014 at the deployed 5,419 coverage it is a redistribution, not a strict improvement",
+    "build": "16,110 covered types; 18 attention sites at table rank 256, 18 MLP sites at 768; rank-512 covered-fit embedding fallback map; 360.724M reals",
+    "vs_deployed_design": "\u00a71789 scaled up (full-rank table + rank-64 map) costs 673.464M. The combined build is 46% cheaper and better on: all-position CE 5.89446/5.84120/5.86873 vs 5.90522/5.85230/5.88575; overall top-1 14.01/14.75/14.02% vs 13.93/14.71/14.01%; kept-fraction in the 125+ bucket 53.7/54.4/54.4% vs 53.6/54.1/53.9%.",
+    "rare_end": "\u00a71883 measured the un-allocated half-cost build losing 0.23/0.28/1.10pp of kept-fraction on unseen targets. The combined build is BETTER on skip7000 (-0.34pp) and skip11000 (-0.09pp) and retains the full 1.10pp on skip1200 \u2014 two of three roles repaired by the allocation, one unchanged.",
+    "bar_note": "\u00a71931 pred_b passed a 1.5pp bar deliberately set looser than \u00a71883's 1.0pp, which \u00a71883 had already failed at 1.10pp. skip1200 comes in at exactly 1.10pp again \u2014 the predicate passes on a widened bar and the honest reading is that skip1200 is unchanged, not improved.",
+    "components": "\u00a71880 map-rank law, \u00a71882 table rank and coverage, \u00a71928-\u00a71930 allocation rule",
+    "sections": [
+      "\u00a71789",
+      "\u00a71880",
+      "\u00a71882",
+      "\u00a71883",
+      "\u00a71928",
+      "\u00a71929",
+      "\u00a71930",
+      "\u00a71931",
+      "\u00a71932"
+    ],
+    "open": "why the sign flips. The tables are relatively richer at the smaller covered set, which is a plausible UNMEASURED account; the measurement would be a rank sweep at fixed coverage against the bucket instrument.",
+    "control": "live per-bucket accuracy identical between arms at 0.00e+00 \u2014 seventeenth clean reading",
+    "at_deployed_coverage_S1932": "At 5,419 the same design costs 163.667M against the deployed 230.087M (29% cheaper, not 46%). Overall top-1 is better on all three roles (13.74/14.45/13.75% vs 13.55/14.25/13.64%) and the UNSEEN-target kept-fraction is better on all three (4.1/6.6/3.8% vs 2.7/6.2/3.6%), but the 125+ kept-fraction is WORSE on all three by 1.20/0.93/0.65pp. It moves accuracy off frequent targets and onto rare ones.",
+    "sign_flips_between_coverages": "At 16,110 the combined build beats the deployed design on the 125+ bucket on 3/3 and loses on the unseen bucket on 1/3; at 5,419 both reverse. \u00a71932 pred_a passed its 2pp bar while the direction flipped underneath it \u2014 the bar measured magnitude, not sign."
   }
 }
