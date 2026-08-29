@@ -1010,6 +1010,15 @@
   "the_shadow": "The attention profile DOES peak at layer 4 -- attn4 beats attn5 by 0.044 at pooled t = +24.9 and attn2 by 0.097 at t = +46.6 -- but the whole attention profile is 37x smaller than the MLP one. The same shape, a faint shadow.",
   "where_the_line_ends": "Eight sections narrowed S1978's 3.6x partial-compilation penalty from 36 sites to ONE: mlp4, read by attention 6. Any attention layer alone costs 0.05-0.31; any MLP above attention 6 costs 0.03-0.20; mlp5 costs 2.02; mlp4 costs 10.67, and S1983 showed the row's content is irrelevant."
  },
+ "THE_TWO_LAYERS_DO_DIFFERENT_JOBS_S1997": {
+  "builds_on": "ATTENTION_6_NEEDS_ALMOST_NO_CAPACITY_S1996",
+  "claim": "The threshold's two layers are not doing the same job, and the asymmetry runs opposite to the registered prediction. Cutting ATTENTION 5's table from rank 384 to rank 16 costs 0.010/0.010/0.009 nats; the same cut at attention 6 costs 0.166 (S1996) -- attention 5 is 17x shallower. Removing attention 5 entirely costs 2.905 nats (1.971 -> 4.876). Attention 5 is PURE PRESENCE; attention 6 carries real, if small, content.",
+  "evidence": "ops/how_much_of_attention_five.py, 205.0s, nine arms x three roles at 5,419. pred_a True 3/3 (rank-384 reproduces S1992 to 0.005), pred_c True 3/3, pred_b FALSE. Derived controls True, both reference deviations 0.000000.",
+  "open": "If attention 5's requirement is presence with no content, the limit is measurable: S1983's meanrow null gives every token the same row, keeping zero information and only context-freeness. S1998 asks whether a mean row at attention 5 works as well as its rank-384 table, and whether the same null at attention 6 -- where content demonstrably matters -- does not.",
+  "section": "S1997",
+  "status": "CERTIFIED",
+  "the_registered_prediction_was_backwards": "pred_b registered that attention 5 would be STEEPER than attention 6 (>+0.166 for a rank-16 cut). It is 17x shallower at +0.010. Not close, and scored FALSE as written."
+ },
  "THRESHOLD_GAP_IS_NOT_A_FALLBACK_ARTEFACT_S1994": {
   "builds_on": "THRESHOLD_REPLICATES_AT_16110_S1993",
   "claim": "The S1992/S1993 threshold's gap sits at COVERED inputs: omitting attention 6 from a compiled mlp2 costs 0.585/0.640/0.606 nats pooled, of which 0.558/0.600/0.548 -- 90-95% -- is at covered inputs, against a registered bar of 50%. The gap is strictly positive in all five target-frequency buckets, and the most frequent bucket carries 0.27-0.32 of the unseen bucket's gap against a bar of 0.25.",
