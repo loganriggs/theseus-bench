@@ -588,6 +588,17 @@
   "section": "S1960",
   "status": "CERTIFIED."
  },
+ "PER_TOKEN_ALPHA_WORKS_AND_STILL_PAYS_S1963": {
+  "builds_on": "CE_PURCHASES_DRIFTED_THE_PROFILE_FAVOURABLY_S1962",
+  "claim": "Varying the blend weight PER TOKEN by unc_mass quantile does raise the unseen (0-0) bucket -- +0.40/+0.32/+0.09pp at 5,419 for the widest tilt, 3/3 roles there and 2/3 at 16,110 -- and it acts through the intended mechanism (the WIDEST tilt is best on 3/3 roles at 5,419). But it costs +1.50 to +3.04 milli-nats of pooled CE at 5,419, above the 0.002-nat bar on 2 of 3 roles. It buys the bucket by paying CE: the same trade S1955/S1956 rejected as routing, in a new form.",
+  "closes_the_residual": "Four attempts have now been made on the unseen-target deficit -- a cosine router (S1939), a mass router (S1955), the same at the other coverage (S1956), and a per-token weight (S1963). Every one either fails to move it or moves it by paying more CE than it is worth. The blend's inability to reach a target no fit row contains is STRUCTURAL (S1937/S1938); the deficit should be reported as the cost of the blend rather than engineered around. At 16,110 the price is milder (pred_b passes 3/3, and skip1200 is free) so it is coverage-dependent, but the sign never reverses.",
+  "controls": "coverages exact; plan-derived control non-vacuous both ways (10 same-spec pairs inert, 5 differing-spec not); buckets partition; live per-cell identical at 0.00e+00; S1961's pooled CE reproduced to 0.000000 via B.ref() with an explicit coverage. Forty-seventh clean reading.",
+  "corrects": "S1962's control paragraph (the registered clause was overwritten; re-run with it, pred_d still passes and pred_a/b/c are unchanged)",
+  "evidence": "ops/per_token_alpha.py, 9.5s warm. Six builds x three roles x two coverages. pred_a True, pred_b False, pred_c True 3/3, pred_d True.",
+  "infrastructure_found": "Two defects surfaced by this section's own controls. (1) B.ref() silently returned the FIRST coverage of a two-coverage artifact -- a helper written to stop a reference being wrong, picking one arbitrarily. It now raises unless told which, and ops/test_fast.py checks both the raise and the explicit path. (2) The gate learned that a module-level LOWERCASE name assigned twice is a fork leftover: 7 of 245 scripts flagged, all genuine, 0 false positives -- which exposed that S1962's registered pred_d clause never ran, an inherited assignment having overwritten it.",
+  "section": "S1963",
+  "status": "CERTIFIED. The deployable conclusion is a NEGATIVE and it closes the line."
+ },
  "PROGRAM_IS_NOT_A_DEGRADED_COPY_S1884": {
   "S1884_inversion_resolved": "\u00a71884's struck pred_c was directionally right (rare imitates slightly more) but 40x overstated: 1.17x, not 45x. The strike remains correct \u2014 its null was 5-16x too low and its 97x enrichment is 15x the true 6.3x. \u00a71885 pred_c FAILED its own 10x bar on skip11000 (5x), so the claim \"the old baseline was badly wrong on every role\" does not hold; \"badly wrong\" does.",
   "claim": "On its strongest bucket (targets seen 125+ times) \u00a71882's half-cost build gets 81.4/82.5/80.7% of its correct top-1 predictions on positions the LIVE MODEL also gets right. About one in five of its correct answers are positions where the model itself is wrong, so the program is not simply a degraded copy of the model \u2014 it is a different predictor overlapping it.",
