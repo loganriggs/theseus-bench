@@ -688,6 +688,18 @@
   "section": "S1960",
   "status": "CERTIFIED."
  },
+ "ONE_MLP_LAYER_4_S1982": {
+  "builds_on": "COST_IS_NOT_ADDITIVE_OVER_SITES_S1981",
+  "claim": "Compiling the MLP at layer 4 ALONE -- with all thirty-five other sites live and attention 6 live -- costs 10.58-10.94 nats, the whole of S1981's six-site figure (10.60-10.96) and 3.9x the complete thirty-six-site program (2.70-2.98). One site out of thirty-six, worse than all of them together.",
+  "controls": "Derived: coverage exact; same-spec pairs exactly inert at covered inputs; at least one differing-spec pair moves; buckets partition; live per-cell identical; S1975's published converged CE reproduced to 0.000000 via B.ref(). Sixty-first clean reading.",
+  "evidence": "ops/which_mlp_below_six.py, 121.9s, declarative. Nine arms x three roles at 5,419. pred_a True, pred_b False, pred_c False, derived controls True.",
+  "not_propagation": "pred_b FAILED. I predicted mlp0 would be costliest, its compiled row passing through the most live machinery. The gradient runs the other way up to layer 4 -- 1.35, 2.16, 4.81, 6.57, 10.67 -- then COLLAPSES at layer 5 to 2.02, one layer closer to the interface. Not distance, not depth, not adjacency: layer 4.",
+  "open": "The pair is named and nothing says what passes between them. The halves are one layer apart, so whatever mlp4 writes reaches attn6 through layer 5 -- and layer 5's own MLP, compiled alone, costs 2.0 nats. S1908's alignment x magnitude instrument decomposes a site's contribution into direction and size and would say which the compiled mlp4 row gets wrong; it has never been pointed at an MLP.",
+  "section": "S1982",
+  "status": "CERTIFIED.",
+  "strongly_subadditive": "pred_c FAILED in the completing direction: the singles sum to 27.4-28.9 nats while the six together cost 10.6-11.0. They overlap almost entirely because mlp4 already does all of it. S1981 found the cost non-additive; this says which way it fails, having asked the opposite.",
+  "the_pair": "The 2.7-nat premise (S1977), the 3.6x partial penalty (S1978), the three-layer step (S1979), the one attention layer (S1980) and the six MLPs (S1981) all reduce to ONE PAIR OF SITES: a compiled MLP at layer 4 feeding a live attention at layer 6. Break either half -- compile layer 6's attention (S1980) or leave layer 4's MLP live -- and the penalty is gone. Thirty-four of thirty-six sites are indifferent to what their inputs are made of."
+ },
  "PARTIAL_COMPILATION_IS_WORSE_THAN_FULL_S1978": {
   "attention_carries_it": "attn_only costs 96% of the full price on 3/3 roles -- substituting attention alone buys essentially the entire penalty, which is S1977's 'attention is worth ~2.7 nats' measured directly. pred_a failed only because it compared attn_only against the INCONSISTENT mlp_only arm, two things differing in two ways.",
   "builds_on": "THE_PREMISE_COSTS_2P7_NATS_S1977",
