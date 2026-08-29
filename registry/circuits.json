@@ -183,6 +183,29 @@
   "status": "MEASURED with a NAMED COST (\u00a71883) \u2014 not certified as a program",
   "why_it_exists": "a direct consequence of the \u00a71880/\u00a71881 law: once the map rank is chosen correctly (map_rank >= table_rank + 1), the table can be truncated far harder than the deployed build assumed"
  },
+ "INSTRUMENTS_RANK_FALLBACKS_OPPOSITELY_S1938": {
+  "cause": "The disagreement is one bucket. On uncovered inputs with an UNSEEN target the neighbour's CE exceeds map512's by +1.124/+1.162/+1.059 nats (bar was 0.05): the neighbour emits a real covered token's distribution, which puts near-zero mass on a token no fit row contains, and CE charges the log of that. Top-1 charges at most one position for the same failure and the neighbour still scores 7.7/6.9/5.6% there. That bucket is ~5-7% of scored positions and it reverses the entire pooled CE ranking while leaving the top-1 ranking untouched.",
+  "claim": "For bilin18's compiled program at 5,419 coverage, cross-entropy and top-1 accuracy rank the three fallback forms in EXACTLY REVERSED order, measured in one build on one set of positions. CE: map512 (pooled 5.96702/5.93645/5.96095) > map64 (6.01167/5.98477/6.00165) > nn (6.01897/6.00091/6.00733). Top-1: nn (14.17/14.66/14.24%) > map512 (13.77/14.37/13.72%) > map64 (13.55/14.25/13.64%). The best build under one objective is the worst under the other.",
+  "confirms": [
+   "NEIGHBOUR_BEATS_MAP_ON_TOP1_S1937",
+   "S1870"
+  ],
+  "confirms_exactly": "The pooled CE gap nn - map64 came in at +0.00730/+0.01614/+0.00568 nats against S1870's PUBLISHED +0.0073/+0.0161/+0.0057 -- agreement to every published digit from a different script, arm construction and scoring path. S1870's CE measurement is confirmed; nothing about it was wrong.",
+  "controls": "coverage exactly 5,419; all three arms inert at covered inputs in all three pairwise comparisons; counts partition; top-1 reproduced S1937's published uncovered-input overalls to a max deviation of 0.004pp; live per-cell top-1 AND CE identical across all three arms (twenty-fourth clean reading, on two instruments at once).",
+  "evidence": "ops/both_instruments_same_build.py, 92.6s. Three arms, full table rank, per-position top-1 AND per-position CE, cross-tabulated on the (input covered/uncovered) x (target bucket) axis of S1936. All four registered predicates TRUE.",
+  "pricing": "nn->map64 buys 715/323/919 M/nat; map64->map512 buys 832/769/913 M/nat -- comparable, and S1870 was right to take them under an M/nat objective. The SAME +5.218M nn->map64 step is a LOSS of 0.61/0.41/0.60pp of top-1. The cost arc has been denominated in M/nat since S1747, and that denominator -- not an error -- is what put the map in the deployed build.",
+  "scopes_by_objective": [
+   "S1870",
+   "S1789",
+   "BEST_KNOWN_BUILD_S1931",
+   "S1933",
+   "S1934",
+   "S1935",
+   "S1936"
+  ],
+  "section": "S1938",
+  "status": "CERTIFIED -- rung 2, second-class confirmation of S1937 with a different instrument"
+ },
  "MAP_GAIN_IS_BROAD_NOT_UNSEEN_ONLY_S1935": {
   "claim": "Raising bilin18's compiled-program fallback map (S1870, ridge-regressed embedding->row) from rank 64 to 512 at full table rank and 5,419 coverage raises kept-fraction in ALL FOUR rarer target-frequency buckets on ALL THREE held-out roles -- 12/12 cells positive -- and lowers it only in the most-frequent (125+) bucket, on 3/3. The largest gains are in the 1-4 and 25-124 buckets, not the unseen one.",
   "controls": "coverage exactly 5,419; the rank-64 arm reproduced S1932's PUBLISHED deployed figures exactly (125+ 63.5/62.9/63.4%, unseen 2.7/6.2/3.6%); buckets partition; live per-bucket accuracy identical across all four arms at 0.00e+00 (twenty-first clean reading).",
