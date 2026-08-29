@@ -257,6 +257,21 @@
   ],
   "status": "CERTIFIED and MEASURED at \u00a71915 \u2014 the estimator is unbiased; the noise is priced"
  },
+ "FALLBACK_OPTIMUM_MOVES_AT_THE_KNEE_S1949": {
+  "build_to_beat": "fb_mix25m512 at 16,110: 36 tables at mlp 768 / attn 256, fallback = 25% output-NN neighbour + 75% rank-512 map, 360.792M.",
+  "builds_on": [
+   "ATTENTION_SHARE_IS_MONOTONE_S1948",
+   "CHEAPER_BLEND_BEATS_MAP512_S1944"
+  ],
+  "claim": "Re-opening the fallback's two parameters at S1947's table knee ({mlp 768, attn 256}, 16,110) moves the CE optimum from S1944's (alpha 25%, map rank 256) to (alpha 25%, map rank 512) on 3/3 roles -- alpha unchanged, map rank DOUBLED. The move is worth buying: fb_mix25m512 at 360.792M beats blend_768_256 (339.558M) by -0.00268/-0.00267/-0.00328 nats at paired t = -9.58/-10.03/-5.17, a rate of 0.0126/0.0126/0.0154 nats per 100M, above S1947's 0.010 threshold on every role.",
+  "control_polarity_error": "SECOND polarity error of the session. pred_d inherited S1947's two-sided control asserting that arms DIFFER at covered inputs -- correct there, where arms differed in table RANK. Every arm here shares one table spec and differs only in the FALLBACK, which by S1765/S1936 is EXACTLY inert at covered inputs. The control asserted the opposite of the truth and failed while pred_a/b/c passed 3/3. Corrected and re-run: all hold (thirty-fifth clean reading). LESSON 81 extended.",
+  "direction": "pred_b, 3/3: with the tables truncated 51% the fallback carries relatively more of the build and wants MORE map capacity, not less. Top-1 is a wash (-0.01/+0.02/+0.04pp) -- this is a CE purchase and no top-1 gain is claimed.",
+  "evidence": "ops/fallback_at_the_knee.py, 6.0s. Nine fallbacks (alpha 10/25/40 x map rank 128/256/512) plus two anchors at the knee allocation, three roles, per-position top-1 and CE with a paired t on every CE margin.",
+  "open": "The two axes have each been re-opened ONCE against the other and each moved once -- the table axis moved the fallback's map rank (S1949), the operating point moved the attention tradeoff (S1948). Neither has been re-opened a SECOND time, so it is not established that this is a fixed point rather than one step of an alternation.",
+  "same_budget_comparison": "fb_mix25m512 costs 360.792M; S1931's superseded best-known cost 360.723M -- 0.07M apart. At that identical price S1931 gives CE 5.89445/5.84120/5.86873 and this gives 5.88341/5.82982/5.86029: about 0.011 nats better on every role from the same budget spent differently.",
+  "section": "S1949",
+  "status": "CERTIFIED -- all four registered predicates TRUE, after pred_d was corrected for polarity."
+ },
  "FALLBACK_STREAM_INPUT_S1876": {
   "audit_credit": "Codex, 2026-08-29T03:55Z \u2014 load-bearing, not a wording issue",
   "claim": "A covered-fit linear map from the length-1 residual stream entering each site, at map rank 512, cuts the deployed fallback loss from +0.78075/+0.86225/+0.83997 to +0.17427/+0.21358/+0.21419 against the uncovered-token ceiling 5.15861 (77.7/75.2/74.5% of it), and at identical rank-512 storage the input change alone is worth +0.10161/+0.11650/+0.11069 whole-program all-position CE.",
