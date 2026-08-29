@@ -3742,7 +3742,8 @@
       "\u00a71900",
       "\u00a71901",
       "\u00a71902",
-      "\u00a71903"
+      "\u00a71903",
+      "\u00a71904"
     ],
     "open": [
       "why attn5/attn6 specifically when attn3/attn4/attn7 are harmless",
@@ -3751,7 +3752,9 @@
     "what_survives": "The BEHAVIOURAL localisation, which was measured not derived: the tracking is late attention (attn13 best on all three roles at both coverages), and attention restorations change up to 96.6% of positions against the MLP maximum of 3.7% \u2014 27x. \u00a71898 sharpens this rather than weakening it.",
     "open_hypothesis": "UNTESTED: bilin18 threads a value residual v1 and the initial embedding x0 through blk(x, v1, x0), and v1 is computed from live attention internals rather than from the substituted output \u2014 so the compiled stream need not equal the length-1 stream. One run to check; explicitly not a finding (\u00a71888/\u00a71890 are why it is labelled).",
     "the_S1898_S1903_loop": "Six sections went round a loop because \u00a71898 counted all scored positions while \u00a71899/\u00a71901 measured covered ones only. Every measurement was correct; they scored different populations. Four hypotheses were raised and refuted by runs (v1/x0 residual, float argmax flips, bfloat16, non-determinism) before the scope mismatch was found. DIAGNOSIS CREDIT: Codex, 2026-08-29T08:22Z, from the source. LESSON 71.",
-    "what_never_moved": "The BEHAVIOURAL localisation: the tracking is late attention (attn13 best at both coverages), attention restorations change up to 96.6% of positions against the MLP maximum of 3.7%, and MLP restorations move the agreement enrichment by at most 0.0042. Measured, not derived, and untouched by the entire \u00a71898-\u00a71903 episode."
+    "what_never_moved": "The BEHAVIOURAL localisation: the tracking is late attention (attn13 best at both coverages), attention restorations change up to 96.6% of positions against the MLP maximum of 3.7%, and MLP restorations move the agreement enrichment by at most 0.0042. Measured, not derived, and untouched by the entire \u00a71898-\u00a71903 episode.",
+    "attention_counts_verified_S1904": "On COVERED positions alone \u2014 where the substituted row is the model's own length-1 output \u2014 attn5 changes 96.37/96.04/96.81% of predictions and mlp16 changes 0.03/0.02/0.00%, a ratio of 3,200x against the 27x visible in the all-position figures. \u00a71891's \"attention, not MLPs\" survives the check that scoped the MLP no-op, and survives it more strongly.",
+    "the_asymmetry": "Attention restorations change covered and uncovered positions at nearly the same rate (attn5: 96.37 vs 96.03%); MLP restorations differ by 1,200x between them (mlp16: 0.03 vs 35.70%). An attention restoration changes the program everywhere because it restores context; an MLP restoration changes it only where the substituted row was never the model's output to begin with."
   },
   "NORM_RATIO_PREDICTS_COLLAPSE_S1892": {
     "status": "MEASURED \u2014 answers both of \u00a71891's open questions; pred_b failed as its own control intended",
