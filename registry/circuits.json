@@ -71,6 +71,7 @@
   "status": "CERTIFIED for pred_a and pred_c. pred_b FAILED and the fault is in my predicate."
  },
  "ATTENTION_5_IS_PRESENCE_ATTENTION_6_IS_CONTENT_S1998": {
+  "CONFIRMED_IN_SIGN_ONLY_BY_S1999": "S1999 ran the same null at mlp4. The qualitative split transfers -- attention 5 negative (-0.017/-0.017/-0.020), attention 6 positive (+0.095/+0.098/+0.080) -- so it is a fact about the layers. The MAGNITUDE does not: attention 6 content is worth +0.09 at mlp4 against +0.21 at mlp2, roughly half, so HOW MUCH attention 6 must carry is a fact about the pair rather than the layer.",
   "builds_on": "THE_TWO_LAYERS_DO_DIFFERENT_JOBS_S1997",
   "claim": "Under the meanrow null -- every token the same row, zero information, only context-freeness -- the threshold's two attention layers separate by an order of magnitude and in opposite directions. A mean row at ATTENTION 5 is BETTER than its compiled table: 1.940/2.047/1.881 against 1.971/2.090/1.952, pooled -0.044 at t = -23.0. A mean row at ATTENTION 6 costs +0.209 at pooled t = +157.2. Mean rows at both cost no more than a mean row at attention 6 alone (2.180 vs 2.183).",
   "evidence": "ops/presence_or_content_at_attention_five.py, 53.8s, nine arms x three roles at 5,419, using composite arms. pred_a/b/c all True 3/3, derived controls True, both reference deviations 0.000000.",
@@ -1018,6 +1019,15 @@
   "status": "CERTIFIED",
   "the_shadow": "The attention profile DOES peak at layer 4 -- attn4 beats attn5 by 0.044 at pooled t = +24.9 and attn2 by 0.097 at t = +46.6 -- but the whole attention profile is 37x smaller than the MLP one. The same shape, a faint shadow.",
   "where_the_line_ends": "Eight sections narrowed S1978's 3.6x partial-compilation penalty from 36 sites to ONE: mlp4, read by attention 6. Any attention layer alone costs 0.05-0.31; any MLP above attention 6 costs 0.03-0.20; mlp5 costs 2.02; mlp4 costs 10.67, and S1983 showed the row's content is irrelevant."
+ },
+ "THE_SPLIT_TRANSFERS_IN_SIGN_NOT_SIZE_S1999": {
+  "builds_on": "ATTENTION_5_IS_PRESENCE_ATTENTION_6_IS_CONTENT_S1998",
+  "claim": "S1998's presence/content split second-class confirms at a different compiled MLP in SIGN ONLY. At mlp4 a mean row at attention 5 beats its compiled table by 0.017/0.017/0.020 nats (attention 5's content is negative at both sites) and a mean row at attention 6 costs +0.095/+0.098/+0.080 (positive at both). But at mlp2 the attention-6 figure is +0.212/+0.216/+0.191 -- roughly twice as much. How much attention 6 must carry is a fact about the pair, not about the layer.",
+  "evidence": "ops/the_split_at_mlp4.py, 51.0s, ten arms x three roles at 5,419, with both the mlp2 and mlp4 sides rebuilt in-run rather than one retyped. pred_a True 3/3; pred_b and pred_c both FALSE 3/3. Derived controls True, all three reference deviations 0.000000.",
+  "open": "Two sites give a difference but not a trend. Lone-site damages run mlp2 4.81, mlp3 6.57, mlp4 10.67, and attention 6's content is worth +0.21 at the first and +0.09 at the last -- the INVERSE order, not what 'more broken sites need more help' would predict. mlp3 is the one cheap point that would say whether this is monotone.",
+  "section": "S1999",
+  "status": "CERTIFIED as a PARTIAL confirmation. The qualitative split stands; the magnitude claim does not.",
+  "the_misses": "pred_b's bar was 'a mean row at attention 6 still costs more than 0.10 nats at mlp4'. It costs 0.095/0.098/0.080 -- short by 0.005, 0.002 and 0.020, and the bar was set from the mlp2 figures. pred_c's bar was 'within 0.10 nats of the same quantity at mlp2'; the differences are 0.117/0.118/0.111, short by 0.011-0.018."
  },
  "THE_TWO_LAYERS_DO_DIFFERENT_JOBS_S1997": {
   "builds_on": "ATTENTION_6_NEEDS_ALMOST_NO_CAPACITY_S1996",
