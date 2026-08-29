@@ -930,6 +930,16 @@
   "section": "S1947",
   "status": "CERTIFIED for pred_a (3/3) and pred_d; pred_b and pred_c both FALSE 0/3, and both failures sharpen the answer."
  },
+ "THE_CUT_IS_ATTENTION_6_AND_THE_SPIKE_IS_A_PEAK_S1988": {
+  "builds_on": "LAYER6_BOUNDARY_AND_THE_MLP4_SPIKE_S1987",
+  "claim": "The boundary is ATTENTION 6 ITSELF, not 'layer 6': mlp6 -- which runs after attn6 in block order -- costs 0.202/0.209/0.214 nats and mlp7 0.072/0.077/0.075, both on the cheap side. And the lone-compiled-MLP profile is a PEAK with a broad shoulder below and a cliff above: mlp2 4.81, mlp3 6.57, mlp4 10.67, mlp5 2.02, mlp6 0.20, mlp7 0.07, mlp8 0.05, mlp12 0.03.",
+  "evidence": "ops/how_wide_is_the_spike.py, 46.2s, seven arms x three roles at 5,419. pred_a True 3/3, pred_c True 3/3, pred_b FALSE. Derived controls True, all three reference deviations 0.000000. mlp5 -> mlp4 is 8.694 nats at pooled t = -365.6; mlp3 -> mlp4 is 4.058 at t = -342.1; mlp6 vs mlp7 is +0.133 at t = +81.6.",
+  "open": "Every arm so far compiled an MLP. If the peak belongs to the residual stream at layer 4 rather than to that MLP, a lone compiled ATTENTION 4 should be expensive too and the attention profile should peak in the same place. S1989 measures it.",
+  "pred_b_failed": "The bar was 'mlp3 costs less than half of mlp4'. It costs 0.616/0.630/0.621 of it, missing by about 0.12 on all three roles. The spike is not one site wide on its low side.",
+  "section": "S1988",
+  "status": "CERTIFIED",
+  "what_the_shape_says": "The asymmetry rules out both easy readings. Not distance to the boundary -- mlp5 is nearer than mlp3 and costs a third as much. Not depth -- the profile rises then falls. Layer 4 is distinguished and its adjacent layer 5 is not. With S1983 (mlp4's content is irrelevant; a constant row costs the same 10.67), what attention 6 needs from position-4 activations is that they VARY."
+ },
  "THE_PREMISE_COSTS_2P7_NATS_S1977": {
   "builds_on": "FALLBACK_BEATS_COVERAGE_PER_PARAMETER_S1976",
   "claim": "S1765's 36-site substitution costs 2.63 to 2.98 nats against the live model. The entire S1946-S1976 arc recovered 0.069 nats -- 2.4% of it. The fallback lever is worth 0.072 and coverage 0.074; the marginal parameters of S1957-S1974 are worth 0.001-0.005 each. Everything optimised since S1946 lives in the last 2.5% of the gap the premise opens.",
