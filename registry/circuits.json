@@ -197,14 +197,15 @@
  },
  "CONVERGED_BUILD_IS_A_REDISTRIBUTION_S1953": {
   "builds_on": "CONVERGED_BUILD_AT_DEPLOYED_COVERAGE_S1951",
-  "claim": "S1951's pooled win for the converged build over S1789's deployed design at 5,419 is a REDISTRIBUTION toward mid-frequency targets, not a uniform improvement. It LOSES the unseen (0-0) bucket on 3/3 roles (-0.36/-0.26/-0.36pp) and is flat to slightly down on 125+ (-0.34/+0.03/-0.34pp), while winning the middle hugely: 5-24 by +4.56/+3.47/+4.55pp and 25-124 by +2.24/+2.47/+2.24pp.",
+  "claim": "S1951's pooled win for the converged build over S1789's deployed design at 5,419 is a REDISTRIBUTION toward mid-frequency targets, not a uniform improvement. Pooled kept-fraction deltas (skip7000/skip11000/skip1200, pp): 0-0 +0.75/-0.36/-0.26; 1-4 +1.25/+1.40/+1.10; 5-24 +5.00/+4.56/+3.47; 25-124 +2.38/+2.24/+2.47; 125+ -0.32/-0.34/+0.03. It wins the middle on 3/3 and loses the unseen bucket on 2 of 3.",
   "control_failure": "pred_d FAILED as written. It required S1932's published 125+ kept-fraction (63.5/62.9/63.4%, published to 0.1pp) to reproduce within 0.02pp -- rounding alone permits 0.05pp, so the bar was unmeetable by construction. Observed max deviation 0.047pp: inside the rounding envelope, outside my bar. Every other control leg passed (coverage 5,419, buckets partition, rank-differing arms move covered inputs, live per-cell top-1 and CE identical at 0.00e+00). LESSON 84.",
+  "correction": "CORRECTED by S1954. The first published version of this claim stated the unseen bucket lost on 3/3 at -0.36/-0.26/-0.36pp and quoted 5-24 as +4.56/+3.47/+4.55 and 25-124 as +2.24/+2.47/+2.24. Three of those triples carried a FABRICATED skip7000 value copied from skip11000 -- the log tail showed only two roles. The qualitative finding was computed by the script from full data and is unaffected. LESSON 85.",
   "evidence": "ops/converged_build_structure.py, 4.0s. Two builds x three roles at 5,419 on S1789's target-frequency buckets crossed with S1936's input-coverage axis.",
   "scopes": "S1951's pooled headline is correct and is now scoped as a redistribution, exactly as S1932 was.",
   "section": "S1953",
   "status": "pred_a FALSE 0/3 (the finding); pred_b and pred_c TRUE 3/3; pred_d FAILED on a mis-specified bar (below).",
   "truncation_cost": "pred_c, 3/3: on COVERED inputs the 125+ bucket falls -1.01/-0.68/-0.17pp -- rank 768 against full rank, paid on the most-frequent targets at the positions the tables serve directly. Real and small.",
-  "which_lever_carries_it": "pred_b, 3/3: the win is overwhelmingly on UNCOVERED inputs -- overall top-1 gain +1.59/+1.08/+1.26pp there against +0.04/+0.08/+0.04pp at covered inputs, a ratio of 44.4x/12.9x/29.3x. The fallback change touches only uncovered inputs (S1936); the table truncation touches everything. Almost all of S1951's margin is the FALLBACK, and the 51%-cheaper tables are very nearly free rather than beneficial."
+  "which_lever_carries_it": "pred_b, 3/3: the win is overwhelmingly on UNCOVERED inputs -- overall top-1 gain +1.586/+1.078/+1.256pp there against +0.036/+0.084/+0.043pp at covered inputs. The ratios (44.4x/12.9x/29.3x) should be read as 'the uncovered arm carries essentially all of it' and nothing finer: S1954 measured the same quantity at 16,110 as 44.4x/39.2x/-22.6x, the denominator having changed sign."
  },
  "COST_ARC_FIXED_POINT_S1950": {
   "arc_summary": "S1937 found the fallback's form had been chosen on one instrument; S1938 showed the instruments disagreed; S1942 found the two forms orthogonal in row space and closed that fork by blending; S1944-S1945 made the blend cheaper than the map it replaced; S1946 composed it with S1928's allocation and superseded the best-known build; S1947-S1950 located both knees and proved them stable. THE LARGEST SINGLE GAIN IN THE ARC WAS S1946's REPRICING -- truncating the tables, which was never a fallback question -- and the fallback work of S1937-S1945 bought roughly a tenth as much. Both are in the final build.",
@@ -304,6 +305,19 @@
    "\u00a71916"
   ],
   "status": "CERTIFIED and MEASURED at \u00a71915 \u2014 the estimator is unbiased; the noise is priced"
+ },
+ "FALLBACK_CARRIES_THE_WIN_AT_BOTH_COVERAGES_S1954": {
+  "bad_instrument": "pred_b FAILED 1/3 and the honest reading is that the concentration RATIO is not a measurable quantity: 44.4x/39.2x/-22.6x here against S1953's 44.4x/12.9x/29.3x, the denominator straddling zero. A ratio of two small differences should not be quoted to two significant figures.",
+  "builds_on": "CONVERGED_BUILD_IS_A_REDISTRIBUTION_S1953",
+  "claim": "The converged build's margin over the deployed design is carried almost entirely by the FALLBACK at BOTH coverages. The covered-input overall top-1 gain at 16,110 is +0.033/+0.027/-0.084pp -- lower than 5,419's +0.036/+0.084/+0.043pp on every role and NEGATIVE on skip1200. The table truncation is a small net cost on covered inputs at both coverages.",
+  "controls": "coverage exactly 16,110; rank-differing arms move covered-input predictions; buckets partition; live per-cell top-1 and CE identical at 0.00e+00; S1934's published 16,110 kept-fractions reproduced to 0.037pp against a 0.1pp bar set at twice the rounding envelope of a 1-dp figure (LESSON 84, after S1953's pred_d failed on an unmeetable 0.02pp bar). Thirty-eighth clean reading.",
+  "corrects_my_own_framing": "S1953 closed by saying its finding 'sits awkwardly beside' S1946/S1947's 'the table axis is ~30x cheaper per nat'. There was no tension: S1946/S1947 measured where cost can be CUT cheaply; S1953 measured where accuracy COMES FROM. Truncating the tables saves 349.9M for 0.007-0.011 nats -- an excellent rate at which to REMOVE money -- fully compatible with the tables contributing nothing positive to the margin. I conflated a cost-reduction rate with an accuracy attribution and ran an experiment to resolve a contradiction that did not exist.",
+  "evidence": "ops/lever_split_at_16110.py, 46.8s. Two builds x three roles at 16,110 on S1789's target-frequency buckets crossed with S1936's input-coverage axis. pred_a False 1/3, pred_b False 1/3, pred_c False 0/3, pred_d True.",
+  "open": "The unseen bucket loses on 5 of 6 cells because the neighbour half of the blend cannot reach a target no fit row contains (S1937/S1938) and the blend is 25% neighbour everywhere. A build using the pure map on tokens likely to have unseen targets would keep the gains and drop that loss -- but that is a property of the TARGET and the row must be chosen per INPUT token (LESSON 74). Whether any input-side signal predicts it is unmeasured; S1939's cosine is the only router tried.",
+  "scopes": "CONVERGED_BUILD_IS_A_REDISTRIBUTION_S1953",
+  "section": "S1954",
+  "shape_does_not_transfer": "pred_a FAILED 1/3. At 5,419 the build wins the middle (5-24 +5.00/+4.56/+3.47pp) and loses the unseen bucket on 2/3. At 16,110 it WINS THE MOST FREQUENT bucket (125+ +0.29/+0.64/+0.60pp) while losing unseen (-0.11/-0.66/-0.88) and 1-4 (-0.66 on skip11000), with the middle roughly flat. S1953's 'redistribution toward mid-frequency targets' is a 5,419 statement. The unseen bucket loses on 5 of the 6 role-coverage cells (all but 5,419/skip7000, +0.75pp).",
+  "status": "CERTIFIED for the attribution (pred_c's registered consequence); the other two predicates failed and each failure is recorded below."
  },
  "FALLBACK_OPTIMUM_MOVES_AT_THE_KNEE_S1949": {
   "build_to_beat": "fb_mix25m512 at 16,110: 36 tables at mlp 768 / attn 256, fallback = 25% output-NN neighbour + 75% rank-512 map, 360.792M.",
