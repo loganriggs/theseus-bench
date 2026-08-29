@@ -990,6 +990,16 @@
   "section": "S1947",
   "status": "CERTIFIED for pred_a (3/3) and pred_d; pred_b and pred_c both FALSE 0/3, and both failures sharpen the answer."
  },
+ "THE_CEILING_HOLDS_BUT_NOT_VIA_ATTENTION_0_3_S2005": {
+  "builds_on": "THE_DAMAGE_CEILING_IS_10_7_NATS_S2004",
+  "claim": "S2004's ceiling holds to about 3%, and the mechanism S2004 proposed for getting under it is wrong. mlp4+mlp12 costs 10.661 and mlp4+attention 0-3 costs 10.651, both within 0.018 nats of mlp4 alone (10.669). All eighteen MLPs come in at 10.326 -- 0.343 below, so the ceiling is a ceiling to within about 3%, not to within measurement error. Compiling attention 0-3 beneath mlp4 is worth 0.018 nats, not the 1.4 that would explain S1981's below_all figure of 9.266.",
+  "evidence": "ops/what_sits_at_the_ceiling.py, 51.9s, ten arms x three roles at 5,419. pred_a True 3/3; pred_b FALSE by 0.043/0.026/0.031 against a 0.3-nat bar; pred_c FALSE decisively. Derived controls True, both reference deviations 0.000000.",
+  "open": "Attention 4 has never been tested on its own beneath a compiled mlp4. If mlp4 + attention 4 sits at the ceiling like attention 0-3 did, attention 5 is uniquely the lever and every remaining number in this line is a statement about two adjacent attention layers. S2006 runs it.",
+  "replicates": "S1981's below_all triple rebuilt to 9.266/9.531/9.141 -- its published figures -- within a 0.05-nat bar, five sections later under a different script.",
+  "section": "S2005",
+  "status": "CERTIFIED",
+  "what_actually_gets_under_the_ceiling": "Attention 5. S1990 measured mlp4 + attention 5 at 8.021, 2.65 nats under the ceiling with attention 6 still live; S1985 measured mlp4 + attention 0-5 at 8.560, WORSE than attention 5 alone, exactly as S1986's off-path costs predict. Attention 5 has now appeared in three distinct roles: it must be present for the fix to work (S1992), its content is worthless or harmful (S1998), and it is the only site that moves the damage without repairing it."
+ },
  "THE_CROSSING_IS_AT_2_15_NATS_S2002": {
   "builds_on": "THE_FIX_HAS_A_DOMAIN_S2001",
   "claim": "The crossing point of the threshold's fix is at roughly 2.15 nats of lone damage. mlp1, never previously measured, sits on it: lone 2.155/2.240/2.066 and gain +0.002/-0.021/-0.013. mlp0 (lone 1.352) is partially rescued, losing 0.399/0.467/0.389 against the flat 0.65-nat plateau. S2001's one quantitative commitment about unmeasured sites -- that none loses more than the plateau -- held at both.",
