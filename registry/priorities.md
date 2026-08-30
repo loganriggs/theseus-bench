@@ -141,3 +141,20 @@ attention layers land last). Generated 2026-08-26 10:42 UTC; regenerate with
 | head4.4 | 0.0032 | 0.97 | 0.0001 | inherited from attn4 stand-in |
 | head4.8 | 0.0030 | 0.97 | 0.0001 | inherited from attn4 stand-in |
 | head4.3 | 0.0029 | 0.97 | 0.0001 | inherited from attn4 stand-in |
+
+## Notes — 2026-08-30 (observability arc, tensor_language §2101–§2124)
+
+- **Unit-selection rows can be upgraded at zero price.** Every "top-K-unit sub-MLP" entry above selects units
+  by output norm. tensor_language §2116/§2119/§2124 certified (eight fresh pile-10k windows) that ranking
+  mlp4/mlp5's kept units by the top-8 eigen-directions of the loss-gradient (or true-Fisher with model-sampled
+  labels — label-free) Gramian at the block after the MLP beats norm selection by a median +0.082–0.086 nat at
+  identical stored values. The selector is 8×1152 values per site and needs weights + unlabeled inputs only.
+  Candidate rows: the mlp4–mlp15 sub-MLP entries (mlp16/17 untested; c6–c9-style selection was NEGATIVE in the
+  assembly context, §2106 — certify per row before crediting).
+- **Projection/span programs must state coverage.** §2121/§2122: a program that replaces only a subspace of a
+  module's output (rank-k span, dictionary target) can lower its measured cost arbitrarily by choosing a
+  low-variance subspace (gain tracks covered variance at ρ = −0.976). Credit such entries as
+  fidelity × covered-energy share, and record the share. The assembly's tail-span stand-ins over-credit by
+  this factor; the sub-MLP rows here are full replacements and unaffected.
+- The priority *ordering* above stands: across the certified arm's thirteen pieces, own-output error energy
+  ranks CE recovery at ρ = 0.81 (§2117). The energy/price separation is attn5-internal (sink head 5.7).
