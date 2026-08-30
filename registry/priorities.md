@@ -198,6 +198,6 @@ damage reduction applies on cfgE-style rows (real downstream readers) only; the 
 per-row certification caveat are unaffected. Do not act on the two retracted notes.
 - **Post-retraction, an honest frontier move (§2139–§2140):** c6–c9's norm-ranked bottom 1728 units each are
   noise to the deployed assembly — c6–c9 at 576 beats the full §312 frontier on 8/8 windows (−0.029 median
-  damage) at 13.3M fewer values. Best measured config: mlp4/5-2304 + c6–c9-576 → 2.6445 fresh (damage; lower is
-  better). The mlp4/5 bottom halves DO carry function (+0.047 if dropped). Sub-MLP registry rows at blocks 6–9
+  damage) at 13.3M fewer values. Best measured config: mlp4/5-2304 + c6–c9-576 → 2.6691 on the FR fresh set (damage; lower is better;
+  window C pays +0.004). The mlp4/5 bottom halves DO carry function (+0.047 if dropped). Sub-MLP registry rows at blocks 6–9
   should be re-priced with aggressive K; blocks 4–5 should not.
