@@ -201,3 +201,7 @@ per-row certification caveat are unaffected. Do not act on the two retracted not
   damage) at 13.3M fewer values. Best measured config: mlp4/5-2304 + c6–c9-576 → 2.6691 on the FR fresh set (damage; lower is better;
   window C pays +0.004). The mlp4/5 bottom halves DO carry function (+0.047 if dropped). Sub-MLP registry rows at blocks 6–9
   should be re-priced with aggressive K; blocks 4–5 should not.
+- **Best config update (§2143–§2144):** the middles are not interchangeable — c7 needs its 576, c8/c9 go to 288
+  free-or-better, and per-layer pruning costs compose linearly (two independent confirmations). New best:
+  mlp4/5-2304 + c6/c7-576 + c8/c9-288 → better than §312 on 8/8 fresh windows at −14.4M stored values (damage
+  convention, reproduction gates held throughout). c8/c9 floor ≈ 288.
