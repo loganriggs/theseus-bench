@@ -45,6 +45,18 @@
   "shape": "The curve is FLAT near the optimum and falls away sharply: alpha=0.10 costs +10 to +12 milli-nats at 5,419, ten to twenty times what the 0.25->0.30 move recovers. S1943 chose well and the value survived three changes of operating point.",
   "status": "CERTIFIED. The actionable conclusion is a NEGATIVE: leave alpha alone."
  },
+ "ALPHA_IS_THE_UNIFORM_SWEEP_THAT_WAS_RIGHT_S2026": {
+  "alpha_is_the_most_sensitive_parameter": "Moving alpha by 0.20 at eight sites costs 11.0 milli-nats; untruncating those same eight tables BOUGHT 3.30 (S2020) and the entire map refinement was worth 0.47 (S2024). The most sensitive parameter in the build and the only one already optimal.",
+  "builds_on": "TWO_BOUNDARIES_NOT_ONE_S2025",
+  "claim": "No per-site alpha beats uniform 0.30. Alpha 0.10 at MLP 10-17 loses 0.004267 nats (t = -5.67) at 5,419 and 0.001679 (t = -3.49) at 16,110; alpha 0.50 there loses 0.011037 (t = -15.97) and 0.005046 (t = -10.65); alpha 0.10 at MLP 0-7 loses 0.005744 (t = -16.98) and 0.002129 (t = -9.87). Alpha COSTS NOTHING -- it reweights two arms the build already pays for -- so these are free moves with no price to excuse them. S1961's and S1967's uniform sweep was right.",
+  "converged_build": "{attn 384; mlp 768 at layers 0-9, 1152 at 10-17; map 640 except 256 at MLP 0-7; alpha 0.30}, 202.6M values at 5,419.",
+  "evidence": "ops/does_alpha_want_to_vary_by_site.py, 229.6s, seven arms x three roles x two coverages, pooled over 92,160 positions. pred_a True, pred_c True, pred_d True, pred_b FALSE. Derived controls True, reference deviation 0.000000. THESE ARE THE RE-RUN VERDICTS -- the first run's pred_b/c/d were all crashes.",
+  "open": "The sweep audit is complete. The next unpriced thing is not a parameter but a STRUCTURE: every arm since S1789 has used the same two-arm fallback (output-NN neighbour blended with a ridge map), and S1998/S2007 showed the two serve different sites very differently. Whether a third arm earns its place has never been asked.",
+  "section": "S2026",
+  "status": "CERTIFIED as a NEGATIVE. Alpha 0.30 stands.",
+  "the_correction_that_matters_more": "S2026's first run reported pred_b/c/d as three clean negatives. All three raised KeyError and run() recorded each crash as False, printing it identically to a measured negative and leaving the derived controls True. TWO OF THE THREE VERDICTS WERE WRONG (pred_c and pred_d are True). S2024 was published on the same bug. Both fixed at the source: a crashed predicate now raises, and tpool_full looks a pair up in either orientation. An audit of every run log found exactly two runs affected, four predicates total. LESSON 103.",
+  "the_sweep_audit_complete": "Four parameters set by sweeps uniform over per-site quantities. Table rank: knee at layer 10, +3.30 milli-nats missed (S2020). Attention rank: nothing, 384 correct (S2022). Map rank: over-bought below layer 8, +0.47 missed (S2024). Alpha: correct (S2026). Two of four had missed something, and the two that had not are the two axes whose per-site variation S1989 and S1961 had already measured as small. The heterogeneity was knowable in advance in every case."
+ },
  "ALPHA_SETTLES_AT_FINER_RESOLUTION_S1970": {
   "all_axes_closed": "table rank -- monotone, price criterion, mlp 768 (S1947/S1950, threshold vindicated S1958); attention share -- monotone, price, 384 at 5,419 and 256 at 16,110 (S1948/S1952); map rank -- monotone, price, 640 (S1959); per-token tilt -- interior optimum, one-step-error span, 25->35 (S1967); alpha -- interior optimum, span, 0.30 +-2 (S1970).",
   "builds_on": "TWO_KINDS_OF_AXIS_TWO_STOPPING_RULES_S1969",
@@ -1225,6 +1237,7 @@
   "what_kind_of_result_this_is": "Every supersession from S2018 to S2020 bought CE with parameters. S2023 sells parameters for CE at a favourable rate, which the price rule sanctions and this ledger has never done. If the rule is meant only to justify purchases and not sales, that is a decision about S1947 rather than about this measurement. The CE number is unambiguously worse and is not hidden behind the ratio."
  },
  "THE_MAP_KNEE_IS_COVERAGE_DEPENDENT_S2024": {
+  "PRED_D_WAS_A_CRASH_CORRECTED_S2026": "When S2024 was written, pred_d had NOT been evaluated: it raised KeyError('cut7','shipped') and run() recorded the crash as False, printing it identically to a measured negative. Re-run against the fixed library it is GENUINELY False, so the conclusion stands and the ladder numbers were never affected -- but it was published as a measurement when it was a crash. LESSON 103.",
   "build": "36 tables at {attn 384; mlp 768 at layers 0-9, mlp 1152 at layers 10-17}; uncovered rows 30% output-NN neighbour, 70% map at rank 640 EXCEPT rank 256 at MLP layers 0-7. 202.6M values at 5,419, against S2023's 204.4M and S2020's 209.7M. CE cost 0.236 milli-nats, parameters released worth 0.71, net +0.47 of budget.",
   "builds_on": "THE_MAP_IS_OVER_BOUGHT_AT_SHALLOW_SITES_S2023",
   "claim": "At the deployed 5,419 coverage the rank-256 map cut runs to MLP layer 7 and stops at 8: per-two-site costs are 0.18x, 0.59x, 0.66x through layer 7 and 2.85x at layers 8-9. At 16,110 NO step fails -- layers 8-9 cost 0.78x, still free -- so the knee is at layer 8 at one coverage and beyond layer 9 at the other.",
