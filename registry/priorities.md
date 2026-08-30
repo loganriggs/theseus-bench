@@ -158,3 +158,19 @@ attention layers land last). Generated 2026-08-26 10:42 UTC; regenerate with
   this factor; the sub-MLP rows here are full replacements and unaffected.
 - The priority *ordering* above stands: across the certified arm's thirteen pieces, own-output error energy
   ranks CE recovery at ρ = 0.81 (§2117). The energy/price separation is attn5-internal (sink head 5.7).
+
+## Notes — 2026-08-30 evening (frontier move + correction, tensor_language §2125–§2131)
+
+- **The assembly frontier moved: +2.6735 → +2.7707 fresh at equal stored price** (§2129, certified on the eight
+  document-disjoint windows: median +0.0481, 7/8 positive). The move is the selector above applied at mlp4/mlp5
+  with the Fisher computed *through the deployed assembly* (hooks active, labels sampled from the assembly's own
+  predictions) — still label-free.
+- **Caution when reading the tensor_language ledger:** §2125 ("the selector does not install into the frontier")
+  was a SIGN INVERSION in the registered formula and is corrected by §2128 — do not cite §2125's conclusions.
+- **Conditioning is reader-dependent.** On cfgE (real attention/lm_head readers) conditioning buys ~+0.012 median
+  vs +0.047 on the dictionary-reader frontier (§2130; licensing rerun in flight). Practical rule for registry rows:
+  compute the selection metric under the configuration the row deploys in, not on the real model, when the row's
+  downstream readers are themselves stand-ins.
+- **The per-row certification caveat above is now double-strength:** conditioned selection at c6–c9 adds nothing
+  (+0.003 median, mixed signs, §2131) — the selection gain is an mlp4/mlp5 story at BOTH metrics in BOTH
+  assemblies tested. Do not credit sub-MLP rows beyond mlp4/mlp5 without a per-row certified run.
