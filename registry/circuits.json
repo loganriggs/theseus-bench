@@ -1300,6 +1300,16 @@
   "status": "CERTIFIED as a NEGATIVE. The observation in S1994 stands; the mechanism lead does not.",
   "why_it_matters": "This is the control S1986, S1990 and S1992 did not get. Each of those was a shape that fit every number available, published as a rule, and falsified within the hour. S1994's gradient was registered as an OBSERVATION and its control was queued in the same commit -- 4.5 seconds, and the story died before it reached the board."
  },
+ "THE_FRESH_LOSS_IS_IN_THE_COVERED_ROWS_S2045": {
+  "builds_on": "THE_FRESH_WINDOW_IS_COVERAGE_STABLE_S2044",
+  "claim": "S2020's table raise loses on the fresh window in the COVERED rows: -17.432 milli-nats at 5,419 (150.6% of the -11.578 total, the uncovered arm gaining +0.943 and partially offsetting) and -37.845 at 16,110 (115.8% of -32.688, uncovered -4.433). S2029 measured the same change's IN-SAMPLE gain at covered inputs as +4.970/+4.787/+3.329. Same mechanism, same cells, opposite sign, three to eight times larger.",
+  "evidence": "ops/where_the_fresh_loss_lives.py, 9.2s warm, four arms on the fresh role at both coverages. All four predicates True, derived controls True, no crashed predicates.",
+  "explains_the_coverage_growth": "More coverage means more positions served by the covered tables; the covered harm grows -17.432 -> -37.845 while the fraction of positions in that arm rises. S2044's 2.8x is the covered arm getting larger, not the effect changing character.",
+  "open": "Not a measurement. The parameter space is closed: S1959's build, 189.5M, every parameter either validated out-of-sample or shown to sit in a flat region. What remains are S1947's price rule and S1979's architectural fork, both with Logan, and BENCHMARK_BACKLOG rung 4 (deploy gap) which has zero completions and zero ledger mentions.",
+  "section": "S2045",
+  "status": "CERTIFIED. Closes the account of what S2020 did.",
+  "the_retraction_line_complete": "S2037 found it, S2038 attributed it to one axis, S2039 measured every depth, S2041 showed the restored ancestry survives, S2042-S2043 showed the last free parameter unidentifiable, S2044 validated the instrument at a second coverage, S2045 located the harm in the cells that had carried the gain. Nine sections to retract nineteen."
+ },
  "THE_FRESH_WINDOW_IS_COVERAGE_STABLE_S2044": {
   "builds_on": "ALPHA_IS_UNIDENTIFIABLE_BETWEEN_ROW_SETS_S2043",
   "claim": "The held-out window gives the same verdict at both coverages and the central finding is stronger at the second. At 16,110 the converged build loses to S1959's by 32.650 milli-nats (t = -57.16) against 11.770 at 5,419; S2038's attribution holds exactly, the table raise alone accounting for -32.687 of the -32.650 total; and S1959 still beats S1789's deployed design by +98.768 (t = +40.90) against +127.889.",
