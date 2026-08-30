@@ -209,3 +209,7 @@ per-row certification caveat are unaffected. Do not act on the two retracted not
   savings were undercounted: the current best config saves **25.9M** values vs §312 (not 14.4M); damage numbers
   unaffected. Rate table (nat per Mvalue): c8/c9→288 −0.0064 (best rate); c6–c9→576 −0.0012; mlp4/5 trims
   +0.006 (never take); leave-attn16-real ≈ −0.030 pending rung 52's refit confirmation.
+- **Envelope point (§2146):** leaving attn16 REAL strictly dominates in (price, damage) — −5.3M values and
+  −0.213 fresh damage vs the §2144 best (a17L refits cheaper on cleaner inputs) — at the cost of one fewer
+  replaced component. Block 16 (m16 + attn16) is now the program's largest single open object; neither piece
+  survives the current grammar.
