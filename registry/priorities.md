@@ -213,3 +213,9 @@ per-row certification caveat are unaffected. Do not act on the two retracted not
   −0.213 fresh damage vs the §2144 best (a17L refits cheaper on cleaner inputs) — at the cost of one fewer
   replaced component. Block 16 (m16 + attn16) is now the program's largest single open object; neither piece
   survives the current grammar.
+- **Block-16 findings (§2145–§2161):** the tail-dictionary price is an in-document-retrieval price (both
+  expensive layers ~90–97% on retrieval classes); attn16 = 3–4 concentrated heads whose read defeated three
+  preregistered pointer/addressing theories (target-occurrence +0.011 only; induction −0.002; bigram-addressing
+  rare); m16 is a subword-continuation unit that FIGHTS that retrieval (net deletion cost +0.003). Registry
+  rows describing block 16 should carry the envelope description (real attention, real MLP) until a retrieval
+  grammar exists; the a16L class dictionary is worse than deleting the attention outright.
