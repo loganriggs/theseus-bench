@@ -174,3 +174,13 @@ attention layers land last). Generated 2026-08-26 10:42 UTC; regenerate with
 - **The per-row certification caveat above is now double-strength:** conditioned selection at c6–c9 adds nothing
   (+0.003 median, mixed signs, §2131) — the selection gain is an mlp4/mlp5 story at BOTH metrics in BOTH
   assemblies tested. Do not credit sub-MLP rows beyond mlp4/mlp5 without a per-row certified run.
+
+## Notes — 2026-08-30 late (half price wins, tensor_language §2132–§2133)
+
+- **Frontier best again: +2.8190 fresh / +2.5461 C at HALF the mlp4/mlp5 units** (§2133, all bars held on the
+  eight windows). Conditioned-1152 beats norm-2304 by +0.0861 median AND beats conditioned-2304 by ~+0.04 on
+  every window: the bottom half of the conditioned ranking is net *harmful* when deployed. Sub-MLP registry rows
+  should treat K as a free win under a conditioned metric, not a cost — certify per row.
+- **Conditioning scope now fully licensed** (§2132, RNG-matched): the metric must be conditioned on the deployed
+  assembly exactly where the readers are replaced, and only there — +0.047 on the dictionary-reader frontier,
+  exactly zero on real-reader cfgE.
