@@ -1442,6 +1442,17 @@
   "settled": "Table lookups track the model at ~7.2-7.6x chance, \u00a71870's fallback map at ~2.7-3.0x \u2014 a ratio near 2.5x that survives holding the target bucket fixed and does not depend on coverage.",
   "status": "CERTIFIED \u2014 confirmed second-class at a second coverage (\u00a71888), all four predictions TRUE"
  },
+ "TWO_BOUNDARIES_NOT_ONE_S2025": {
+  "builds_on": "THE_MAP_KNEE_IS_COVERAGE_DEPENDENT_S2024",
+  "claim": "The table-rank knee at MLP layer 10 (S2021) and the map knee at layer 8 (S2024) are TWO boundaries, not one seen through two parameters. At the deployed 5,419 coverage every move loses on net (CE change plus the value of parameters released): moving the table knee to 8 loses 0.000340, moving the map knee to 10 loses 0.000327, meeting both at layer 9 loses 0.000265. Each parameter is at its own optimum and S2024's build stands.",
+  "confirms": "THE_MAP_KNEE_IS_COVERAGE_DEPENDENT_S2024",
+  "evidence": "ops/are_the_two_knees_one_boundary.py, 362.3s, seven arms x three roles x two coverages, pooled over 92,160 positions. pred_a/b/c True; pred_d FALSE. Derived controls True, reference deviation 0.000000.",
+  "open": "The fourth is alpha, the neighbour/map blend, fixed at 0.30 by S1961 and S1967, both uniform across all thirty-six sites. Alpha costs NOTHING -- it reweights two arms the build already pays for -- so any net gain is free. S2026 runs it, and it is the last of the four.",
+  "pred_d_failed_on_a_real_sign_flip": "map->10 loses 0.000327 at 5,419 and WINS 0.000040 at 16,110. S2024 measured the map knee as coverage-dependent; S2025 shows the dependence is large enough to reverse a build decision. But the winning margin is 0.04 milli-nats -- a sixth of the 0.25 milli-nat price of the smallest purchase in S1947's rule. A genuine sign flip, smaller than the granularity of the decision it flips. The deployed build does not move.",
+  "section": "S2025",
+  "status": "CERTIFIED. S2024's build confirmed.",
+  "the_sweep_audit_so_far": "Four parameters in this build were set by sweeps UNIFORM over per-site quantities. S2016-S2025 re-examined three: MLP table rank had an unexplored region and a knee at layer 10 (+3.30 milli-nats); attention rank had neither and 384 is correctly bought (0.03-0.12x its price everywhere); map rank was over-bought below layer 8 (+0.47 net). Two of three had missed something, and the one that had not is the axis S1989 measured as homogeneous."
+ },
  "TWO_KINDS_OF_AXIS_TWO_STOPPING_RULES_S1969": {
   "builds_on": "ALPHA_FAILS_THE_STOPPING_RULE_S1968",
   "claim": "S1967's flatness stopping rule is INAPPLICABLE to the table-rank and attention-share axes, because both are MONOTONE in capacity (S1947, S1948) -- their argmin sits at a grid end, so the three-point span measures the edge of the grid, not flatness. Applied naively they read 0.73/0.89/0.41 and 7.44/7.20/5.75 milli-nats and look unsettled; the number is meaningless for them.",
