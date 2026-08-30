@@ -187,3 +187,12 @@ attention layers land last). Generated 2026-08-26 10:42 UTC; regenerate with
 - **Update (§2134): the curve keeps rising — frontier best +2.8372 fresh / +2.5953 C at K = 576 per layer**
   (one quarter of the §312 units; ~11.9M fewer stored values). cond-288 still beats cond-1152. For sub-MLP rows:
   under a conditioned metric, aggressive K reduction is currently a *gain*, not a trade.
+
+## RETRACTION — 2026-08-30 (tensor_language §2135)
+
+The two evening notes above claiming frontier moves to +2.7707 / +2.8190 / +2.8372 are **retracted**: those L2
+numbers are CE added above the real model (lower is better), and the "gains" were damage increases read with an
+inverted sign. The frontier is unchanged: **norm-2304 at +2.6735** (§312). §2125 stands: Fisher selection does
+not install into the deployed frontier. What survives for this registry: the label-free selector's certified
+damage reduction applies on cfgE-style rows (real downstream readers) only; the coverage-credit rule and the
+per-row certification caveat are unaffected. Do not act on the two retracted notes.
