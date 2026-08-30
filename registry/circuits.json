@@ -182,6 +182,16 @@
   "section": "S1952",
   "status": "CERTIFIED. NOTE: the FIRST scoring reported pred_b and pred_c FALSE 0/3 and was wrong -- the eff_rank helper was registered as 'the LARGEST rank still reached by a qualifying step' and implemented as the FIRST such step, returning 128. Corrected and re-run; nothing was published from the first scoring. LESSON 84."
  },
+ "ATTRIBUTING_THE_UNCOVERED_COST_S2030": {
+  "builds_on": "THE_GAIN_IS_CONCENTRATED_AT_COVERED_INPUTS_S2029",
+  "claim": "S2024's map cut costs -1.067/-0.950/-0.868 milli-nats at uncovered inputs and precisely 0.000 at covered ones on all three roles -- the map acts only on uncovered rows and the measurement returns that to three decimals. S2020's table raise gives +4.970/+4.787/+3.329 at covered inputs and +0.316/+0.130/-3.837 at uncovered ones. The two sum to within 0.02 milli-nats of the converged build's total on every role.",
+  "corrects_S2029s_suspicion": "S2029 named the map cut as the suspect for the whole deficit. It is the UNIFORM cost, about 1 milli-nat every role. The LARGE deficit at skip1200 (-4.693) is mostly the table raise at -3.837. pred_c passed only 2 of 3 for exactly this reason.",
+  "evidence": "ops/which_change_costs_the_uncovered_arm.py, 92.6s, six arms x three roles at 5,419. All four predicates True, derived controls True, reference deviation 0.000000, no crashed predicates.",
+  "open": "skip1200's -3.837 from the table raise is unexplained and role-specific -- the other two roles gain there. skip1200 is the half-sized role (18,432 scored positions against 36,864, S1971) on the n96 rowcache. Whether that deficit is a property of the role or of its size is one arm: the same decomposition at 16,110, where the uncovered arm halves.",
+  "section": "S2030",
+  "status": "CERTIFIED",
+  "what_S1947_needs_to_decide": "The map cut's cost falls ENTIRELY on the quarter of positions the fallback exists for, at about 1 milli-nat every time, in exchange for 7.08M values worth 0.71 milli-nats pooled. S1947's rule sanctioned it on a pooled average of +0.47. The measurement the rule needs is not 'the map cut is bad' but 'it costs 1.0 milli-nat in the uncovered arm and 0.0 elsewhere, for parameters worth 0.71 pooled.'"
+ },
  "BEST_KNOWN_BUILD_BOTH_LATE_SITES_UNTRUNCATED_S2019": {
   "BUILD_SUPERSEDED_BY_S2020": "The measurements and the S2018 correction stand. The BUILD is no longer the best known: untruncating layers 10-17 buys 3.30 milli-nats pooled at 5,419 (t = -11.18) against this build's 0.962, for 20.2M values instead of 5.05M -- 1.63x its price against this one's 1.9x, but 3.4x the absolute gain.",
   "builds_on": "BEST_KNOWN_BUILD_MLP17_UNTRUNCATED_S2018",
@@ -1238,6 +1248,7 @@
   "why_it_matters": "This is the control S1986, S1990 and S1992 did not get. Each of those was a shape that fit every number available, published as a rule, and falsified within the hour. S1994's gradient was registered as an OBSERVATION and its control was queued in the same commit -- 4.5 seconds, and the story died before it reached the board."
  },
  "THE_GAIN_IS_CONCENTRATED_AT_COVERED_INPUTS_S2029": {
+  "SUSPECT_WAS_PARTLY_WRONG_S2030": "S2029 named S2024's map cut as 'the suspect' for the uncovered-input deficit. S2030 attributes it: the map cut costs -0.868 to -1.067 milli-nats at uncovered inputs on every role and exactly 0.000 at covered ones -- uniform and mechanism-consistent. But at skip1200, the role with by far the largest deficit (-4.693), S2020's TABLE RAISE contributes -3.837, four times the map cut's -0.868. On the other two roles the table raise is positive at uncovered inputs. The map cut is the uniform cost; the table raise is the large one, and only on one role.",
   "bears_on_a_question_with_logan": "S1947's rule prices parameters against POOLED CE. S2023 and S2024 used it to sell parameters, and S2029 shows that sale's cost is concentrated in the weakest cells. Whether a price rule stated on an average may authorise a trade whose cost is not average is a decision about S1947.",
   "builds_on": "CONVERGED_BUILD_END_TO_END_S2028",
   "claim": "The converged build's advantage over S1959's is entirely at covered inputs and it is a net LOSS at uncovered ones on all three roles: covered +4.970/+4.787/+3.329 milli-nats, uncovered -0.734/-0.790/-4.693. It also loses the unseen-target bucket at skip1200 by 3.948. The pooled +3.064 S2028 recorded is the net of a larger gain and a real loss.",
