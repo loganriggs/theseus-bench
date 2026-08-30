@@ -664,6 +664,7 @@
   "status": "RETRACTED as a deployable result by \u00a71878 \u2014 source closure fails. Valid ONLY as an expressibility/transfer measurement given a NATIVE length-1 stream."
  },
  "FRESH_WINDOW_RETRACTS_THE_CONVERGED_BUILD_S2037": {
+  "CONFIRMED_AT_A_SECOND_COVERAGE_S2044": "S2044 re-ran the fresh window at 16,110: the converged build loses by 32.650 milli-nats at t = -57.16 against 11.770 at 5,419 -- the deficit nearly triples -- and the table raise alone accounts for -32.687 of it. S1959 still beats S1789's deployed design there by +98.768 (t = +40.90). The retraction is not coverage-contingent.",
   "build_of_record": "Reverts to S1959's: {mlp 768, attn 384}, uncovered rows 30% output-NN neighbour / 70% rank-640 map, 189.5M values. It is the only build in this line ever validated out-of-sample.",
   "builds_on": "THE_FREQUENCY_AXIS_IS_COVERAGE_STABLE_IN_SIGN_S2035",
   "claim": "On a fresh window -- 512 rows, 98,304 scored positions, ZERO overlap with any fit or eval set -- the converged build LOSES to S1959's by 11.770 milli-nats at t = -28.71, against +3.064 in-sample. A sign reversal, and the loss is 3.8x larger than the gain the entire S2013-S2035 arc was built to capture. The window is not the explanation: S1970's anchor transports and GROWS (S1959 over deployed +127.889 here against +69.238 in-sample, t = +47.73), and the converged build still beats S1789's deployed design by +116.120.",
@@ -1298,6 +1299,16 @@
   "section": "S1995",
   "status": "CERTIFIED as a NEGATIVE. The observation in S1994 stands; the mechanism lead does not.",
   "why_it_matters": "This is the control S1986, S1990 and S1992 did not get. Each of those was a shape that fit every number available, published as a rule, and falsified within the hour. S1994's gradient was registered as an OBSERVATION and its control was queued in the same commit -- 4.5 seconds, and the story died before it reached the board."
+ },
+ "THE_FRESH_WINDOW_IS_COVERAGE_STABLE_S2044": {
+  "builds_on": "ALPHA_IS_UNIDENTIFIABLE_BETWEEN_ROW_SETS_S2043",
+  "claim": "The held-out window gives the same verdict at both coverages and the central finding is stronger at the second. At 16,110 the converged build loses to S1959's by 32.650 milli-nats (t = -57.16) against 11.770 at 5,419; S2038's attribution holds exactly, the table raise alone accounting for -32.687 of the -32.650 total; and S1959 still beats S1789's deployed design by +98.768 (t = +40.90) against +127.889.",
+  "evidence": "ops/is_the_fresh_window_itself_coverage_stable.py, 344.8s, six arms on the fresh role at 16,110. All four predicates True, derived controls True, no crashed predicates. pred_d passed narrowly: the bar allowed a factor of three and the actual ratio is 2.77.",
+  "open": "S2029 decomposed the IN-SAMPLE loss into covered and uncovered arms and found the gain concentrated at covered inputs. The fresh-window loss has never been decomposed the same way. If the harm is in the covered rows, that explains the coverage growth and closes the account of what S2020 actually did.",
+  "section": "S2044",
+  "status": "CERTIFIED. Validates the instrument S2037-S2043 rest on.",
+  "the_growth_is_a_finding": "The table raise hurts 2.8x more when the program has three times the coverage. More coverage means more positions served by the covered tables, which is exactly what untruncating changes.",
+  "why_it_matters": "S2037-S2043 rested on one held-out row set at one coverage. They now rest on that row set at two coverages with the central finding stronger at the second, where the retracted arc's own margins had the opposite property -- growing in-sample and reversing out. The retraction is not coverage-contingent."
  },
  "THE_FRESH_WINDOW_PREFERS_ALPHA_040_S2042": {
   "builds_on": "THE_RESTORED_BUILDS_ANCESTRY_HOLDS_S2041",
