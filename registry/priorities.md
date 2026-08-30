@@ -184,3 +184,6 @@ attention layers land last). Generated 2026-08-26 10:42 UTC; regenerate with
 - **Conditioning scope now fully licensed** (§2132, RNG-matched): the metric must be conditioned on the deployed
   assembly exactly where the readers are replaced, and only there — +0.047 on the dictionary-reader frontier,
   exactly zero on real-reader cfgE.
+- **Update (§2134): the curve keeps rising — frontier best +2.8372 fresh / +2.5953 C at K = 576 per layer**
+  (one quarter of the §312 units; ~11.9M fewer stored values). cond-288 still beats cond-1152. For sub-MLP rows:
+  under a conditioned metric, aggressive K reduction is currently a *gain*, not a trade.
