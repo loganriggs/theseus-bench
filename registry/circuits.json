@@ -1271,6 +1271,16 @@
   "status": "CERTIFIED, and it BOUNDS the S1983-S2012 arc.",
   "the_boundary": "Fourteen sections localised a penalty that exists only when attention is alive. The shipped program has no interface to break, no ceiling, no lever and no threshold. Everything from the ceiling to attention 5's presence-only character is a statement about programs S1765 does not produce."
  },
+ "THE_MAP_CUT_PRICED_UNDER_BOTH_RULES_S2032": {
+  "builds_on": "THE_MAP_CUT_TAX_IS_STABLE_THE_TABLE_RAISE_IS_NOT_S2031",
+  "claim": "The two rules disagree and the disagreement is now quantified. Under S1947's pooled rule every cut depth is net-positive and deeper is strictly better: +0.260/+0.406/+0.472 milli-nats at 5,419 for cuts to layers 3/5/7, and +0.319/+0.485/+0.573 at 16,110. Under an uncovered-arm view the same choice costs 0.86-1.05 milli-nats where a stop at layer 5 costs 0.40-0.57. The tax per cut site varies by 2.2x across depths, so a partial cut can be priced by interpolation, but the MARGINAL structure is sharper: layers 0-5 cost about 0.082 per site in the uncovered arm and layers 6-7 about 0.226 -- 2.8x more.",
+  "evidence": "ops/price_the_map_cut_against_both_rules.py, 9.7s warm, seven arms x three roles x two coverages. pred_a/b/c True, pred_d FALSE by 0.007 milli-nats. Derived controls True, reference deviation 0.000000, no crashed predicates.",
+  "open": "S2029 also found the converged build losing the UNSEEN-TARGET bucket at skip1200 by 3.948 milli-nats, and S2030/S2031 attributed the coverage axis without decomposing the frequency axis. Which of the two changes loses that bucket has not been measured, and it is the one cell the fallback exists to serve.",
+  "pred_d_missed_by_0_007": "The bar was that cutting only layers 0-5 costs under HALF the full cut's pooled CE. It costs 0.125 against 0.236, a ratio of 0.53, where half of 0.236 is 0.118. The partial reversal is still available; it does not clear the bar as written.",
+  "section": "S2032",
+  "status": "CERTIFIED. This is the decision table; no further run is needed to choose.",
+  "the_decision": "If S1947's pooled rule stands as written: cut layers 0-7, which is the current build, +0.472 milli-nats of budget at 5,419. If the uncovered arm is to be protected: cut layers 0-5, keep 75% of the released values, pay 48% of the uncovered tax. The difference between the two builds is 1.77M values and about 0.45 milli-nats in the uncovered arm. That is the whole exposure and it is small."
+ },
  "THE_MAP_CUT_TAX_IS_STABLE_THE_TABLE_RAISE_IS_NOT_S2031": {
   "builds_on": "ATTRIBUTING_THE_UNCOVERED_COST_S2030",
   "claim": "At 16,110 the map cut costs -1.282/-1.791/-1.024 milli-nats at uncovered inputs and EXACTLY 0.000 at covered ones -- six cells across two coverages, six zeros -- and its cost GROWS with coverage, the wrong direction for a fallback whose uncovered arm has halved. S2020's table raise gives +1.498/-1.869/-3.655 at uncovered inputs against +0.316/+0.130/-3.837 at 5,419: the sign flips at skip11000 and only one role is positive. Covered gains nearly double at the higher coverage (+8.811/+9.247/+6.691 against +4.970/+4.787/+3.329).",
