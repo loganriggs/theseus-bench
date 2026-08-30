@@ -1239,6 +1239,16 @@
   "section": "S2001",
   "status": "CERTIFIED"
  },
+ "THE_FREQUENCY_AXIS_IS_COVERAGE_STABLE_IN_SIGN_S2035": {
+  "builds_on": "WHICH_CHANGE_LOSES_THE_UNSEEN_BUCKET_S2033",
+  "claim": "On the unseen-target bucket the sign structure is exactly preserved between coverages -- table raise positive on skip7000 and skip11000, negative at skip1200; converged build losing only at skip1200 -- where S2031 found the sign FLIPPING on the uncovered-input axis between the same two coverages. But the size collapses: skip1200's deficit goes -3.948 -> -0.386, a tenfold reduction (tables -2.318 -> -0.219, map cut -1.642 -> -0.167), while the two winning roles nearly double (+2.060 -> +3.830, +2.963 -> +3.945).",
+  "evidence": "ops/the_unseen_bucket_at_high_coverage.py, 5.8s warm, six arms x three roles at 16,110, written fresh rather than derived (LESSON 105). pred_a/b/c True, pred_d FALSE. Derived controls True, reference deviation 0.000000, no crashed predicates.",
+  "open": "Both axes, both coverages and the price under both rules are measured. Every remaining question about this build is a DECISION rather than a measurement: S1947's rule (pooled versus concentrated cost) and S1979's architectural fork, both with Logan. The measurement frontier has moved back to BENCHMARK_BACKLOG rung 6, fresh-window certification, which S2028 recorded as unsatisfiable with the rowcaches on disk.",
+  "pred_d_failed_against_S2031": "I registered that the map cut's unseen-bucket tax would grow with coverage because S2031 measured exactly that on the uncovered-input axis (-0.9/-1.1 becoming -1.0/-1.8). On this bucket it SHRINKS on two roles of three (-0.855 -> -0.753, -1.642 -> -0.167), growing only at skip7000. Different cells, no contradiction, but the prediction that one would follow the other was wrong.",
+  "section": "S2035",
+  "status": "CERTIFIED",
+  "what_S2029s_concern_amounts_to": "The converged build's losses are real, concentrated in the uncovered arm and the unseen bucket, worst at the half-sized role, and they SHRINK with coverage -- the unseen-bucket deficit by a factor of ten. At the deployed 5,419 the exposure is what S2032 priced: 1.77M values and about 0.45 milli-nats separate the current build from the conservative one. S2035 does not change that number; it establishes that the number does not grow when the program is given more table."
+ },
  "THE_FREQUENCY_GRADIENT_IS_GENERIC_S1995": {
   "builds_on": "THRESHOLD_GAP_IS_NOT_A_FALLBACK_ARTEFACT_S1994",
   "claim": "S1994's 3:1 target-frequency gradient is a property of compiling ANYTHING, not of attention 6. The ratio of damage in the most frequent bucket to damage in the unseen bucket is 0.41-0.45 for mlp2+attention 5,6; 0.39 for mlp2+attention 5; 0.29 for a lone mlp2; 0.21-0.23 for a lone mlp4; 0.27 for the full 36-site program -- all clustered around the threshold gap's 0.29, though total damage across those arms differs by a factor of 2.2.",
