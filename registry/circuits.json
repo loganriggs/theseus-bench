@@ -195,30 +195,33 @@
  },
  "BEST_KNOWN_BUILD_BOTH_LATE_SITES_UNTRUNCATED_S2019": {
   "BUILD_SUPERSEDED_BY_S2020": "The measurements and the S2018 correction stand. The BUILD is no longer the best known: untruncating layers 10-17 buys 3.30 milli-nats pooled at 5,419 (t = -11.18) against this build's 0.962, for 20.2M values instead of 5.05M -- 1.63x its price against this one's 1.9x, but 3.4x the absolute gain.",
+  "RETRACTED_BY_S2037": "RETRACTED BY S2037. On a fresh window (512 rows, 98,304 positions, zero overlap with any fit or eval set) the converged build LOSES to S1959's by 11.770 milli-nats at t = -28.71, against +3.064 in-sample. The measurements stand; the build they compose into is worse than the one it replaced. Build of record reverts to S1959's: {mlp 768, attn 384}, 30% neighbour / 70% rank-640 map, 189.5M values.",
   "builds_on": "BEST_KNOWN_BUILD_MLP17_UNTRUNCATED_S2018",
   "claim": "NEW BEST-KNOWN BUILD, superseding S2018's. 36 tables at {mlp 768, attn 384} with mlp16 AND mlp17 at their untruncated rank 1152; uncovered rows 30% output-NN neighbour, 70% rank-640 map. 194.5M values at 5,419 (189.5M + 5.05M, +2.66%), buying 0.962 milli-nats pooled at 5,419 (t = -5.48) and 2.340 at 16,110 (t = -9.97) against a 0.50 milli-nat price -- 1.9x at the deployed coverage, 4.7x at the higher one.",
   "corrects_S2018": "S2018 excluded mlp16 on a 2-of-3 role vote. Pooled, mlp16 alone buys 0.000602 at t = -5.84 against mlp17's 0.000472 at t = -3.58 -- the better purchase per parameter, 2.4x against 1.9x. The dissenting role was skip1200, half-sized since S1971. A per-role vote is a legitimate discovery screen but not the instrument for a shipping decision when the per-position data is cached. LESSON 101.",
   "evidence": "ops/the_pair_as_a_build.py, 106.0s, six arms x three roles x two coverages. pred_a/b/c True 3/3; pred_d FALSE, and its failure is the correction to S2018. Derived controls True, reference deviation 0.000000.",
   "open": "Both late sites are now untruncated, closing the rank axis at the top for the two sites that carry the program. The eighteen MLP sites below them have never been tested above 768 either; S2015 showed their content is small, but 'small' was measured AT rank 768, and S2017's sub-additivity means a sixteen-site sweep is not a sixteen-fold extrapolation of one.",
   "section": "S2019",
-  "status": "CERTIFIED. Recorded as the best-known build.",
+  "status": "RETRACTED as a build recommendation by S2037; measurements stand.",
   "subadditivity_confirmed": "The pair buys 0.000962 against a sum of 0.001074 at 5,419 and 0.002340 against 0.002603 at 16,110 -- 10% short of additive, inside the 10-28% band S2017 measured for improvements.",
   "supersedes": "BEST_KNOWN_BUILD_MLP17_UNTRUNCATED_S2018"
  },
  "BEST_KNOWN_BUILD_LATE_EIGHT_UNTRUNCATED_S2020": {
   "MAP_REFINED_BY_S2023": "The table ranks stand. S2023 adds a map refinement: rank 256 instead of 640 at MLP layers 0-5 releases 5.31M values worth 0.53 milli-nats for a CE cost of 0.125 -- net +0.40 milli-nats of budget. Build price drops 209.7M -> 204.4M.",
+  "RETRACTED_BY_S2037": "RETRACTED BY S2037. On a fresh window (512 rows, 98,304 positions, zero overlap with any fit or eval set) the converged build LOSES to S1959's by 11.770 milli-nats at t = -28.71, against +3.064 in-sample. The measurements stand; the build they compose into is worse than the one it replaced. Build of record reverts to S1959's: {mlp 768, attn 384}, 30% neighbour / 70% rank-640 map, 189.5M values.",
   "builds_on": "BEST_KNOWN_BUILD_BOTH_LATE_SITES_UNTRUNCATED_S2019",
   "claim": "NEW BEST-KNOWN BUILD, superseding S2019's. 36 tables at {attn 384; mlp 768 at layers 0-9, mlp 1152 at layers 10-17}; uncovered rows 30% output-NN neighbour, 70% rank-640 map. 209.7M values at 5,419 (189.5M + 20.2M, +10.7%), buying 3.300 milli-nats pooled at 5,419 (t = -11.18) and 7.621 at 16,110 (t = -18.79) against a 2.02 milli-nat price -- 1.63x at the deployed coverage, 3.8x at the higher one, and 3.4x the gain of S2019's build.",
   "evidence": "ops/do_the_shallow_sites_want_rank_too.py, 351.5s, six arms x three roles x two coverages, all gains pooled over 92,160 positions per LESSON 101. pred_a/b/c True; pred_d FALSE, and its failure found the knee. Derived controls True, reference deviation 0.000000.",
   "open": "The knee is bracketed between layers 9 and 10 by a single arm, and S2015's content profile rises smoothly from mlp8 (0.0014) through mlp10 (0.0107) to mlp12 (0.0269) -- no sharp feature there to explain a sharp knee here. Layers 8-17 and 12-17 would locate it, and a knee that is genuinely sharp where the content profile is smooth is worth more than the 0.3 milli-nats it would buy.",
   "pred_d_failed_against_my_registered_direction": "I predicted the six-site middle option would not clear its 0.00150 price. It buys 0.002338 at the deployed coverage (1.56x) and 0.005282 at 16,110 (3.5x). S2015 measured the shallow sites' CONTENT AT RANK 768 as small and I read that as 'more rank there buys little'; it says what those tables carry, not what fuller ones would.",
   "section": "S2020",
-  "status": "CERTIFIED. Recorded as the best-known build.",
+  "status": "RETRACTED as a build recommendation by S2037; measurements stand.",
   "supersedes": "BEST_KNOWN_BUILD_BOTH_LATE_SITES_UNTRUNCATED_S2019",
   "the_knee_is_at_layer_10_and_it_is_sharp": "Going from layers 10-17 to all eighteen adds ten sites and 25.2M values -- worth 2.52 milli-nats -- and buys 0.124 milli-nats. A 0.05x purchase. Layers 0-9 want no more rank at all; layers 10-17 want all of it.",
   "why_three_supersessions_in_an_hour": "S1947 and S1959 set the MLP rank by sweeping it UNIFORMLY across all eighteen sites, where the marginal buyer is the average site -- and S2015 showed the average site carries almost nothing while the late ones carry nearly everything. A uniform sweep cannot find a knee it averages over. The axis above 768 was never explored per-site because no instrument in this line could express a per-site rank until S1996 added one for a different purpose."
  },
  "BEST_KNOWN_BUILD_MLP17_UNTRUNCATED_S2018": {
+  "RETRACTED_BY_S2037": "RETRACTED BY S2037. On a fresh window (512 rows, 98,304 positions, zero overlap with any fit or eval set) the converged build LOSES to S1959's by 11.770 milli-nats at t = -28.71, against +3.064 in-sample. The measurements stand; the build they compose into is worse than the one it replaced. Build of record reverts to S1959's: {mlp 768, attn 384}, 30% neighbour / 70% rank-640 map, 189.5M values.",
   "SUPERSEDED_BY_S2019": "The measurements stand and reproduced within 0.0002 inside S2019. The RECOMMENDATION does not. mlp16 was excluded on a 2-of-3 role vote whose dissenting role, skip1200, carries 18,432 scored positions against the others' 36,864 (S1971) -- half the evidence and a third of the vote. Pooled, mlp16 alone buys 0.000602 nats at t = -5.84 against mlp17's 0.000472 at t = -3.58: the site I declined is the better purchase per parameter, 2.4x against 1.9x. LESSON 101.",
   "builds_on": "RANK_768_IS_SLIGHTLY_UNDER_BOUGHT_AT_MLP17_S2017",
   "claim": "NEW BEST-KNOWN BUILD, superseding S1959's. 36 tables at {mlp 768, attn 384} with mlp17 at its untruncated rank 1152; uncovered rows 30% output-NN neighbour, 70% rank-640 map. 192.0M values at 5,419 coverage (189.5M + 2.52M, a 1.33% price rise), buying 0.47 milli-nats pooled at 5,419 (t = -3.58) and 1.34 at 16,110 (t = -7.70) against a price rule valuing those parameters at 0.25 milli-nats -- a 1.9x purchase at the deployed coverage and 5.3x at the higher one.",
@@ -227,7 +230,7 @@
   "open": "S2017 showed improvements sub-additive (10-28%) where degradations are super-additive (22-24%), so stacking mlp16's coverage-dependent gain on mlp17's would not add -- and at 16,110, where both qualify, the pair has never been scored as a build.",
   "section": "S2018",
   "stated_with_its_size": "Half a milli-nat on a build whose S1789 predecessor it already beats by 69 milli-nats (S1970). The smallest supersession this line has recorded, real at t = -3.58 and -7.70, and the ONLY allocation change indicated by S2013-S2018 -- every other rank decision tested came back either correctly bought (mlp16/17 below 768, by 5-24x) or not worth the parameters (the shallow sites, by tenfold).",
-  "status": "CERTIFIED. Recorded as the best-known build.",
+  "status": "RETRACTED as a build recommendation by S2037; measurements stand.",
   "supersedes": "the S1959 allocation",
   "the_margin_triples_with_coverage": "S1963 and S1965 each reversed a 5,419 claim at 16,110; this one strengthens, from 0.30-0.63 milli-nats to 0.82-1.78 and from t = -3.58 to t = -7.70 on 92,160 positions."
  },
@@ -424,6 +427,7 @@
  },
  "CONVERGED_BUILD_END_TO_END_S2028": {
   "QUALIFIED_BY_S2029": "The pooled margins are correct but NOT uniform. The +3.064 milli-nats over S1959's build is +3.3 to +5.0 at covered inputs and -0.7 to -4.7 at UNCOVERED ones, on every role -- a net of a larger gain and a real loss. Covered inputs carry about three quarters of scored positions and outvote the rest. Every number in the fifteen sections that produced the build was a pooled average and none would have shown this.",
+  "RETRACTED_BY_S2037": "RETRACTED BY S2037. On a fresh window (512 rows, 98,304 positions, zero overlap with any fit or eval set) the converged build LOSES to S1959's by 11.770 milli-nats at t = -28.71, against +3.064 in-sample. The measurements stand; the build they compose into is worse than the one it replaced. Build of record reverts to S1959's: {mlp 768, attn 384}, 30% neighbour / 70% rank-640 map, 189.5M values.",
   "S1970_reproduces_exactly": "pred_a: the S1959 build beats S1789's deployed design by +0.069238 nats, against the +69.238 milli-nats S1970 published. Six hundred sections and a rewritten library later, the anchor is exact.",
   "build": "36 per-token context-free tables. Attention rank 384. MLP rank 768 at layers 0-9 and 1152 at layers 10-17. Uncovered rows: 30% output-NN neighbour, 70% ridge map at rank 640, except rank 256 at MLP layers 0-7. 202.6M values at 5,419 coverage.",
   "builds_on": "ALPHA_OPTIMUM_MOVED_ONE_STEP_AND_THE_AXIS_IS_SETTLED_S2027",
@@ -431,7 +435,7 @@
   "evidence": "ops/the_converged_build_end_to_end.py, 91.2s, five arms x three roles x two coverages, pooled over 92,160 positions. All four predicates True, derived controls True, reference deviation 0.000000, no crashed predicates.",
   "open": "The parameter axes are closed. Two things outstanding are not the agent's to take: S1979's architectural fork (leaving attention live beats full compilation, at the cost of every S1765-derived result), and whether S1947's price rule is meant to sanction SALES of parameters as S2023 and S2024 used it. Both are with Logan and flagged on the board.",
   "section": "S2028",
-  "status": "CERTIFIED. This is the build of record.",
+  "status": "RETRACTED as a build recommendation by S2037; measurements stand.",
   "supersedes": "the S1959 build as the build of record",
   "the_increments_compose": "pred_d: the margin over S1959's build is +0.003064 against the 3.064 the increments recorded (S2020's +3.300 minus S2024's -0.236 CE). Fifteen sections compose to the whole they claimed, which S2014's 22% super-additivity in the loss made a real question rather than arithmetic.",
   "what_the_arc_was": "S2013 established that the S1983-S2012 localisation line does not reach the shipped program at all -- it describes what happens when attention is ALIVE, which S1765's program does not have. Everything since audited four parameters set by sweeps uniform over per-site quantities. Two of four had missed something; the two that had not were the axes already measured as homogeneous. The gain is 3.064 milli-nats and 12% of the price, and none of it required a new mechanism -- only asking each parameter the question its original sweep could not."
@@ -634,6 +638,19 @@
    "\u00a71877"
   ],
   "status": "RETRACTED as a deployable result by \u00a71878 \u2014 source closure fails. Valid ONLY as an expressibility/transfer measurement given a NATIVE length-1 stream."
+ },
+ "FRESH_WINDOW_RETRACTS_THE_CONVERGED_BUILD_S2037": {
+  "build_of_record": "Reverts to S1959's: {mlp 768, attn 384}, uncovered rows 30% output-NN neighbour / 70% rank-640 map, 189.5M values. It is the only build in this line ever validated out-of-sample.",
+  "builds_on": "THE_FREQUENCY_AXIS_IS_COVERAGE_STABLE_IN_SIGN_S2035",
+  "claim": "On a fresh window -- 512 rows, 98,304 scored positions, ZERO overlap with any fit or eval set -- the converged build LOSES to S1959's by 11.770 milli-nats at t = -28.71, against +3.064 in-sample. A sign reversal, and the loss is 3.8x larger than the gain the entire S2013-S2035 arc was built to capture. The window is not the explanation: S1970's anchor transports and GROWS (S1959 over deployed +127.889 here against +69.238 in-sample, t = +47.73), and the converged build still beats S1789's deployed design by +116.120.",
+  "evidence": "ops/fresh_window_certification.py, 315.6s, five arms on the fresh role at 5,419. pred_a True, pred_c True; pred_b and pred_d FALSE. Derived controls True, no crashed predicates.",
+  "library_bug": "run(roles=...) never threaded roles into score_roles: the live model and every arm were scored on the default three roles regardless of the caller's request, and only the results loop iterated the requested set. The parameter has existed since S1988 and S2036 was the first run to pass anything but the default. Fixed; the pre-flight now refuses an unregistered role.",
+  "open": "Whether ANY of the four parameter findings survives fresh rows individually. S2020's table raise is the largest and is one arm.",
+  "retracts": "S2018, S2019, S2020, S2023, S2024, S2028 as build recommendations",
+  "section": "S2037",
+  "status": "CERTIFIED. THIS IS A RETRACTION.",
+  "the_check_was_recorded_as_impossible": "S2028 stated the backlog's fresh-window rung cannot be satisfied with what is on disk. That was wrong. bilin18_eval_tokens_large.pt -- 512 rows, 510 distinct prefixes, zero overlap with all five fit and eval caches -- was in the working directory the whole time. The rule existed, named this exact failure, and a build was certified without it while the rule was asserted to be unsatisfiable.",
+  "what_went_wrong": "Fifteen sections each measured a real, significant, pooled margin on 92,160 positions, and each margin was 1 to 3 milli-nats on a build whose distance from the live model is about 2,800. A 0.1% effect selected fifteen times over on the same rows is a fitted quantity. S2029 and S2030 had already shown these gains concentrated at covered inputs, the cells most sensitive to which rows are looked at; that was read as a qualification when it was a warning."
  },
  "HALF_COST_BUILD_S1882": {
   "accuracy_structure_S1883": "The 46% saving is paid at the RARE end. Kept-fraction (program top-1 / live top-1) at 16,110 types: 125+ bucket 53.6/54.1/53.9 -> 52.7/53.7/53.1 (0.89/0.36/0.83 pp); fit-count-0 bucket 2.6/4.9/3.5 -> 2.4/4.6/2.4 (0.23/0.28/1.10 pp = 7.7/6.1/31.4% relative); overall top-1 13.93/14.71/14.01 -> 13.74/14.58/13.75. Worse at the rare end on all three roles, better on none \u2014 an SVD truncation drops rare tokens first because they carry least of the covered block's variance. \u00a71883 pred_b FAILED at 1.10pp against a 1.00pp bar.",
@@ -1303,6 +1320,7 @@
  },
  "THE_MAP_IS_OVER_BOUGHT_AT_SHALLOW_SITES_S2023": {
   "REFINED_BY_S2024": "S2023 stopped the cut at layer 5 on a four-site average. S2024's per-two-site ladder shows layers 6 and 7 are also free (0.59x and 0.66x) and layers 8-9 are not (2.85x). The cut runs to layer 7: 7.08M released worth 0.71 milli-nats for a 0.236 CE cost, net +0.47 against S2023's +0.40. Build 204.4M -> 202.6M.",
+  "RETRACTED_BY_S2037": "RETRACTED BY S2037. On a fresh window (512 rows, 98,304 positions, zero overlap with any fit or eval set) the converged build LOSES to S1959's by 11.770 milli-nats at t = -28.71, against +3.064 in-sample. The measurements stand; the build they compose into is worse than the one it replaced. Build of record reverts to S1959's: {mlp 768, attn 384}, 30% neighbour / 70% rank-640 map, 189.5M values.",
   "build": "36 tables at {attn 384; mlp 768 at layers 0-9, mlp 1152 at layers 10-17}; uncovered rows 30% output-NN neighbour, 70% map at rank 640 EXCEPT rank 256 at MLP layers 0-5. 204.4M values at 5,419, down from 209.7M (-2.5%). CE is 0.125 milli-nats WORSE; the 5.31M released are worth 0.53 at S1947's price; net +0.40 milli-nats of budget.",
   "builds_on": "ATTENTION_384_IS_CORRECTLY_BOUGHT_S2022",
   "claim": "S1870's map is over-bought at the shallow MLP sites. Cutting it from rank 640 to 256 costs 0.000125 nats at MLP layers 0-5 against 0.00053 of released parameters (0.24x at 5,419, 0.09x at 16,110); 0.000740 at layers 0-9 against 0.00089 (0.83x / 0.31x); and 0.007423 at all eighteen against 0.00160 (4.64x / 1.66x). S1959's map turnover at 640 is correctly placed for the sites that need it.",
@@ -1310,12 +1328,13 @@
   "evidence": "ops/does_the_map_want_per_site_rank.py, 213.4s, seven arms x three roles x two coverages, all figures pooled over 92,160 positions, using composite arms to give different sites different map ranks. pred_a/b/c/d all True, derived controls True, reference deviation 0.000000.",
   "open": "The map knee is bracketed between layers 5 and 9 by a step averaging four sites. S2015's content profile is an order of magnitude apart inside that bracket (mlp6 0.00012, mlp8 0.00138), so the knee may sit within it. S2024 halves the bracket.",
   "section": "S2023",
-  "status": "CERTIFIED. NEW BEST-KNOWN BUILD, and the first cost REDUCTION in this line.",
+  "status": "RETRACTED as a build recommendation by S2037; measurements stand.",
   "the_marginal_rule_cuts_less_than_the_block_ratio_allows": "Layers 0-5 cost 0.24x; the increment from there to 0-9 -- four more sites, 3.54M, worth 0.36 milli-nats -- costs 0.615, a 1.71x LOSS. The block ratio of 0.83x hides a marginal ratio of 1.71x, so the cut stops at layer 5.",
   "what_kind_of_result_this_is": "Every supersession from S2018 to S2020 bought CE with parameters. S2023 sells parameters for CE at a favourable rate, which the price rule sanctions and this ledger has never done. If the rule is meant only to justify purchases and not sales, that is a decision about S1947 rather than about this measurement. The CE number is unambiguously worse and is not hidden behind the ratio."
  },
  "THE_MAP_KNEE_IS_COVERAGE_DEPENDENT_S2024": {
   "PRED_D_WAS_A_CRASH_CORRECTED_S2026": "When S2024 was written, pred_d had NOT been evaluated: it raised KeyError('cut7','shipped') and run() recorded the crash as False, printing it identically to a measured negative. Re-run against the fixed library it is GENUINELY False, so the conclusion stands and the ladder numbers were never affected -- but it was published as a measurement when it was a crash. LESSON 103.",
+  "RETRACTED_BY_S2037": "RETRACTED BY S2037. On a fresh window (512 rows, 98,304 positions, zero overlap with any fit or eval set) the converged build LOSES to S1959's by 11.770 milli-nats at t = -28.71, against +3.064 in-sample. The measurements stand; the build they compose into is worse than the one it replaced. Build of record reverts to S1959's: {mlp 768, attn 384}, 30% neighbour / 70% rank-640 map, 189.5M values.",
   "build": "36 tables at {attn 384; mlp 768 at layers 0-9, mlp 1152 at layers 10-17}; uncovered rows 30% output-NN neighbour, 70% map at rank 640 EXCEPT rank 256 at MLP layers 0-7. 202.6M values at 5,419, against S2023's 204.4M and S2020's 209.7M. CE cost 0.236 milli-nats, parameters released worth 0.71, net +0.47 of budget.",
   "builds_on": "THE_MAP_IS_OVER_BOUGHT_AT_SHALLOW_SITES_S2023",
   "claim": "At the deployed 5,419 coverage the rank-256 map cut runs to MLP layer 7 and stops at 8: per-two-site costs are 0.18x, 0.59x, 0.66x through layer 7 and 2.85x at layers 8-9. At 16,110 NO step fails -- layers 8-9 cost 0.78x, still free -- so the knee is at layer 8 at one coverage and beyond layer 9 at the other.",
@@ -1323,7 +1342,7 @@
   "first_parameter_where_the_coverages_disagree": "The map acts only on uncovered rows and 16,110 halves that arm, so a poorer map costs less there; the knee moving outward with coverage is the expected direction. S1960 asked this for the allocation and found one build within 0.002 nats of both optima; the map cut is the first parameter where that no longer holds. The disagreement is 1.8M values -- small, but a disagreement rather than a shared optimum. The deployed coverage is 5,419 and that is the build recorded.",
   "open": "Every knee found since S2020 -- table rank at layer 10, map rank at layer 8 -- sits mid-stack with no native explanation (Codex's certificate, S2023). The two knees are two layers apart and both separate late from early sites. Whether they are the same boundary seen through two parameters, or two boundaries, is one arm: swap them and see which pairing loses less.",
   "section": "S2024",
-  "status": "CERTIFIED. BUILD REFINED, superseding S2023's map cut."
+  "status": "RETRACTED as a build recommendation by S2037; measurements stand."
  },
  "THE_MINIMAL_PATH_IS_THREE_SITES_S1990": {
   "WITHDRAWN_RULE_NOTE": "S1991 falsifies the RULE'S FORM, not S1990's measurements. The 'every attention layer strictly above the compiled site' statement was derived from one site and cannot distinguish a chain from its endpoint. S1991 removed attention 3 from mlp2's path (mlp2+attn4-6 = 1.845) and it got BETTER than the unbroken version (mlp2+attn3-6 = 1.887) by 0.042 nats at pooled t = +18.9. There is no chain. What every working arm shares is attention 5 and attention 6. S1990's numbers stand and reproduced to 0.000000 in S1991.",
