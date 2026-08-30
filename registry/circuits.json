@@ -411,6 +411,19 @@
   "status": "CERTIFIED for pred_a (3/3) and pred_d; pred_b and pred_c both FALSE 1/3 -- and BOTH of my transfer predictions were backwards.",
   "table_axis_transfers": "pred_b FAILED: I predicted the table knee would MOVE at 5,419 and it essentially does not. The crossing sits between {768,256} and {640,160} on skip1200 exactly as at 16,110; skip11000's 1024->768 step lands at 0.0100, on the threshold; only skip7000 moves it one grid step. The MLP/table tradeoff is approximately coverage-invariant to within one grid step."
  },
+ "CONVERGED_BUILD_END_TO_END_S2028": {
+  "S1970_reproduces_exactly": "pred_a: the S1959 build beats S1789's deployed design by +0.069238 nats, against the +69.238 milli-nats S1970 published. Six hundred sections and a rewritten library later, the anchor is exact.",
+  "build": "36 per-token context-free tables. Attention rank 384. MLP rank 768 at layers 0-9 and 1152 at layers 10-17. Uncovered rows: 30% output-NN neighbour, 70% ridge map at rank 640, except rank 256 at MLP layers 0-7. 202.6M values at 5,419 coverage.",
+  "builds_on": "ALPHA_OPTIMUM_MOVED_ONE_STEP_AND_THE_AXIS_IS_SETTLED_S2027",
+  "claim": "The converged build beats S1789's deployed design by 72.302 milli-nats pooled at 5,419 (t = +45.25) and 32.619 at 16,110 (t = +29.08), at 202.6M values against 230.087M -- 12.0% cheaper. Over S1959's build it gains +0.003064 (t = +10.31) and +0.007486 (t = +18.45).",
+  "evidence": "ops/the_converged_build_end_to_end.py, 91.2s, five arms x three roles x two coverages, pooled over 92,160 positions. All four predicates True, derived controls True, reference deviation 0.000000, no crashed predicates.",
+  "open": "The parameter axes are closed. Two things outstanding are not the agent's to take: S1979's architectural fork (leaving attention live beats full compilation, at the cost of every S1765-derived result), and whether S1947's price rule is meant to sanction SALES of parameters as S2023 and S2024 used it. Both are with Logan and flagged on the board.",
+  "section": "S2028",
+  "status": "CERTIFIED. This is the build of record.",
+  "supersedes": "the S1959 build as the build of record",
+  "the_increments_compose": "pred_d: the margin over S1959's build is +0.003064 against the 3.064 the increments recorded (S2020's +3.300 minus S2024's -0.236 CE). Fifteen sections compose to the whole they claimed, which S2014's 22% super-additivity in the loss made a real question rather than arithmetic.",
+  "what_the_arc_was": "S2013 established that the S1983-S2012 localisation line does not reach the shipped program at all -- it describes what happens when attention is ALIVE, which S1765's program does not have. Everything since audited four parameters set by sweeps uniform over per-site quantities. Two of four had missed something; the two that had not were the axes already measured as homogeneous. The gain is 3.064 milli-nats and 12% of the price, and none of it required a new mechanism -- only asking each parameter the question its original sweep could not."
+ },
  "CONVERGED_BUILD_IS_A_REDISTRIBUTION_S1953": {
   "builds_on": "CONVERGED_BUILD_AT_DEPLOYED_COVERAGE_S1951",
   "claim": "S1951's pooled win for the converged build over S1789's deployed design at 5,419 is a REDISTRIBUTION toward mid-frequency targets, not a uniform improvement. Pooled kept-fraction deltas (skip7000/skip11000/skip1200, pp): 0-0 +0.75/-0.36/-0.26; 1-4 +1.25/+1.40/+1.10; 5-24 +5.00/+4.56/+3.47; 25-124 +2.38/+2.24/+2.47; 125+ -0.32/-0.34/+0.03. It wins the middle on 3/3 and loses the unseen bucket on 2 of 3.",
