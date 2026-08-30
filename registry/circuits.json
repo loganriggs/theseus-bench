@@ -1212,6 +1212,7 @@
   "the_boundary": "Fourteen sections localised a penalty that exists only when attention is alive. The shipped program has no interface to break, no ceiling, no lever and no threshold. Everything from the ceiling to attention 5's presence-only character is a statement about programs S1765 does not produce."
  },
  "THE_MAP_IS_OVER_BOUGHT_AT_SHALLOW_SITES_S2023": {
+  "REFINED_BY_S2024": "S2023 stopped the cut at layer 5 on a four-site average. S2024's per-two-site ladder shows layers 6 and 7 are also free (0.59x and 0.66x) and layers 8-9 are not (2.85x). The cut runs to layer 7: 7.08M released worth 0.71 milli-nats for a 0.236 CE cost, net +0.47 against S2023's +0.40. Build 204.4M -> 202.6M.",
   "build": "36 tables at {attn 384; mlp 768 at layers 0-9, mlp 1152 at layers 10-17}; uncovered rows 30% output-NN neighbour, 70% map at rank 640 EXCEPT rank 256 at MLP layers 0-5. 204.4M values at 5,419, down from 209.7M (-2.5%). CE is 0.125 milli-nats WORSE; the 5.31M released are worth 0.53 at S1947's price; net +0.40 milli-nats of budget.",
   "builds_on": "ATTENTION_384_IS_CORRECTLY_BOUGHT_S2022",
   "claim": "S1870's map is over-bought at the shallow MLP sites. Cutting it from rank 640 to 256 costs 0.000125 nats at MLP layers 0-5 against 0.00053 of released parameters (0.24x at 5,419, 0.09x at 16,110); 0.000740 at layers 0-9 against 0.00089 (0.83x / 0.31x); and 0.007423 at all eighteen against 0.00160 (4.64x / 1.66x). S1959's map turnover at 640 is correctly placed for the sites that need it.",
@@ -1222,6 +1223,16 @@
   "status": "CERTIFIED. NEW BEST-KNOWN BUILD, and the first cost REDUCTION in this line.",
   "the_marginal_rule_cuts_less_than_the_block_ratio_allows": "Layers 0-5 cost 0.24x; the increment from there to 0-9 -- four more sites, 3.54M, worth 0.36 milli-nats -- costs 0.615, a 1.71x LOSS. The block ratio of 0.83x hides a marginal ratio of 1.71x, so the cut stops at layer 5.",
   "what_kind_of_result_this_is": "Every supersession from S2018 to S2020 bought CE with parameters. S2023 sells parameters for CE at a favourable rate, which the price rule sanctions and this ledger has never done. If the rule is meant only to justify purchases and not sales, that is a decision about S1947 rather than about this measurement. The CE number is unambiguously worse and is not hidden behind the ratio."
+ },
+ "THE_MAP_KNEE_IS_COVERAGE_DEPENDENT_S2024": {
+  "build": "36 tables at {attn 384; mlp 768 at layers 0-9, mlp 1152 at layers 10-17}; uncovered rows 30% output-NN neighbour, 70% map at rank 640 EXCEPT rank 256 at MLP layers 0-7. 202.6M values at 5,419, against S2023's 204.4M and S2020's 209.7M. CE cost 0.236 milli-nats, parameters released worth 0.71, net +0.47 of budget.",
+  "builds_on": "THE_MAP_IS_OVER_BOUGHT_AT_SHALLOW_SITES_S2023",
+  "claim": "At the deployed 5,419 coverage the rank-256 map cut runs to MLP layer 7 and stops at 8: per-two-site costs are 0.18x, 0.59x, 0.66x through layer 7 and 2.85x at layers 8-9. At 16,110 NO step fails -- layers 8-9 cost 0.78x, still free -- so the knee is at layer 8 at one coverage and beyond layer 9 at the other.",
+  "evidence": "ops/where_is_the_map_knee.py, 207.9s, eight arms x three roles x two coverages, pooled over 92,160 positions. pred_a/b/c True; pred_d FALSE, and its failure is a real coverage dependence. Derived controls True, reference deviation 0.000000.",
+  "first_parameter_where_the_coverages_disagree": "The map acts only on uncovered rows and 16,110 halves that arm, so a poorer map costs less there; the knee moving outward with coverage is the expected direction. S1960 asked this for the allocation and found one build within 0.002 nats of both optima; the map cut is the first parameter where that no longer holds. The disagreement is 1.8M values -- small, but a disagreement rather than a shared optimum. The deployed coverage is 5,419 and that is the build recorded.",
+  "open": "Every knee found since S2020 -- table rank at layer 10, map rank at layer 8 -- sits mid-stack with no native explanation (Codex's certificate, S2023). The two knees are two layers apart and both separate late from early sites. Whether they are the same boundary seen through two parameters, or two boundaries, is one arm: swap them and see which pairing loses less.",
+  "section": "S2024",
+  "status": "CERTIFIED. BUILD REFINED, superseding S2023's map cut."
  },
  "THE_MINIMAL_PATH_IS_THREE_SITES_S1990": {
   "WITHDRAWN_RULE_NOTE": "S1991 falsifies the RULE'S FORM, not S1990's measurements. The 'every attention layer strictly above the compiled site' statement was derived from one site and cannot distinguish a chain from its endpoint. S1991 removed attention 3 from mlp2's path (mlp2+attn4-6 = 1.845) and it got BETTER than the unbroken version (mlp2+attn3-6 = 1.887) by 0.042 nats at pooled t = +18.9. There is no chain. What every working arm shares is attention 5 and attention 6. S1990's numbers stand and reproduced to 0.000000 in S1991.",
