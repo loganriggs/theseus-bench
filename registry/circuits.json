@@ -412,6 +412,7 @@
   "table_axis_transfers": "pred_b FAILED: I predicted the table knee would MOVE at 5,419 and it essentially does not. The crossing sits between {768,256} and {640,160} on skip1200 exactly as at 16,110; skip11000's 1024->768 step lands at 0.0100, on the threshold; only skip7000 moves it one grid step. The MLP/table tradeoff is approximately coverage-invariant to within one grid step."
  },
  "CONVERGED_BUILD_END_TO_END_S2028": {
+  "QUALIFIED_BY_S2029": "The pooled margins are correct but NOT uniform. The +3.064 milli-nats over S1959's build is +3.3 to +5.0 at covered inputs and -0.7 to -4.7 at UNCOVERED ones, on every role -- a net of a larger gain and a real loss. Covered inputs carry about three quarters of scored positions and outvote the rest. Every number in the fifteen sections that produced the build was a pooled average and none would have shown this.",
   "S1970_reproduces_exactly": "pred_a: the S1959 build beats S1789's deployed design by +0.069238 nats, against the +69.238 milli-nats S1970 published. Six hundred sections and a rewritten library later, the anchor is exact.",
   "build": "36 per-token context-free tables. Attention rank 384. MLP rank 768 at layers 0-9 and 1152 at layers 10-17. Uncovered rows: 30% output-NN neighbour, 70% ridge map at rank 640, except rank 256 at MLP layers 0-7. 202.6M values at 5,419 coverage.",
   "builds_on": "ALPHA_OPTIMUM_MOVED_ONE_STEP_AND_THE_AXIS_IS_SETTLED_S2027",
@@ -1235,6 +1236,17 @@
   "section": "S1995",
   "status": "CERTIFIED as a NEGATIVE. The observation in S1994 stands; the mechanism lead does not.",
   "why_it_matters": "This is the control S1986, S1990 and S1992 did not get. Each of those was a shape that fit every number available, published as a rule, and falsified within the hour. S1994's gradient was registered as an OBSERVATION and its control was queued in the same commit -- 4.5 seconds, and the story died before it reached the board."
+ },
+ "THE_GAIN_IS_CONCENTRATED_AT_COVERED_INPUTS_S2029": {
+  "bears_on_a_question_with_logan": "S1947's rule prices parameters against POOLED CE. S2023 and S2024 used it to sell parameters, and S2029 shows that sale's cost is concentrated in the weakest cells. Whether a price rule stated on an average may authorise a trade whose cost is not average is a decision about S1947.",
+  "builds_on": "CONVERGED_BUILD_END_TO_END_S2028",
+  "claim": "The converged build's advantage over S1959's is entirely at covered inputs and it is a net LOSS at uncovered ones on all three roles: covered +4.970/+4.787/+3.329 milli-nats, uncovered -0.734/-0.790/-4.693. It also loses the unseen-target bucket at skip1200 by 3.948. The pooled +3.064 S2028 recorded is the net of a larger gain and a real loss.",
+  "evidence": "ops/where_does_the_converged_build_win.py, 4.3s warm, five arms x three roles at 5,419, using S1789's frequency buckets and S1936's covered/uncovered axis. pred_a True, pred_d True; pred_b FALSE 2 of 3, pred_c FALSE 0 of 3. Derived controls True, reference deviation 0.000000, no crashed predicates.",
+  "named_suspect_not_yet_attributed": "S2024 cut the map from rank 640 to 256 at MLP layers 0-7 and recorded it as net +0.47 milli-nats of budget under S1947's price rule -- a SALE of parameters priced on a pooled average. The map acts ONLY on uncovered rows. S2020's table ranks act on covered rows too, so they are not the obvious cause, but the loss has NOT been attributed and S2029 does not assert which change caused it. S2030 tests it.",
+  "not_a_frequency_effect": "pred_a and pred_d passed -- all five frequency buckets gain on >=2 roles and the unseen bucket carries at least a fifth of the frequent bucket's win. The concentration is on the COVERED/UNCOVERED axis, not the frequency axis, which is the opposite of what pred_d was registered to look for.",
+  "qualifies": "CONVERGED_BUILD_END_TO_END_S2028",
+  "section": "S2029",
+  "status": "CERTIFIED. QUALIFIES S2028."
  },
  "THE_LOCALISATION_LINE_DOES_NOT_REACH_THE_SHIPPED_PROGRAM_S2013": {
   "builds_on": "HIGH_DIMENSIONAL_CONTENT_IS_SPECIFIC_AND_MLP_CONTENT_IS_LARGE_S2012",
