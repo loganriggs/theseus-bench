@@ -1135,6 +1135,17 @@
   ],
   "status": "CERTIFIED at two coverages (\u00a71934)"
  },
+ "REGISTRY_AUDIT_SELECTION_NOISE_REGIME_S2046": {
+  "builds_on": "THE_FRESH_LOSS_IS_IN_THE_COVERED_ROWS_S2045",
+  "claim": "Of 111 CERTIFIED registry entries, 34 quote a milli-nat margin and 29 of those 34 have their largest quoted margin BELOW 30 milli-nats -- about 1% of the shipped program's 2,800-3,300 milli-nat distance from the live model, which is LESSON 106's threshold. The five above the line are the arc headline (S1972, S1975 at 69.238), S1976's fallback-versus-coverage result (71.890), and S2037/S2044's own retraction (32.650): every claim safe by scale is either the original headline or the retraction that tested it.",
+  "evidence": "Infrastructure audit, no GPU. Regex over quoted milli-nat margins in the registry.",
+  "method_note": "This is a regex over quoted margins. It misses any claim whose margin was never written as milli-nats in its entry, and 77 entries quote no margin at all. It is triage, not proof, and the number to trust is 29 of 34, not 29 of 111.",
+  "open": "S1964 and S1967 rejected the per-token tilt on margins of 1.92 to 2.94 milli-nats and S1970 settled alpha at finer resolution on 1.6. All three are in the regime S2037 showed does not transfer, and all three decided a parameter of the build of record.",
+  "section": "S2046",
+  "status": "CERTIFIED as an audit. It retracts nothing.",
+  "the_29_split_three_ways": "Ten are already fresh-window results (S2029-S2045), measured on rows that did not select them. Six are closed negatives (S1955, S1956, S1966, S1973, S1974, S2027) where a small margin was the reason to stop rather than to act. The remaining thirteen are in-sample selections that still stand, and the largest cluster is the tilt-and-blend family S1960-S1970 with margins of 1.19 to 3.48 milli-nats.",
+  "what_it_does_not_do": "It does not retract anything. A small margin is not a wrong margin: S2041 showed a +0.696 milli-nat decision surviving out-of-sample cleanly. It identifies where to point the fresh window next."
+ },
  "ROLES_ARE_NOT_INTERCHANGEABLE_S1971": {
   "alpha_significance": "On the alpha axis almost nothing is significant: a24-vs-a30 paired t across all six cells is +2.02, +0.54, +2.45, +1.83, +1.32, -1.59 -- only two clear 2-sigma. Consistent with S1970's finding that the whole 0.24-0.36 window is worth at most 1.6 milli-nats.",
   "builds_on": "ALPHA_SETTLES_AT_FINER_RESOLUTION_S1970",
@@ -1486,6 +1497,15 @@
   "status": "CERTIFIED. NARROWS S2037's retraction.",
   "the_pattern": "The component that was SELECTED FOR -- fifteen sections of choosing a rank that maximised a margin -- reversed. The component that was MEASURED AND PAID FOR -- a cost accepted in exchange for parameters, never optimised -- reproduced. Selection is what failed to travel, not measurement."
  },
+ "THE_TILT_REJECTION_TRANSPORTS_IN_SHAPE_NOT_SIZE_S2047": {
+  "builds_on": "REGISTRY_AUDIT_SELECTION_NOISE_REGIME_S2046",
+  "claim": "On the fresh window flat alpha beats every tilt and the ordering is exactly monotone in tilt span -- 28->32 -0.123 (t -1.95), 25->35 -0.502 (t -3.19), 22->38 -1.128 (t -4.48), 20->40 -1.688 (t -5.37), 15->45 -3.620 (t -7.73), 10->50 -6.373 (t -10.30) -- matching the shape S1967 measured in-sample. But the best tilt's deficit is 15.6x smaller than S1967's 1.92 milli-nats, and the narrowest tilt is inside the noise band at t = -1.95.",
+  "evidence": "ops/was_the_tilt_rejected_on_selection.py, 123.4s, nine arms on the fresh role at 5,419. pred_a/c True, pred_b/d FALSE. Derived controls True, no crashed predicates.",
+  "open": "S2046's audit left thirteen in-sample selections standing; the tilt family is now three of them. The largest remaining is S1960's 'one build suffices' -- a single build within 0.002 nats of the coverage-specific optimum at both coverages, decided on a 3.0 milli-nat margin. S2024 already found one parameter where the two coverages disagree.",
+  "section": "S2047",
+  "status": "CERTIFIED. S1964 and S1967's rejection of the tilt FAMILY is confirmed out-of-sample; the last grid step of it is not.",
+  "the_structural_contrast": "On fresh rows the untruncation depths SCRAMBLED (-10.371, -6.006, -5.777, -11.578 against a monotone in-sample gain, S2039) while the tilt spans stayed perfectly monotone. One axis kept its shape out-of-sample and one did not. The tilt varies a free blend parameter and the untruncation varies table capacity -- but that distinction does not survive S2038, where the map cut, also a capacity change, reproduced almost exactly (-0.206 fresh against -0.236 in-sample). Capacity-versus-blend is not the explanation and none is claimed."
+ },
  "THE_TWO_LAYERS_DO_DIFFERENT_JOBS_S1997": {
   "builds_on": "ATTENTION_6_NEEDS_ALMOST_NO_CAPACITY_S1996",
   "claim": "The threshold's two layers are not doing the same job, and the asymmetry runs opposite to the registered prediction. Cutting ATTENTION 5's table from rank 384 to rank 16 costs 0.010/0.010/0.009 nats; the same cut at attention 6 costs 0.166 (S1996) -- attention 5 is 17x shallower. Removing attention 5 entirely costs 2.905 nats (1.971 -> 4.876). Attention 5 is PURE PRESENCE; attention 6 carries real, if small, content.",
@@ -1528,6 +1548,7 @@
   "why_it_matters": "S1963 and S1965 each found a claim that held at 5,419 and reversed at 16,110. This one does not, and the gap barely moves with coverage, which is what distinguishes a fact about the model from a coincidence of ordering."
  },
  "TILT_AXIS_SETTLED_S1967": {
+  "FRESH_WINDOW_S2047": "CONFIRMED IN DIRECTION AND ORDERING by S2047. On 98,304 fresh positions flat alpha beats every tilt and the ordering is exactly monotone in tilt span, matching in-sample. But the SIZE does not transport: the best tilt's deficit is -0.123 milli-nats against S1967's 1.92, a factor of 15.6 smaller, and the narrowest tilt 28->32 sits at t = -1.95, inside the noise band. 'Flat beats 28->32' is not established out-of-sample.",
   "builds_on": "NO_COVERAGE_DIVERGENCE_MID_TILT_WINS_S1966",
   "claim": "The per-token tilt optimum is a 25->35 tilt, interior to the grid at both coverages and at the same point within one grid step, and the curve is FLAT near it -- the three points around the optimum span under 0.5 milli-nats at both coverages. The whole axis is worth 0.1 to 0.5 milli-nats: the best point recovers -0.17/-0.49/-0.10 at 5,419 and -0.01/-0.04/-0.07 at 16,110 against the flat blend.",
   "consistency": "The wide tilts are actively bad (+0.95 to +1.92 milli-nats at 10->50), so S1963/S1964's 'the widest tilt is the strongest' was true of the UNSEEN BUCKET and pointed the wrong way for the build -- exactly what S1963's pred_b measured, not a contradiction.",
@@ -1540,6 +1561,7 @@
   "status": "CERTIFIED, and the STOPPING RULE fired: no further section on the tilt axis is worth running."
  },
  "TILT_CONFIRMED_ON_THE_SHIPPED_BUILD_S1964": {
+  "FRESH_WINDOW_S2047": "CONFIRMED IN DIRECTION AND ORDERING by S2047. On 98,304 fresh positions flat alpha beats every tilt and the ordering is exactly monotone in tilt span, matching in-sample. But the SIZE does not transport: the best tilt's deficit is -0.123 milli-nats against S1967's 1.92, a factor of 15.6 smaller, and the narrowest tilt 28->32 sits at t = -1.95, inside the noise band. 'Flat beats 28->32' is not established out-of-sample.",
   "claim": "S1963's finding reproduces on the build actually arrived at ({mlp 768, attn 384}, rank-640 map, 5,419): the per-token alpha raises the unseen bucket (+0.26/+0.29/+0.25pp for the widest tilt), the widest tilt beats the narrowest on 3/3, and it still costs +1.45 to +2.94 milli-nats, above the 0.002-nat bar on 2 of 3 roles. S1963's negative was not an artefact of the compromise allocation.",
   "confirms": "PER_TOKEN_ALPHA_WORKS_AND_STILL_PAYS_S1963",
   "evidence": "ops/tilt_shipped_declarative.py, 4.6s. Five builds x three roles at 5,419. All three predicates TRUE, derived controls TRUE, reference deviation 0.000000.",
