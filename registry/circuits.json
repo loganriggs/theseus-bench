@@ -70,6 +70,17 @@
   "section": "S1972",
   "status": "CERTIFIED for pred_a and pred_c. pred_b FAILED and the fault is in my predicate."
  },
+ "ATTENTION_384_IS_CORRECTLY_BOUGHT_S2022": {
+  "build_unchanged": "The best-known build remains S2020's: {attn 384; mlp 768 at layers 0-9, mlp 1152 at layers 10-17}, 209.7M values. S2022 is the arm that says so.",
+  "builds_on": "THE_RANK_KNEE_LOCATED_S2021",
+  "claim": "The unexplored rank region S2016-S2021 found is SPECIFIC TO THE MLP TABLES. Untruncating attention sites above 384 buys 0.03x to 0.12x its price at every block tested, at both coverages: attention 14-17 +0.000053 against a 0.00202 price at 5,419 (0.03x) and +0.000240 at 16,110 (0.12x); attention 10-17 0.06x/0.10x; all eighteen 0.06x/0.08x. Gains are strictly positive (0.000053 to 0.000710) so attention tables do carry something above 384 -- worth an order of magnitude less than it costs.",
+  "evidence": "ops/does_attention_want_rank_too.py, 525.3s, seven arms x three roles x two coverages, all gains pooled over 92,160 positions. pred_a/b/d True, pred_c FALSE. Derived controls True, reference deviation 0.000000.",
+  "open": "S1870's MAP is also fit per site -- thirty-six of them -- and S1959 swept MAP_RANK uniformly, putting the turnover at 640. That is the third uniform sweep over a per-site quantity in this build and the only one never re-examined. The composite arm grammar can express a per-site map rank without new plumbing. S2023 runs it.",
+  "section": "S2022",
+  "status": "CERTIFIED as a NEGATIVE. S1959's attention 384 stands.",
+  "the_17_fold_asymmetry": "Normalising for price, extra rank at the best MLP block returns 2.1x and at the best attention block 0.12x -- a 17-fold difference in what the same parameters buy.",
+  "why_the_axes_differ": "S1989 measured lone attention sites at 0.05-0.31 nats and lone MLP sites at 0.03-10.67. Attention contributions are small and flat; MLP contributions span three orders of magnitude and are back-loaded (S2015). A uniform rank is a bad fit for a heterogeneous axis and a fine one for a homogeneous axis."
+ },
  "ATTENTION_5_IS_PRESENCE_ATTENTION_6_IS_CONTENT_S1998": {
   "CONFIRMED_IN_SIGN_ONLY_BY_S1999": "S1999 ran the same null at mlp4. The qualitative split transfers -- attention 5 negative (-0.017/-0.017/-0.020), attention 6 positive (+0.095/+0.098/+0.080) -- so it is a fact about the layers. The MAGNITUDE does not: attention 6 content is worth +0.09 at mlp4 against +0.21 at mlp2, roughly half, so HOW MUCH attention 6 must carry is a fact about the pair rather than the layer.",
   "builds_on": "THE_TWO_LAYERS_DO_DIFFERENT_JOBS_S1997",
