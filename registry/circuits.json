@@ -1591,6 +1591,16 @@
   "status": "CERTIFIED as a characterisation of the converged build.",
   "the_build": "36 context-free tables at mlp rank 768 / attention rank 384; uncovered rows = 30% output-NN neighbour + 70% rank-640 embedding->row map. 189.5M at 5,419 against S1789's 230.087M -- 18% cheaper and 69.238 milli-nats better at pooled t = -42.76 (S1972)."
  },
+ "WHICH_CHANGE_LOSES_THE_UNSEEN_BUCKET_S2033": {
+  "builds_on": "THE_MAP_CUT_PRICED_UNDER_BOTH_RULES_S2032",
+  "claim": "On the unseen-target bucket at 5,419, S2024's map cut is negative on every role (-0.402/-0.855/-1.642) and S2020's table raise is positive on two (+2.453/+3.806) and negative at skip1200 (-2.318). The two effects add to within 0.012 milli-nats of the converged build's +2.060/+2.963/-3.948.",
+  "evidence": "ops/which_change_loses_the_unseen_bucket.py, 4.5s warm, six arms x three roles at 5,419. All four predicates True, derived controls True, reference deviation 0.000000. THESE ARE THE VERDICTS FROM A REWRITTEN SCRIPT.",
+  "one_story_across_two_axes": "The table raise shows the same 2-of-3 shape here that S2030 found on the covered/uncovered axis, with the same role dissenting. S2031 showed that shape was coverage-unstable on the uncovered axis, so stability is NOT claimed here; what S2033 establishes is that on both axes at 5,419 the deficit is skip1200's and the table raise carries most of it. The map cut's contribution is the smaller and steadier one on this bucket too.",
+  "open": "The unseen bucket at 16,110 has not been measured, and it is the remaining cell where the two axes could be made to agree or disagree.",
+  "section": "S2033",
+  "status": "CERTIFIED",
+  "the_first_version_was_mis_specified": "Derived from the uncovered-arm script by string replacement; several replacements silently did not match. The helper read the unseen bucket while all four registered texts still said 'uncovered inputs', and pred_a compared the new measurement against the old constants, returning False against a bar describing a quantity it was not measuring. No verdict from that run is quotable. Rewritten from scratch, texts and helper together. LESSON 105."
+ },
  "_CE_saturation_caveat_on_stakes": {
   "AFFECTS_mlp1": "S1662 reported mlp1's individual stake as 7.005 nats, 'eight times its neighbours' -- that puts CE at 10.28 against a 10.82 uniform ceiling and is a SATURATED measurement. It licenses 'ablating mlp1 alone destroys the model'; it does NOT license 'mlp1 is 8x mlp0'. Cross-module raw-stake comparisons involving mlp1 are ordinal at best.",
   "claim": "Optimal-constant stakes in this project are compressed by a CE ceiling and are not linearly comparable at large magnitudes. Live CE is 3.279 and ln(50257)=10.82, so a stake of ~4.4 already sits at 7.7 nats.",
