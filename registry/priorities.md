@@ -205,3 +205,7 @@ per-row certification caveat are unaffected. Do not act on the two retracted not
   free-or-better, and per-layer pruning costs compose linearly (two independent confirmations). New best:
   mlp4/5-2304 + c6/c7-576 + c8/c9-288 → better than §312 on 8/8 fresh windows at −14.4M stored values (damage
   convention, reproduction gates held throughout). c8/c9 floor ≈ 288.
+- **Stored-value correction (math review 22:10Z):** a CP unit stores 3,456 values (not 1,920) — the §2139–§2144
+  savings were undercounted: the current best config saves **25.9M** values vs §312 (not 14.4M); damage numbers
+  unaffected. Rate table (nat per Mvalue): c8/c9→288 −0.0064 (best rate); c6–c9→576 −0.0012; mlp4/5 trims
+  +0.006 (never take); leave-attn16-real ≈ −0.030 pending rung 52's refit confirmation.
