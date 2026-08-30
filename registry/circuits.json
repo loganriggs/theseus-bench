@@ -1242,6 +1242,7 @@
   "structural_reading": "\u00a71765 from the other side \u2014 a fully compiled program is a pure function of the current token, so any input richer than the token is exactly what compilation deletes."
  },
  "TABLE_CURVE_KNEE_AT_768_256_S1947": {
+  "FRESH_WINDOW_S2052": "CONFIRMED AND STRENGTHENED. On fresh rows at 16,110 {768,256} is not merely the last step under the price -- it BEATS the richer {1024,256} by 17.054 milli-nats at t = -41.82, so it is a local optimum. The next step down still crosses, at 0.0387/100M against a 0.010 threshold, amplified from the in-sample 0.0177.",
   "builds_on": "BLEND_MLPHEAVY_SUPERSEDES_BEST_KNOWN_S1946",
   "claim": "At 16,110 coverage with the S1944 blend fallback fixed, the table-rank cost curve is strictly convex -- the marginal cost in nats per 100M saved rises at every one of six steps on all three roles (18/18) and roughly DOUBLES per step (0.001 -> 0.009 -> 0.017 -> 0.031 -> 0.052 -> 0.089 at skip7000). The knee is between {mlp 768, attn 256} and {640,160}: {768,256} costs 0.0072-0.0094 nats/100M and is the last efficient step; {640,160} costs 0.0132-0.0177.",
   "controls": "S1946's corrected TWO-SIDED form: coverage exactly 16,110; a rank-differing arm DOES move covered-input predictions while an identical-spec arm does NOT; buckets partition; live per-cell top-1 and CE identical at 0.00e+00; S1946's published CE reproduced to 0.000005 nats (thirty-third clean reading).",
@@ -1375,6 +1376,17 @@
   "qualifies": "CONVERGED_BUILD_END_TO_END_S2028",
   "section": "S2029",
   "status": "CERTIFIED. QUALIFIES S2028."
+ },
+ "THE_KNEE_HOLDS_AND_THE_BRACKET_NARROWS_S2052": {
+  "builds_on": "THE_TRANSFER_BOUNDARY_IS_BRACKETED_S2051",
+  "claim": "On fresh rows at 16,110 the allocation ladder is NOT monotone: {768,256} beats the richer {1024,256} by 17.054 milli-nats (t = -41.82) where in-sample that step cost 0.0090 nats per 100M. More table capacity is worse out-of-sample. The next step down, to {640,160}, still crosses the price at 0.0387/100M (in-sample 0.0177), so S1947's knee is confirmed and strengthened to a local optimum.",
+  "evidence": "ops/is_the_table_knee_on_fresh_rows.py, 5.8s warm, six arms on the fresh role at 16,110. pred_b/c/d True, pred_a FALSE. Derived controls True, no crashed predicates.",
+  "open": "Whether 768 is a property of the model or of the fit-set size is one arm, and it bears on every table in the program.",
+  "pred_b_passed_for_the_wrong_reason": "Its text asks whether the step to {768,256} still costs under 0.010 nats per 100M. It costs -0.0214 -- negative, because the step is beneficial -- so the comparison is true while the predicate's intent, still a small cost, is not what the data show. A one-sided bar met by a sign flip is not evidence for the thing it was written to check.",
+  "section": "S2052",
+  "status": "CERTIFIED. Confirms and strengthens S1947.",
+  "the_bracket_narrows": "S1947's decisive 11.8-milli-nat quantity amplified to 26.910, so the transfer boundary is below 11.8. With S2020's 3.300 reversing, the empirical bracket is [3.3, 11.8], down from S2051's [3.3, 24.4]. LESSON 106's argued ~30 milli-nats is too generous by at least 2.5x.",
+  "two_axes_agree_on_768": "S2020 found untruncating late MLPs to rank 1152 costs -11.578 on fresh rows; S2052 finds uniform rank 1024 worse than 768 by 17.054. Two independent measurements say extra table rank above ~768 does not transfer, and S2044 found the failure growing with coverage."
  },
  "THE_LOCALISATION_LINE_DOES_NOT_REACH_THE_SHIPPED_PROGRAM_S2013": {
   "builds_on": "HIGH_DIMENSIONAL_CONTENT_IS_SPECIFIC_AND_MLP_CONTENT_IS_LARGE_S2012",
