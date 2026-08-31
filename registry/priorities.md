@@ -235,3 +235,25 @@ per-row certification caveat are unaffected. Do not act on the two retracted not
   0/62 (aggregate falls 2.86 → 2.07 monotonically). Registry rows are AGGREGATE-CE objects; circuit-grade
   claims must not be made for them. A per-config certificate costs ~2 minutes and should accompany any future
   construction.
+
+## 2026-08-31 CP-grammar chapter (S2203-S2206)
+- The front-table grammar is falsified (S2201 capacity / S2202 objective) and DOMINATED: the model's own
+  top-K bilinear units (weights-only) beat the tables at every front MLP by K=2304, at 7-29x fewer stored
+  values (convention: CE added above the real model, lower is better).
+- Depth law: front prunability rises with depth (K=576 damage: m0 1.108 > m1 0.280 > m2 0.082 > m3 0.075).
+- OPEN: composition. The combined CP front is 3.3x its singles sum (+0.9427, 0/62 certificates). Registry
+  rows remain AGGREGATE-CE objects; no circuit-grade claim is licensed for any multi-site config yet.
+
+## 2026-08-31 NEW FRONTIER (S2217, registered claim, all bars held)
+- Quotable S312-family frontier is now the CP-front global config: L2_F fresh +2.0553 (previous +2.6662;
+  convention: CE added above the real model, LOWER IS BETTER), tail-attn increment +0.5045 in band, census
+  aggregate +2.1359. Front stores 47.8M values vs the tables' 231.6M.
+- Certificate ledger UNCHANGED: 0/62 at the new frontier; every pair of front replacements already collapses
+  validity to exactly 2/62 (S2215), and the four sites' circuit-damage profiles are near-identical
+  (Spearman 0.961, S2218). Registry rows remain AGGREGATE-CE objects.
+
+## 2026-08-31 FRONTIER UPDATE 2 (S2221, registered, all bars held)
+- L2_F fresh +1.8765 / census +1.9474: CP-3456 front + motifs + S2144 middles + TRAJECTORY-TARGET tail
+  dictionaries (convention: CE above the real model, LOWER IS BETTER). Path today: 2.6662 -> 2.0553 -> 1.8765.
+- Trajectory-teacher targets are 2-for-2 across families; motif alpha refit is a no-op (S2220); motifs alone
+  cost +0.5530 census (S2219). Certificates for the new frontier not yet rowed.
