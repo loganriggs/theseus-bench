@@ -230,3 +230,8 @@ per-row certification caveat are unaffected. Do not act on the two retracted not
   cross-output maps collapse across documents — no merge or shared-read compilation is licensed; the
   document-gauge conjugation test is inconclusive at row grain (its validation bar failed) and awaits a
   document-grain instrument. Registry rows must not assume linear identifiability across pair members.
+- **Circuit-grade certificates (§2192–§2195):** NO tested partial replacement of bilin18 preserves the 62
+  certified circuits at τ = 0.5×ref — full config, tail-real, front-real, and tables+middles-only all score
+  0/62 (aggregate falls 2.86 → 2.07 monotonically). Registry rows are AGGREGATE-CE objects; circuit-grade
+  claims must not be made for them. A per-config certificate costs ~2 minutes and should accompany any future
+  construction.
