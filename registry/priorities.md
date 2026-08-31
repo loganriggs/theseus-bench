@@ -219,3 +219,9 @@ per-row certification caveat are unaffected. Do not act on the two retracted not
   rare); m16 is a subword-continuation unit that FIGHTS that retrieval (net deletion cost +0.003). Registry
   rows describing block 16 should carry the envelope description (real attention, real MLP) until a retrieval
   grammar exists; the a16L class dictionary is worse than deleting the attention outright.
+- **The cross-depth functional ordering (§2167–§2175):** attention replacements fail on retrieval-class
+  positions everywhere, with a MONOTONE depth progression — b2/b3 subword assembly (0.45/0.45) → b4/b5
+  novel-token context (other 0.33/0.46) → tail document memory (ind 0.52–0.57). Motif price front-loaded
+  (b2–b4 ≈ +0.17–0.19 each; joint +0.412, moderately sub-additive); 14/16 are an ensemble of independent
+  backup readers (no shared-read compilation); m16's suppression is routed. Registry rows for attention
+  stand-ins should be named by their depth role (assembler / context mixer / memory), not treated as one kind.
