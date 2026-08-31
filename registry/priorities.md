@@ -225,3 +225,8 @@ per-row certification caveat are unaffected. Do not act on the two retracted not
   (b2–b4 ≈ +0.17–0.19 each; joint +0.412, moderately sub-additive); 14/16 are an ensemble of independent
   backup readers (no shared-read compilation); m16's suppression is routed. Registry rows for attention
   stand-ins should be named by their depth role (assembler / context mixer / memory), not treated as one kind.
+- **Architecture chapter (§2171–§2183):** three adjacent-block attention duos with measured mutual backup;
+  two cross-depth pipelines (subword: b2/b3→m16 ρ 0.85; retrieval: b4/b5→14/16 ρ 0.79); both duos'
+  cross-output maps collapse across documents — no merge or shared-read compilation is licensed; the
+  document-gauge conjugation test is inconclusive at row grain (its validation bar failed) and awaits a
+  document-grain instrument. Registry rows must not assume linear identifiability across pair members.
